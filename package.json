@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Advanced Coutning Bot",
+  "description": "Discord Bot for counting. Allows arithmetic expressions.",
   "main": "src/app.js",
   "engines": {
     "node": ">=20.0.0"
@@ -16,6 +16,14 @@
     "lint:fix": "eslint . --fix",
     "generate-config": "node scripts/generate-config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NullDev/Arithmetica-Bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NullDev/Arithmetica-Bot/issues"
+  },
+  "homepage": "https://github.com/NullDev/Arithmetica-Bot#readme",
   "author": "NullDev",
   "license": "Apache-2.0",
   "devDependencies": {
