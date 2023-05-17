@@ -1,0 +1,21 @@
+{
+    "__LANG__": "jp",
+    "generic": {
+        "activated": "有効化",
+        "deactivated": "無効化"
+    },
+    "errors": {
+        "generic_command_execution_failed": "コマンドの実行中にエラーが発生しました！ =(",
+        "command_not_found": "コマンド '%s' は存在しません :/",
+        "invalid_argument": "無効な引数です！",
+        "channel_not_found": "このサーバーにそのチャンネルは存在しません。正しく入力しましたか？",
+        "not_a_number": "それは数値ではありません！",
+        "invalid_arithmetic": "それは有効な算術表現ではありません！あなたは負けていませんが、それはカウントされませんでした。"
+    },
+    "replies": {
+        "bot_info_tagline": "数をカウントするDiscord Bot。算術表現を許可します。",
+        "incorrect_number": "それは次の数値ではありません！あなたは負けました！最後の数値は: %s で、次の数値は: %s でした。あなたの数値は: %s でした",
+        "channel_set": "チャンネルは %s に設定されました！",
+        "arithmetic_set": "算術表現は %s に設定されました！"
+    }
+}

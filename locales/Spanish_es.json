@@ -1,0 +1,21 @@
+{
+    "__LANG__": "es",
+    "generic": {
+        "activated": "activado",
+        "deactivated": "desactivado"
+    },
+    "errors": {
+        "generic_command_execution_failed": "¡Ha ocurrido un error al ejecutar el comando! =(",
+        "command_not_found": "No conozco el comando '%s' :/",
+        "invalid_argument": "¡Argumento inválido!",
+        "channel_not_found": "Este canal no existe en este servidor. ¿Lo escribiste correctamente?",
+        "not_a_number": "¡Eso no era un número!",
+        "invalid_arithmetic": "¡Eso no fue una expresión aritmética válida! No has perdido, pero no lo he contado."
+    },
+    "replies": {
+        "bot_info_tagline": "Bot de Discord para contar. Permite expresiones aritméticas.",
+        "incorrect_number": "¡Eso no era el siguiente número! ¡Has perdido! El último número fue: %s y el siguiente número habría sido: %s. Tu número fue: %s",
+        "channel_set": "El canal ha sido configurado a %s!",
+        "arithmetic_set": "Las expresiones aritméticas han sido configuradas a %s!"
+    }
+}
