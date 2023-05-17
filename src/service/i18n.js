@@ -30,7 +30,14 @@ const db = new QuickDB({
 const __ = (...args) => async(guild, quantisize = false) => {
     const locale = (await db.get(`guild-${guild}.locale`)) || "English_en";
     i18n.setLocale(locale);
-    return quantisize ? i18n.__n(...args) : i18n.__(...args);
+
+    let result = quantisize ? i18n.__n(...args) : i18n.__(...args);
+    if (!result){
+        i18n.setLocale("English_en");
+        result = quantisize ? i18n.__n(...args) : i18n.__(...args);
+    }
+
+    return result;
 };
 
 export default __;
