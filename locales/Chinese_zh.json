@@ -1,0 +1,21 @@
+{
+    "__LANG__": "zh",
+    "generic": {
+        "activated": "已激活",
+        "deactivated": "已停用"
+    },
+    "errors": {
+        "generic_command_execution_failed": "执行命令时出错了！ =(",
+        "command_not_found": "我不知道命令 '%s' :/",
+        "invalid_argument": "无效的参数！",
+        "channel_not_found": "此服务器上不存在该频道。你确定你输入正确了吗？",
+        "not_a_number": "这不是一个数字！",
+        "invalid_arithmetic": "这不是有效的算术表达式！你并没有输，但我没有计算它。"
+    },
+    "replies": {
+        "bot_info_tagline": "Discord计数机器人。允许算术表达式。",
+        "incorrect_number": "这不是下一个数字！你输了！上一个数字是：%s，下一个数字应该是：%s。你的数字是：%s",
+        "channel_set": "频道已设置为 %s！",
+        "arithmetic_set": "算术表达式已设置为 %s！"
+    }
+}
