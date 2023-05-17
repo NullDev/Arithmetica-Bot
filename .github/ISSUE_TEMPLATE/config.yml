@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Bot Invite Link
+    url: https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=3136
+    about: Click this link to invite the bot to your server
