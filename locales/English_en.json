@@ -2,7 +2,8 @@
     "__LANG__": "en",
     "errors": {
         "generic_command_execution_failed": "There was an error while executing this command! =(",
-        "command_not_found": "I don't seem to know the command '%s' :/"
+        "command_not_found": "I don't seem to know the command '%s' :/",
+        "not_a_number": "That was not a number!"
     },
     "replies": {
         "bot_info_tagline": "Discord Bot for counting. Allows arithmetic expressions."
