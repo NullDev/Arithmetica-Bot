@@ -10,7 +10,8 @@
         "invalid_argument": "Ungültiges Argument!",
         "channel_not_found": "Dieser Channel existiert nicht auf diesem Server. Hast du ihn richtig geschrieben?",
         "not_a_number": "Das war keine Zahl!",
-        "invalid_arithmetic": "Das war kein gültiger arithmetischer Ausdruck! Du hast nicht verloren, aber ich habe das nicht gezählt."
+        "invalid_arithmetic": "Das war kein gültiger arithmetischer Ausdruck! Du hast nicht verloren, aber ich habe das nicht gezählt.",
+        "same_user": "Du kannst nicht zweimal hintereinander zählen. Warte bis jemand anderes gezählt hat."
     },
     "replies": {
         "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke.",
