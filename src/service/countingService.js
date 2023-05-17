@@ -23,7 +23,7 @@ const failed = async function(message, lastNumber, result){
     message.reply(await __("replies.incorrect_number", lastNumber, lastNumber + 1, result)(message.guildId));
     message.react("❌");
     await db.delete(`guild-${message.guildId}.lastUser`);
-    return db.set(`guild-${message.guildId}.count`, 0);
+    return await db.set(`guild-${message.guildId}.count`, 0);
 };
 
 /**

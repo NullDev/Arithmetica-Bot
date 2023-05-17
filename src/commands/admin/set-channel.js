@@ -43,6 +43,8 @@ export default {
         }
 
         await db.set(`guild-${interaction.guildId}.channel`, channelID);
+        await db.delete(`guild-${interaction.guildId}.lastUser`);
+        await db.set(`guild-${interaction.guildId}.count`, 0);
 
         return await interaction.reply({
             content: await __("replies.channel_set", channel.value)(interaction.guildId),
