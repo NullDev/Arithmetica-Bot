@@ -102,6 +102,10 @@ const countingService = async function(message){
     try { result = evaluate(message.content); }
     catch (e){ result = null; }
 
+    if (result && typeof result === "object" && result.entries){
+        result = result.entries[0];
+    }
+
     if (!result || isNaN(result)){
         return await replyWaitAndDelete(
             message,
