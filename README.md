@@ -26,8 +26,14 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Count with arithmetic expressions (`5^0, sqrt(4), i^2+4, log(10000, 10)`)
 - [x] Slash commands
 - [x] Arithmetic is toggleable 
-- [x] Multi-language support (currently English, German, Japanese, Spanish and Russian)
-    - Can be set on every Discord server individually
+- [x] Multi-language support (Can be set on every Discord server individually)
+    - English (Peer reviewed ✅)
+    - German (Peer reviewed ✅)
+    - French (Peer reviewed ✅)
+    - Spanish
+    - Japanese
+    - Chinese
+    - Russian
 - [x] Easy to set up
     - Set the channel and you're good to go (`/set-channel`)
     - Optionally, set server language (`/set-language`)
@@ -37,7 +43,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Easy configuration system
     - Install instructions provided [below](#wrench-setup)
 - [x] Admin only commands
-- [x] Prevent persons from counting multiple times in a row 
+- [ ] Prevent persons from counting multiple times in a row 
 - [ ] Configurable timeout for losers (_Planned_)
 
 <hr>
