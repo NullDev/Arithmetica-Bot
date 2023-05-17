@@ -3,11 +3,14 @@
     "errors": {
         "generic_command_execution_failed": "Beim ausführen des Commands ist ein Fehler aufgetreten! =(",
         "command_not_found": "Das Command '%s' kenne ich nicht :/",
+        "invalid_argument": "Ungültiges Argument!",
+        "channel_not_found": "Dieser Channel existiert nicht auf diesem Server. Hast du ihn richtig geschrieben?",
         "not_a_number": "Das war keine Zahl!",
         "invalid_arithmetic": "Das war kein gültiger arithmetischer Ausdruck! Du hast nicht verloren, aber ich habe das nicht gezählt."
     },
     "replies": {
         "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke.",
-        "incorrect_number": "Das war nicht die nächste Zahl! Du hast verloren! Die letzte Zahl war: %s und die nächste Zahl wäre: %s gewesen. Deine Zahl war: %s"
+        "incorrect_number": "Das war nicht die nächste Zahl! Du hast verloren! Die letzte Zahl war: %s und die nächste Zahl wäre: %s gewesen. Deine Zahl war: %s",
+        "channel_set": "Channel wurde auf %s gesetzt!"
     }
 }

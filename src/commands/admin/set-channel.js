@@ -1,6 +1,7 @@
 import path from "node:path";
 import { SlashCommandBuilder, PermissionFlagsBits, ChannelType } from "discord.js";
 import { QuickDB } from "quick.db";
+import __ from "../../service/i18n";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -26,13 +27,26 @@ export default {
      */
     async execute(interaction){
         const channel = interaction.options.get("channel");
-        if (!channel) return await interaction.reply({ content: "Invalid language", ephemeral: true });
+        if (!channel){
+            return await interaction.reply({
+                content: await __("errors.invalid_argument")(interaction.guildId),
+                ephemeral: true,
+            });
+        }
 
         const channelID = interaction.guild?.channels.cache.find(ch => ch.name === channel.value && ch.type === ChannelType.GuildText)?.id;
-        if (!channelID) return await interaction.reply({ content: "Invalid channel", ephemeral: true });
+        if (!channelID){
+            return await interaction.reply({
+                content: await __("errors.channel_not_found")(interaction.guildId),
+                ephemeral: true,
+            });
+        }
 
         await db.set(`guild-${interaction.guildId}.channel`, channelID);
 
-        return await interaction.reply({ content: "Channel set to: " + channel.value, ephemeral: true });
+        return await interaction.reply({
+            content: await __("replies.channel_set", channel.value)(interaction.guildId),
+            ephemeral: true,
+        });
     },
 };
