@@ -1,7 +1,7 @@
 import path from "node:path";
 import { SlashCommandBuilder, PermissionFlagsBits, ChannelType } from "discord.js";
 import { QuickDB } from "quick.db";
-import __ from "../../service/i18n";
+import __ from "../../service/i18n.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //

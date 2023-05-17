@@ -1,5 +1,9 @@
 {
     "__LANG__": "en",
+    "generic": {
+        "activated": "aktiviert",
+        "deactivated": "deaktiviert"
+    },
     "errors": {
         "generic_command_execution_failed": "Beim ausführen des Commands ist ein Fehler aufgetreten! =(",
         "command_not_found": "Das Command '%s' kenne ich nicht :/",
@@ -11,6 +15,7 @@
     "replies": {
         "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke.",
         "incorrect_number": "Das war nicht die nächste Zahl! Du hast verloren! Die letzte Zahl war: %s und die nächste Zahl wäre: %s gewesen. Deine Zahl war: %s",
-        "channel_set": "Channel wurde auf %s gesetzt!"
+        "channel_set": "Channel wurde auf %s gesetzt!",
+        "arithmetic_set": "Arithmetische Ausdrücke wurden %s!"
     }
 }

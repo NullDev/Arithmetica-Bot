@@ -1,6 +1,7 @@
 import path from "node:path";
 import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
 import { QuickDB } from "quick.db";
+import __ from "../../service/i18n.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -26,10 +27,23 @@ export default {
      */
     async execute(interaction){
         const enabled = interaction.options.get("enabled");
-        if (!enabled) return await interaction.reply({ content: "Invalid option", ephemeral: true });
+        if (!enabled){
+            return await interaction.reply({
+                content: await __("errors.invalid_argument")(interaction.guildId),
+                ephemeral: true,
+            });
+        }
 
-        await db.set(`guild-${interaction.guildId}.arithmetic`, enabled.value);
+        const isEnabled = Boolean(enabled.value);
 
-        return await interaction.reply({ content: "Arithmetic expressions set to: " + enabled.value, ephemeral: true });
+        await db.set(`guild-${interaction.guildId}.arithmetic`, isEnabled);
+
+        return await interaction.reply({
+            content: await __(
+                "replies.arithmetic_set",
+                await __("generic." + (isEnabled ? "activated" : "deactivated"))(interaction.guildId),
+            )(interaction.guildId),
+            ephemeral: true,
+        });
     },
 };
