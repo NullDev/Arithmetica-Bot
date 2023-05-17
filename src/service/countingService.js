@@ -45,10 +45,10 @@ const correct = async function(message, guild, result){
  *
  * @param {import("discord.js").Message} message
  * @param {String} content
- * @param {Number} [timeout=20000] (10sec)
+ * @param {Number} [timeout=20000] (8sec)
  * @return {Promise<any>}
  */
-const replyWaitAndDelete = async function(message, content, timeout = 10000){
+const replyWaitAndDelete = async function(message, content, timeout = 8000){
     return message.reply(content).then((msg) => {
         setTimeout(() => {
             msg.delete();
@@ -73,9 +73,6 @@ const countingService = async function(message){
     if (!channelID || channelID !== channel) return null;
 
     const lastUser = await db.get(`guild-${guild}.lastUser`);
-
-    console.log(lastUser, message.author.id);
-
     if (lastUser === message.author.id){
         return await replyWaitAndDelete(
             message,
