@@ -19,7 +19,7 @@ const db = new QuickDB({
  * @return {Promise<any>}
  */
 const failed = async function(message, lastNumber, result){
-    message.reply("That was not the next number! You failed! Last number was: " + lastNumber + " and the next number would have been: " + (lastNumber + 1) + ". Your number was: " + result);
+    message.reply(await __("replies.incorrect_number", lastNumber, lastNumber + 1, result)(message.guildId));
     message.react("❌");
     return db.set(`guild-${message.guildId}.count`, 0);
 };
@@ -56,15 +56,13 @@ const countingService = async function(message){
     }
 
     let result;
-    try {
-        result = evaluate(message.content);
-    }
-    catch (e){
-        result = null;
-    }
+    try { result = evaluate(message.content); }
+    catch (e){ result = null; }
 
     if (!result || isNaN(result)){
-        return message.reply("That was not a valid arithmetic expression! You didn't fail, but I didn't count that.");
+        return message.reply(
+            await __("errors.invalid_arithmetic")(message.guildId),
+        );
     }
 
     if (lastNumber + 1 !== result){

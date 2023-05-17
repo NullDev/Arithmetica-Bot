@@ -3,9 +3,11 @@
     "errors": {
         "generic_command_execution_failed": "There was an error while executing this command! =(",
         "command_not_found": "I don't seem to know the command '%s' :/",
-        "not_a_number": "That was not a number!"
+        "not_a_number": "That was not a number!",
+        "invalid_arithmetic": "That was not a valid arithmetic expression! You didn't fail, but I didn't count that."
     },
     "replies": {
-        "bot_info_tagline": "Discord Bot for counting. Allows arithmetic expressions."
+        "bot_info_tagline": "Discord Bot for counting. Allows arithmetic expressions.",
+        "incorrect_number": "That was not the next number! You failed! Last number was: %s and the next number would have been: %s. Your number was: %s"
     }
 }
