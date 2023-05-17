@@ -38,7 +38,7 @@ const countingService = async function(message){
     const channelID = await db.get(`guild-${guild}.channel`);
     if (!channelID || channelID !== channel) return null;
 
-    const arithmetic = await db.get(`guild-${guild}.arithmetic`);
+    const arithmetic = await db.get(`guild-${guild}.arithmetic`) ?? true;
     const lastNumber = await db.get(`guild-${guild}.count`) || 0;
 
     if (!arithmetic){
