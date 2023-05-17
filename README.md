@@ -1,6 +1,6 @@
 # Arithmetica-Bot
 
-<p align="center"><img height="150" width="auto" src="[https://cdn.discordapp.com/avatars/1102551839674740737/3354a0eebe93a021d96e53c271b0316e.webp?size=128](https://cdn.discordapp.com/attachments/1012696857572548759/1108284051942543420/SHADOW_A_material_design_logo_featuring_mathematical_symbols_an_42715bbf-e803-45fe-b1c9-a8e66a2ee57a.png)" /></p>
+<p align="center"><img height="250" width="auto" src="https://cdn.discordapp.com/attachments/1012696857572548759/1108284051942543420/SHADOW_A_material_design_logo_featuring_mathematical_symbols_an_42715bbf-e803-45fe-b1c9-a8e66a2ee57a.png" /></p>
 <p align="center"><b>Discord Bot for counting. Allows arithmetic expressions.</b></p>
 <hr>
 
