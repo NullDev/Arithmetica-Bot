@@ -45,7 +45,7 @@ export default {
                 },
                 {
                     name: "Source Code :scroll:",
-                    value: "[NullDev/Discord-RoleShop](https://github.com/NullDev/Arithmetica-Bot)",
+                    value: "[NullDev/Arithmetica-Bot](https://github.com/NullDev/Arithmetica-Bot)",
                     inline: true,
                 },
                 { name: "\u200b", value: "\u200b", inline: true },
