@@ -1,0 +1,10 @@
+{
+    "__LANG__": "en",
+    "errors": {
+        "generic_command_execution_failed": "Beim ausführen des Commands ist ein Fehler aufgetreten! =(",
+        "command_not_found": "Das Command '%s' kenne ich nicht :/"
+    },
+    "replies": {
+        "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke."
+    }
+}
