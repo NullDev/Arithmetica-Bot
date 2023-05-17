@@ -8,14 +8,14 @@
         "generic_command_execution_failed": "Une erreur s'est produite lors de l'exécution de la commande ! =(",
         "command_not_found": "Je ne connais pas la commande '%s' :/",
         "invalid_argument": "Argument invalide !",
-        "channel_not_found": "Cette chaîne n'existe pas sur ce serveur. L'avez-vous bien écrite ?",
+        "channel_not_found": "Ce salon n'existe pas sur ce serveur. L'avez-vous bien écrit ?",
         "not_a_number": "Ce n'était pas un nombre !",
         "invalid_arithmetic": "Ce n'était pas une expression arithmétique valide ! Vous n'avez pas perdu, mais je ne l'ai pas compté."
     },
     "replies": {
         "bot_info_tagline": "Bot Discord pour compter. Autorise les expressions arithmétiques.",
         "incorrect_number": "Ce n'était pas le prochain nombre ! Vous avez perdu ! Le dernier nombre était : %s et le prochain nombre aurait été : %s. Votre nombre était : %s",
-        "channel_set": "La chaîne a été réglée sur %s !",
+        "channel_set": "Le salon a été réglé sur %s !",
         "arithmetic_set": "Les expressions arithmétiques ont été réglées sur %s !"
     }
 }
