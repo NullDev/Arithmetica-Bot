@@ -9,7 +9,7 @@
         "command_not_found": "No conozco el comando '%s' :/",
         "invalid_argument": "¡Argumento inválido!",
         "channel_not_found": "Este canal no existe en este servidor. ¿Lo escribiste correctamente?",
-        "not_a_number": "¡Eso no era un número!",
+        "not_a_number": "¡Eso no era un número! No has perdido, pero no lo he contado.",
         "invalid_arithmetic": "¡Eso no fue una expresión aritmética válida! No has perdido, pero no lo he contado.",
         "same_user": "No puedes contar dos veces seguidas. Espera a que alguien más cuente."
     },

@@ -9,7 +9,7 @@
         "command_not_found": "Je ne connais pas la commande '%s' :/",
         "invalid_argument": "Argument invalide !",
         "channel_not_found": "Ce salon n'existe pas sur ce serveur. L'avez-vous bien écrit ?",
-        "not_a_number": "Ce n'était pas un nombre !",
+        "not_a_number": "Ce n'était pas un nombre ! Vous n'avez pas perdu, mais je ne l'ai pas compté.",
         "invalid_arithmetic": "Ce n'était pas une expression arithmétique valide ! Vous n'avez pas perdu, mais je ne l'ai pas compté.",
         "same_user": "Vous ne pouvez pas compter deux fois de suite. Attendez que quelqu'un d'autre compte."
     },
