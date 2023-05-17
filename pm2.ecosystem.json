@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "arithmetica",
+            "cwd": "./",
+            "script": "src/app.js",
+            "exec_mode": "fork",
+            "instances": 1,
+            "env": { "NODE_ENV": "production" },
+            "repo": "https://github.com/NullDev/Arithmetica-Bot.git",
+            "ref": "origin/master"
+        }
+    ]
+}
