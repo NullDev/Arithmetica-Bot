@@ -2,6 +2,7 @@ import path from "node:path";
 import { QuickDB } from "quick.db";
 import { evaluate } from "mathjs";
 import __ from "./i18n.js";
+
 // ========================= //
 // = Copyright (c) NullDev = //
 // ========================= //
