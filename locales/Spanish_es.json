@@ -5,17 +5,17 @@
         "deactivated": "desactivado"
     },
     "errors": {
-        "generic_command_execution_failed": "¡Ha ocurrido un error al ejecutar el comando! =(",
-        "command_not_found": "No conozco el comando '%s' :/",
-        "invalid_argument": "¡Argumento inválido!",
-        "channel_not_found": "Este canal no existe en este servidor. ¿Lo escribiste correctamente?",
-        "not_a_number": "¡Eso no era un número! No has perdido, pero no lo he contado.",
-        "invalid_arithmetic": "¡Eso no fue una expresión aritmética válida! No has perdido, pero no lo he contado.",
-        "same_user": "No puedes contar dos veces seguidas. Espera a que alguien más cuente."
+        "generic_command_execution_failed": "¡Ha ocurrido un problema ejecutando el comando! =(",
+        "command_not_found": "No reconozco este comando '%s' :/",
+        "invalid_argument": "¡Argumentos inválidos!",
+        "channel_not_found": "El canal no existe. ¿Lo escribiste bien?",
+        "not_a_number": "¡Esto no era un número! (No has perdido, solo lo salté)",
+        "invalid_arithmetic": "¡Esa no es una expresión matemática válida! (No has perdido, solo lo saltaré)",
+        "same_user": "No puede's contar dos veces seguidas. Espera a que alguien más cuente."
     },
     "replies": {
-        "bot_info_tagline": "Bot de Discord para contar. Permite expresiones aritméticas.",
-        "incorrect_number": "¡Eso no era el siguiente número! ¡Has perdido! El último número fue: %s y el siguiente número habría sido: %s. Tu número fue: %s",
+        "bot_info_tagline": "Bot para Discord, Permite expresiones matemáticas.",
+        "incorrect_number": "¡Ese no era el siguiente número! ¡Has perdido! El último número fue: %s y el siguiente número habría sido: %s. Tu número fue: %s",
         "channel_set": "El canal ha sido configurado a %s!",
         "arithmetic_set": "Las expresiones aritméticas han sido configuradas a %s!"
     }
