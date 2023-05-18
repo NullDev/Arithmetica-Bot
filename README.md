@@ -30,7 +30,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - English (Peer reviewed ✅)
     - German (Peer reviewed ✅)
     - French (Peer reviewed ✅)
-    - Spanish
+    - Spanish (Peer reviewed ✅)
     - Japanese
     - Chinese
     - Russian
@@ -43,7 +43,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Easy configuration system
     - Install instructions provided [below](#wrench-setup)
 - [x] Admin only commands
-- [ ] Prevent persons from counting multiple times in a row 
+- [x] Prevent persons from counting multiple times in a row 
 - [ ] Configurable timeout for losers (_Planned_)
 
 <hr>
@@ -66,8 +66,8 @@ If not, download it <a href="https://github.com/NullDev/Arithmetica-Bot/archive/
 Then navigate to the folder.<br><br>
 3. Install all dependencies by typing <br>
 $ `npm install`<br><br>
-4. Copy [config/config.template.js](https://github.com/NullDev/Arithmetica-Bot/blob/master/config/config.template.js) and paste it as `config/config.custom.js` <br><br>
-5. Configure it in your favourite editor by editing `config/config.custom.js`. OR use `npm run generate-config`<br><br>
+4. Copy [config/config.template.js](https://github.com/NullDev/Arithmetica-Bot/blob/master/config/config.template.js) and paste it as `config/config.custom.js` OR use `npm run generate-config`. <br><br>
+5. Configure it in your favourite editor by editing `config/config.custom.js`. <br><br>
 6. Start it in development mode by running <br>
 $ `npm start` <br>
 or start in production mode <br>
