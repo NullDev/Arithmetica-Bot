@@ -14,7 +14,7 @@
         "same_user": "あなたは2回連続でカウントすることはできません。誰かがカウントするのを待ってください。"
     },
     "replies": {
-        "bot_info_tagline": "数をカウントするDiscord Bot。算術表現を許可します。",
+        "bot_info_tagline": "数をカウントするDiscord Botです。算術表現を許可します。",
         "incorrect_number": "それは次の数値ではありません！あなたは負けました！最後の数値は: %s で、次の数値は: %s でした。あなたの数値は: %s でした",
         "channel_set": "チャンネルは %s に設定されました！",
         "arithmetic_set": "算術表現は %s に設定されました！"
