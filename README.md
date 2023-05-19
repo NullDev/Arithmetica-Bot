@@ -31,9 +31,9 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - German (Peer reviewed ✅)
     - French (Peer reviewed ✅)
     - Spanish (Peer reviewed ✅)
+    - Russian (Peer reviewed ✅)
     - Japanese
     - Chinese
-    - Russian
 - [x] Easy to set up
     - Set the channel and you're good to go (`/set-channel`)
     - Optionally, set server language (`/set-language`)
