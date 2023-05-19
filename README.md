@@ -32,7 +32,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - French (Peer reviewed ✅)
     - Spanish (Peer reviewed ✅)
     - Russian (Peer reviewed ✅)
-    - Japanese
+    - Japanese (Peer reviewed ✅)
     - Chinese
 - [x] Easy to set up
     - Set the channel and you're good to go (`/set-channel`)
