@@ -25,7 +25,9 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Count normally (`1, 2, 3, 4`)
 - [x] Count with arithmetic expressions (`5^0, sqrt(4), i^2+4, log(10000, 10)`)
 - [x] Slash commands
-- [x] Arithmetic is toggleable 
+- [x] Arithmetic is toggleable
+- [x] `/stats` command for personal stats or the stats of another user
+- [x] `/top` command for a leaderboard, sortable by counts or fails
 - [x] Multi-language support (Can be set on every Discord server individually)
     - English (Peer reviewed ✅)
     - German (Peer reviewed ✅)
