@@ -12,7 +12,8 @@
         "not_a_number": "That was not a number! You didn't fail, but I didn't count that.",
         "invalid_arithmetic": "That was not a valid arithmetic expression! You didn't fail, but I didn't count that.",
         "same_user": "You can't count twice in a row. Wait for someone else to count.",
-        "no_top_stats": "There are no stats yet. Count to get on the leaderboard!"
+        "no_top_stats": "There are no stats yet. Count to get on the leaderboard!",
+        "stats_on_bot": "Bots don't get count stats :)"
     },
     "replies": {
         "bot_info_tagline": "Discord Bot for counting. Allows arithmetic expressions.",
@@ -24,6 +25,12 @@
             "description": "The Top 10 User sorted by %s.",
             "wins": "correct counts",
             "fails": "failed counts"
+        },
+        "stats": {
+            "your_stats": "Your stats",
+            "stats_for": "Stats for %s",
+            "wins": "Correct counts",
+            "fails": "Failed counts"
         }
     }
 }

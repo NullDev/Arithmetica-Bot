@@ -12,7 +12,8 @@
         "not_a_number": "それは数値ではありません！あなたは負けていませんが、それはカウントされませんでした。",
         "invalid_arithmetic": "それは有効な算術表現ではありません！あなたは負けていませんが、それはカウントされませんでした。",
         "same_user": "あなたは2回連続でカウントすることはできません。誰かがカウントするのを待ってください。",
-        "no_top_stats": ""
+        "no_top_stats": "",
+        "stats_on_bot": ""
     },
     "replies": {
         "bot_info_tagline": "数をカウントするDiscord Botです。算術表現を許可します。",
@@ -22,6 +23,12 @@
         "top_users": {
             "title": "",
             "description": "",
+            "wins": "",
+            "fails": ""
+        },
+        "stats": {
+            "your_stats": "",
+            "stats_for": "",
             "wins": "",
             "fails": ""
         }

@@ -12,7 +12,8 @@
         "not_a_number": "¡Esto no era un número! (No has perdido, solo lo salté)",
         "invalid_arithmetic": "¡Esa no es una expresión matemática válida! (No has perdido, solo lo saltaré)",
         "same_user": "No puede's contar dos veces seguidas. Espera a que alguien más cuente.",
-        "no_top_stats": ""
+        "no_top_stats": "",
+        "stats_on_bot": ""
     },
     "replies": {
         "bot_info_tagline": "Bot para Discord, Permite expresiones matemáticas.",
@@ -22,6 +23,12 @@
         "top_users": {
             "title": "",
             "description": "",
+            "wins": "",
+            "fails": ""
+        },
+        "stats": {
+            "your_stats": "",
+            "stats_for": "",
             "wins": "",
             "fails": ""
         }

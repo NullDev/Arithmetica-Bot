@@ -36,11 +36,19 @@ export default {
         const wins = (await db.get(`guild-${interaction.guildId}.user-${userid}.counting-wins`)) || 0;
         const fails = (await db.get(`guild-${interaction.guildId}.user-${userid}.counting-fails`)) || 0;
 
-        const stats = `:\n\n✅ Correct counts: \`${wins}\`\n❌ Failed counts: \`${fails}\``;
+        const stats = `:\n\n✅ ${
+            await __("replies.stats.wins")(interaction.guildId)
+        }: \`${wins}\`\n❌ ${
+            await __("replies.stats.fails")(interaction.guildId)
+        }: \`${fails}\``;
 
         if (!user?.user?.id){
-            return await interaction.reply("Your stats" + stats);
+            return await interaction.reply(
+                await __("replies.stats.your_stats")(interaction.guildId) + stats,
+            );
         }
-        return await interaction.reply("Stats for " + user.user.username + stats);
+        return await interaction.reply(
+            await __("replies.stats.stats_for", user.user.username)(interaction.guildId) + stats,
+        );
     },
 };

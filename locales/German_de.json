@@ -12,7 +12,8 @@
         "not_a_number": "Das war keine Zahl! Du hast nicht verloren, aber ich habe das nicht gezählt.",
         "invalid_arithmetic": "Das war kein gültiger arithmetischer Ausdruck! Du hast nicht verloren, aber ich habe das nicht gezählt.",
         "same_user": "Du kannst nicht zweimal hintereinander zählen. Warte bis jemand anderes gezählt hat.",
-        "no_top_stats": "Es gibt noch keine Statistiken. Zähle um auf die Bestenliste zu kommen!"
+        "no_top_stats": "Es gibt noch keine Statistiken. Zähle um auf die Bestenliste zu kommen!",
+        "stats_on_bot": "Bots bekommen keine Zähl-Stats :)"
     },
     "replies": {
         "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke.",
@@ -24,6 +25,12 @@
             "description": "Die Top 10 User sortiert nach %s.",
             "wins": "korrekten Zählungen",
             "fails": "gescheiterten Zählungen"
+        },
+        "stats": {
+            "your_stats": "Deine Stats",
+            "stats_for": "Stats für %s",
+            "wins": "Korrekte Zählungen",
+            "fails": "Gescheiterte Zählungen"
         }
     }
 }
