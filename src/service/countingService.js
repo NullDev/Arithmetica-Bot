@@ -7,7 +7,11 @@ import __ from "./i18n.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
-const db = new QuickDB({
+const userDb = new QuickDB({
+    filePath: path.resolve("./data/user_data.sqlite"),
+});
+
+const guildDb = new QuickDB({
     filePath: path.resolve("./data/guild_data.sqlite"),
 });
 
@@ -22,8 +26,9 @@ const db = new QuickDB({
 const failed = async function(message, lastNumber, result){
     await message.reply(await __("replies.incorrect_number", lastNumber, lastNumber + 1, result)(message.guildId));
     await message.react("❌");
-    await db.delete(`guild-${message.guildId}.lastUser`);
-    return await db.set(`guild-${message.guildId}.count`, 0);
+    await guildDb.delete(`guild-${message.guildId}.lastUser`);
+    await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-fails`, 1);
+    return await guildDb.set(`guild-${message.guildId}.count`, 0);
 };
 
 /**
@@ -36,8 +41,9 @@ const failed = async function(message, lastNumber, result){
  */
 const correct = async function(message, guild, result){
     await message.react("✅");
-    await db.set(`guild-${guild}.count`, result);
-    return await db.set(`guild-${guild}.lastUser`, message.author.id);
+    await guildDb.set(`guild-${guild}.count`, result);
+    await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-wins`, 1);
+    return await guildDb.set(`guild-${guild}.lastUser`, message.author.id);
 };
 
 /**
@@ -69,10 +75,10 @@ const countingService = async function(message){
 
     const channel = message.channel.id;
 
-    const channelID = await db.get(`guild-${guild}.channel`);
+    const channelID = await guildDb.get(`guild-${guild}.channel`);
     if (!channelID || channelID !== channel) return null;
 
-    const lastUser = await db.get(`guild-${guild}.lastUser`);
+    const lastUser = await guildDb.get(`guild-${guild}.lastUser`);
     if (lastUser === message.author.id){
         return await replyWaitAndDelete(
             message,
@@ -80,8 +86,8 @@ const countingService = async function(message){
         );
     }
 
-    const arithmetic = await db.get(`guild-${guild}.arithmetic`) ?? true;
-    const lastNumber = await db.get(`guild-${guild}.count`) || 0;
+    const arithmetic = await guildDb.get(`guild-${guild}.arithmetic`) ?? true;
+    const lastNumber = await guildDb.get(`guild-${guild}.count`) || 0;
 
     if (!arithmetic){
         if (isNaN(Number(message.content))){
