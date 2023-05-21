@@ -75,14 +75,14 @@ export default {
                     name: "Meta :bar_chart:",
                     value: `PID: \`${process.pid}\`\nUptime: \`${
                         process.uptime().toFixed(4)
-                    }s\`\nSystem CPU Time: \`${process.cpuUsage().system}\`\nUser CPU Time: \`${process.cpuUsage().system}\`\nRam Usage: \`${RamInUseMB}MB / ${RamTotalGB}GB\`\nServer count: \`${totalGuilds}\`\nMember count: \`${totalMembers}\``,
+                    }s\`\nSystem CPU Time: \`${process.cpuUsage().system}\`\nUser CPU Time: \`${process.cpuUsage().system}\`\nRam Usage: \`${RamInUseMB}MB / ${RamTotalGB}GB\`\nShard Count: \`${shardCount}\`\nBot Verified: \`${isBotVerified}\``,
                     inline: true,
                 },
                 {
                     name: "Guild :clipboard:",
                     value: `User: \`${count}\`\nBoosts: \`${boosts}\`\nCreated: \`${created}\`\nOwner: \`${owner}\`\nGuild Lang: \`${
                         await __("__LANG__")(interaction.guildId)
-                    }\`\nShard Count: \`${shardCount}\`\nBot Verified: \`${isBotVerified}\``,
+                    }\`\nServer count: \`${totalGuilds}\`\nMember count: \`${totalMembers}\``,
                     inline: true,
                 },
                 { name: "\u200b", value: "\u200b", inline: true },
