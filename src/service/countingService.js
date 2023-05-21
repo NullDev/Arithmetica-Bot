@@ -20,8 +20,8 @@ const db = new QuickDB({
  * @return {Promise<any>}
  */
 const failed = async function(message, lastNumber, result){
-    message.reply(await __("replies.incorrect_number", lastNumber, lastNumber + 1, result)(message.guildId));
-    message.react("❌");
+    await message.reply(await __("replies.incorrect_number", lastNumber, lastNumber + 1, result)(message.guildId));
+    await message.react("❌");
     await db.delete(`guild-${message.guildId}.lastUser`);
     return await db.set(`guild-${message.guildId}.count`, 0);
 };
@@ -49,7 +49,7 @@ const correct = async function(message, guild, result){
  * @return {Promise<any>}
  */
 const replyWaitAndDelete = async function(message, content, timeout = 8000){
-    return message.reply(content).then((msg) => {
+    return await message.reply(content).then((msg) => {
         setTimeout(() => {
             msg.delete();
             message.delete();
