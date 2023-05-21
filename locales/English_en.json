@@ -11,12 +11,19 @@
         "channel_not_found": "This channel does not exist on this server. Did you spell it correctly?",
         "not_a_number": "That was not a number! You didn't fail, but I didn't count that.",
         "invalid_arithmetic": "That was not a valid arithmetic expression! You didn't fail, but I didn't count that.",
-        "same_user": "You can't count twice in a row. Wait for someone else to count."
+        "same_user": "You can't count twice in a row. Wait for someone else to count.",
+        "no_top_stats": "There are no stats yet. Count to get on the leaderboard!"
     },
     "replies": {
         "bot_info_tagline": "Discord Bot for counting. Allows arithmetic expressions.",
         "incorrect_number": "That was not the next number! You failed! Last number was: %s and the next number would have been: %s. Your number was: %s",
         "channel_set": "Channel was set to %s!",
-        "arithmetic_set": "Arithmetic expressions were %s!"
+        "arithmetic_set": "Arithmetic expressions were %s!",
+        "top_users": {
+            "title": "Top User on %s",
+            "description": "The Top 10 User sorted by %s.",
+            "wins": "correct counts",
+            "fails": "failed counts"
+        }
     }
 }

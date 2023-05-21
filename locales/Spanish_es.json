@@ -11,12 +11,19 @@
         "channel_not_found": "El canal no existe. ¿Lo escribiste bien?",
         "not_a_number": "¡Esto no era un número! (No has perdido, solo lo salté)",
         "invalid_arithmetic": "¡Esa no es una expresión matemática válida! (No has perdido, solo lo saltaré)",
-        "same_user": "No puede's contar dos veces seguidas. Espera a que alguien más cuente."
+        "same_user": "No puede's contar dos veces seguidas. Espera a que alguien más cuente.",
+        "no_top_stats": ""
     },
     "replies": {
         "bot_info_tagline": "Bot para Discord, Permite expresiones matemáticas.",
         "incorrect_number": "¡Ese no era el siguiente número! ¡Has perdido! El último número fue: %s y el siguiente número habría sido: %s. Tu número fue: %s",
         "channel_set": "El canal ha sido configurado a %s!",
-        "arithmetic_set": "Las expresiones aritméticas han sido configuradas a %s!"
+        "arithmetic_set": "Las expresiones aritméticas han sido configuradas a %s!",
+        "top_users": {
+            "title": "",
+            "description": "",
+            "wins": "",
+            "fails": ""
+        }
     }
 }

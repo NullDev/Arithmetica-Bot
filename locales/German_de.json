@@ -11,12 +11,19 @@
         "channel_not_found": "Dieser Channel existiert nicht auf diesem Server. Hast du ihn richtig geschrieben?",
         "not_a_number": "Das war keine Zahl! Du hast nicht verloren, aber ich habe das nicht gezählt.",
         "invalid_arithmetic": "Das war kein gültiger arithmetischer Ausdruck! Du hast nicht verloren, aber ich habe das nicht gezählt.",
-        "same_user": "Du kannst nicht zweimal hintereinander zählen. Warte bis jemand anderes gezählt hat."
+        "same_user": "Du kannst nicht zweimal hintereinander zählen. Warte bis jemand anderes gezählt hat.",
+        "no_top_stats": "Es gibt noch keine Statistiken. Zähle um auf die Bestenliste zu kommen!"
     },
     "replies": {
         "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke.",
         "incorrect_number": "Das war nicht die nächste Zahl! Du hast verloren! Die letzte Zahl war: %s und die nächste Zahl wäre: %s gewesen. Deine Zahl war: %s",
         "channel_set": "Channel wurde auf %s gesetzt!",
-        "arithmetic_set": "Arithmetische Ausdrücke wurden %s!"
+        "arithmetic_set": "Arithmetische Ausdrücke wurden %s!",
+        "top_users": {
+            "title": "Top User auf %s",
+            "description": "Die Top 10 User sortiert nach %s.",
+            "wins": "korrekten Zählungen",
+            "fails": "gescheiterten Zählungen"
+        }
     }
 }
