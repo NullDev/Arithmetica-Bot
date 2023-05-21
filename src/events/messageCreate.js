@@ -1,5 +1,4 @@
 import countingService from "../service/countingService.js";
-import Log from "../util/log.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -13,8 +12,6 @@ const handleQueue = async function(){
         await countingService(message);
         handleQueue();
     }
-    else Log.info("Cleared queue.");
-    console.log(QUEUE);
 };
 
 /**
@@ -28,10 +25,7 @@ const messageCreate = async function(message){
 
     QUEUE.push(message);
 
-    if (QUEUE.length === 1){
-        Log.info("Started queue.");
-        handleQueue();
-    }
+    if (QUEUE.length === 1) handleQueue();
 };
 
 export default messageCreate;
