@@ -14,7 +14,8 @@
     "start": "npm run start:dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "generate-config": "node scripts/generate-config.js"
+    "generate-config": "node scripts/generate-config.js",
+    "pull-and-restart": "node scripts/pull-and-restart.js"
   },
   "repository": {
     "type": "git",
