@@ -8,7 +8,7 @@ import { promisify } from "node:util";
 // ========================= //
 
 const execAsync = promisify(exec);
-const ecosystemPath = path.resolve("../ecosystem.config.js");
+const ecosystemPath = path.resolve("./ecosystem.config.js");
 
 try {
     console.log("[pull-and-restart] Pulling latest changes from git...");
