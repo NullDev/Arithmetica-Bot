@@ -1,0 +1,34 @@
+name: cd
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - './.github/**'
+      - './data/**'
+      - README.md
+      - LICENSE
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    concurrency: production
+    environment:
+      name: Production
+
+    if: ${{ !github.event.repository.fork }}
+
+    steps:
+    - name: Deploy CSZ Bot
+      uses: appleboy/ssh-action@334f9259f2f8eb3376d33fa4c684fff373f2c2a6
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd ${{ secrets.REPO_PATH }}
+          git pull
+          node scripts/pull-and-restart.js
