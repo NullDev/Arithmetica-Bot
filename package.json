@@ -36,6 +36,7 @@
   "dependencies": {
     "better-sqlite3": "^8.3.0",
     "canvas": "^2.11.2",
+    "check-dependencies": "^1.1.0",
     "discord.js": "^14.11.0",
     "i18n-light": "^0.5.4",
     "mathjs": "^11.8.0",
