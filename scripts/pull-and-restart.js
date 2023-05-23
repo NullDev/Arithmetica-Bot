@@ -9,9 +9,14 @@ import checkDependencies from "check-dependencies";
 
 const ecosystemPath = path.resolve("./pm2.ecosystem.json");
 const isNpmInstallNeeded = async() => !(await checkDependencies())?.depsWereOk;
+const customPm2Home = process.argv[2];
+
+const pm2 = !!customPm2Home
+    ? `PM2_HOME=${customPm2Home} pm2`
+    : "pm2";
 
 const execAsync = command => new Promise((resolve, reject) => {
-    exec(`source ~/.bashrc && ${command}`, (error, stdout, stderr) => {
+    exec(command, (error, stdout, stderr) => {
         if (stdout) console.log(stdout.trim());
         if (stderr) console.error(stderr);
         if (error) return reject(error);
@@ -33,11 +38,11 @@ try {
     else console.log("[pull-and-restart] No missing dependencies detected. Skipping...");
 
     console.log("[pull-and-restart] Restarting via pm2...");
-    await execAsync(`pm2 startOrReload ${ecosystemPath}`);
+    await execAsync(`${pm2} startOrReload ${ecosystemPath}`);
     console.log("[pull-and-restart] Done.");
 
     console.log("[pull-and-restart] Saving pm2 list...");
-    await execAsync("pm2 save");
+    await execAsync(`${pm2} save`);
     console.log("[pull-and-restart] Done.");
 
     console.log("[pull-and-restart] Pull and restart completed successfully.");
