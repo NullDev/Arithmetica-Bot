@@ -38,7 +38,7 @@ try {
     else console.log("[pull-and-restart] No missing dependencies detected. Skipping...");
 
     console.log("[pull-and-restart] Restarting via pm2...");
-    await execAsync(`${pm2} startOrReload ${ecosystemPath}`);
+    await execAsync(`${pm2} startOrReload ${ecosystemPath} --silent`);
     console.log("[pull-and-restart] Done.");
 
     console.log("[pull-and-restart] Saving pm2 list...");
