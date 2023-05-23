@@ -31,4 +31,4 @@ jobs:
         script: |
           cd ${{ secrets.REPO_PATH }}
           git pull
-          node scripts/pull-and-restart.js
+          node scripts/pull-and-restart.js ${{ secrets.PM2_HOME }}
