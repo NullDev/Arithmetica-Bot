@@ -43,7 +43,7 @@ export default {
 
         const embed = {
             title: "Bot Info",
-            description: (await __("replies.bot_info_tagline")(interaction.guildId)) + "\nBot Invite:\nhttps://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=27712",
+            description: (await __("replies.bot_info_tagline")(interaction.guildId)) + "\n[Bot Invite](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=27712)",
             color: 2518621,
             thumbnail: {
                 url: "https://cdn.discordapp.com/attachments/1012696857572548759/1108284051942543420/SHADOW_A_material_design_logo_featuring_mathematical_symbols_an_42715bbf-e803-45fe-b1c9-a8e66a2ee57a.png",
