@@ -11,7 +11,7 @@ const ecosystemPath = path.resolve("./pm2.ecosystem.json");
 const isNpmInstallNeeded = async() => !(await checkDependencies())?.depsWereOk;
 
 const execAsync = command => new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
+    exec(`source ~/.bashrc && ${command}`, (error, stdout, stderr) => {
         if (stdout) console.log(stdout.trim());
         if (stderr) console.error(stderr);
         if (error) return reject(error);
