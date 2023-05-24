@@ -41,13 +41,16 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Set the channel and you're good to go (`/set-channel`)
     - Optionally, set server language (`/set-language`)
     - Optionally, disable arithmetic (`/toggle-arithmetic`)
+    - Optionally. set a timeout for losers (`/set-timeout`)
 - [x] Easy to self-host
     - No external database needed
     - Easy configuration system
     - Install instructions provided [below](#wrench-setup)
 - [x] Admin only commands
 - [x] Prevent persons from counting multiple times in a row 
-- [ ] Configurable timeout for losers (_Planned_)
+- [x] Configurable timeout for losers
+- [x] Handle counts deleted by the user
+- [x] Sharding
 
 <hr>
 
