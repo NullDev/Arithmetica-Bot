@@ -31,6 +31,9 @@
             "stats_for": "Stats für %s",
             "wins": "Korrekte Zählungen",
             "fails": "Gescheiterte Zählungen"
-        }
+        },
+        "timeout_disabled": "Timeout wurde deaktiviert!",
+        "timeout_set": "Timeout wurde auf %s Minuten gesetzt!",
+        "timeout": "Du hast einen Timeout für %s Minuten erhalten!"
     }
 }

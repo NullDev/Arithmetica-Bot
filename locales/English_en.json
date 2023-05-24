@@ -31,6 +31,9 @@
             "stats_for": "Stats for %s",
             "wins": "Correct counts",
             "fails": "Failed counts"
-        }
+        },
+        "timeout_disabled": "Timeout has been disabled!",
+        "timeout_set": "Timeout has been set to %s minutes!",
+        "timeout": "You received a timeout for %s minutes!"
     }
 }

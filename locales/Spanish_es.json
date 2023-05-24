@@ -31,6 +31,9 @@
             "stats_for": "",
             "wins": "",
             "fails": ""
-        }
+        },
+        "timeout_disabled": "",
+        "timeout_set": "",
+        "timeout": ""
     }
 }

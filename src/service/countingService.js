@@ -1,6 +1,7 @@
 import path from "node:path";
 import { QuickDB } from "quick.db";
 import { evaluate } from "mathjs";
+import Log from "../util/log.js";
 import __ from "./i18n.js";
 
 // ========================= //
@@ -16,6 +17,31 @@ const guildDb = new QuickDB({
 });
 
 /**
+ * Handle a potential timeout and return whether the user was timed out
+ *
+ * @param {import("discord.js").Message} message
+ * @return {Promise<Number>}
+ */
+const handleTimeout = async function(message){
+    const timeoutMinutes = Number(await guildDb.get(`guild-${message.guildId}.timeout`));
+    if (!timeoutMinutes) return 0;
+    const guildUser = await message.guild?.members.fetch(message.author.id);
+    if (guildUser){
+        try {
+            await guildUser.timeout(
+                timeoutMinutes * 60 * 1000,
+                "User lost the counting game",
+            );
+        }
+        catch (e){
+            Log.error("Failed to timeout user: ", e);
+            return 0;
+        }
+    }
+    return timeoutMinutes;
+};
+
+/**
  * Let the user know they failed
  *
  * @param {import("discord.js").Message} message
@@ -24,8 +50,14 @@ const guildDb = new QuickDB({
  * @return {Promise<any>}
  */
 const failed = async function(message, lastNumber, result){
-    await message.reply(await __("replies.incorrect_number", lastNumber, lastNumber + 1, result)(message.guildId));
     await message.react("❌");
+    let response = await __("replies.incorrect_number", lastNumber, lastNumber + 1, result)(message.guildId);
+
+    const timeout = await handleTimeout(message);
+    if (!!timeout) response += "\n" + (await __("replies.timeout", timeout)(message.guildId));
+
+    await message.reply(response);
+
     await guildDb.delete(`guild-${message.guildId}.lastUser`);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-fails`, 1);
     return await guildDb.set(`guild-${message.guildId}.count`, 0);
