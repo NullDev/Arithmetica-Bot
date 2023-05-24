@@ -6,6 +6,7 @@ import DiscordClient from "./service/client.js";
 import registerCommands from "./service/commandRegister.js";
 import interactionCreateHandler from "./events/interactionCreate.js";
 import messageCreate from "./events/messageCreate.js";
+import messageDelete from "./events/messageDelete.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -44,6 +45,8 @@ client.on(Events.ClientReady, async() => {
 });
 
 client.on(Events.MessageCreate, async message => messageCreate(message));
+
+client.on(Events.MessageDelete, async message => messageDelete(message));
 
 client.on(Events.Warn, info => Log.warn(info));
 

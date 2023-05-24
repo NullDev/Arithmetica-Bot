@@ -69,11 +69,13 @@ const failed = async function(message, lastNumber, result){
  * @param {import("discord.js").Message} message
  * @param {String} guild
  * @param {Number} result
+ * @param {String} lastCountString
  * @return {Promise<any>}
  */
-const correct = async function(message, guild, result){
+const correct = async function(message, guild, result, lastCountString){
     await message.react("✅");
     await guildDb.set(`guild-${guild}.count`, result);
+    await guildDb.set(`guild-${guild}.lastCountString`, lastCountString);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-wins`, 1);
     return await guildDb.set(`guild-${guild}.lastUser`, message.author.id);
 };
@@ -133,7 +135,7 @@ const countingService = async function(message){
             return await failed(message, lastNumber, Number(message.content));
         }
 
-        return await correct(message, guild, Number(message.content));
+        return await correct(message, guild, Number(message.content), message.content);
     }
 
     let result;
@@ -155,7 +157,7 @@ const countingService = async function(message){
         return await failed(message, lastNumber, result);
     }
 
-    return await correct(message, guild, result);
+    return await correct(message, guild, result, message.content);
 };
 
 export default countingService;
