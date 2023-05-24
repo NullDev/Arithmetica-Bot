@@ -21,7 +21,7 @@ class Log {
             minute: "2-digit",
             second: "2-digit",
             hour12: false, // eslint-disable-next-line
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         };
 
         const date = new Intl.DateTimeFormat(
