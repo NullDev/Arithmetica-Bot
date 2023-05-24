@@ -12,8 +12,8 @@
         "not_a_number": "それは数値ではありません！あなたは負けていませんが、それはカウントされませんでした。",
         "invalid_arithmetic": "それは有効な算術表現ではありません！あなたは負けていませんが、それはカウントされませんでした。",
         "same_user": "あなたは2回連続でカウントすることはできません。誰かがカウントするのを待ってください。",
-        "no_top_stats": "",
-        "stats_on_bot": ""
+        "no_top_stats": "まだ統計はありません。リーダーボードに載るためにカウントしてください！",
+        "stats_on_bot": "ボットはカウント統計を取得しません :)"
     },
     "replies": {
         "bot_info_tagline": "数をカウントするDiscord Botです。算術表現を許可します。",
@@ -21,19 +21,19 @@
         "channel_set": "チャンネルは %s に設定されました！",
         "arithmetic_set": "算術表現は %s に設定されました！",
         "top_users": {
-            "title": "",
-            "description": "",
-            "wins": "",
-            "fails": ""
+            "title": "%sのトップユーザー",
+            "description": "%sによりソートされたトップ10のユーザー。",
+            "wins": "正しいカウント",
+            "fails": "失敗したカウント"
         },
         "stats": {
-            "your_stats": "",
-            "stats_for": "",
-            "wins": "",
-            "fails": ""
+            "your_stats": "あなたの統計",
+            "stats_for": "%sの統計",
+            "wins": "正しいカウント",
+            "fails": "失敗したカウント"
         },
-        "timeout_disabled": "",
-        "timeout_set": "",
-        "timeout": ""
+        "timeout_disabled": "タイムアウトが無効になりました！",
+        "timeout_set": "タイムアウトが%s分に設定されました！",
+        "timeout": "あなたは%s分のタイムアウトを受けました！"
     }
 }

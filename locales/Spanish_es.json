@@ -12,8 +12,8 @@
         "not_a_number": "¡Esto no era un número! (No has perdido, solo lo salté)",
         "invalid_arithmetic": "¡Esa no es una expresión matemática válida! (No has perdido, solo lo saltaré)",
         "same_user": "No puede's contar dos veces seguidas. Espera a que alguien más cuente.",
-        "no_top_stats": "",
-        "stats_on_bot": ""
+        "no_top_stats": "Aún no hay estadísticas. ¡Cuenta para aparecer en la tabla de líderes!",
+        "stats_on_bot": "Los bots no obtienen estadísticas de conteo :)"
     },
     "replies": {
         "bot_info_tagline": "Bot para Discord, Permite expresiones matemáticas.",
@@ -21,19 +21,19 @@
         "channel_set": "El canal ha sido configurado a %s!",
         "arithmetic_set": "Las expresiones aritméticas han sido configuradas a %s!",
         "top_users": {
-            "title": "",
-            "description": "",
-            "wins": "",
-            "fails": ""
+            "title": "Mejor usuario en %s",
+            "description": "Los 10 mejores usuarios ordenados por %s.",
+            "wins": "cuentas correctas",
+            "fails": "cuentas fallidas"
         },
         "stats": {
-            "your_stats": "",
-            "stats_for": "",
-            "wins": "",
-            "fails": ""
+            "your_stats": "Tus estadísticas",
+            "stats_for": "Estadísticas para %s",
+            "wins": "Cuentas correctas",
+            "fails": "Cuentas fallidas"
         },
-        "timeout_disabled": "",
-        "timeout_set": "",
-        "timeout": ""
+        "timeout_disabled": "¡El tiempo de espera ha sido desactivado!",
+        "timeout_set": "El tiempo de espera se ha establecido en %s minutos!",
+        "timeout": "¡Has recibido un tiempo de espera de %s minutos!"
     }
 }
