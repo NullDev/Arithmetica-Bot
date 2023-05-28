@@ -1,6 +1,12 @@
+import fs from "node:fs/promises";
+import fss from "node:fs";
+import path from "node:path";
+
 // ========================= //
 // = Copyright (c) NullDev = //
 // ========================= //
+
+const appNameFromPackageJson = await fs.readFile(path.resolve("./package.json"), "utf-8").then(d => JSON.parse(d).name);
 
 /**
  * Logging utility class
@@ -8,6 +14,9 @@
  * @class Log
  */
 class Log {
+    static #logDir = path.resolve("./logs");
+    static #eLogDir = path.resolve("./logs/errors");
+
     /**
      * Get neatly formatted date
      *
@@ -21,7 +30,7 @@ class Log {
             minute: "2-digit",
             second: "2-digit",
             hour12: false, // eslint-disable-next-line
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
         };
 
         const date = new Intl.DateTimeFormat(
@@ -33,6 +42,57 @@ class Log {
     }
 
     /**
+     * Log to file
+     *
+     * @param {string} input
+     * @param {boolean} [error=false]
+     * @memberof Log
+     */
+    static async #logTofile(input, error = false){
+        const date = new Date();
+        const logFile = `${appNameFromPackageJson}-${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}-output.log`;
+        const fd = await fs.open(path.resolve(this.#logDir, logFile), "a");
+        await fd.write(input + "\n");
+        await fd.close();
+
+        if (error){
+            const errFile = `${appNameFromPackageJson}-${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}-errors.log`;
+            const fe = await fs.open(path.resolve(this.#eLogDir, errFile), "a");
+            await fe.write(input + "\n");
+            await fe.close();
+        }
+    }
+
+    /**
+     * Make sure log directories exist
+     *
+     * @memberof Log
+     */
+    static #ensureDirs(){
+        if (!fss.existsSync(this.#logDir)){
+            fss.mkdirSync(this.#logDir);
+            fss.closeSync(fss.openSync(path.resolve(this.#logDir, ".gitkeep"), "w"));
+        }
+        if (!fss.existsSync(this.#eLogDir)){
+            fss.mkdirSync(this.#eLogDir);
+            fss.closeSync(fss.openSync(path.resolve(this.#eLogDir, ".gitkeep"), "w"));
+        }
+    }
+
+    /**
+     * Perform log action
+     *
+     * @param {string} str
+     * @param {string} log
+     * @memberof Log
+     */
+    static #logger(str, log){
+        console.log(str);
+        this.#ensureDirs();
+        this.#logTofile(log);
+    }
+
+    /**
      * Log an error
      *
      * @static
@@ -41,8 +101,12 @@ class Log {
      * @memberof Log
      */
     static error(input, trace){
-        console.log(" \x1b[41m\x1b[315m x \x1b[0m\x1b[31m [ERROR] " + this.#getDate() + " - " + input + "\x1b[0m");
-        if (trace && trace.stack) console.log(" \x1b[41m\x1b[315m x \x1b[0m\x1b[31m [TRACE] " + this.#getDate() + " - " + trace.stack + "\x1b[0m");
+        const log = "[ERROR] " + this.#getDate() + " - " + input;
+        this.#logger(" \x1b[41m\x1b[315m x \x1b[0m\x1b[31m " + log + "\x1b[0m", log);
+        if (trace && trace.stack){
+            const eLog = "[TRACE] " + this.#getDate() + " - " + trace.stack;
+            this.#logger(" \x1b[41m\x1b[315m x \x1b[0m\x1b[31m " + eLog + "\x1b[0m", eLog);
+        }
     }
 
     /**
@@ -53,7 +117,8 @@ class Log {
      * @memberof Log
      */
     static warn(input){
-        console.log(" \x1b[43m\x1b[30m ! \x1b[0m\x1b[33m [WARN]  " + this.#getDate() + " - " + input + "\x1b[0m");
+        const log = "[WARN]  " + this.#getDate() + " - " + input;
+        this.#logger(" \x1b[43m\x1b[30m ! \x1b[0m\x1b[33m " + log + "\x1b[0m", log);
     }
 
     /**
@@ -67,7 +132,8 @@ class Log {
      */
     static debug(input, force = false){
         if (process.env.NODE_ENV !== "development" && !force) return;
-        console.log(" \x1b[45m\x1b[30m d \x1b[0m\x1b[35m [DEBUG] " + this.#getDate() + " - " + input + "\x1b[0m");
+        const log = "[DEBUG] " + this.#getDate() + " - " + input;
+        this.#logger(" \x1b[45m\x1b[30m d \x1b[0m\x1b[35m " + log + "\x1b[0m", log);
     }
 
     /**
@@ -78,7 +144,8 @@ class Log {
      * @memberof Log
      */
     static wait(input){
-        console.log(" \x1b[46m\x1b[30m ⧖ \x1b[0m\x1b[36m [WAIT]  " + this.#getDate() + " - " + input + "\x1b[0m");
+        const log = "[WAIT]  " + this.#getDate() + " - " + input;
+        this.#logger(" \x1b[46m\x1b[30m ⧖ \x1b[0m\x1b[36m " + log + "\x1b[0m", log);
     }
 
     /**
@@ -89,7 +156,8 @@ class Log {
      * @memberof Log
      */
     static info(input){
-        console.log(" \x1b[44m\x1b[30m i \x1b[0m\x1b[36m [INFO]  " + this.#getDate() + " - " + input + "\x1b[0m");
+        const log = "[INFO]  " + this.#getDate() + " - " + input;
+        this.#logger(" \x1b[44m\x1b[30m i \x1b[0m\x1b[36m " + log + "\x1b[0m", log);
     }
 
     /**
@@ -100,7 +168,8 @@ class Log {
      * @memberof Log
      */
     static done(input){
-        console.log(" \x1b[42m\x1b[30m ✓ \x1b[0m\x1b[32m [DONE]  " + this.#getDate() + " - " + input + "\x1b[0m");
+        const log = "[DONE]  " + this.#getDate() + " - " + input;
+        this.#logger(" \x1b[42m\x1b[30m ✓ \x1b[0m\x1b[32m " + log + "\x1b[0m", log);
     }
 }
 
