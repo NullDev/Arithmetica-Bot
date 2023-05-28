@@ -33,7 +33,7 @@ client.on(Events.ClientReady, async() => {
     await registerCommands(client)
         .then(() => client.on(Events.InteractionCreate, async interaction => interactionCreateHandler(interaction)));
 
-    scheduleCrons();
+    await scheduleCrons(client);
 
     client.user?.setActivity({ name: `Counting on ${client.guilds.cache.size} servers!`, type: ActivityType.Playing });
     client.user?.setStatus("online");
