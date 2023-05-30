@@ -30,7 +30,7 @@ class Log {
             minute: "2-digit",
             second: "2-digit",
             hour12: false, // eslint-disable-next-line
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         };
 
         const date = new Intl.DateTimeFormat(
@@ -170,6 +170,17 @@ class Log {
     static done(input){
         const log = "[DONE]  " + this.#getDate() + " - " + input;
         this.#logger(" \x1b[42m\x1b[30m ✓ \x1b[0m\x1b[32m " + log + "\x1b[0m", log);
+    }
+
+    /**
+     * Log a message without any formatting
+     *
+     * @static
+     * @param {string} input
+     * @memberof Log
+     */
+    static raw(input){
+        this.#logger(input, input);
     }
 }
 

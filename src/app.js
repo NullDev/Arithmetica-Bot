@@ -18,12 +18,15 @@ const version = meta.getVersion();
 const author = meta.getAuthor();
 const pad = 16 + appname.length + version.toString().length + author.length;
 
-console.log(
+Log.raw(
     "\n" +
     " #" + "-".repeat(pad) + "#\n" +
     " # Started " + appname + " v" + version + " by " + author + " #\n" +
     " #" + "-".repeat(pad) + "#\n",
 );
+
+Log.info("--- START ---");
+Log.info(appname + " v" + version + " by " + author);
 
 Log.debug("Node Environment: " + process.env.NODE_ENV, true);
 Log.debug("NodeJS version: " + process.version, true);
