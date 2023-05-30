@@ -29,7 +29,7 @@ class Log {
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit",
-            hour12: false, // eslint-disable-next-line
+            hour12: false, // eslint-disable-next-line new-cap
             timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         };
 
