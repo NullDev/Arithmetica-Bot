@@ -28,14 +28,28 @@ Log.wait("Starting bot...");
 
 client.on(Events.ClientReady, async() => {
     Log.done("Bot is ready!");
-    Log.info("Logged in as '" + client.user?.tag + "'! Serving in " + client.guilds.cache.size + " servers.");
+
+    const guildCount = await client.guilds.fetch().then(guilds => guilds.size);
+    Log.info("Logged in as '" + client.user?.tag + "'! Serving in " + guildCount + " servers.");
 
     await registerCommands(client)
         .then(() => client.on(Events.InteractionCreate, async interaction => interactionCreateHandler(interaction)));
 
     await scheduleCrons(client);
 
-    client.user?.setActivity({ name: `Counting on ${client.guilds.cache.size} servers!`, type: ActivityType.Playing });
+    client.user?.setActivity({ name: `Counting on ${guildCount} servers!`, type: ActivityType.Playing });
+
+    // Reload guild count every 5 minutes if it changed
+    let lastGuildCount = guildCount;
+    setInterval(async() => {
+        const newGuildCount = await client.guilds.fetch().then(guilds => guilds.size);
+        if (newGuildCount !== lastGuildCount){
+            lastGuildCount = newGuildCount;
+            client.user?.setActivity({ name: `Counting on ${newGuildCount} servers!`, type: ActivityType.Playing });
+            Log.info("Guild count changed to " + newGuildCount + ". Updated activity.");
+        }
+    }, 5 * 60 * 1000);
+
     client.user?.setStatus("online");
 });
 
