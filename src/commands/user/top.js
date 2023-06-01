@@ -1,8 +1,9 @@
 import path from "node:path";
 import { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } from "discord.js";
 import { QuickDB } from "quick.db";
-import __ from "../../service/i18n.js";
 import generateImage from "../../service/topImageGenerator.js";
+import translations from "../../../locales/commands/translations.js";
+import __ from "../../service/i18n.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -15,17 +16,21 @@ const db = new QuickDB({
 export default {
     data: new SlashCommandBuilder()
         .setName("top")
-        .setDescription("Shows the top 10 users with most points.")
+        .setDescription(translations.top.desc)
+        .setDescriptionLocalizations(translations.top.translations)
         .setDMPermission(false)
         .addStringOption((option) =>
             option.setName("sort")
-                .setDescription("Sort by")
+                .setDescription(translations.top.options.sort.desc)
+                .setDescriptionLocalizations(translations.top.options.sort.translations)
                 .setRequired(false)
                 .addChoices({
-                    name: "Correct counts",
+                    name: translations.top.options.sort.choices.wins.desc,
+                    name_localizations: translations.top.options.sort.choices.wins.translations,
                     value: "wins",
                 }, {
-                    name: "Failed counts",
+                    name: translations.top.options.sort.choices.fails.desc,
+                    name_localizations: translations.top.options.sort.choices.fails.translations,
                     value: "fails",
                 })),
     /**

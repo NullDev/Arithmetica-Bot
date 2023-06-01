@@ -1,6 +1,7 @@
 import path from "node:path";
 import { SlashCommandBuilder, PermissionFlagsBits, ChannelType } from "discord.js";
 import { QuickDB } from "quick.db";
+import translations from "../../../locales/commands/translations.js";
 import __ from "../../service/i18n.js";
 
 // ========================= //
@@ -14,12 +15,14 @@ const db = new QuickDB({
 export default {
     data: new SlashCommandBuilder()
         .setName("set-channel")
-        .setDescription("Sets the couting channel.")
+        .setDescription(translations.set_channel.desc)
+        .setDescriptionLocalizations(translations.set_channel.translations)
         .setDMPermission(false)
-        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption((option) =>
             option.setName("channel")
-                .setDescription("Channel name")
+                .setDescription(translations.set_channel.options.channel.desc)
+                .setDescriptionLocalizations(translations.set_channel.options.channel.translations)
                 .setRequired(true)),
 
     /**

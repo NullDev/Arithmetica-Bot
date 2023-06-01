@@ -1,6 +1,7 @@
 import path from "node:path";
 import { SlashCommandBuilder } from "discord.js";
 import { QuickDB } from "quick.db";
+import translations from "../../../locales/commands/translations.js";
 import __ from "../../service/i18n.js";
 
 // ========================= //
@@ -14,11 +15,13 @@ const db = new QuickDB({
 export default {
     data: new SlashCommandBuilder()
         .setName("stats")
-        .setDescription("Shows your or another users stats.")
+        .setDescription(translations.stats.desc)
+        .setDescriptionLocalizations(translations.stats.translations)
         .setDMPermission(false)
         .addUserOption((option) =>
             option.setName("user")
-                .setDescription("The user to show stats for")
+                .setDescription(translations.stats.options.user.desc)
+                .setDescriptionLocalizations(translations.stats.options.user.translations)
                 .setRequired(false)),
     /**
      * @param {import("discord.js").CommandInteraction} interaction

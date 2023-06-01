@@ -1,6 +1,7 @@
 import path from "node:path";
 import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
 import { QuickDB } from "quick.db";
+import translations from "../../../locales/commands/translations.js";
 import __ from "../../service/i18n.js";
 
 // ========================= //
@@ -14,12 +15,14 @@ const db = new QuickDB({
 export default {
     data: new SlashCommandBuilder()
         .setName("toggle-arithmetic")
-        .setDescription("Arithmetic expressions enabled?")
+        .setDescription(translations.toggle_arithmetic.desc)
+        .setDescriptionLocalizations(translations.toggle_arithmetic.translations)
         .setDMPermission(false)
-        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addBooleanOption((option) =>
             option.setName("enabled")
-                .setDescription("Enable arithmetic expressions")
+                .setDescription(translations.toggle_arithmetic.options.enabled.desc)
+                .setDescriptionLocalizations(translations.toggle_arithmetic.options.enabled.translations)
                 .setRequired(true)),
 
     /**

@@ -2,6 +2,7 @@ import path from "node:path";
 import fs from "node:fs";
 import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
 import { QuickDB } from "quick.db";
+import translations from "../../../locales/commands/translations.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -11,10 +12,15 @@ const db = new QuickDB({
     filePath: path.resolve("./data/guild_data.sqlite"),
 });
 
+/**
+ * Get all available languages
+ *
+ * @return {Array<{ name: string, value: string }>}
+ */
 const getLanguages = function(){
     const languages = fs.readdirSync(path.resolve("./locales"));
 
-    return languages.map((lang) => ({
+    return languages.filter((lang) => lang.endsWith(".json")).map((lang) => ({
         name: lang.split("_")[0],
         value: lang.split(".")[0],
     }));
@@ -23,12 +29,14 @@ const getLanguages = function(){
 export default {
     data: new SlashCommandBuilder()
         .setName("set-language")
-        .setDescription("Sets the server language for the bot.")
+        .setDescription(translations.set_language.desc)
+        .setDescriptionLocalizations(translations.set_language.translations)
         .setDMPermission(false)
-        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption((option) =>
             option.setName("language")
-                .setDescription("Server language")
+                .setDescription(translations.set_language.options.language.desc)
+                .setDescriptionLocalizations(translations.set_language.options.language.translations)
                 .setRequired(true)
                 .addChoices(...getLanguages())),
 
