@@ -36,7 +36,6 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Spanish (Peer reviewed ✅)
     - Russian (Peer reviewed ✅)
     - Japanese (Peer reviewed ✅)
-    - Chinese
 - [x] Easy to set up
     - Set the channel and you're good to go (`/set-channel`)
     - Optionally, set server language (`/set-language`)
@@ -88,5 +87,15 @@ Once the config has been copied like described in [Step 4](#wrench-setup), it ca
 | Config Key | Description | Data Type | Default value |
 | ---------- | --------- | ------------------ | ------------ |
 | discord: <br> `bot_token` | Auth Token of the Discord bot. Can be created [here](https://discordapp.com/developers/). | String | N/A |
+
+<hr>
+
+## :octocat: Contributors
+
+<a href="https://github.com/NullDev/Arithmetica-Bot/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=NullDev/Arithmetica-Bot" />
+</a>
+
+<sub>Made with [contrib.rocks](https://contrib.rocks).</sub>
 
 <hr>
