@@ -13,7 +13,7 @@ import Log from "../util/log.js";
  * @return {Number | null}
  */
 const getDateFromFilename = function(filename){
-    // Format: roleshop-DD-MM-YYYY-output.log and roleshop-DD-MM-YYYY-errors.log
+    // Format: PROJECTNAME-DD-MM-YYYY-output.log and PROJECTNAME-DD-MM-YYYY-errors.log
     const regex = /(\d{2})-(\d{2})-(\d{4})/;
     const match = filename.match(regex);
 
