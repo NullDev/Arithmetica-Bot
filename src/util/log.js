@@ -50,13 +50,16 @@ class Log {
      */
     static async #logTofile(input, error = false){
         const date = new Date();
-        const logFile = `${appNameFromPackageJson}-${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}-output.log`;
+        const m = (date.getMonth() + 1).toString().padStart(2, "0");
+        const d = date.getDate().toString().padStart(2, "0");
+
+        const logFile = `${appNameFromPackageJson}-${d}-${m}-${date.getFullYear()}-output.log`;
         const fd = await fs.open(path.resolve(this.#logDir, logFile), "a");
         await fd.write(input + "\n");
         await fd.close();
 
         if (error){
-            const errFile = `${appNameFromPackageJson}-${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}-errors.log`;
+            const errFile = `${appNameFromPackageJson}-${d}-${m}-${date.getFullYear()}-errors.log`;
             const fe = await fs.open(path.resolve(this.#eLogDir, errFile), "a");
             await fe.write(input + "\n");
             await fe.close();
