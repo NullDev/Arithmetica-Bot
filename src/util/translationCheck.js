@@ -32,11 +32,13 @@ const translationCheck = async function(){
 
     try {
         for (const locale of locales){
+            if (!locale.endsWith(".json")) continue;
+
             const localeFile = JSON.parse(await fs.readFile(path.resolve(`./locales/${locale}`), "utf-8"));
             const localeKeys = collectKeys(localeFile);
 
             for (const otherLocale of locales){
-                if (locale === otherLocale) continue;
+                if (locale === otherLocale || !otherLocale.endsWith(".json")) continue;
 
                 const otherLocaleFile = JSON.parse(await fs.readFile(path.resolve(`./locales/${otherLocale}`), "utf-8"));
                 const otherLocaleKeys = collectKeys(otherLocaleFile);
@@ -57,12 +59,11 @@ const translationCheck = async function(){
         }
     }
     catch (e){
-        Log.error("Failed to check translations: ", e);
+        Log.error("Failed to check translations: ", new Error(e));
         return false;
     }
 
     return result;
 };
-
 
 export default translationCheck;
