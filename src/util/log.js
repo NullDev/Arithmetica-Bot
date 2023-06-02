@@ -87,12 +87,13 @@ class Log {
      *
      * @param {string} str
      * @param {string} log
+     * @param {boolean} [error=false]
      * @memberof Log
      */
-    static #logger(str, log){
+    static #logger(str, log, error = false){
         console.log(str);
         this.#ensureDirs();
-        this.#logTofile(log);
+        this.#logTofile(log, error);
     }
 
     /**
@@ -105,10 +106,10 @@ class Log {
      */
     static error(input, trace){
         const log = "[ERROR] " + this.#getDate() + " - " + input;
-        this.#logger(" \x1b[41m\x1b[315m x \x1b[0m\x1b[31m " + log + "\x1b[0m", log);
+        this.#logger(" \x1b[41m\x1b[315m x \x1b[0m\x1b[31m " + log + "\x1b[0m", log, true);
         if (trace && trace.stack){
             const eLog = "[TRACE] " + this.#getDate() + " - " + trace.stack;
-            this.#logger(" \x1b[41m\x1b[315m x \x1b[0m\x1b[31m " + eLog + "\x1b[0m", eLog);
+            this.#logger(" \x1b[41m\x1b[315m x \x1b[0m\x1b[31m " + eLog + "\x1b[0m", eLog, true);
         }
     }
 
