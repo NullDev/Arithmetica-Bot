@@ -56,7 +56,7 @@ export default {
             fields: [
                 {
                     name: "Author :computer:",
-                    value: "`SHADOW#1337` / [NullDev](https://github.com/NullDev)",
+                    value: "`nullping` / [NullDev](https://github.com/NullDev)",
                     inline: true,
                 },
                 {
