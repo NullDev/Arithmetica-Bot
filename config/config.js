@@ -7,16 +7,18 @@ import Log from "../src/util/log.js";
 
 /**
  * @param {any} item
- * @returns {item is Record<string, unknown>}
+ * @returns {boolean}
  */
 const isObject = item => item && typeof item === "object" && !Array.isArray(item);
 
 /**
  * Deep Merge of two objects
  *
- * @param {object} target
- * @param {object} source
- * @return {import("./config.template.js").default}
+ * @template {object} T
+ * @template {object} T2
+ * @param {T} target
+ * @param {T2 & Partial<T>} source
+ * @returns {T & T2}
  */
 const deepMerge = function(target, source){
     if (isObject(target) && isObject(source)){
@@ -28,7 +30,7 @@ const deepMerge = function(target, source){
             else target[key] = source[key];
         }
     }
-    return target;
+    return /** @type {T & T2} */ (target);
 };
 
 try {
@@ -57,8 +59,13 @@ export const meta = {
     getVersion: () => packageJSON.version,
     getName: () => packageJSON.name,
     getAuthor: () => packageJSON.author,
+
 };
 
+
 export const config = {
-    ...deepMerge(configBase, configCustom),
+    ...deepMerge(
+        configBase,
+        /** @type {Partial<typeof configBase>} */ (configCustom),
+    ),
 };
