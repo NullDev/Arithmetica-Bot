@@ -52,7 +52,6 @@ catch (error){
 // @ts-ignore
 const configCustom = (await import("./config.custom.js")).default;
 const configBase = (await import("./config.template.js")).default;
-
 const packageJSON = JSON.parse(await fs.readFile("./package.json", "utf-8"));
 
 export const meta = {
@@ -61,7 +60,6 @@ export const meta = {
     getAuthor: () => packageJSON.author,
 
 };
-
 
 export const config = {
     ...deepMerge(
