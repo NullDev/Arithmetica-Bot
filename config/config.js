@@ -34,7 +34,7 @@ const deepMerge = function(target, source){
 };
 
 try {
-    await fs.access("./config/config.js");
+    await fs.access("./config/config.custom.js");
 }
 catch (error){
     Log.error("Config file not found. To create one, either copy 'config.template.js' and rename it to 'config.custom.js' or run 'npm run generate-config'.");
