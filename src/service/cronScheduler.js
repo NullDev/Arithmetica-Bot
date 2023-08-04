@@ -1,6 +1,6 @@
 import cron from "node-cron";
 import Log from "../util/log.js";
-import removeOldLogs from "../crons/removeOldLogs.js";
+import LogHandler from "../crons/removeOldLogs.js";
 import deleteRemovedGuilds from "../crons/deleteRemovedGuilds.js";
 
 // ========================= //
@@ -20,14 +20,14 @@ const scheduleCrons = async function(client){
 
     // daily cron
     cron.schedule("0 0 * * *", () => {
-        removeOldLogs();
+        LogHandler.removeOldLogs();
     });
 
     const cronCount = cron.getTasks().size;
     Log.done("Scheduled " + cronCount + " Crons.");
 
     // start jobs on init
-    await removeOldLogs();
+    await LogHandler.removeOldLogs();
     await deleteRemovedGuilds(client);
 };
 
