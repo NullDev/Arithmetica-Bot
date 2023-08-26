@@ -142,8 +142,9 @@ const countingService = async function(message){
     try { result = evaluate(message.content); }
     catch (e){ result = null; }
 
-    if (result && typeof result === "object" && result.entries){
-        result = result.entries[0];
+    if (result && typeof result === "object"){
+        if (result.entries) result = result.entries[0];
+        else if (result.re) result = result.re;
     }
 
     if (!result || isNaN(result)){
