@@ -2,9 +2,14 @@
     "__LANG__": "ja",
     "generic": {
         "activated": "有効化",
-        "deactivated": "無効化"
+        "deactivated": "無効化",
+        "yes": "はい",
+        "no": "いいえ",
+        "are_you_sure": "本当によろしいですか？",
+        "aborted": "中止されました。"
     },
     "errors": {
+        "yn_timeout": "時間切れ。中止されました。",
         "generic_command_execution_failed": "コマンドの実行中にエラーが発生しました！ =(",
         "command_not_found": "コマンド '%s' は存在しません :/",
         "invalid_argument": "無効な引数です！",
@@ -34,6 +39,12 @@
         },
         "timeout_disabled": "タイムアウトが無効になりました！",
         "timeout_set": "タイムアウトが%s分に設定されました！",
-        "timeout": "あなたは%s分のタイムアウトを受けました！"
+        "timeout": "あなたは%s分のタイムアウトを受けました！",
+        "reset_guild": {
+            "are_you_sure": "現在のカウントおよびすべてのユーザー統計をリセットしてもよろしいですか？",
+            "sucess": "ギルドデータがリセットされました！",
+            "confirm": "はい、すべてリセット",
+            "abort": "いいえ、中止"
+        }
     }
 }

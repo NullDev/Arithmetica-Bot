@@ -95,6 +95,16 @@ export default {
             "es-ES": "Muestra una descripción general de todos los comandos de administración.",
         },
     },
+    reset_guild: {
+        desc: "Reset the count of the guild",
+        translations: {
+            de: "Setze den Zähler des Servers zurück",
+            fr: "Réinitialiser le compteur de la guilde",
+            ru: "Сбросить счетчик гильдии",
+            ja: "ギルドのカウントをリセットする",
+            "es-ES": "Restablecer el recuento del gremio",
+        },
+    },
     set_channel: {
         desc: "Set the counting channel.",
         translations: {

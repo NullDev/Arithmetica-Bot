@@ -2,9 +2,14 @@
     "__LANG__": "fr",
     "generic": {
         "activated": "activé",
-        "deactivated": "désactivé"
+        "deactivated": "désactivé",
+        "yes": "Oui",
+        "no": "Non",
+        "are_you_sure": "Êtes-vous sûr?",
+        "aborted": "Abandonné."
     },
     "errors": {
+        "yn_timeout": "Le temps est écoulé. Abandonné.",
         "generic_command_execution_failed": "Une erreur s'est produite lors de l'exécution de la commande ! =(",
         "command_not_found": "Je ne connais pas la commande '%s' :/",
         "invalid_argument": "Argument invalide !",
@@ -34,6 +39,12 @@
         },
         "timeout_disabled": "Le temps d'attente a été désactivé!",
         "timeout_set": "Le temps d'attente a été fixé à %s minutes!",
-        "timeout": "Vous avez reçu un temps d'attente de %s minutes!"
+        "timeout": "Vous avez reçu un temps d'attente de %s minutes!",
+        "reset_guild": {
+            "are_you_sure": "Êtes-vous sûr de vouloir réinitialiser le compteur actuel et toutes les statistiques des utilisateurs ?",
+            "sucess": "Les données de la guilde ont été réinitialisées !",
+            "confirm": "OUI, TOUT RÉINITIALISER",
+            "abort": "Non, annuler"
+        }
     }
 }

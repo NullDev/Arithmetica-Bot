@@ -2,9 +2,14 @@
     "__LANG__": "en",
     "generic": {
         "activated": "activated",
-        "deactivated": "deactivated"
+        "deactivated": "deactivated",
+        "yes": "Yes",
+        "no": "No",
+        "are_you_sure": "Are you sure?",
+        "aborted": "Aborted."
     },
     "errors": {
+        "yn_timeout": "Time ran out. Aborted.",
         "generic_command_execution_failed": "There was an error while executing this command! =(",
         "command_not_found": "I don't seem to know the command '%s' :/",
         "invalid_argument": "Invalid argument!",
@@ -34,6 +39,12 @@
         },
         "timeout_disabled": "Timeout has been disabled!",
         "timeout_set": "Timeout has been set to %s minutes!",
-        "timeout": "You received a timeout for %s minutes!"
+        "timeout": "You received a timeout for %s minutes!",
+        "reset_guild": {
+            "are_you_sure": "Are you sure you want to reset the current cound and all user stats?",
+            "sucess": "Guild data has been reset!",
+            "confirm": "YES, RESET ALL",
+            "abort": "No, abort"
+        }
     }
 }

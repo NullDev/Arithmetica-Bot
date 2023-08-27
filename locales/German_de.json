@@ -2,9 +2,14 @@
     "__LANG__": "de",
     "generic": {
         "activated": "aktiviert",
-        "deactivated": "deaktiviert"
+        "deactivated": "deaktiviert",
+        "yes": "Ja",
+        "no": "Nein",
+        "are_you_sure": "Bist du sicher?",
+        "aborted": "Abgebrochen."
     },
     "errors": {
+        "yn_timeout": "Zeit abgelaufen. Abgebrochen.",
         "generic_command_execution_failed": "Beim ausführen des Commands ist ein Fehler aufgetreten! =(",
         "command_not_found": "Das Command '%s' kenne ich nicht :/",
         "invalid_argument": "Ungültiges Argument!",
@@ -34,6 +39,12 @@
         },
         "timeout_disabled": "Timeout wurde deaktiviert!",
         "timeout_set": "Timeout wurde auf %s Minuten gesetzt!",
-        "timeout": "Du hast einen Timeout für %s Minuten erhalten!"
+        "timeout": "Du hast einen Timeout für %s Minuten erhalten!",
+        "reset_guild": {
+            "are_you_sure": "Bist du sicher, dass du den aktuellen count und alle Benutzerstatistiken zurücksetzen möchtest?",
+            "sucess": "Guild-Daten wurden zurückgesetzt!",
+            "confirm": "JA, ALLES ZURÜCKSETZEN",
+            "abort": "Nein, abbrechen"
+        }
     }
 }
