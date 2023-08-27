@@ -1,6 +1,6 @@
 import path from "node:path";
 import { QuickDB } from "quick.db";
-import { evaluate } from "mathjs";
+import * as math from "mathjs";
 import Log from "../util/log.js";
 import __ from "./i18n.js";
 
@@ -139,8 +139,14 @@ const countingService = async function(message){
     }
 
     let result;
-    try { result = evaluate(message.content); }
+    try { result = math.evaluate(message.content); }
     catch (e){ result = null; }
+
+    const resStr = math.format(result, { precision: 14 });
+    const unRoundedStr = math.format(result);
+    if (unRoundedStr.length - resStr.length > 4){
+        result = resStr;
+    }
 
     if (result && typeof result === "object"){
         if (result.entries) result = result.entries[0];
