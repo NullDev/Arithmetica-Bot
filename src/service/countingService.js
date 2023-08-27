@@ -145,7 +145,7 @@ const countingService = async function(message){
     const resStr = math.format(result, { precision: 14 });
     const unRoundedStr = math.format(result);
     if (unRoundedStr.length - resStr.length > 4){
-        result = resStr;
+        result = Number(resStr);
     }
 
     if (result && typeof result === "object"){
@@ -160,7 +160,7 @@ const countingService = async function(message){
         );
     }
 
-    if (lastNumber + 1 !== result){
+    if (Number(lastNumber) + 1 !== Number(result)){
         return await failed(message, lastNumber, result);
     }
 
