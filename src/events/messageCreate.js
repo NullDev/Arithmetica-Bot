@@ -25,7 +25,7 @@ const messageCreate = async function(message){
 
     QUEUE.push(message);
 
-    if (QUEUE.length === 1) handleQueue();
+    if (QUEUE.length === 1) await handleQueue();
 };
 
 export default messageCreate;
