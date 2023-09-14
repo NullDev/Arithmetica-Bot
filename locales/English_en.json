@@ -42,9 +42,16 @@
         "timeout": "You received a timeout for %s minutes!",
         "reset_guild": {
             "are_you_sure": "Are you sure you want to reset the current cound and all user stats?",
-            "sucess": "Guild data has been reset!",
+            "success": "Guild data has been reset!",
             "confirm": "YES, RESET ALL",
             "abort": "No, abort"
+        },
+        "cheat_mode": {
+            "disabled": "Cheat mode has been disabled!",
+            "are_you_sure": "I accept, that this completely defeats the purpose of this bot.",
+            "confirm": "YES. I AM A CHEATER.",
+            "abort": "No, I want to be good 😇",
+            "success": "Cheat mode has been enabled! Hope you're happy..."
         }
     }
 }

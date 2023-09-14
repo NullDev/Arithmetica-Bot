@@ -42,9 +42,16 @@
         "timeout": "¡Has recibido un tiempo de espera de %s minutos!",
         "reset_guild": {
             "are_you_sure": "¿Estás seguro de que quieres restablecer el contador actual y todas las estadísticas de los usuarios?",
-            "sucess": "¡Los datos de la guilda han sido restablecidos!",
+            "success": "¡Los datos de la guilda han sido restablecidos!",
             "confirm": "SÍ, REINICIAR TODO",
             "abort": "No, abortar"
+        },
+        "cheat_mode": {
+            "disabled": "¡El modo de trampa ha sido desactivado!",
+            "are_you_sure": "Acepto que esto derrota completamente el propósito de este bot.",
+            "confirm": "SÍ. SOY UN TRAMPOSO.",
+            "abort": "No, quiero ser bueno 😇",
+            "success": "¡El modo de trampa ha sido activado! Espero que estés contento..."
         }
     }
 }

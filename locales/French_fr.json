@@ -42,9 +42,16 @@
         "timeout": "Vous avez reçu un temps d'attente de %s minutes!",
         "reset_guild": {
             "are_you_sure": "Êtes-vous sûr de vouloir réinitialiser le compteur actuel et toutes les statistiques des utilisateurs ?",
-            "sucess": "Les données de la guilde ont été réinitialisées !",
-            "confirm": "OUI, TOUT RÉINITIALISER",
+            "success": "Les données de la guilde ont été réinitialisées !",
+            "confirm": "OUI, TOUT RÉINITIALISER 😇",
             "abort": "Non, annuler"
+        },
+        "cheat_mode": {
+            "disabled": "Le mode triche a été désactivé!",
+            "are_you_sure": "J'accepte que cela annule complètement le but de ce bot.",
+            "confirm": "OUI. JE SUIS UN TRICHEUR.",
+            "abort": "Non, je veux être bon",
+            "success": "Le mode triche a été activé! J'espère que vous êtes content..."
         }
     }
 }

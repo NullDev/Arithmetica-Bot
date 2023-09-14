@@ -43,7 +43,7 @@ export default {
                 await guildDb.set(`guild-${interaction.guildId}.lastCountString`, "");
                 await userDb.delete(`guild-${interaction.guildId}`);
 
-                await interaction.followUp({ content: await __("replies.reset_guild.sucess")(interaction.guildId) });
+                await interaction.followUp({ content: await __("replies.reset_guild.success")(interaction.guildId) });
             }
             else if (answer === "no"){
                 await interaction.followUp({ content: await __("generic.aborted")(interaction.guildId) });

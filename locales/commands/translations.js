@@ -193,4 +193,36 @@ export default {
             },
         },
     },
+    cheat_mode: {
+        desc: "Enable/Disable cheat mode (no failing).",
+        translations: {
+            de: "Aktiviere/Deaktiviere den Cheat-Modus (kein Verlieren).",
+            fr: "Activer/Désactiver le mode triche (pas d'échec).",
+            ru: "Включить/Отключить режим читов (без неудач).",
+            ja: "チートモード（失敗なし）の有効化/無効化。",
+            "es-ES": "Activar/Desactivar el modo trampa (sin fallas).",
+        },
+        options: {
+            enabled: {
+                desc: "Enable or disable cheat mode",
+                translations: {
+                    de: "Aktiviere oder deaktiviere den Cheat-Modus",
+                    fr: "Activer ou désactiver le mode triche",
+                    ru: "Включить или отключить режим читов",
+                    ja: "チートモードの有効化/無効化",
+                    "es-ES": "Activar o desactivar el modo trampa",
+                },
+            },
+            startcount: {
+                desc: "The number to start counting from (default: 0)",
+                translations: {
+                    de: "Die Zahl, ab der gezählt werden soll (Standard: 0)",
+                    fr: "Le nombre à partir duquel commencer à compter (par défaut: 0)",
+                    ru: "Число, с которого начинать считать (по умолчанию: 0)",
+                    ja: "カウントを開始する数（デフォルト：0）",
+                    "es-ES": "El número desde el que comenzar a contar (predeterminado: 0)",
+                },
+            },
+        },
+    },
 };

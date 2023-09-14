@@ -42,9 +42,16 @@
         "timeout": "Du hast einen Timeout für %s Minuten erhalten!",
         "reset_guild": {
             "are_you_sure": "Bist du sicher, dass du den aktuellen count und alle Benutzerstatistiken zurücksetzen möchtest?",
-            "sucess": "Guild-Daten wurden zurückgesetzt!",
+            "success": "Guild-Daten wurden zurückgesetzt!",
             "confirm": "JA, ALLES ZURÜCKSETZEN",
             "abort": "Nein, abbrechen"
+        },
+        "cheat_mode": {
+            "disabled": "Cheat mode wurde abgeschaltet!",
+            "are_you_sure": "Ich akzeptiere, dass dies den Sinn dieses Bots komplett zerstört.",
+            "confirm": "JA. ICH BIN EIN CHEATER.",
+            "abort": "Nein, ich will brav sein 😇",
+            "success": "Cheat mode wurde aktiviert! Ich hoffe du bist glücklich..."
         }
     }
 }

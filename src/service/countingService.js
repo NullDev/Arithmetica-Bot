@@ -51,6 +51,13 @@ const handleTimeout = async function(message){
  */
 const failed = async function(message, lastNumber, result){
     await message.react("❌");
+
+    const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`);
+    if (cheatModeOn){
+        setTimeout(() => message.delete(), 5000);
+        return null;
+    }
+
     let response = await __("replies.incorrect_number", lastNumber, lastNumber + 1, result)(message.guildId);
 
     const timeout = await handleTimeout(message);
