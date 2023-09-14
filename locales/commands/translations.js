@@ -225,4 +225,26 @@ export default {
             },
         },
     },
+    calc: {
+        desc: "Evaluate a math expression",
+        translations: {
+            de: "Berechne einen mathematischen Ausdruck",
+            fr: "Évaluer une expression mathématique",
+            ru: "Вычислить математическое выражение",
+            ja: "数式を評価する",
+            "es-ES": "Evaluar una expresión matemática",
+        },
+        options: {
+            expression: {
+                desc: "The expression to evaluate",
+                translations: {
+                    de: "Der auszuwertende Ausdruck",
+                    fr: "L'expression à évaluer",
+                    ru: "Выражение для вычисления",
+                    ja: "評価する式",
+                    "es-ES": "La expresión a evaluar",
+                },
+            },
+        },
+    },
 };

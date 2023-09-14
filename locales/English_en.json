@@ -9,6 +9,7 @@
         "aborted": "Aborted."
     },
     "errors": {
+        "eval_fail": "Evaluation of expression failed!",
         "yn_timeout": "Time ran out. Aborted.",
         "generic_command_execution_failed": "There was an error while executing this command! =(",
         "command_not_found": "I don't seem to know the command '%s' :/",

@@ -9,6 +9,7 @@
         "aborted": "Abgebrochen."
     },
     "errors": {
+        "eval_fail": "Berechnung des Ausdrucks fehlgeschlagen!",
         "yn_timeout": "Zeit abgelaufen. Abgebrochen.",
         "generic_command_execution_failed": "Beim ausführen des Commands ist ein Fehler aufgetreten! =(",
         "command_not_found": "Das Command '%s' kenne ich nicht :/",

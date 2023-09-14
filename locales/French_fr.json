@@ -9,6 +9,7 @@
         "aborted": "Abandonné."
     },
     "errors": {
+        "eval_fail": "Évaluation de l'expression échouée !",
         "yn_timeout": "Le temps est écoulé. Abandonné.",
         "generic_command_execution_failed": "Une erreur s'est produite lors de l'exécution de la commande ! =(",
         "command_not_found": "Je ne connais pas la commande '%s' :/",
@@ -49,7 +50,7 @@
         },
         "cheat_mode": {
             "disabled": "Le mode triche a été désactivé!",
-            "are_you_sure": "J'accepte que cela annule complètement le but de ce bot.",
+            "are_you_sure": "J'accepte que cela anéantisse complètement le but de ce bot.\nNote: Les statistiques sont désactivées en mode triche. Continuer ?",
             "confirm": "OUI. JE SUIS UN TRICHEUR.",
             "abort": "Non, je veux être bon",
             "success": "Le mode triche a été activé! J'espère que vous êtes content..."

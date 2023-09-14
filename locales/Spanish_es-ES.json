@@ -9,6 +9,7 @@
         "aborted": "Abortado."
     },
     "errors": {
+        "eval_fail": "¡Evaluación de la expresión fallida!",
         "yn_timeout": "Se acabó el tiempo. Abortado.",
         "generic_command_execution_failed": "¡Ha ocurrido un problema ejecutando el comando! =(",
         "command_not_found": "No reconozco este comando '%s' :/",
@@ -49,7 +50,7 @@
         },
         "cheat_mode": {
             "disabled": "¡El modo de trampa ha sido desactivado!",
-            "are_you_sure": "Acepto que esto derrota completamente el propósito de este bot.",
+            "are_you_sure": "Acepto que esto anula completamente el propósito de este bot.\nNota: Las estadísticas están desactivadas en modo trampa. ¿Continuar?",
             "confirm": "SÍ. SOY UN TRAMPOSO.",
             "abort": "No, quiero ser bueno 😇",
             "success": "¡El modo de trampa ha sido activado! Espero que estés contento..."
