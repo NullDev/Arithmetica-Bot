@@ -247,4 +247,26 @@ export default {
             },
         },
     },
+    oeis: {
+        desc: "Search the OEIS for a sequence",
+        translations: {
+            de: "Durchsuche die OEIS nach einer Sequenz",
+            fr: "Rechercher la séquence OEIS",
+            ru: "Поиск последовательности OEIS",
+            ja: "OEISでシーケンスを検索する",
+            "es-ES": "Buscar la secuencia OEIS",
+        },
+        options: {
+            sequence: {
+                desc: "The sequence to search for",
+                translations: {
+                    de: "Die zu suchende Sequenz",
+                    fr: "La séquence à rechercher",
+                    ru: "Последовательность для поиска",
+                    ja: "検索するシーケンス",
+                    "es-ES": "La secuencia a buscar",
+                },
+            },
+        },
+    },
 };
