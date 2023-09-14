@@ -13,6 +13,10 @@ const db = new QuickDB({
     filePath: path.resolve("./data/user_data.sqlite"),
 });
 
+const settings = new QuickDB({
+    filePath: path.resolve("./data/guild_data.sqlite"),
+});
+
 export default {
     data: new SlashCommandBuilder()
         .setName("top")
@@ -37,6 +41,9 @@ export default {
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
+        const cheatModeOn = await settings.get(`guild-${interaction.guildId}.cheatmode`);
+        if (cheatModeOn) return await interaction.reply(await __("errors.cheat_mode_enabled")(interaction.guildId));
+
         const guildkey = `guild-${interaction.guildId}`;
         const users = await db.get(guildkey);
 

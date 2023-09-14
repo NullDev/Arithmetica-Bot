@@ -18,7 +18,8 @@
         "invalid_arithmetic": "That was not a valid arithmetic expression! You didn't fail, but I didn't count that.",
         "same_user": "You can't count twice in a row. Wait for someone else to count.",
         "no_top_stats": "There are no stats yet. Count to get on the leaderboard!",
-        "stats_on_bot": "Bots don't get count stats :)"
+        "stats_on_bot": "Bots don't get count stats :)",
+        "cheat_mode_enabled": "Stats are deacted in cheat mode because no one can lose."
     },
     "replies": {
         "bot_info_tagline": "Discord Bot for counting. Allows arithmetic expressions.",

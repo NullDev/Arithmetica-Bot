@@ -18,7 +18,8 @@
         "invalid_arithmetic": "Ce n'était pas une expression arithmétique valide ! Vous n'avez pas perdu, mais je ne l'ai pas compté.",
         "same_user": "Vous ne pouvez pas compter deux fois de suite. Attendez que quelqu'un d'autre compte.",
         "no_top_stats": "Il n'y a pas encore de statistiques. Comptez pour entrer dans le classement!",
-        "stats_on_bot": "Les bots n'ont pas de statistiques de comptage :)"
+        "stats_on_bot": "Les bots n'ont pas de statistiques de comptage :)",
+        "cheat_mode_enabled": "Les stats sont désactivées en mode triche car personne ne peut perdre."
     },
     "replies": {
         "bot_info_tagline": "Bot Discord pour compter. Autorise les expressions arithmétiques.",

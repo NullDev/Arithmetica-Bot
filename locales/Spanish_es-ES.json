@@ -18,7 +18,8 @@
         "invalid_arithmetic": "¡Esa no es una expresión matemática válida! (No has perdido, solo lo saltaré)",
         "same_user": "No puede's contar dos veces seguidas. Espera a que alguien más cuente.",
         "no_top_stats": "Aún no hay estadísticas. ¡Cuenta para aparecer en la tabla de líderes!",
-        "stats_on_bot": "Los bots no obtienen estadísticas de conteo :)"
+        "stats_on_bot": "Los bots no obtienen estadísticas de conteo :)",
+        "cheat_mode_enabled": "Las estadísticas están desactivadas en modo trampa porque nadie puede perder."
     },
     "replies": {
         "bot_info_tagline": "Bot para Discord, Permite expresiones matemáticas.",
