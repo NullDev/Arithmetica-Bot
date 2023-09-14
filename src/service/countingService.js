@@ -138,8 +138,11 @@ const countingService = async function(message){
         return await correct(message, guild, Number(message.content), message.content);
     }
 
+    // @ts-ignore
+    const cleaned = message.content.replaceAll("×", "*").replaceAll("÷", "/");
+
     let result;
-    try { result = math.evaluate(message.content); }
+    try { result = math.evaluate(cleaned); }
     catch (e){ result = null; }
 
     const resStr = math.format(result, { precision: 14 });
