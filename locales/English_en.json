@@ -49,7 +49,7 @@
         },
         "cheat_mode": {
             "disabled": "Cheat mode has been disabled!",
-            "are_you_sure": "I accept, that this completely defeats the purpose of this bot.",
+            "are_you_sure": "I accept, that this completely defeats the purpose of this bot.\nNote: Stats are disabled in cheat mode. Continue?",
             "confirm": "YES. I AM A CHEATER.",
             "abort": "No, I want to be good 😇",
             "success": "Cheat mode has been enabled! Hope you're happy..."

@@ -49,7 +49,7 @@
         },
         "cheat_mode": {
             "disabled": "Cheat mode wurde abgeschaltet!",
-            "are_you_sure": "Ich akzeptiere, dass dies den Sinn dieses Bots komplett zerstört.",
+            "are_you_sure": "Ich akzeptiere, dass dies den Sinn dieses Bots komplett zerstört.\nAchtung: Stats sind im cheat mode deaktiviert. Fortfahren?",
             "confirm": "JA. ICH BIN EIN CHEATER.",
             "abort": "Nein, ich will brav sein 😇",
             "success": "Cheat mode wurde aktiviert! Ich hoffe du bist glücklich..."
