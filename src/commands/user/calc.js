@@ -30,7 +30,7 @@ export default {
         return await interaction.reply({
             content: result !== null
                 ? "`" + expr + "`:\n" + String(result)
-                : await __("errors.invalid_arithmetic")(interaction.guildId),
+                : await __("errors.invalid_argument")(interaction.guildId),
         });
     },
 };
