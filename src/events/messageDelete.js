@@ -20,6 +20,15 @@ const messageDelete = async function(message){
     if (!configuredGuildChannel) return;
     if (configuredGuildChannel !== message.channelId) return;
 
+    const reactions = message.reactions.cache;
+    if (!reactions) return;
+
+    const reaction = reactions.get("✅");
+    if (!reaction) return;
+
+    const reactionAuthor = reaction.users.cache.first();
+    if (!reactionAuthor || reactionAuthor.id !== message.client.user?.id) return;
+
     const ch = message.channel;
     if (!ch) return;
 
