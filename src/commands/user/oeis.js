@@ -32,9 +32,9 @@ export default {
         let res = "Sequence: " + seq + "\n\n";
         first5.forEach((r, i) => {
             const sequenceId = "A" + String(r.number).padStart(6, "0");
-            res += `**${i + 1}.** ${sequenceId} `;
-            if (!!r.formula && !!r.formula.length && !!r.formula[0]) res += `\`${r.formula[0]}\` `;
-            res += `([${r.id}](<https://oeis.org/${sequenceId}>))\n`;
+            res += `**${i + 1}.** ${r.name} `;
+            if (!!r.formula && !!r.formula.length && !!r.formula[0]) res += `- \`${r.formula[0]}\` - `;
+            res += `([${sequenceId}](<https://oeis.org/${sequenceId}>))\n`;
         });
 
         return await interaction.reply({
