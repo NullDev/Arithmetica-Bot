@@ -16,6 +16,7 @@ mathjs.config({ number: "BigNumber" });
 const mathEval = function(expr){
     const cleaned = expr // @ts-ignore
         .replaceAll("×", "*")
+        .replaceAll("⋅", "*")
         .replaceAll("÷", "/")
         .replaceAll("π", "pi")
         .replaceAll("∞", "Infinity");
