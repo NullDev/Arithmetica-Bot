@@ -1,8 +1,11 @@
-import * as math from "mathjs";
+import { create, all } from "mathjs";
 
 // ========================= //
 // = Copyright (c) NullDev = //
 // ========================= //
+
+const mathjs = create(all);
+mathjs.config({ number: "BigNumber" });
 
 /**
  * Evaluate a math expression
@@ -11,22 +14,24 @@ import * as math from "mathjs";
  * @return {Number}
  */
 const mathEval = function(expr){
-    // @ts-ignore
-    const cleaned = expr.replaceAll("×", "*").replaceAll("÷", "/");
+    const cleaned = expr // @ts-ignore
+        .replaceAll("×", "*")
+        .replaceAll("÷", "/")
+        .replaceAll("π", "pi")
+        .replaceAll("∞", "Infinity");
 
     let result;
-    try { result = math.evaluate(cleaned); }
+    try { result = mathjs.evaluate(cleaned); }
     catch (e){ result = null; }
-
-    const resStr = math.format(result, { precision: 14 });
-    const unRoundedStr = math.format(result);
-    if (unRoundedStr.length - resStr.length > 4){
-        result = Number(resStr);
-    }
 
     if (result && typeof result === "object"){
         if (result.entries) result = result.entries[0];
         else if (result.re) result = result.re;
+    }
+
+    const epsilon = Math.pow(10, Math.floor(Math.log10(Math.abs(Number(result)))) - 14);
+    if (Math.abs(result - Math.round(result)) < epsilon){
+        result = Math.round(result);
     }
 
     return result;

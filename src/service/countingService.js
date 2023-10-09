@@ -145,7 +145,7 @@ const countingService = async function(message){
         return await correct(message, guild, Number(message.content), message.content);
     }
 
-    const result = mathEval(message.content);
+    const result = Math.round(mathEval(message.content)); // we deal with integers only anyway
 
     if (!result || isNaN(result)){
         return await replyWaitAndDelete(
