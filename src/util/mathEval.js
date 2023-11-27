@@ -8,18 +8,40 @@ const mathjs = create(all);
 mathjs.config({ number: "BigNumber" });
 
 /**
+ * Parse powers
+ *
+ * @param {String} expr
+ * @return {String|null}
+ */
+const parsePowers = function(expr){
+    if (/^[⁰¹²³⁴⁵⁶⁷⁸⁹]+/.test(expr)) return null;
+
+    const superscriptMap = {
+        "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4",
+        "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9",
+    };
+
+    return expr.replace(/(\d+)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_, p1, p2) => {
+        const normalNumbers = Array.from(p2).map(s => superscriptMap[s]).join("");
+        return `${p1}^(${normalNumbers})`;
+    });
+};
+
+/**
  * Evaluate a math expression
  *
  * @param {String} expr
  * @return {Number}
  */
 const mathEval = function(expr){
-    const cleaned = expr // @ts-ignore
+    let cleaned = expr // @ts-ignore
         .replaceAll("×", "*")
         .replaceAll("⋅", "*")
         .replaceAll("÷", "/")
         .replaceAll("π", "pi")
         .replaceAll("∞", "Infinity");
+
+    cleaned = parsePowers(cleaned) ?? cleaned;
 
     let result;
     try { result = mathjs.evaluate(cleaned); }
