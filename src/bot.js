@@ -6,6 +6,7 @@ import registerCommands from "./service/commandRegister.js";
 import interactionCreateHandler from "./events/interactionCreate.js";
 import messageCreate from "./events/messageCreate.js";
 import messageDelete from "./events/messageDelete.js";
+import messageUpdate from "./events/messageUpdate.js";
 import scheduleCrons from "./service/cronScheduler.js";
 
 // ========================= //
@@ -56,6 +57,8 @@ client.on(Events.ClientReady, async() => {
 client.on(Events.MessageCreate, async message => messageCreate(message));
 
 client.on(Events.MessageDelete, async message => messageDelete(message));
+
+client.on(Events.MessageUpdate, async(oldMessage, newMessage) => messageUpdate(oldMessage, newMessage));
 
 client.on(Events.GuildCreate, guild => Log.info("Joined guild: " + guild.name));
 
