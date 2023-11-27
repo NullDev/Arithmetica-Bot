@@ -1,5 +1,6 @@
 import path from "node:path";
 import { QuickDB } from "quick.db";
+import restoreMessage from "../service/restoreMessage.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -29,14 +30,7 @@ const messageDelete = async function(message){
     const reactionAuthor = reaction.users.cache.first();
     if (!reactionAuthor || reactionAuthor.id !== message.client.user?.id) return;
 
-    const ch = message.channel;
-    if (!ch) return;
-
-    const lastCountString = await db.get(`guild-${message.guildId}.lastCountString`);
-    if (!lastCountString || message.content !== lastCountString) return;
-
-    const newMessgae = await ch.send(lastCountString);
-    await newMessgae.react("✅");
+    await restoreMessage(message);
 };
 
 export default messageDelete;
