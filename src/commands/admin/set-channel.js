@@ -37,20 +37,21 @@ export default {
             });
         }
 
-        const channelID = interaction.guild?.channels.cache.find(ch => ch.name === channel.value && ch.type === ChannelType.GuildText)?.id;
-        if (!channelID){
+        let val = String(channel.value)?.match(/^<#(\d+)>$/)?.[1];
+        if (!val) val = interaction.guild?.channels.cache.find(ch => ch.name === channel.value && ch.type === ChannelType.GuildText)?.id;
+        if (!val){
             return await interaction.reply({
                 content: await __("errors.channel_not_found")(interaction.guildId),
                 ephemeral: true,
             });
         }
 
-        await db.set(`guild-${interaction.guildId}.channel`, channelID);
+        await db.set(`guild-${interaction.guildId}.channel`, val);
         await db.delete(`guild-${interaction.guildId}.lastUser`);
         await db.set(`guild-${interaction.guildId}.count`, 0);
 
         return await interaction.reply({
-            content: await __("replies.channel_set", channel.value)(interaction.guildId),
+            content: await __("replies.channel_set", channel.value ?? val)(interaction.guildId),
             ephemeral: true,
         });
     },
