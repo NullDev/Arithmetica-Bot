@@ -24,11 +24,7 @@ const messageUpdate = async function(oldMessage, newMessage){
     if (!configuredGuildChannel) return;
     if (configuredGuildChannel !== oldMessage.channelId) return;
 
-    const lastCountString = await db.get(`guild-${oldMessage.guildId}.lastCountString`);
-    if (!lastCountString || oldMessage.content !== lastCountString || newMessage.content === lastCountString) return;
-
-    await newMessage.delete();
-    await restoreMessage(oldMessage);
+    await restoreMessage(oldMessage, newMessage);
 };
 
 export default messageUpdate;
