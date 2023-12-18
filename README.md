@@ -13,7 +13,7 @@ Your average counting bot. Except you can count with arithmetic expressions!
 
 ## :satellite: Invite the bot
 
-[![Invite](https://img.shields.io/badge/Invite-37a779?style=for-the-badge)](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=27712)
+[![Invite](https://img.shields.io/badge/Invite-37a779?style=for-the-badge)](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1099511655488)
 
 <sub>The link above will invite a bot hosted by me that uses the latest version of this repo. <br>
 Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-setup) </sub>
