@@ -63,7 +63,7 @@ const failed = async function(message, lastNumber, result){
     const timeout = await handleTimeout(message);
     if (!!timeout) response += "\n" + (await __("replies.timeout", timeout)(message.guildId));
 
-    await message.reply(response);
+    await message.reply(message.author + " " + response);
 
     await guildDb.delete(`guild-${message.guildId}.lastUser`);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-fails`, 1);
