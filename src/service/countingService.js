@@ -158,6 +158,10 @@ const countingService = async function(message){
         return await failed(message, lastNumber, result);
     }
 
+    if (Number(lastNumber) + 1 !== Number(message.content)){
+        await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-math`, 1);
+    }
+
     return await correct(message, guild, result, message.content);
 };
 

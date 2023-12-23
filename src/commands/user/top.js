@@ -36,6 +36,10 @@ export default {
                     name: translations.top.options.sort.choices.fails.desc,
                     name_localizations: translations.top.options.sort.choices.fails.translations,
                     value: "fails",
+                }, {
+                    name: translations.top.options.sort.choices.mathcounts.desc,
+                    name_localizations: translations.top.options.sort.choices.mathcounts.translations,
+                    value: "math",
                 })),
     /**
      * @param {import("discord.js").CommandInteraction} interaction
@@ -58,19 +62,20 @@ export default {
                 user[0].split("-")[1],
                 user[1]["counting-wins"] || 0,
                 user[1]["counting-fails"] || 0,
+                user[1]["counting-math"] || 0,
             ]));
 
         if (!top10.length) return await interaction.reply(await __("errors.no_top_stats")(interaction.guildId));
 
         const top10WithNames = (await Promise.all(top10.map(async(user) => {
-            const [index, userid, wins, fails] = user;
+            const [index, userid, wins, fails, math] = user;
 
             const member = await interaction.guild?.members.fetch(userid).catch(() => null);
-            if (!member) return [index, { tag: "Anonymous", pic: null }, wins, fails];
+            if (!member) return [index, { tag: "Anonymous", pic: null }, wins, fails, math];
 
             return [index, { tag: member.user.tag, pic: member.displayAvatarURL({
                 extension: "png",
-            }) }, wins, fails];
+            }) }, wins, fails, math];
         }))).map(e => {
             if (e[1].tag.endsWith("#0")) e[1].tag = e[1].tag.split("#")[0];
             return e;

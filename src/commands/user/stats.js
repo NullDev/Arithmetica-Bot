@@ -45,12 +45,15 @@ export default {
         const userid = user?.user?.id || interaction.user.id;
         const wins = (await db.get(`guild-${interaction.guildId}.user-${userid}.counting-wins`)) || 0;
         const fails = (await db.get(`guild-${interaction.guildId}.user-${userid}.counting-fails`)) || 0;
+        const mathcounts = (await db.get(`guild-${interaction.guildId}.user-${userid}.counting-math`)) || 0;
 
         const stats = `:\n\n✅ ${
             await __("replies.stats.wins")(interaction.guildId)
         }: \`${wins}\`\n❌ ${
             await __("replies.stats.fails")(interaction.guildId)
-        }: \`${fails}\``;
+        }: \`${fails}\`\n🧮 ${
+            await __("replies.stats.math")(interaction.guildId)
+        }: \`${mathcounts}\``;
 
         if (!user?.user?.id){
             return await interaction.reply(

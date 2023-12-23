@@ -81,6 +81,16 @@ export default {
                             "es-ES": "Cuentas fallidas",
                         },
                     },
+                    mathcounts: {
+                        desc: "Math counts",
+                        translations: {
+                            de: "Mathe Zählungen",
+                            fr: "Math Comptes",
+                            ru: "Счета математики",
+                            ja: "数学カウント",
+                            "es-ES": "Cuentas de matemáticas",
+                        },
+                    },
                 },
             },
         },

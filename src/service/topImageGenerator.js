@@ -47,6 +47,9 @@ const generateImage = async function(users){
     const failImgBuff = await fs.readFile("assets/fails.png");
     const failImg = await loadImage(failImgBuff);
 
+    const mathcountsImgBuff = await fs.readFile("assets/mathcounts.png");
+    const mathcountsImg = await loadImage(mathcountsImgBuff);
+
     const defaultImgBuff = await fs.readFile("assets/default.png");
     const defaultImg = await loadImage(defaultImgBuff);
 
@@ -56,6 +59,7 @@ const generateImage = async function(users){
         const info = user[1];
         const wins = user[2];
         const fails = user[3];
+        const mathcounts = user[4];
 
         let profilePic;
         if (!info.pic) profilePic = defaultImg;
@@ -77,10 +81,17 @@ const generateImage = async function(users){
         const winTxt = `: ${wins}`;
         ctx.fillText(winTxt, 95, i * lineHeight + 60);
 
-        const textWidth = ctx.measureText(winTxt).width;
+        const textWidthW = ctx.measureText(winTxt).width;
 
-        ctx.drawImage(failImg, 95 + textWidth + 10, i * lineHeight + 43, 20, 20);
-        ctx.fillText(`: ${fails}`, 95 + textWidth + 10 + 25, i * lineHeight + 60);
+        ctx.drawImage(failImg, 95 + textWidthW + 10, i * lineHeight + 43, 20, 20);
+        const failTxt = `: ${fails}`;
+        ctx.fillText(failTxt, 95 + textWidthW + 10 + 25, i * lineHeight + 60);
+
+        const textWidthF = ctx.measureText(failTxt).width;
+
+        ctx.drawImage(mathcountsImg, 95 + textWidthW + 10 + 25 + textWidthF + 10, i * lineHeight + 43, 20, 20);
+        const mathcountsTxt = `: ${mathcounts}`;
+        ctx.fillText(mathcountsTxt, 95 + textWidthW + 10 + 25 + textWidthF + 10 + 25, i * lineHeight + 60);
 
         if (i < users.length - 1){
             ctx.beginPath();
