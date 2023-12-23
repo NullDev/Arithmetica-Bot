@@ -62,7 +62,7 @@ export default {
 
         if (!top10.length) return await interaction.reply(await __("errors.no_top_stats")(interaction.guildId));
 
-        const top10WithNames = await Promise.all(top10.map(async(user) => {
+        const top10WithNames = (await Promise.all(top10.map(async(user) => {
             const [index, userid, wins, fails] = user;
 
             const member = await interaction.guild?.members.fetch(userid).catch(() => null);
@@ -71,7 +71,10 @@ export default {
             return [index, { tag: member.user.tag, pic: member.displayAvatarURL({
                 extension: "png",
             }) }, wins, fails];
-        }));
+        }))).map(e => {
+            if (e[1].tag.endsWith("#0")) e[1].tag = e[1].tag.split("#")[0];
+            return e;
+        });
 
         const buffer = await generateImage(top10WithNames);
 
