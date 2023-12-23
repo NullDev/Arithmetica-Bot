@@ -31,13 +31,15 @@
             "title": "Top User auf %s",
             "description": "Die Top 10 User sortiert nach %s.",
             "wins": "korrekten Zählungen",
-            "fails": "gescheiterten Zählungen"
+            "fails": "gescheiterten Zählungen",
+            "math": "mathe Zählungen"
         },
         "stats": {
             "your_stats": "Deine Stats",
             "stats_for": "Stats für %s",
             "wins": "Korrekte Zählungen",
-            "fails": "Gescheiterte Zählungen"
+            "fails": "Gescheiterte Zählungen",
+            "math": "Mathe Zählungen"
         },
         "timeout_disabled": "Timeout wurde deaktiviert!",
         "timeout_set": "Timeout wurde auf %s Minuten gesetzt!",

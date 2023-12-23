@@ -31,13 +31,15 @@
             "title": "Meilleur utilisateur sur %s",
             "description": "Les 10 meilleurs utilisateurs triés par %s.",
             "wins": "comptages corrects",
-            "fails": "comptages échoués"
+            "fails": "comptages échoués",
+            "math": "comptages mathématiques"
         },
         "stats": {
             "your_stats": "Vos statistiques",
             "stats_for": "Statistiques pour %s",
             "wins": "Comptages corrects",
-            "fails": "Comptages échoués"
+            "fails": "Comptages échoués",
+            "math": "Comptages mathématiques"
         },
         "timeout_disabled": "Le temps d'attente a été désactivé!",
         "timeout_set": "Le temps d'attente a été fixé à %s minutes!",

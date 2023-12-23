@@ -31,13 +31,15 @@
             "title": "Top User on %s",
             "description": "The Top 10 User sorted by %s.",
             "wins": "correct counts",
-            "fails": "failed counts"
+            "fails": "failed counts",
+            "math": "math counts"
         },
         "stats": {
             "your_stats": "Your stats",
             "stats_for": "Stats for %s",
             "wins": "Correct counts",
-            "fails": "Failed counts"
+            "fails": "Failed counts",
+            "math": "Math counts"
         },
         "timeout_disabled": "Timeout has been disabled!",
         "timeout_set": "Timeout has been set to %s minutes!",
