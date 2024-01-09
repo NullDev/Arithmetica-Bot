@@ -119,6 +119,21 @@ const countingService = async function(message){
     const channelID = await guildDb.get(`guild-${guild}.channel`);
     if (!channelID || channelID !== channel) return null;
 
+    const newMemberCooldown = await guildDb.get(`guild-${guild}.new-member-cooldown`) || 0;
+    if (newMemberCooldown > 0){
+        const memberSince = message.member?.joinedTimestamp;
+        if (memberSince){
+            const cooldownUntil = memberSince + newMemberCooldown * 60 * 1000;
+            if (cooldownUntil > Date.now()){
+                const remaining = Math.ceil((cooldownUntil - Date.now()) / (60 * 1000));
+                return await replyWaitAndDelete(
+                    message,
+                    await __("replies.cooldown", remaining)(message.guildId),
+                );
+            }
+        }
+    }
+
     const lastUser = await guildDb.get(`guild-${guild}.lastUser`);
     if (lastUser === message.author.id){
         return await replyWaitAndDelete(

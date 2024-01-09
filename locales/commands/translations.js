@@ -279,4 +279,26 @@ export default {
             },
         },
     },
+    cooldown: {
+        desc: "Cooldown for new members before they can count",
+        translations: {
+            de: "Abklingzeit für neue Mitglieder, bevor sie zählen können",
+            fr: "Temps de recharge pour les nouveaux membres avant qu'ils ne puissent compter",
+            ru: "Время отката для новых участников, прежде чем они смогут посчитать",
+            ja: "カウントできるようになる前の新しいメンバーのクールダウン",
+            "es-ES": "Tiempo de espera para nuevos miembros antes de que puedan contar",
+        },
+        options: {
+            timeout: {
+                desc: "Cooldown in minutes or 0 to disable",
+                translations: {
+                    de: "Abklingzeit in Minuten oder 0 zum Deaktivieren",
+                    fr: "Temps de recharge en minutes ou 0 pour désactiver",
+                    ru: "Время отката в минутах или 0 для отключения",
+                    ja: "クールダウン（分単位）または0を無効にする",
+                    "es-ES": "Tiempo de espera en minutos o 0 para desactivar",
+                },
+            },
+        },
+    },
 };

@@ -44,6 +44,9 @@
         "timeout_disabled": "Le temps d'attente a été désactivé!",
         "timeout_set": "Le temps d'attente a été fixé à %s minutes!",
         "timeout": "Vous avez reçu un temps d'attente de %s minutes!",
+        "cooldown_disabled": "Le délai de récupération pour les nouveaux membres a été désactivé !",
+        "cooldown_set": "Le délai de récupération pour les nouveaux membres est fixé à %s minutes !",
+        "cooldown": "Puisque vous êtes un nouveau membre, vous devez attendre %s minutes avant de pouvoir compter !",
         "reset_guild": {
             "are_you_sure": "Êtes-vous sûr de vouloir réinitialiser le compteur actuel et toutes les statistiques des utilisateurs ?",
             "success": "Les données de la guilde ont été réinitialisées !",
