@@ -47,6 +47,8 @@
         "cooldown_disabled": "Abklingzeit für neue Mitglieder wurde deaktiviert!",
         "cooldown_set": "Abklingzeit für neue Mitglieder wurde auf %s Minuten gesetzt!",
         "cooldown": "Da du ein neues Mitglied bist, musst du %s Minuten warten, bis du zählen kannst!",
+        "timeout_factor_disabled": "Timeout Faktor wurde deaktiviert!",
+        "timeout_factor_set": "Timeout Faktor wurde auf %s gesetzt!",
         "reset_guild": {
             "are_you_sure": "Bist du sicher, dass du den aktuellen count und alle Benutzerstatistiken zurücksetzen möchtest?",
             "success": "Guild-Daten wurden zurückgesetzt!",

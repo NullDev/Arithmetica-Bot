@@ -47,6 +47,8 @@
         "cooldown_disabled": "¡El tiempo de enfriamiento para nuevos miembros ha sido desactivado!",
         "cooldown_set": "El tiempo de enfriamiento para nuevos miembros se ha establecido a %s minutos!",
         "cooldown": "Dado que eres un nuevo miembro, tienes que esperar %s minutos antes de poder contar!",
+        "timeout_factor_disabled": "¡El factor de tiempo de espera ha sido desactivado!",
+        "timeout_factor_set": "¡El factor de tiempo de espera ha sido establecido en %s!",
         "reset_guild": {
             "are_you_sure": "¿Estás seguro de que quieres restablecer el contador actual y todas las estadísticas de los usuarios?",
             "success": "¡Los datos de la guilda han sido restablecidos!",

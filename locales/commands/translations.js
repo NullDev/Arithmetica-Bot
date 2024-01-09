@@ -301,4 +301,26 @@ export default {
             },
         },
     },
+    timeout_increment: {
+        desc: "Factor to increment the timeout for losers.",
+        translations: {
+            de: "Faktor, um das Time-Out für Verlierer zu erhöhen.",
+            fr: "Facteur pour incrémenter le délai d'attente pour les perdants.",
+            ru: "Фактор для увеличения тайм-аута для проигравших.",
+            ja: "敗者のタイムアウトを増やすための要因。",
+            "es-ES": "Factor para incrementar el tiempo de espera para los perdedores.",
+        },
+        options: {
+            factor: {
+                desc: "1 = no increment, 2 = double the timeout on each fail, etc.",
+                translations: {
+                    de: "1 = kein Inkrement, 2 = Timeout bei jedem Fehler verdoppeln, etc.",
+                    fr: "1 = pas d'incrément, 2 = doubler le délai d'attente à chaque échec, etc.",
+                    ru: "1 = без увеличения, 2 = удвоить время ожидания при каждом сбое и т. д.",
+                    ja: "1 =インクリメントなし、2 =失敗ごとにタイムアウトを2倍にするなど。",
+                    "es-ES": "1 = sin incremento, 2 = duplicar el tiempo de espera en cada error, etc.",
+                },
+            },
+        },
+    },
 };

@@ -47,6 +47,8 @@
         "cooldown_disabled": "New member cooldown has been disabled!",
         "cooldown_set": "New member cooldown has been set to %s minutes!",
         "cooldown": "Since you are a new member, you have to wait %s minutes before you can count!",
+        "timeout_factor_disabled": "Timeout factor has been disabled!",
+        "timeout_factor_set": "Timeout factor has been set to %s!",
         "reset_guild": {
             "are_you_sure": "Are you sure you want to reset the current cound and all user stats?",
             "success": "Guild data has been reset!",
