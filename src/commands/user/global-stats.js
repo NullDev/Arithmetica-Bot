@@ -31,7 +31,10 @@ export default {
         const guilds = await interaction.client.guilds.fetch();
         const guildNames = guilds.map(e => ({ name: e.name, guildId: e.id }));
 
-        const top10Names = top10.map(e => ({ name: guildNames.find(g => g.guildId === e.guildId)?.name, count: e.count }));
+        const top10Names = top10.map(e => ({ name: guildNames.find(g => g.guildId === e.guildId)?.name, count: e.count }))
+            .filter(e => e.count !== undefined)
+            .filter(e => e.name !== undefined);
+
         const reply = top10Names.map((e, i) => `${i + 1}. ${e.name}: ${e.count} ${i === 0 ? "👑" : ""}`).join("\n");
 
         return await interaction.reply({ content: reply });
