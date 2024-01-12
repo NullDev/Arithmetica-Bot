@@ -323,4 +323,14 @@ export default {
             },
         },
     },
+    global_stats: {
+        desc: "View the global progress of all servers. (Top 10)",
+        translations: {
+            de: "Zeige den globalen Fortschritt aller Server an. (Top 10)",
+            fr: "Afficher la progression globale de tous les serveurs. (Top 10)",
+            ru: "Просмотр глобального прогресса всех серверов. (Топ-10)",
+            ja: "すべてのサーバーのグローバルな進捗状況を表示します。 （トップ10）",
+            "es-ES": "Ver el progreso global de todos los servidores. (Top 10)",
+        },
+    },
 };
