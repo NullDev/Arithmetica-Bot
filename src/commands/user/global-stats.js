@@ -22,7 +22,8 @@ export default {
      */
     async execute(interaction){
         const allCounts = await guild.all();
-        const counts = allCounts.map(e => ({ count: e.value.count, guildId: e.id.replace("guild-", "") }));
+        const counts = allCounts.map(e => ({ count: e.value.count, guildId: e.id.replace("guild-", "") }))
+            .filter(e => e.count !== undefined);
 
         counts.sort((a, b) => b.count - a.count);
 
@@ -31,9 +32,7 @@ export default {
         const guilds = await interaction.client.guilds.fetch();
         const guildNames = guilds.map(e => ({ name: e.name, guildId: e.id }));
 
-        const top10Names = top10.map(e => ({ name: guildNames.find(g => g.guildId === e.guildId)?.name, count: e.count }))
-            .filter(e => e.count !== undefined)
-            .filter(e => e.name !== undefined);
+        const top10Names = top10.map(e => ({ name: guildNames.find(g => g.guildId === e.guildId)?.name, count: e.count }));
 
         const reply = top10Names.map((e, i) => `${i + 1}. ${e.name}: ${e.count} ${i === 0 ? "👑" : ""}`).join("\n");
 
