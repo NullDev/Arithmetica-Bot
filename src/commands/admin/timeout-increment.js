@@ -19,8 +19,9 @@ export default {
         .setDescriptionLocalizations(translations.timeout_increment.translations)
         .setDMPermission(false)
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
-        .addIntegerOption((option) =>
+        .addNumberOption((option) =>
             option.setName("factor")
+                .setMinValue(1)
                 .setDescription(translations.timeout_increment.options.factor.desc)
                 .setDescriptionLocalizations(translations.timeout_increment.options.factor.translations)
                 .setRequired(true)),
@@ -33,7 +34,7 @@ export default {
         if (!factor || isNaN(factor)) factor = 1;
         await db.set(`guild-${interaction.guildId}.timeout-factor`, factor || 1);
         return await interaction.reply({
-            content: factor === 0
+            content: factor === 1
                 ? await __("replies.timeout_factor_disabled")(interaction.guildId)
                 : await __("replies.timeout_factor_set", factor)(interaction.guildId),
             ephemeral: true,
