@@ -2,7 +2,6 @@ import path from "node:path";
 import { SlashCommandBuilder } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
-import { config } from "../../../config/config.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -24,12 +23,11 @@ export default {
     async execute(interaction){
         const allCounts = await guild.all();
         const counts = allCounts.map(e => ({ count: e.value.count, guildId: e.id.replace("guild-", ""), cheat: e.value.cheatmode }))
-            .filter(e => e.count !== undefined)
-            .filter(e => !config.bot.global_stats_blacklist.includes(e.guildId))
             .filter(e => !e.cheat);
 
         counts.sort((a, b) => b.count - a.count);
 
+        /*
         const top10 = counts.slice(0, 10);
 
         const guilds = await interaction.client.guilds.fetch();
@@ -38,6 +36,13 @@ export default {
         const top10Names = top10.map(e => ({ name: guildNames.find(g => g.guildId === e.guildId)?.name, count: e.count }));
 
         const reply = top10Names.map((e, i) => `${i + 1}. ${e.name}: ${e.count} ${i === 0 ? "👑" : ""}`).join("\n");
+        */
+
+        const rank = (counts.findIndex(e => e.guildId === interaction.guildId) || 0) + 1;
+        const currentGuildName = (await interaction.client.guilds.fetch()).find(e => e.id === interaction.guildId)?.name;
+
+        let reply = `${currentGuildName} Top #${rank || "???"}: ${counts.find(e => e.guildId === interaction.guildId)?.count || 0}`;
+        if (rank === 1) reply += " 👑";
 
         return await interaction.reply({ content: reply || "No stats yet..." });
     },
