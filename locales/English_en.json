@@ -61,6 +61,7 @@
             "confirm": "YES. I AM A CHEATER.",
             "abort": "No, I want to be good 😇",
             "success": "Cheat mode has been enabled! Hope you're happy..."
-        }
+        },
+        "global_top": "Server \"%s\" is on place #%s in the global leaderboard (%s servers)!"
     }
 }

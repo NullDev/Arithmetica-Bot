@@ -2,6 +2,7 @@ import path from "node:path";
 import { SlashCommandBuilder } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
+import __ from "../../service/i18n.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -41,9 +42,13 @@ export default {
         const rank = (counts.findIndex(e => e.guildId === interaction.guildId) || 0) + 1;
         const currentGuildName = (await interaction.client.guilds.fetch()).find(e => e.id === interaction.guildId)?.name;
 
-        let reply = `${currentGuildName} Top #${rank || "???"}: ${counts.find(e => e.guildId === interaction.guildId)?.count || 0}`;
+        let reply = await __("replies.global_top", currentGuildName, rank, counts.length)(interaction.guildId);
         if (rank === 1) reply += " 👑";
 
-        return await interaction.reply({ content: reply || "No stats yet..." });
+        return await interaction.reply({
+            content: (rank === 0 || !currentGuildName)
+                ? await __("errors.no_top_stats")(interaction.guildId)
+                : reply,
+        });
     },
 };

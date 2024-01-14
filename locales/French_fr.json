@@ -61,6 +61,7 @@
             "confirm": "OUI. JE SUIS UN TRICHEUR.",
             "abort": "Non, je veux être bon",
             "success": "Le mode triche a été activé! J'espère que vous êtes content..."
-        }
+        },
+        "global_top": "Le serveur \"%s\" est à la place #%s dans le classement mondial (%s serveurs)!"
     }
 }

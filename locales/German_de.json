@@ -61,6 +61,7 @@
             "confirm": "JA. ICH BIN EIN CHEATER.",
             "abort": "Nein, ich will brav sein 😇",
             "success": "Cheat mode wurde aktiviert! Ich hoffe du bist glücklich..."
-        }
+        },
+        "global_top": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server)!"
     }
 }

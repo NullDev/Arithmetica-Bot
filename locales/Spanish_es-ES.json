@@ -61,6 +61,7 @@
             "confirm": "SÍ. SOY UN TRAMPOSO.",
             "abort": "No, quiero ser bueno 😇",
             "success": "¡El modo de trampa ha sido activado! Espero que estés contento..."
-        }
+        },
+        "global_top": "¡El servidor \"%s\" está en el lugar #%s en la tabla de clasificación global (%s servidores)!"
     }
 }
