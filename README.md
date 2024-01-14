@@ -63,9 +63,12 @@ Feature request or discovered a bug? Please [open an Issue](https://github.com/N
 
 <hr>
 
-## 🤖 DBL
+## 🤖 DBL & Top.gg
 
-<a href="https://discordbotlist.com/bots/arithmetica"><img src="https://discordbotlist.com/api/v1/bots/1108279646165942363/widget"></a>
+<p align="center">
+<a href="https://discordbotlist.com/bots/arithmetica"><img src="https://discordbotlist.com/api/v1/bots/1108279646165942363/widget"></a>&nbsp;&nbsp;
+<a href="https://top.gg/bot/1108279646165942363"><img src="https://top.gg/api/widget/1108279646165942363.svg"></a>
+</p>
 
 <hr>
 
