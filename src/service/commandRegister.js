@@ -3,7 +3,8 @@ import path from "node:path";
 import os from "node:os";
 import { Collection, REST, Routes } from "discord.js";
 import Log from "../util/log.js";
-import { config } from "../../config/config.js";
+import DblHandler from "./dblHandler.js";
+
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -53,18 +54,8 @@ const commandRegister = async function(client){
         Log.error("Error during registering of application (/) commands: " + error);
     }
 
-    if (process.env.NODE_ENV !== "development" && config.discord.dbl_token !== ""){
-        fetch(`https://discordbotlist.com/api/v1/bots/${client.user?.id}/commands`, {
-            method: "post",
-            headers: {
-                Authorization: config.discord.dbl_token,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(cmdMap),
-        }).then(res => res.json())
-            .then(() => Log.info("Successfully reloaded " + cmdMap.length + " application (/) commands on discordbotlist.com."))
-            .catch(err => Log.error("Error during registering of application (/) commands on discordbotlist.com: " + err));
-    }
+    const dblHandler = new DblHandler(client);
+    dblHandler.postBotCommands(cmdMap);
 
     return client.commands;
 };

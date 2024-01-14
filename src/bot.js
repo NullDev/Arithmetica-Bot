@@ -2,6 +2,7 @@ import { GatewayIntentBits, Events, ActivityType } from "discord.js";
 import Log from "./util/log.js";
 import { config } from "../config/config.js";
 import DiscordClient from "./service/client.js";
+import DblHandler from "./service/dblHandler.js";
 import registerCommands from "./service/commandRegister.js";
 import interactionCreateHandler from "./events/interactionCreate.js";
 import messageCreate from "./events/messageCreate.js";
@@ -27,6 +28,8 @@ const client = new DiscordClient({
 
 Log.wait("Starting bot...");
 
+const dblHandler = new DblHandler(client);
+
 client.on(Events.ClientReady, async() => {
     Log.done("Bot is ready!");
 
@@ -39,6 +42,7 @@ client.on(Events.ClientReady, async() => {
     await scheduleCrons(client);
 
     client.user?.setActivity({ name: `Counting on ${guildCount} servers!`, type: ActivityType.Playing });
+    dblHandler.postBotStats(guildCount);
 
     // Reload guild count every 5 minutes if it changed
     let lastGuildCount = guildCount;
@@ -48,6 +52,8 @@ client.on(Events.ClientReady, async() => {
             lastGuildCount = newGuildCount;
             client.user?.setActivity({ name: `Counting on ${newGuildCount} servers!`, type: ActivityType.Playing });
             Log.info("Guild count changed to " + newGuildCount + ". Updated activity.");
+
+            dblHandler.postBotStats(newGuildCount);
         }
     }, 5 * 60 * 1000);
 
