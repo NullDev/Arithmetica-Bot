@@ -2,6 +2,7 @@ import path from "node:path";
 import { SlashCommandBuilder } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
+import { config } from "../../../config/config.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -23,7 +24,8 @@ export default {
     async execute(interaction){
         const allCounts = await guild.all();
         const counts = allCounts.map(e => ({ count: e.value.count, guildId: e.id.replace("guild-", "") }))
-            .filter(e => e.count !== undefined);
+            .filter(e => e.count !== undefined)
+            .filter(e => !config.bot.global_stats_blacklist.includes(e.guildId));
 
         counts.sort((a, b) => b.count - a.count);
 
@@ -36,6 +38,6 @@ export default {
 
         const reply = top10Names.map((e, i) => `${i + 1}. ${e.name}: ${e.count} ${i === 0 ? "👑" : ""}`).join("\n");
 
-        return await interaction.reply({ content: reply });
+        return await interaction.reply({ content: reply || "No stats yet..." });
     },
 };
