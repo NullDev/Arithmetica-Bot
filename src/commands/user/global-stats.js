@@ -23,9 +23,10 @@ export default {
      */
     async execute(interaction){
         const allCounts = await guild.all();
-        const counts = allCounts.map(e => ({ count: e.value.count, guildId: e.id.replace("guild-", "") }))
+        const counts = allCounts.map(e => ({ count: e.value.count, guildId: e.id.replace("guild-", ""), cheat: e.value.cheatmode }))
             .filter(e => e.count !== undefined)
-            .filter(e => !config.bot.global_stats_blacklist.includes(e.guildId));
+            .filter(e => !config.bot.global_stats_blacklist.includes(e.guildId))
+            .filter(e => !e.cheat);
 
         counts.sort((a, b) => b.count - a.count);
 
