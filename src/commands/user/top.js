@@ -45,13 +45,15 @@ export default {
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
+        await interaction.deferReply();
+
         const cheatModeOn = await settings.get(`guild-${interaction.guildId}.cheatmode`);
-        if (cheatModeOn) return await interaction.reply(await __("errors.cheat_mode_enabled")(interaction.guildId));
+        if (cheatModeOn) return await interaction.editReply(await __("errors.cheat_mode_enabled")(interaction.guildId));
 
         const guildkey = `guild-${interaction.guildId}`;
         const users = await db.get(guildkey);
 
-        if (!users) return await interaction.reply(await __("errors.no_top_stats")(interaction.guildId));
+        if (!users) return await interaction.editReply(await __("errors.no_top_stats")(interaction.guildId));
 
         const sortBy = interaction.options.get("sort")?.value || "wins";
         const top10 = Object.entries(users)
@@ -65,7 +67,7 @@ export default {
                 user[1]["counting-math"] || 0,
             ]));
 
-        if (!top10.length) return await interaction.reply(await __("errors.no_top_stats")(interaction.guildId));
+        if (!top10.length) return await interaction.editReply(await __("errors.no_top_stats")(interaction.guildId));
 
         const top10WithNames = (await Promise.all(top10.map(async(user) => {
             const [index, userid, wins, fails, math] = user;
@@ -101,6 +103,6 @@ export default {
             embeds: [embed],
         };
 
-        return await interaction.reply(messageOptions);
+        return await interaction.editReply(messageOptions);
     },
 };
