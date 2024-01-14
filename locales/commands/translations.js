@@ -333,4 +333,14 @@ export default {
             "es-ES": "Ver el progreso global de todos los servidores. (Top 10)",
         },
     },
+    vote: {
+        desc: "If you enjoy the bot, please consider voting for it!",
+        translations: {
+            de: "Wenn dir der Bot gefällt, bitte vote für ihn!",
+            fr: "Si vous aimez le bot, pensez à voter pour lui !",
+            ru: "Если вам нравится бот, пожалуйста, проголосуйте за него!",
+            ja: "ボットが気に入ったら、投票してください！",
+            "es-ES": "Si te gusta el bot, ¡considera votar por él!",
+        },
+    },
 };
