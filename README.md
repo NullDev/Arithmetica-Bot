@@ -63,6 +63,12 @@ Feature request or discovered a bug? Please [open an Issue](https://github.com/N
 
 <hr>
 
+## 🤖 DBL
+
+<a href="https://discordbotlist.com/bots/arithmetica"><img src="https://discordbotlist.com/api/v1/bots/1108279646165942363/widget"></a>
+
+<hr>
+
 ## :wrench: Setup
 
 0. Open up your favourite terminal (and navigate somewhere you want to download the repository to). <br><br>
