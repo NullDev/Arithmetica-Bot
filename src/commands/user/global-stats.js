@@ -41,8 +41,9 @@ export default {
 
         const rank = (counts.findIndex(e => e.guildId === interaction.guildId) || 0) + 1;
         const currentGuildName = (await interaction.client.guilds.fetch()).find(e => e.id === interaction.guildId)?.name;
+        const allGuilds = await interaction.client.guilds.fetch().then(guilds => guilds.size);
 
-        let reply = await __("replies.global_top", currentGuildName, rank, counts.length)(interaction.guildId);
+        let reply = await __("replies.global_top", currentGuildName, rank, allGuilds)(interaction.guildId);
         if (rank === 1) reply += " 👑";
 
         return await interaction.reply({
