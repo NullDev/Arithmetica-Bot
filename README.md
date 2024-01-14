@@ -28,6 +28,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Slash commands
 - [x] Arithmetic is toggleable
 - [x] `/stats` command for personal stats or the stats of another user
+- [x] `/global-stats` command to see how other servers are doing
 - [x] `/top` command for a leaderboard, sortable by counts or fails
 - [x] Multi-language support (Can be set on every Discord server individually)
     - English (Peer reviewed ✅)
@@ -41,6 +42,8 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Optionally, set server language (`/set-language`)
     - Optionally, disable arithmetic (`/toggle-arithmetic`)
     - Optionally. set a timeout for losers (`/set-timeout`)
+    - Optionally, set a cooldown for new server members (`/cooldown`)
+    - Optionally, set a timeout increment factor (`/timeout-increment`)
 - [x] Easy to self-host
     - No external database needed
     - Easy configuration system
