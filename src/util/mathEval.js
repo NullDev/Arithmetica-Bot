@@ -44,8 +44,12 @@ const mathEval = function(expr){
     cleaned = parsePowers(cleaned) ?? cleaned;
 
     let result;
-    try { result = mathjs.evaluate(cleaned); }
-    catch (e){ result = null; }
+    try {
+        result = mathjs.evaluate(cleaned);
+    }
+    catch (e){
+        return null;
+    }
 
     if (result && typeof result === "object"){
         if (result.entries) result = result.entries[0];
