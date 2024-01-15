@@ -26,36 +26,34 @@ const handleTimeout = async function(message){
     let timeoutMinutes = Number(await guildDb.get(`guild-${message.guildId}.timeout`));
     if (!timeoutMinutes) return 0;
     const guildUser = await message.guild?.members.fetch(message.author.id);
-    if (guildUser){
-        const lastUserTimeout = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout`);
-        const lastUserTimeoutTime = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`);
+    if(!guildUser) return 0;
 
-        if (!lastUserTimeout){
-            await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout`, timeoutMinutes);
-            await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`, Date.now());
-        }
-        else {
-            // if its been a week since the last timeout, reset the timeout factor
-            if (Date.now() - lastUserTimeoutTime > 7 * 24 * 60 * 60 * 1000){
-                await userDb.delete(`guild-${message.guildId}.user-${message.author.id}.last-timeout`);
-                await userDb.delete(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`);
-            }
-            else {
-                const timeoutFactor = Number(await guildDb.get(`guild-${message.guildId}.timeout-factor`)) || 1;
-                timeoutMinutes = Math.floor(lastUserTimeout * timeoutFactor);
-            }
-        }
+    const lastUserTimeout = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout`);
+    const lastUserTimeoutTime = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`);
 
-        try {
-            await guildUser.timeout(
-                timeoutMinutes * 60 * 1000,
-                "User lost the counting game",
-            );
-        }
-        catch (e){
-            Log.error("Failed to timeout user: ", e);
-            return 0;
-        }
+    if (!lastUserTimeout){
+        await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout`, timeoutMinutes);
+        await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`, Date.now());
+    }
+    // if its been a week since the last timeout, reset the timeout factor
+    else if (Date.now() - lastUserTimeoutTime > 7 * 24 * 60 * 60 * 1000){
+        await userDb.delete(`guild-${message.guildId}.user-${message.author.id}.last-timeout`);
+        await userDb.delete(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`);
+    }
+    else {
+        const timeoutFactor = Number(await guildDb.get(`guild-${message.guildId}.timeout-factor`)) || 1;
+        timeoutMinutes = Math.floor(lastUserTimeout * timeoutFactor);
+    }
+
+    try {
+        await guildUser.timeout(
+            timeoutMinutes * 60 * 1000,
+            "User lost the counting game",
+        );
+    }
+    catch (e){
+        Log.error("Failed to timeout user: ", e);
+        return 0;
     }
     return timeoutMinutes;
 };
