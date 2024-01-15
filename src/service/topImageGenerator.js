@@ -22,7 +22,7 @@ const toBuffer = function(arrayBuffer){
  * Load image from File
  *
  * @param {string} path
- * @return {import("canvas").Image}
+ * @return {Promise<import("canvas").Image>}
  */
 const loadImageFromFile = async function(path){
     const buffer = await fs.readFile(path);
@@ -51,7 +51,6 @@ const generateImage = async function(users){
 
     const crownImage = await loadImageFromFile("assets/crown.png");
     const winImg = await loadImageFromFile("assets/wins.png");
-    const failImgBuff = await loadImageFromFile("assets/fails.png");
     const failImg = await loadImageFromFile("assets/fails.png");
     const mathcountsImg = await loadImageFromFile("assets/mathcounts.png");
     const defaultImg = await loadImageFromFile("assets/default.png");
