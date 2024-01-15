@@ -11,14 +11,14 @@
     "errors": {
         "eval_fail": "Berechnung des Ausdrucks fehlgeschlagen!",
         "yn_timeout": "Zeit abgelaufen. Abgebrochen.",
-        "generic_command_execution_failed": "Beim ausführen des Commands ist ein Fehler aufgetreten! =(",
+        "generic_command_execution_failed": "Beim Ausführen des Commands ist ein Fehler aufgetreten! =(",
         "command_not_found": "Das Command '%s' kenne ich nicht :/",
         "invalid_argument": "Ungültiges Argument!",
         "channel_not_found": "Dieser Channel existiert nicht auf diesem Server. Hast du ihn richtig geschrieben?",
         "not_a_number": "Das war keine Zahl! Du hast nicht verloren, aber ich habe das nicht gezählt.",
         "invalid_arithmetic": "Das war kein gültiger arithmetischer Ausdruck! Du hast nicht verloren, aber ich habe das nicht gezählt.",
         "same_user": "Du kannst nicht zweimal hintereinander zählen. Warte bis jemand anderes gezählt hat.",
-        "no_top_stats": "Es gibt noch keine Statistiken. Zähle um auf die Bestenliste zu kommen!",
+        "no_top_stats": "Es gibt noch keine Statistiken. Zähle, um auf die Bestenliste zu kommen!",
         "stats_on_bot": "Bots bekommen keine Zähl-Stats :)",
         "cheat_mode_enabled": "Stats sind deaktiviert im cheat mode, weil niemand verlieren kann."
     },
