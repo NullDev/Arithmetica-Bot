@@ -60,11 +60,11 @@ client.on(Events.ClientReady, async() => {
     client.user?.setStatus("online");
 });
 
-client.on(Events.MessageCreate, async message => messageCreate(message));
+client.on(Events.MessageCreate, message => messageCreate(message));
 
-client.on(Events.MessageDelete, async message => messageDelete(message));
+client.on(Events.MessageDelete, message => messageDelete(message));
 
-client.on(Events.MessageUpdate, async(oldMessage, newMessage) => messageUpdate(oldMessage, newMessage));
+client.on(Events.MessageUpdate, (oldMessage, newMessage) => messageUpdate(oldMessage, newMessage));
 
 client.on(Events.GuildCreate, guild => Log.info("Joined guild: " + guild.name));
 
