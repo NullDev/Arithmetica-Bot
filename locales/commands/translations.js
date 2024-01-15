@@ -343,4 +343,26 @@ export default {
             "es-ES": "Si te gusta el bot, ¡considera votar por él!",
         },
     },
+    silent_mode: {
+        desc: "Make the bot not show if a count is correct or not.",
+        translations: {
+            de: "Lass den Bot nicht anzeigen, ob eine Zählung korrekt ist oder nicht.",
+            fr: "Faites en sorte que le bot ne montre pas si un compte est correct ou non.",
+            ru: "Сделайте так, чтобы бот не показывал, правильно ли счет или нет.",
+            ja: "ボットがカウントが正しいかどうかを表示しないようにします。",
+            "es-ES": "Haz que el bot no muestre si un recuento es correcto o no.",
+        },
+        options: {
+            enabled: {
+                desc: "Enable or disable silent mode",
+                translations: {
+                    de: "Aktiviere oder deaktiviere den Silent-Modus",
+                    fr: "Activer ou désactiver le mode silencieux",
+                    ru: "Включить или отключить тихий режим",
+                    ja: "サイレントモードの有効化/無効化",
+                    "es-ES": "Activar o desactivar el modo silencioso",
+                },
+            },
+        },
+    },
 };

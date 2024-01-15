@@ -69,9 +69,11 @@ const handleTimeout = async function(message){
  * @return {Promise<any>}
  */
 const failed = async function(message, lastNumber, result){
-    await message.react("❌");
-
     const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`);
+    const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`);
+
+    if (!silentModeOn || cheatModeOn) await message.react("❌");
+
     if (cheatModeOn){
         setTimeout(() => message.delete(), 5000);
         return null;
@@ -82,7 +84,7 @@ const failed = async function(message, lastNumber, result){
     const timeout = await handleTimeout(message);
     if (!!timeout) response += "\n" + (await __("replies.timeout", timeout)(message.guildId));
 
-    await message.reply(`<@${message.author.id}> ${response}`);
+    if (!silentModeOn) await message.reply(`<@${message.author.id}> ${response}`);
 
     await guildDb.delete(`guild-${message.guildId}.lastUser`);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-fails`, 1);
@@ -99,7 +101,9 @@ const failed = async function(message, lastNumber, result){
  * @return {Promise<any>}
  */
 const correct = async function(message, guild, result, lastCountString){
-    await message.react("✅");
+    const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`);
+
+    if (!silentModeOn) await message.react("✅");
     await guildDb.set(`guild-${guild}.count`, result);
     await guildDb.set(`guild-${guild}.lastCountString`, lastCountString);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-wins`, 1);

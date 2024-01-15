@@ -27,6 +27,11 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Count with arithmetic expressions (`5^0, sqrt(4), i^2+4, log(10000, 10)`)
 - [x] Slash commands
 - [x] Arithmetic is toggleable
+- [x] Cooldown for new server members
+- [x] Timeout for losers
+- [x] Timeout increment factor for every fail
+- [x] Cheat-Mode (no losing)
+- [x] Silent mode (no confirmation is a count was correct or not)
 - [x] `/stats` command for personal stats or the stats of another user
 - [x] `/global-stats` command to see how other servers are doing
 - [x] `/top` command for a leaderboard, sortable by counts or fails
@@ -44,13 +49,13 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Optionally. set a timeout for losers (`/set-timeout`)
     - Optionally, set a cooldown for new server members (`/cooldown`)
     - Optionally, set a timeout increment factor (`/timeout-increment`)
+    - Optionally, enable silent mode (`/silent-mode`)
 - [x] Easy to self-host
     - No external database needed
     - Easy configuration system
     - Install instructions provided [below](#wrench-setup)
 - [x] Admin only commands
 - [x] Prevent persons from counting multiple times in a row 
-- [x] Configurable timeout for losers
 - [x] Handle counts deleted by the user
 - [x] Cheat-Mode (no losing)
 - [x] Sharding

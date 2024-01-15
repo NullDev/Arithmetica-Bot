@@ -27,6 +27,7 @@
         "incorrect_number": "That was not the next number! You failed! Last number was %s and the next number would have been %s. Your number was %s",
         "channel_set": "Channel was set to %s!",
         "arithmetic_set": "Arithmetic expressions were %s!",
+        "silent_mode_set": "Silent mode was %s!",
         "top_users": {
             "title": "Top User on %s",
             "description": "The Top 10 User sorted by %s.",

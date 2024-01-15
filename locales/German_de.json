@@ -27,6 +27,7 @@
         "incorrect_number": "Das war nicht die nächste Zahl! Du hast verloren! Die letzte Zahl war %s und die nächste Zahl wäre %s gewesen. Deine Zahl war %s",
         "channel_set": "Channel wurde auf %s gesetzt!",
         "arithmetic_set": "Arithmetische Ausdrücke wurden %s!",
+        "silent_mode_set": "Silent mode wurde %s!",
         "top_users": {
             "title": "Top User auf %s",
             "description": "Die Top 10 User sortiert nach %s.",

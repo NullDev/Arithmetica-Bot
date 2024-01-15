@@ -27,6 +27,7 @@
         "incorrect_number": "¡Ese no era el siguiente número! ¡Has perdido! El último número fue: %s y el siguiente número habría sido: %s. Tu número fue: %s",
         "channel_set": "El canal ha sido configurado a %s!",
         "arithmetic_set": "Las expresiones aritméticas han sido configuradas a %s!",
+        "silent_mode_set": "¡El modo silencioso ha sido %s!",
         "top_users": {
             "title": "Mejor usuario en %s",
             "description": "Los 10 mejores usuarios ordenados por %s.",
