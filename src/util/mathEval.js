@@ -51,7 +51,7 @@ const mathEval = function(expr){
         return null;
     }
 
-    if (result && typeof result === "object"){
+    if (typeof result === "object"){
         if (result.entries) result = result.entries[0];
         else if (result.re) result = result.re;
     }
