@@ -31,7 +31,7 @@ const parsePowers = function(expr){
  * Evaluate a math expression
  *
  * @param {String} expr
- * @return {Number}
+ * @return {Number | null}
  */
 const mathEval = function(expr){
     let cleaned = expr // @ts-ignore
