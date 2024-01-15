@@ -19,6 +19,17 @@ const toBuffer = function(arrayBuffer){
 };
 
 /**
+ * Load image from File
+ *
+ * @param {string} path
+ * @return {import("canvas").Image}
+ */
+const loadImageFromFile = async function(path){
+    const buffer = await fs.readFile(path);
+    return loadImage(buffer);
+};
+
+/**
  * Generate Top List Image
  *
  * @param {Array[]} users
@@ -38,20 +49,12 @@ const generateImage = async function(users){
     ctx.font = "20px sans-serif";
     ctx.fillStyle = "black";
 
-    const crownBuffer = await fs.readFile("assets/crown.png");
-    const crownImage = await loadImage(crownBuffer);
-
-    const winImgBuff = await fs.readFile("assets/wins.png");
-    const winImg = await loadImage(winImgBuff);
-
-    const failImgBuff = await fs.readFile("assets/fails.png");
-    const failImg = await loadImage(failImgBuff);
-
-    const mathcountsImgBuff = await fs.readFile("assets/mathcounts.png");
-    const mathcountsImg = await loadImage(mathcountsImgBuff);
-
-    const defaultImgBuff = await fs.readFile("assets/default.png");
-    const defaultImg = await loadImage(defaultImgBuff);
+    const crownImage = await loadImageFromFile("assets/crown.png");
+    const winImg = await loadImageFromFile("assets/wins.png");
+    const failImgBuff = await loadImageFromFile("assets/fails.png");
+    const failImg = await loadImageFromFile("assets/fails.png");
+    const mathcountsImg = await loadImageFromFile("assets/mathcounts.png");
+    const defaultImg = await loadImageFromFile("assets/default.png");
 
     for (let i = 0; i < users.length; i++){
         const user = users[i];
