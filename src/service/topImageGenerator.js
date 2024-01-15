@@ -49,11 +49,13 @@ const generateImage = async function(users){
     ctx.font = "20px sans-serif";
     ctx.fillStyle = "black";
 
-    const crownImage = await loadImageFromFile("assets/crown.png");
-    const winImg = await loadImageFromFile("assets/wins.png");
-    const failImg = await loadImageFromFile("assets/fails.png");
-    const mathcountsImg = await loadImageFromFile("assets/mathcounts.png");
-    const defaultImg = await loadImageFromFile("assets/default.png");
+    const [crownImage, winImg, failImg, mathcountsImg, defaultImg] = await Promise.all([
+        loadImageFromFile("assets/crown.png"),
+        loadImageFromFile("assets/wins.png"),
+        loadImageFromFile("assets/fails.png"),
+        loadImageFromFile("assets/mathcounts.png"),
+        loadImageFromFile("assets/default.png"),
+    ]);
 
     for (let i = 0; i < users.length; i++){
         const user = users[i];
