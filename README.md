@@ -105,6 +105,7 @@ Once the config has been copied like described in [Step 4](#wrench-setup), it ca
 | Config Key | Description | Data Type | Default value |
 | ---------- | --------- | ------------------ | ------------ |
 | discord: <br> `bot_token` | Auth Token of the Discord bot. Can be created [here](https://discordapp.com/developers/). | String | N/A |
+| discord: <br> `dbl_token` | OPTIONAL: [DiscordBotList](https://discordbotlist.com/) token to push commands and stats. | String | N/A |
 
 <hr>
 
