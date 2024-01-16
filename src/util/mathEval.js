@@ -55,6 +55,45 @@ const parseAbs = function(expr){
 };
 
 /**
+ * Parse phi
+ *
+ * @param {String} expr
+ * @return {String}
+ */
+const parsePhi = function(expr){
+    if (!expr.includes("phi")) return expr;
+    // keep phi as phi but replace phi(x) with totient(x)
+    return expr.replace(/phi\((.+?)\)/g, (_, p1) => `totient(${p1})`);
+};
+
+/**
+ * Greatest common divisor
+ *
+ * @param {Number} a
+ * @param {Number} b
+ * @return {Number}
+ */
+const gcd = (a, b) => (a === 0) ? b : gcd(b % a, a);
+
+/**
+ * Eulers totient/phi function
+ *
+ * @param {Number} n
+ * @return {Number}
+ */
+const totient = function(n){
+    let result = 1;
+    for (let i = 2; i < n; i++){
+        if (gcd(i, n) === 1) result++;
+    }
+    return result;
+};
+
+mathjs.import({
+    totient,
+}, { override: true });
+
+/**
  * Evaluate a math expression
  *
  * @param {String} expr
@@ -69,12 +108,14 @@ const mathEval = function(expr){
         .replaceAll("π", "pi")
         .replaceAll("τ", "tau")
         .replaceAll("φ", "phi")
+        .replaceAll("ϕ", "phi")
         .replaceAll("**", "^")
         .replaceAll("∞", "Infinity");
 
     cleaned = parsePowers(cleaned);
     cleaned = parseSqrt(cleaned);
     cleaned = parseAbs(cleaned);
+    cleaned = parsePhi(cleaned);
 
     let result;
     try {
