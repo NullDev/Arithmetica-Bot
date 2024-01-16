@@ -42,7 +42,7 @@ const voteHandler = async function(req, res, client){
         return res.code(400).send({ error: "Unknown bot" });
     }
 
-    await registerVote(client, user);
+    await registerVote(client, user || id);
 
     return res.code(200).send({ message: "OK" });
 };
