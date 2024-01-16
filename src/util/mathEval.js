@@ -11,10 +11,10 @@ mathjs.config({ number: "BigNumber" });
  * Parse powers
  *
  * @param {String} expr
- * @return {String|null}
+ * @return {String}
  */
 const parsePowers = function(expr){
-    if (/^[⁰¹²³⁴⁵⁶⁷⁸⁹]+/.test(expr)) return null;
+    if (/^[⁰¹²³⁴⁵⁶⁷⁸⁹]+/.test(expr)) return expr;
 
     const superscriptMap = {
         "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4",
@@ -28,6 +28,33 @@ const parsePowers = function(expr){
 };
 
 /**
+ * Parse square roots
+ *
+ * @param {String} expr
+ * @return {String}
+ */
+const parseSqrt = function(expr){
+    if (!expr.includes("√")) return expr;
+    // √1, √123, etc
+    let c = expr.replace(/√(\d+)/g, (_, p1) => `sqrt(${p1})`);
+    // √(1), √(123), √(1+2), etc
+    c = c.replace(/√\((.+?)\)/g, (_, p1) => `sqrt(${p1})`);
+    return c;
+};
+
+/**
+ * Parse absolute values
+ *
+ * @param {String} expr
+ * @return {String}
+ *
+ */
+const parseAbs = function(expr){
+    if (!expr.includes("|")) return expr;
+    return expr.replace(/\|(.+?)\|/g, (_, p1) => `abs(${p1})`);
+};
+
+/**
  * Evaluate a math expression
  *
  * @param {String} expr
@@ -35,13 +62,17 @@ const parsePowers = function(expr){
  */
 const mathEval = function(expr){
     let cleaned = expr // @ts-ignore
+        .replaceAll("\\", "")
         .replaceAll("×", "*")
         .replaceAll("⋅", "*")
         .replaceAll("÷", "/")
         .replaceAll("π", "pi")
+        .replaceAll("τ", "tau")
         .replaceAll("∞", "Infinity");
 
-    cleaned = parsePowers(cleaned) ?? cleaned;
+    cleaned = parsePowers(cleaned);
+    cleaned = parseSqrt(cleaned);
+    cleaned = parseAbs(cleaned);
 
     let result;
     try {

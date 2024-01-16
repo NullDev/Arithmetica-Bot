@@ -25,8 +25,9 @@ const guildDb = new QuickDB({
 const handleTimeout = async function(message){
     let timeoutMinutes = Number(await guildDb.get(`guild-${message.guildId}.timeout`));
     if (!timeoutMinutes) return 0;
+
     const guildUser = await message.guild?.members.fetch(message.author.id);
-    if(!guildUser) return 0;
+    if (!guildUser) return 0;
 
     const lastUserTimeout = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout`);
     const lastUserTimeoutTime = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`);
@@ -35,11 +36,13 @@ const handleTimeout = async function(message){
         await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout`, timeoutMinutes);
         await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`, Date.now());
     }
+
     // if its been a week since the last timeout, reset the timeout factor
     else if (Date.now() - lastUserTimeoutTime > 7 * 24 * 60 * 60 * 1000){
         await userDb.delete(`guild-${message.guildId}.user-${message.author.id}.last-timeout`);
         await userDb.delete(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`);
     }
+
     else {
         const timeoutFactor = Number(await guildDb.get(`guild-${message.guildId}.timeout-factor`)) || 1;
         timeoutMinutes = Math.floor(lastUserTimeout * timeoutFactor);
@@ -55,6 +58,7 @@ const handleTimeout = async function(message){
         Log.error("Failed to timeout user: ", e);
         return 0;
     }
+
     return timeoutMinutes;
 };
 
@@ -181,7 +185,7 @@ const countingService = async function(message){
         return await correct(message, guild, Number(message.content), message.content);
     }
 
-    const result = Math.round(mathEval(message.content)); // we deal with integers only anyway
+    const result = Math.round(mathEval(message.content ?? 0) || 0); // we deal with integers only anyway
 
     if (!result || isNaN(result)){
         return await replyWaitAndDelete(
