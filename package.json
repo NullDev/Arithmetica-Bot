@@ -28,20 +28,20 @@
   "author": "NullDev",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@babel/core": "^7.21.8",
-    "@babel/eslint-parser": "^7.21.8",
+    "@babel/core": "^7.23.7",
+    "@babel/eslint-parser": "^7.23.3",
     "cross-env": "^7.0.3",
-    "eslint": "^8.40.0"
+    "eslint": "^8.56.0"
   },
   "dependencies": {
-    "better-sqlite3": "^8.3.0",
+    "better-sqlite3": "^9.2.2",
     "canvas": "^2.11.2",
-    "check-dependencies": "^1.1.0",
-    "discord.js": "^14.11.0",
+    "check-dependencies": "^2.0.0",
+    "discord.js": "^14.14.1",
     "fastify": "^4.25.2",
     "i18n-light": "^0.5.4",
-    "mathjs": "^11.8.0",
-    "node-cron": "^3.0.2",
-    "quick.db": "^9.1.6"
+    "mathjs": "^12.3.0",
+    "node-cron": "^3.0.3",
+    "quick.db": "^9.1.7"
   }
 }
