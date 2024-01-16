@@ -123,6 +123,7 @@ const facts = [
     "An order preserving map on a complete lattice has a fixed point.",
     "A tautology is a tautology, which is a tautology.",
     "The sum of the first n odd numbers is n².",
+    "In topology, a coffee mug and a donut are homotopically equivalent",
 ];
 
 /**
