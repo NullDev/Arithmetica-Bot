@@ -14,11 +14,11 @@ class DblHandler {
      * @memberof DblHandler
      */
     constructor(client){
-        this.token = config.discord.dbl_token;
+        this.dblToken = config.discord.dbl_token;
+        this.topToken = config.discord.top_token;
         this.client = client;
         this.isProd = process.env.NODE_ENV !== "development";
-        // this.id = client.user?.id;
-        this.id = "1108279646165942363";
+        this.id = client.user?.id;
     }
 
     /**
@@ -29,12 +29,12 @@ class DblHandler {
      * @memberof DblHandler
      */
     postBotCommands(cmdMap){
-        if (!this.isProd || this.token === "") return;
+        if (!this.isProd || this.dblToken === "") return;
 
         fetch(`https://discordbotlist.com/api/v1/bots/${this.id}/commands`, {
             method: "post",
             headers: {
-                Authorization: this.token,
+                Authorization: this.dblToken,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(cmdMap),
@@ -51,7 +51,7 @@ class DblHandler {
      * @memberof DblHandler
      */
     async postBotStats(guildCount){
-        if (!this.isProd || this.token === "") return;
+        if (!this.isProd || this.dblToken === "") return;
 
         const members = await this.client.shard?.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0));
         const userCount = members?.reduce((acc, memberCount) => Number(acc) + Number(memberCount), 0);
@@ -59,7 +59,7 @@ class DblHandler {
         fetch(`https://discordbotlist.com/api/v1/bots/${this.id}/stats`, {
             method: "post",
             headers: {
-                Authorization: this.token,
+                Authorization: this.dblToken,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -69,6 +69,20 @@ class DblHandler {
         }).then(res => res.json())
             .then(() => Log.info("Updated guild count to " + guildCount + " and user count to " + userCount + " on discordbotlist.com"))
             .catch(err => Log.error("Failed to update guild count on discordbotlist.com: " + err));
+
+        if (this.topToken === "") return;
+        fetch(`https://top.gg/api/bots/${this.id}/stats`, {
+            method: "post",
+            headers: {
+                Authorization: this.topToken,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                server_count: guildCount,
+            }),
+        }).then(res => res.json())
+            .then(() => Log.info("Updated guild count to " + guildCount + " on top.gg"))
+            .catch(err => Log.error("Failed to update guild count on top.gg: " + err));
     }
 }
 
