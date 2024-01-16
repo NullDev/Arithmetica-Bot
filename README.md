@@ -112,7 +112,7 @@ Once the config has been copied like described in [Step 4](#wrench-setup), it ca
 ## :octocat: Contributors
 
 <a href="https://github.com/NullDev/Arithmetica-Bot/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=NullDev/Arithmetica-Bot" />
+  <img src="https://contrib.rocks/image?repo=NullDev/Arithmetica-Bot&v=1" />
 </a>
 
 <sub>Made with [contrib.rocks](https://contrib.rocks).</sub>
