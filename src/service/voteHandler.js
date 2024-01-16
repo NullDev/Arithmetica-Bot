@@ -34,11 +34,10 @@ const voteHandler = async function(req, res, client){
     if (req.headers.authorization !== config.discord.dbl_token) return res.code(401).send({ error: "Unauthorized" });
     if (!req.body) return res.code(400).send({ error: "Missing body" });
 
-    const { user, bot } = /** @type {Object} */ (req.body);
-    if (!bot) return res.code(400).send({ error: "Missing bot" });
-    if (!user) return res.code(400).send({ error: "Missing user" });
+    const { user, bot, id } = /** @type {Object} */ (req.body);
+    if (!user && !id) return res.code(400).send({ error: "Missing user" });
 
-    if (bot !== client.user?.id){
+    if (!!bot && bot !== client.user?.id){
         Log.warn("Received vote for unknown bot: " + bot);
         return res.code(400).send({ error: "Unknown bot" });
     }
