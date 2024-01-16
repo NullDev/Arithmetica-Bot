@@ -63,6 +63,8 @@
             "abort": "No, quiero ser bueno 😇",
             "success": "¡El modo de trampa ha sido activado! Espero que estés contento..."
         },
-        "global_top": "¡El servidor \"%s\" está en el lugar #%s en la tabla de clasificación global (%s servidores)!"
+        "global_top": "¡El servidor \"%s\" está en el lugar #%s en la tabla de clasificación global (%s servidores)!",
+        "help_preamble": "Puede visitar <https://mathjs.org/docs/index.html> para ver qué expresiones y sintaxis son posibles. Para verificar si una expresión es un recuento válido, puede usar `/calc` para ver si el resultado es correcto.",
+        "admin_help_preamble": "Configuración: Establezca el canal de conteo con `/set-channel`, luego configure opcionalmente opciones con `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/timeout-increment` y `/silent-mode`"
     }
 }

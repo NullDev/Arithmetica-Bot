@@ -25,8 +25,9 @@ export default {
             return `**/${cmd.data.name}** - ${desc}`;
         }));
 
+        const preamble = await __("replies.help_preamble")(interaction.guildId);
         return await interaction.reply({
-            content: str.join("\n"),
+            content: preamble + "\n\n" + str.join("\n"),
             ephemeral: true,
         });
     },
