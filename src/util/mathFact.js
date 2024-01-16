@@ -121,9 +121,15 @@ const facts = [
     "The sum of any two odd numbers or any two even numbers is an even number.",
     "0.999... is _exactly_ equal to 1. Not _approximately equal_, instead, they represent the very same number.",
     "An order preserving map on a complete lattice has a fixed point.",
-    "A tautology is a tautology, which is a tautology.",
+    "A matrix is invertible if and only if its determinant is non-zero.",
     "The sum of the first n odd numbers is n².",
     "In topology, a coffee mug and a donut are homotopically equivalent",
+    "The number of subsets of a set with n elements is 2^n.",
+    "In an infinite set, the number of elements and the number of subsets of those elements are incomparable.",
+    "In a finite group, the number of elements that are their own inverses is always even.",
+    "A number is divisible by 9 if and only if the sum of its digits is divisible by 9.",
+    "A cyclic group of prime order has only the trivial group as a proper subgroup.",
+    "The j-invariant of _i_ is 1728."
 ];
 
 /**
