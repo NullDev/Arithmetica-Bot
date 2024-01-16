@@ -365,4 +365,14 @@ export default {
             },
         },
     },
+    math_fact: {
+        desc: "Get a random math fact.",
+        translations: {
+            de: "Erhalte einen zufälligen Mathe-Fakt (auf Englisch)",
+            fr: "Obtenez un fait mathématique aléatoire (en anglais)",
+            ru: "Получить случайный математический факт (на английском языке)",
+            ja: "ランダムな数学の事実を取得します（英語）",
+            "es-ES": "Obtenga un hecho matemático aleatorio (en inglés)",
+        },
+    },
 };
