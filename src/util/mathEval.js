@@ -68,6 +68,8 @@ const mathEval = function(expr){
         .replaceAll("÷", "/")
         .replaceAll("π", "pi")
         .replaceAll("τ", "tau")
+        .replaceAll("φ", "phi")
+        .replaceAll("**", "^")
         .replaceAll("∞", "Infinity");
 
     cleaned = parsePowers(cleaned);
