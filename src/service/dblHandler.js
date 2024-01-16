@@ -47,13 +47,15 @@ class DblHandler {
      * Post bot stats to discordbotlist.com
      *
      * @param {Number} guildCount
-     * @return {void}
+     * @return {Promise<void>}
      * @memberof DblHandler
      */
-    postBotStats(guildCount){
+    async postBotStats(guildCount){
         if (!this.isProd || this.token === "") return;
 
-        const userCount = this.client.users.cache.size;
+        const members = await this.client.shard?.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0));
+        const userCount = members?.reduce((acc, memberCount) => Number(acc) + Number(memberCount), 0);
+
         fetch(`https://discordbotlist.com/api/v1/bots/${this.id}/stats`, {
             method: "post",
             headers: {
