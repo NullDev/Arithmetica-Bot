@@ -1,4 +1,5 @@
 import { GatewayIntentBits, Events, ActivityType } from "discord.js";
+import fastify from "fastify";
 import Log from "./util/log.js";
 import { config } from "../config/config.js";
 import DiscordClient from "./service/client.js";
@@ -9,6 +10,7 @@ import messageCreate from "./events/messageCreate.js";
 import messageDelete from "./events/messageDelete.js";
 import messageUpdate from "./events/messageUpdate.js";
 import scheduleCrons from "./service/cronScheduler.js";
+import voteHandler from "./service/voteHandler.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -19,6 +21,7 @@ const client = new DiscordClient({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
+        GatewayIntentBits.DirectMessages,
     ],
     presence: {
         status: "dnd",
@@ -79,6 +82,16 @@ client.on(Events.Error, err => Log.error("Client error.", err));
 client.login(config.discord.bot_token)
     .then(() => Log.done("Logged in!"))
     .catch(err => Log.error("Failed to login: ", err));
+
+const server = fastify({ logger: false });
+server.post("/vote", (req, res) => voteHandler(req, res, client));
+server.get("/vote", (_, res) => res.code(405).send({ error: "Method not allowed" }));
+server.listen({
+    port: config.http.port,
+}, (err, address) => {
+    if (err) throw err;
+    Log.info(`Fastify Server listening on ${address}`);
+});
 
 process.on("unhandledRejection", (
     /** @type {Error} */ err,
