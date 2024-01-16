@@ -89,6 +89,7 @@ const facts = [
     "Weierstrass elliptic functions have one singularity of order 2 inside the fundamental parallelogram.",
     "A holomorphic function of two or more complex variables has no isolated zeros.",
     "A functor is called exact if it preserves short exact sequences.",
+    "A functor is called faithful if it is injective on hom-sets.",
     "Every commutative monoid can be extended to a group.",
     "A ring R is Noetherian if every ideal of R is finitely generated.",
     "In the category of rings, an epimorphism is not necessarily surjective. Unlike sets and groups.",
@@ -124,12 +125,13 @@ const facts = [
     "A matrix is invertible if and only if its determinant is non-zero.",
     "The sum of the first n odd numbers is n².",
     "In topology, a coffee mug and a donut are homotopically equivalent",
+    "A group is called simple if it has no normal subgroups other than the trivial group and the group itself.",
     "The number of subsets of a set with n elements is 2^n.",
     "In an infinite set, the number of elements and the number of subsets of those elements are incomparable.",
     "In a finite group, the number of elements that are their own inverses is always even.",
     "A number is divisible by 9 if and only if the sum of its digits is divisible by 9.",
     "A cyclic group of prime order has only the trivial group as a proper subgroup.",
-    "The j-invariant of _i_ is 1728."
+    "The j-invariant of _i_ is 1728.",
 ];
 
 /**
