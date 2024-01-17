@@ -83,15 +83,20 @@ client.login(config.discord.bot_token)
     .then(() => Log.done("Logged in!"))
     .catch(err => Log.error("Failed to login: ", err));
 
-const server = fastify({ logger: false });
-server.post("/vote", (req, res) => voteHandler(req, res, client));
-server.get("/vote", (_, res) => res.code(405).send({ error: "Method not allowed" }));
-server.listen({
-    port: config.http.port,
-}, (err, address) => {
-    if (err) throw err;
-    Log.info(`Fastify Server listening on ${address}`);
-});
+if (process.env.NODE_ENV === "production"){
+    Log.wait("Starting Fastify Server...");
+
+    const server = fastify({ logger: false });
+    server.post("/vote", (req, res) => voteHandler(req, res, client));
+    server.get("/vote", (_, res) => res.code(405).send({ error: "Method not allowed" }));
+    server.listen({
+        port: config.http.port,
+    }, (err, address) => {
+        if (err) Log.error("Failed to start Fastify Server: ", err);
+        Log.done(`Fastify Server listening on ${address}`);
+    });
+}
+else Log.info("Not starting Fastify Server since we are not in production mode.");
 
 process.on("unhandledRejection", (
     /** @type {Error} */ err,

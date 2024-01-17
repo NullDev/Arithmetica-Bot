@@ -17,7 +17,7 @@ class DblHandler {
         this.dblToken = config.discord.dbl_token;
         this.topToken = config.discord.top_token;
         this.client = client;
-        this.isProd = process.env.NODE_ENV !== "development";
+        this.isProd = process.env.NODE_ENV === "production";
         this.id = client.user?.id;
     }
 

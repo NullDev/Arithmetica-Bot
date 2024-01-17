@@ -30,7 +30,8 @@ const restoreMessage = async function(message, newMessage = null){
 
     const arithmetic = await db.get(`guild-${message.guildId}.arithmetic`) ?? true;
 
-    const name = message.author?.username || "Arithmetica";
+    const guildMember = await message.guild?.members.fetch(message.author?.id || "");
+    const name = guildMember?.nickname || message.author?.displayName || message.author?.username || "Arithmetica";
     const avatar = message.author?.displayAvatarURL() || message.client.user?.displayAvatarURL();
 
     const webhook = await ch.createWebhook({ name, avatar });

@@ -75,7 +75,7 @@ export default {
             const member = await interaction.guild?.members.fetch(userid).catch(() => null);
             if (!member) return [index, { tag: "Anonymous", pic: null }, wins, fails, math];
 
-            return [index, { tag: member.user.tag, pic: member.displayAvatarURL({
+            return [index, { tag: member.nickname || member.displayName || member.user.username, pic: member.displayAvatarURL({
                 extension: "png",
             }) }, wins, fails, math];
         }))).map(e => {
