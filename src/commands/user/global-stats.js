@@ -22,6 +22,8 @@ export default {
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
+        await interaction.deferReply();
+
         const allCounts = await guild.all();
         const counts = allCounts.map(e => ({ count: e.value.count, guildId: e.id.replace("guild-", ""), cheat: e.value.cheatmode }))
             .filter(e => !e.cheat);
@@ -46,7 +48,7 @@ export default {
         let reply = await __("replies.global_top", currentGuildName, rank, allGuilds)(interaction.guildId);
         if (rank === 1) reply += " 👑";
 
-        return await interaction.reply({
+        return await interaction.editReply({
             content: (rank === 0 || !currentGuildName)
                 ? await __("errors.no_top_stats")(interaction.guildId)
                 : reply,

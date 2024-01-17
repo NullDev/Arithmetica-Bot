@@ -31,14 +31,15 @@ export default {
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
+        await interaction.deferReply();
+
         const cheatModeOn = await settings.get(`guild-${interaction.guildId}.cheatmode`);
-        if (cheatModeOn) return await interaction.reply(await __("errors.cheat_mode_enabled")(interaction.guildId));
+        if (cheatModeOn) return await interaction.editReply(await __("errors.cheat_mode_enabled")(interaction.guildId));
 
         const user = interaction.options.get("user");
         if (user?.user?.bot){
-            return await interaction.reply({
+            return await interaction.editReply({
                 content: await __("errors.stats_on_bot")(interaction.guildId),
-                ephemeral: true,
             });
         }
 
@@ -56,11 +57,11 @@ export default {
         }: \`${mathcounts}\``;
 
         if (!user?.user?.id){
-            return await interaction.reply(
+            return await interaction.editReply(
                 await __("replies.stats.your_stats")(interaction.guildId) + stats,
             );
         }
-        return await interaction.reply(
+        return await interaction.editReply(
             await __("replies.stats.stats_for", user.user.username)(interaction.guildId) + stats,
         );
     },

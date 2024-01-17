@@ -21,11 +21,13 @@ export default {
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
+        await interaction.deferReply();
+
         const seq = interaction.options.get("sequence")?.value;
-        if (!seq) return await interaction.reply({ content: await __("errors.invalid_argument")(interaction.guildId) });
+        if (!seq) return await interaction.editReply({ content: await __("errors.invalid_argument")(interaction.guildId) });
 
         const { results } = await fetch(`https://oeis.org/search?q=${seq}&fmt=json`).then((r) => r.json());
-        if (!results || !results.length) return await interaction.reply({ content: "¯\\_(ツ)_/¯" });
+        if (!results || !results.length) return await interaction.editReply({ content: "¯\\_(ツ)_/¯" });
 
         const first5 = results.slice(0, 5);
 
@@ -37,7 +39,7 @@ export default {
             res += `([${sequenceId}](<https://oeis.org/${sequenceId}>))\n`;
         });
 
-        return await interaction.reply({
+        return await interaction.editReply({
             content: res,
         });
     },
