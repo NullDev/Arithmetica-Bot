@@ -37,8 +37,9 @@ class QueueManager {
         if (message.author.bot || !message.guild) return;
 
         if (!this.queues.has(message.guild.id)){
-            this.queues.set(message.guild.id, { messages: [], lastUsed: Date.now() });
-            this.eventEmitter.on(message.guild.id, this.#processQueue.bind(this, message.guild.id));
+            const boundProcessQueue = this.#processQueue.bind(this, message.guild.id);
+            this.queues.set(message.guild.id, { messages: [], lastUsed: Date.now(), listener: boundProcessQueue });
+            this.eventEmitter.on(message.guild.id, boundProcessQueue);
         }
 
         const queueInfo = this.queues.get(message.guild.id);
@@ -59,6 +60,7 @@ class QueueManager {
      */
     async #processQueue(guildId){
         const queueInfo = this.queues.get(guildId);
+        if (!queueInfo) return;
         while (queueInfo.messages.length > 0){
             const message = queueInfo.messages[0];
             await countingService(message);
@@ -79,8 +81,8 @@ class QueueManager {
             const now = Date.now();
             for (const [guildId, queueInfo] of this.queues){
                 if (now - queueInfo.lastUsed > this.cleanupInterval){
-                    this.#processQueue(guildId);
                     this.queues.delete(guildId);
+                    this.eventEmitter.off(guildId, queueInfo.listener);
                     removed++;
                 }
             }
