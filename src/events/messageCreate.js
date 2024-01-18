@@ -4,16 +4,25 @@ import countingService from "../service/countingService.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
-const QUEUE = [];
+const QUEUES = {};
 
 /**
- * Work through the queue
+ * @param {string} guildId
+ * @return {unknown[]}
  */
-const handleQueue = async function(){
-    while (QUEUE.length > 0){
+const getOrCreateQueue = function(guildId){
+    if (!QUEUES[guildId]) QUEUES[guildId] = [];
+    return QUEUES[guildId];
+};
+/**
+ * Work through the queue
+ * @param {unknown[]} queue
+ */
+const handleQueue = async function(queue){
+    while (queue.length > 0){
         const message = QUEUE[0];
         await countingService(message);
-        QUEUE.shift();
+        queue.shift();
     }
 };
 
@@ -25,10 +34,13 @@ const handleQueue = async function(){
  */
 const messageCreate = async function(message){
     if (message.author.bot) return;
+    if (!message.guildId) return;
 
-    QUEUE.push(message);
+    const queue = getOrCreateQueue(message.guildId);
 
-    if (QUEUE.length === 1) await handleQueue();
+    queue.push(message);
+
+    if (queue.length === 1) await handleQueue(queue);
 };
 
 export default messageCreate;
