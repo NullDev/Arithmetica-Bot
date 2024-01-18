@@ -63,6 +63,10 @@
             "abort": "Nein, ich will brav sein 😇",
             "success": "Cheat mode wurde aktiviert! Ich hoffe du bist glücklich..."
         },
+        "vote": {
+            "thank_you": "Danke, dass du in betracht ziehst, zu voten!",
+            "rewards": "Wir können keine Belohnungen anbieten, aber du bekommst einen zufälligen Mathe-Fakt!"
+        },
         "global_top": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server)!",
         "help_preamble": "Besuche <https://mathjs.org/docs/index.html>, um zu sehen, welche Ausdrücke und Syntax möglich sind. Um zu überprüfen, ob ein Ausdruck eine gültige Zählung ist, kann `/calc` verwendet werden, um zu sehen, ob das Ergebnis korrekt ist.",
         "admin_help_preamble": "Einrichtung: Zählchannel mit `/set-channel` einstellen. Danach, optionale Einstellungen mit `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/timeout-increment` und `/silent-mode` konfigurieren."

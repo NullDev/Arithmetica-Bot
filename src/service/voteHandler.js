@@ -13,11 +13,15 @@ const registerVote = async function(client, user){
 
     const dmChannel = await client.users.fetch(user).catch(() => Log.warn("Could not fetch user " + user + "!"));
     if (dmChannel){
-        await dmChannel.send(
-            "Thank you for your vote! :) :heart:\n\n" +
-            "Have a random math fact:\n" +
-            getRandomMathFact(),
-        ).catch(() => Log.warn("Could not send vote message to user " + user + "!"));
+        const embed = {
+            color: 0xff8282,
+            title: ":heart: Voting",
+            description: "Thank you for your vote! :)\n\nHave a random math fact:\n" + getRandomMathFact(),
+        };
+
+        await dmChannel.send({
+            embeds: [embed],
+        }).catch(() => Log.warn("Could not send vote message to user " + user + "!"));
     }
 };
 
