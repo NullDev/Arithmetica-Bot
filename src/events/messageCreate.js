@@ -13,7 +13,7 @@ const queueManager = new QueueManager();
  * @return {Promise<void>}
  */
 const messageCreate = async function(message){
-    if (message.author.bot || message.system) return;
+    if (message.author.bot || message.system || !message.guild) return;
 
     queueManager.enqueueMessage(message);
 };

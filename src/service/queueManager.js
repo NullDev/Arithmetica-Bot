@@ -34,7 +34,7 @@ class QueueManager {
      * @memberof QueueManager
      */
     enqueueMessage(message){
-        if (message.author.bot || !message.guild) return;
+        if (!message.guild) return;
 
         if (!this.queues.has(message.guild.id)){
             const boundProcessQueue = this.#processQueue.bind(this, message.guild.id);
