@@ -13,7 +13,7 @@ const queueManager = new QueueManager();
  * @return {Promise<void>}
  */
 const messageCreate = async function(message){
-    await queueManager.enqueueMessage(message);
+    queueManager.enqueueMessage(message);
 };
 
 export default messageCreate;

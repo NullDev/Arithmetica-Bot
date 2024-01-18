@@ -30,10 +30,10 @@ class QueueManager {
      *
      * @public
      * @param {import("discord.js").Message} message
-     * @return {Promise<void>}
+     * @return {void}
      * @memberof QueueManager
      */
-    async enqueueMessage(message){
+    enqueueMessage(message){
         if (message.author.bot || !message.guild) return;
 
         if (!this.queues.has(message.guild.id)){
