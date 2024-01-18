@@ -35,7 +35,7 @@ const registerVote = async function(client, user){
  * @return {Promise<*>}
  */
 const voteHandler = async function(req, res, client){
-    if (req.headers.authorization !== config.discord.dbl_token) return res.code(401).send({ error: "Unauthorized" });
+    if (req.headers.authorization !== config.discord.vote_webhook_secret) return res.code(401).send({ error: "Unauthorized" });
     if (!req.body) return res.code(400).send({ error: "Missing body" });
 
     const { user, bot, id } = /** @type {Object} */ (req.body);

@@ -16,6 +16,7 @@ class DblHandler {
     constructor(client){
         this.dblToken = config.discord.dbl_token;
         this.topToken = config.discord.top_token;
+        this.discordsToken = config.discord.discords_list_token;
         this.client = client;
         this.isProd = process.env.NODE_ENV === "production";
         this.id = client.user?.id;
@@ -83,6 +84,20 @@ class DblHandler {
         }).then(res => res.json())
             .then(() => Log.info("Updated guild count to " + guildCount + " on top.gg"))
             .catch(err => Log.error("Failed to update guild count on top.gg: " + err));
+
+        if (this.discordsToken === "") return;
+        fetch(`https://discords.com/bots/api/bot/${this.id}/setservers`, {
+            method: "post",
+            headers: {
+                Authorization: this.discordsToken,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                server_count: guildCount,
+            }),
+        }).then(res => res.json())
+            .then(() => Log.info("Updated guild count to " + guildCount + " on discords.com"))
+            .catch(err => Log.error("Failed to update guild count on discords.com: " + err));
     }
 }
 
