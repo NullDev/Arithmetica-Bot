@@ -6,11 +6,14 @@ import countingService from "../service/countingService.js";
 
 const QUEUE = [];
 
+/**
+ * Work through the queue
+ */
 const handleQueue = async function(){
-    if (QUEUE.length > 0){
-        const message = QUEUE.shift();
+    while (QUEUE.length > 0){
+        const message = QUEUE[0];
         await countingService(message);
-        await handleQueue();
+        QUEUE.shift();
     }
 };
 
