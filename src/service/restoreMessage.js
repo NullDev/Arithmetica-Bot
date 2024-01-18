@@ -1,6 +1,7 @@
 import path from "node:path";
 import { QuickDB } from "quick.db";
 import mathEval from "../util/mathEval.js";
+import defaults from "../util/defaults.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -28,7 +29,7 @@ const restoreMessage = async function(message, newMessage = null){
         newMessage.delete();
     }
 
-    const arithmetic = await db.get(`guild-${message.guildId}.arithmetic`) ?? true;
+    const arithmetic = await db.get(`guild-${message.guildId}.arithmetic`) || defaults.arithmetic;
 
     const guildMember = await message.guild?.members.fetch(message.author?.id || "");
     const name = guildMember?.nickname || message.author?.displayName || message.author?.username || "Arithmetica";

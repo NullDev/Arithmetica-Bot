@@ -1,3 +1,7 @@
+// ========================= //
+// = Copyright (c) NullDev = //
+// ========================= //
+
 const facts = [
     "All abelian groups are solvable.",
     "The only factorial that's also a square is 1.",

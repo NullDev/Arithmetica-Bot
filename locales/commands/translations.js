@@ -290,13 +290,13 @@ export default {
         },
         options: {
             timeout: {
-                desc: "Cooldown in minutes or 0 to disable",
+                desc: "Cooldown in minutes or 0 to disable (default: 60)",
                 translations: {
-                    de: "Abklingzeit in Minuten oder 0 zum Deaktivieren",
-                    fr: "Temps de recharge en minutes ou 0 pour désactiver",
-                    ru: "Время отката в минутах или 0 для отключения",
-                    ja: "クールダウン（分単位）または0を無効にする",
-                    "es-ES": "Tiempo de espera en minutos o 0 para desactivar",
+                    de: "Abklingzeit in Minuten oder 0 zum Deaktivieren (Standard: 60)",
+                    fr: "Temps de recharge en minutes ou 0 pour désactiver (par défaut: 60)",
+                    ru: "Время отката в минутах или 0 для отключения (по умолчанию: 60)",
+                    ja: "クールダウン（分単位）または0を無効にする（デフォルト：60）",
+                    "es-ES": "Tiempo de espera en minutos o 0 para desactivar (predeterminado: 60)",
                 },
             },
         },

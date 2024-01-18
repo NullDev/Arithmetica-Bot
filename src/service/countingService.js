@@ -1,6 +1,7 @@
 import path from "node:path";
 import { QuickDB } from "quick.db";
 import mathEval from "../util/mathEval.js";
+import defaults from "../util/defaults.js";
 import Log from "../util/log.js";
 import __ from "./i18n.js";
 
@@ -23,7 +24,7 @@ const guildDb = new QuickDB({
  * @return {Promise<Number>}
  */
 const handleTimeout = async function(message){
-    let timeoutMinutes = Number(await guildDb.get(`guild-${message.guildId}.timeout`));
+    let timeoutMinutes = Number(await guildDb.get(`guild-${message.guildId}.timeout`)) || defaults.timeout_minutes;
     if (!timeoutMinutes) return 0;
 
     const guildUser = await message.guild?.members.fetch(message.author.id);
@@ -44,7 +45,7 @@ const handleTimeout = async function(message){
     }
 
     else {
-        const timeoutFactor = Number(await guildDb.get(`guild-${message.guildId}.timeout-factor`)) || 1;
+        const timeoutFactor = Number(await guildDb.get(`guild-${message.guildId}.timeout-factor`)) || defaults.timeout_factor;
         timeoutMinutes = Math.floor(lastUserTimeout * timeoutFactor);
     }
 
@@ -71,8 +72,8 @@ const handleTimeout = async function(message){
  * @return {Promise<any>}
  */
 const failed = async function(message, lastNumber, result){
-    const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`);
-    const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`);
+    const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`) || defaults.cheatmode;
+    const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`) || defaults.silentmode;
 
     if (!silentModeOn || cheatModeOn) await message.react("❌");
 
@@ -103,7 +104,7 @@ const failed = async function(message, lastNumber, result){
  * @return {Promise<any>}
  */
 const correct = async function(message, guild, result, lastCountString){
-    const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`);
+    const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`) || defaults.silentmode;
 
     if (!silentModeOn) await message.react("✅");
     await guildDb.set(`guild-${guild}.count`, result);
@@ -144,7 +145,7 @@ const countingService = async function(message){
     const channelID = await guildDb.get(`guild-${guild}.channel`);
     if (!channelID || channelID !== channel) return null;
 
-    const newMemberCooldown = await guildDb.get(`guild-${guild}.new-member-cooldown`) || 0;
+    const newMemberCooldown = await guildDb.get(`guild-${guild}.new-member-cooldown`) || defaults.new_member_cooldown;
     if (newMemberCooldown > 0){
         const memberSince = message.member?.joinedTimestamp;
         if (memberSince){
@@ -167,7 +168,7 @@ const countingService = async function(message){
         );
     }
 
-    const arithmetic = await guildDb.get(`guild-${guild}.arithmetic`) ?? true;
+    const arithmetic = await guildDb.get(`guild-${guild}.arithmetic`) || defaults.arithmetic;
     const lastNumber = await guildDb.get(`guild-${guild}.count`) || 0;
 
     if (!arithmetic){

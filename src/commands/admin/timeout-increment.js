@@ -2,6 +2,7 @@ import path from "node:path";
 import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
+import defaults from "../../util/defaults.js";
 import __ from "../../service/i18n.js";
 
 // ========================= //
@@ -31,8 +32,8 @@ export default {
      */
     async execute(interaction){
         let factor = Number(interaction.options.get("factor")?.value);
-        if (!factor || isNaN(factor)) factor = 1;
-        await db.set(`guild-${interaction.guildId}.timeout-factor`, factor || 1);
+        if (!factor || isNaN(factor)) factor = defaults.timeout_factor;
+        await db.set(`guild-${interaction.guildId}.timeout-factor`, factor);
         return await interaction.reply({
             content: factor === 1
                 ? await __("replies.timeout_factor_disabled")(interaction.guildId)
