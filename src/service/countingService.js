@@ -87,6 +87,12 @@ const failed = async function(message, lastNumber, result){
     const timeout = await handleTimeout(message);
     if (!!timeout) response += "\n" + (await __("replies.timeout", timeout)(message.guildId));
 
+    const best = await guildDb.get(`guild-${message.guildId}.best`) || 0;
+    if (best > 0){
+        response += "\n" + await __("replies.failed_stats", lastNumber, best)(message.guildId)
+        + " " + (lastNumber > best ? "New Best! 😄" : "🙁");
+    }
+
     if (!silentModeOn) await message.reply(`<@${message.author.id}> ${response}`);
 
     await guildDb.delete(`guild-${message.guildId}.lastUser`);
@@ -105,11 +111,15 @@ const failed = async function(message, lastNumber, result){
  */
 const correct = async function(message, guild, result, lastCountString){
     const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`) || defaults.silentmode;
+    const previousBest = await guildDb.get(`guild-${guild}.best`) || 0;
 
     if (!silentModeOn) await message.react("✅");
     await guildDb.set(`guild-${guild}.count`, result);
     await guildDb.set(`guild-${guild}.lastCountString`, lastCountString);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-wins`, 1);
+
+    if (result > previousBest) await guildDb.set(`guild-${guild}.best`, result);
+
     return await guildDb.set(`guild-${guild}.lastUser`, message.author.id);
 };
 

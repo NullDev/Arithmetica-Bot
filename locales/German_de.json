@@ -25,6 +25,7 @@
     "replies": {
         "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke.",
         "incorrect_number": "Das war nicht die nächste Zahl! Du hast verloren! Die letzte Zahl war %s und die nächste Zahl wäre %s gewesen. Deine Zahl war %s",
+        "failed_stats": "Erreichte Zahl war %s. Beste Zählung bisher war %s.",
         "channel_set": "Channel wurde auf %s gesetzt!",
         "arithmetic_set": "Arithmetische Ausdrücke wurden %s!",
         "silent_mode_set": "Silent mode wurde %s!",
@@ -67,7 +68,9 @@
             "thank_you": "Danke, dass du in betracht ziehst, zu voten!",
             "rewards": "Wir können keine Belohnungen anbieten, aber du bekommst einen zufälligen Mathe-Fakt!"
         },
-        "global_top": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server)!",
+        "best": "Die höchste Zählung auf diesem Server war bisher %s.",
+        "global_top_current": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server) mit seinen aktuellen Zählungen (%s)!",
+        "global_top_best": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server) mit seiner besten Zählung (%s)!",
         "help_preamble": "Besuche <https://mathjs.org/docs/index.html>, um zu sehen, welche Ausdrücke und Syntax möglich sind. Um zu überprüfen, ob ein Ausdruck eine gültige Zählung ist, kann `/calc` verwendet werden, um zu sehen, ob das Ergebnis korrekt ist.",
         "admin_help_preamble": "Einrichtung: Zählchannel mit `/set-channel` einstellen. Danach, optionale Einstellungen mit `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/timeout-increment` und `/silent-mode` konfigurieren."
     }

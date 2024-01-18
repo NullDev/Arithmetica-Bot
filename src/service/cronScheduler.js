@@ -13,14 +13,10 @@ import deleteRemovedGuilds from "../crons/deleteRemovedGuilds.js";
  * @param {import("../service/client.js").default} client
  */
 const scheduleCrons = async function(client){
-    // hourly cron
-    cron.schedule("0 * * * *", () => {
-        deleteRemovedGuilds(client);
-    });
-
     // daily cron
-    cron.schedule("0 0 * * *", () => {
-        LogHandler.removeOldLogs();
+    cron.schedule("0 0 * * *", async() => {
+        await deleteRemovedGuilds(client);
+        await LogHandler.removeOldLogs();
     });
 
     const cronCount = cron.getTasks().size;

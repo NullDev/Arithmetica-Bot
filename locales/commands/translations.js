@@ -332,6 +332,40 @@ export default {
             ja: "グローバルリーダーボードでサーバーのランクを表示します。",
             "es-ES": "Ver la clasificación de tu servidor en la clasificación global.",
         },
+        options: {
+            type: {
+                desc: "The type of stats to show",
+                translations: {
+                    de: "Der Typ der Statistiken, die angezeigt werden sollen",
+                    fr: "Le type de statistiques à afficher",
+                    ru: "Тип статистики для отображения",
+                    ja: "表示する統計のタイプ",
+                    "es-ES": "El tipo de estadísticas para mostrar",
+                },
+                choices: {
+                    current: {
+                        desc: "Current count",
+                        translations: {
+                            de: "Aktuelle Zählung",
+                            fr: "Compte actuel",
+                            ru: "Текущий счет",
+                            ja: "現在のカウント",
+                            "es-ES": "Recuento actual",
+                        },
+                    },
+                    best: {
+                        desc: "Best count",
+                        translations: {
+                            de: "Beste Zählung",
+                            fr: "Meilleur compte",
+                            ru: "Лучший счет",
+                            ja: "最高カウント",
+                            "es-ES": "Mejor recuento",
+                        },
+                    },
+                },
+            },
+        },
     },
     vote: {
         desc: "If you enjoy the bot, please consider voting for it!",
@@ -373,6 +407,16 @@ export default {
             ru: "Получить случайный математический факт (на английском языке)",
             ja: "ランダムな数学の事実を取得します（英語）",
             "es-ES": "Obtenga un hecho matemático aleatorio (en inglés)",
+        },
+    },
+    best: {
+        desc: "Show the best count of the server so far.",
+        translations: {
+            de: "Zeige die beste Zählung des Servers bisher.",
+            fr: "Afficher le meilleur compte du serveur jusqu'à présent.",
+            ru: "Показать лучший счет сервера до сих пор.",
+            ja: "これまでのサーバーの最高カウントを表示します。",
+            "es-ES": "Muestra el mejor recuento del servidor hasta ahora.",
         },
     },
 };

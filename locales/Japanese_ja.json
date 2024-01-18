@@ -25,6 +25,7 @@
     "replies": {
         "bot_info_tagline": "数をカウントするDiscord Botです。算術表現を許可します。",
         "incorrect_number": "それは次の数値ではありません！あなたは負けました！最後の数値は: %s で、次の数値は: %s でした。あなたの数値は: %s でした",
+        "failed_stats": "到達した数は %s。これまでの最高カウントは %s でした。",
         "channel_set": "チャンネルは %s に設定されました！",
         "arithmetic_set": "算術表現は %s に設定されました！",
         "silent_mode_set": "あなたは%sに%sを設定しました！",
@@ -67,7 +68,9 @@
             "thank_you": "投票を検討してくれてありがとう！",
             "rewards": "報酬を提供することはできませんが、ランダムな数学の事実を得られます！"
         },
-        "global_top": "サーバー「%s」は、グローバルリーダーボード（%sサーバー）の%s位にあります！",
+        "best": "このサーバーでの最高のカウントは %s でした。",
+        "global_top_current": "サーバー \"%s\" はグローバルリーダーボードで #%s 位です（%s サーバー）、現在のカウントで (%s)！",
+        "global_top_best": "サーバー \"%s\" はグローバルリーダーボードで #%s 位です（%s サーバー）、最高のカウントで (%s)！",
         "help_preamble": "<https://mathjs.org/docs/index.html> を訪れて、どのような表現や構文が可能かを確認できます。表現が有効なカウントであるかどうかを確認するには、`/calc`を使用して結果が正しいかどうかを確認できます。",
         "admin_help_preamble": "設定：`/set-channel`でカウントチャネルを設定し、次に `/set-language`、`/toggle-arithmetic`、`/set-timeout`、`/cooldown`、`/timeout-increment`、`/silent-mode` でオプションを構成できます"
     }

@@ -1,4 +1,4 @@
-import { EventEmitter } from "events";
+import { EventEmitter } from "node:events";
 import countingService from "../service/countingService.js";
 import Log from "../util/log.js";
 

@@ -17,35 +17,43 @@ export default {
         .setName("global-stats")
         .setDescription(translations.global_stats.desc)
         .setDescriptionLocalizations(translations.global_stats.translations)
-        .setDMPermission(false),
+        .setDMPermission(false)
+        .addStringOption((option) =>
+            option.setName("type")
+                .setDescription(translations.global_stats.options.type.desc)
+                .setDescriptionLocalizations(translations.global_stats.options.type.translations)
+                .setRequired(false)
+                .addChoices({
+                    name: translations.global_stats.options.type.choices.current.desc,
+                    name_localizations: translations.global_stats.options.type.choices.current.translations,
+                    value: "current",
+                }, {
+                    name: translations.global_stats.options.type.choices.best.desc,
+                    name_localizations: translations.global_stats.options.type.choices.best.translations,
+                    value: "best",
+                })),
     /**
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
         await interaction.deferReply();
 
+        const type = interaction.options.get("type")?.value || "current";
+
         const allCounts = await guild.all();
-        const counts = allCounts.map(e => ({ count: e.value.count, guildId: e.id.replace("guild-", ""), cheat: e.value.cheatmode }))
+        const counts = allCounts.map(e => ({ best: e.value.best || 0, count: e.value.count || 0, guildId: e.id.replace("guild-", ""), cheat: !!e.value.cheatmode }))
             .filter(e => !e.cheat);
 
-        counts.sort((a, b) => b.count - a.count);
-
-        /*
-        const top10 = counts.slice(0, 10);
-
-        const guilds = await interaction.client.guilds.fetch();
-        const guildNames = guilds.map(e => ({ name: e.name, guildId: e.id }));
-
-        const top10Names = top10.map(e => ({ name: guildNames.find(g => g.guildId === e.guildId)?.name, count: e.count }));
-
-        const reply = top10Names.map((e, i) => `${i + 1}. ${e.name}: ${e.count} ${i === 0 ? "👑" : ""}`).join("\n");
-        */
+        if (type === "best") counts.sort((a, b) => b.best - a.best);
+        else counts.sort((a, b) => b.count - a.count);
 
         const rank = (counts.findIndex(e => e.guildId === interaction.guildId) || 0) + 1;
+        const currentCountOfGuild = counts.find(e => e.guildId === interaction.guildId)?.count || 0;
+        const bestCountOfGuild = counts.find(e => e.guildId === interaction.guildId)?.best || 0;
         const currentGuildName = (await interaction.client.guilds.fetch()).find(e => e.id === interaction.guildId)?.name;
         const allGuilds = await interaction.client.guilds.fetch().then(guilds => guilds.size);
 
-        let reply = await __("replies.global_top", currentGuildName, rank, allGuilds)(interaction.guildId);
+        let reply = await __(`replies.global_top_${type}`, currentGuildName, rank, allGuilds, type === "best" ? bestCountOfGuild : currentCountOfGuild)(interaction.guildId);
         if (rank === 1) reply += " 👑";
 
         return await interaction.editReply({

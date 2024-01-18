@@ -25,6 +25,7 @@
     "replies": {
         "bot_info_tagline": "Discord Bot for counting. Allows arithmetic expressions.",
         "incorrect_number": "That was not the next number! You failed! Last number was %s and the next number would have been %s. Your number was %s",
+        "failed_stats": "Reached number %s. Best count so far was %s.",
         "channel_set": "Channel was set to %s!",
         "arithmetic_set": "Arithmetic expressions were %s!",
         "silent_mode_set": "Silent mode was %s!",
@@ -67,7 +68,9 @@
             "thank_you": "Thank you for considering to vote!",
             "rewards": "We can't offer any rewards, but you will get a random math fact!"
         },
-        "global_top": "Server \"%s\" is on place #%s in the global leaderboard (%s servers)!",
+        "best": "The best count on this server so far was %s.",
+        "global_top_current": "Server \"%s\" is on place #%s in the global leaderboard (%s servers) with its current count (%s)!",
+        "global_top_best": "Server \"%s\" is on place #%s in the global leaderboard (%s servers) with its best count (%s)!",
         "help_preamble": "You can visit <https://mathjs.org/docs/index.html> to see, what expressions and syntax is possible. To check, if an expression is a valid count, you can use `/calc` to see if the result is correct.",
         "admin_help_preamble": "Setup: Set the counting channel with `/set-channel`, then alternatively configure options with `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/timeout-increment` and `/silent-mode`."
     }
