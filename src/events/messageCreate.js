@@ -10,7 +10,7 @@ const handleQueue = async function(){
     if (QUEUE.length > 0){
         const message = QUEUE.shift();
         await countingService(message);
-        handleQueue();
+        await handleQueue();
     }
 };
 
