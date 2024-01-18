@@ -13,6 +13,8 @@ const queueManager = new QueueManager();
  * @return {Promise<void>}
  */
 const messageCreate = async function(message){
+    if (message.author.bot || message.system) return;
+
     queueManager.enqueueMessage(message);
 };
 
