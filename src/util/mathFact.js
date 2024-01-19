@@ -136,6 +136,8 @@ const facts = [
     "A number is divisible by 9 if and only if the sum of its digits is divisible by 9.",
     "A cyclic group of prime order has only the trivial group as a proper subgroup.",
     "The j-invariant of _i_ is 1728.",
+    "A limit is the terminal object in the category of cones of some functor.",
+    "Jacques Tits is a Belgian mathematician, known for Tits buildings, the Tits alternative, the Tits group and the Tits metric.",
 ];
 
 /**
