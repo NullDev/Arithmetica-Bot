@@ -31,22 +31,24 @@ const handleTimeout = async function(message){
     if (!guildUser) return 0;
 
     const lastUserTimeout = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout`);
-    const lastUserTimeoutTime = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`);
+    const lastUserTimeoutTime = await userDb.get(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`) || 0;
+    const timeoutFactor = Number(await guildDb.get(`guild-${message.guildId}.timeout-factor`)) || defaults.timeout_factor;
 
-    if (!lastUserTimeout){
+    if (!lastUserTimeout && timeoutFactor > 1){
         await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout`, timeoutMinutes);
         await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`, Date.now());
     }
 
     // if its been a week since the last timeout, reset the timeout factor
-    else if (Date.now() - lastUserTimeoutTime > 7 * 24 * 60 * 60 * 1000){
+    else if (!!lastUserTimeoutTime && Date.now() - lastUserTimeoutTime > 7 * 24 * 60 * 60 * 1000){
         await userDb.delete(`guild-${message.guildId}.user-${message.author.id}.last-timeout`);
         await userDb.delete(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`);
     }
 
-    else {
-        const timeoutFactor = Number(await guildDb.get(`guild-${message.guildId}.timeout-factor`)) || defaults.timeout_factor;
+    else if (timeoutFactor > 1){
         timeoutMinutes = Math.floor(lastUserTimeout * timeoutFactor);
+        await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout`, timeoutMinutes);
+        await userDb.set(`guild-${message.guildId}.user-${message.author.id}.last-timeout-time`, Date.now());
     }
 
     try {
