@@ -20,7 +20,7 @@ const facts = [
     "The derivative of a Bézier curve is another Bézier curve.",
     "In linear logic, multiplicative operators can be understood as context-free and additive operators as contextual.",
     "A monad is just a monoid in the category of endofunctors.",
-    "In the category of Abelian groups, direct sum is both a product and a coproduct.",
+    "In the category of Abelian groups, the direct sum is both a product and a coproduct.",
     "Laplace transforms turn differential equations into algebraic equations.",
     "The set of all algebraic numbers is countable.",
     "The set of all transcendental numbers is uncountable.",
