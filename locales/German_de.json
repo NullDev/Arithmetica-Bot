@@ -68,6 +68,9 @@
             "thank_you": "Danke, dass du in betracht ziehst, zu voten!",
             "rewards": "Wir können keine Belohnungen anbieten, aber du bekommst einen zufälligen Mathe-Fakt!"
         },
+        "ban_user": "User %s wurde vom Zählen gebannt!",
+        "unban_user": "User %s wurde vom Zählen entbannt!",
+        "user_banned": "Tut mir leid, aber du wurdest vom Zählen in %s gebannt!",
         "best": "Die höchste Zählung auf diesem Server war bisher %s.",
         "global_top_current": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server) mit seinen aktuellen Zählungen (%s)!",
         "global_top_best": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server) mit seiner besten Zählung (%s)!",

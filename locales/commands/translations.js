@@ -419,4 +419,48 @@ export default {
             "es-ES": "Muestra el mejor recuento del servidor hasta ahora.",
         },
     },
+    ban_user: {
+        desc: "Ban a user from counting.",
+        translations: {
+            de: "Verbiete einem Benutzer das Zählen.",
+            fr: "Interdire à un utilisateur de compter.",
+            ru: "Запретить пользователю считать.",
+            ja: "ユーザーのカウントを禁止します。",
+            "es-ES": "Prohibir a un usuario contar.",
+        },
+        options: {
+            user: {
+                desc: "The user to ban",
+                translations: {
+                    de: "Der zu bannende Benutzer",
+                    fr: "L'utilisateur à bannir",
+                    ru: "Пользователь для бана",
+                    ja: "禁止するユーザー",
+                    "es-ES": "El usuario a bloquear",
+                },
+            },
+        },
+    },
+    unban_user: {
+        desc: "Unban a user from counting.",
+        translations: {
+            de: "Erlaube einem Benutzer das Zählen wieder.",
+            fr: "Débannir un utilisateur de compter.",
+            ru: "Разбанить пользователя для подсчета.",
+            ja: "ユーザーのカウントを解除します。",
+            "es-ES": "Desbloquear a un usuario para contar.",
+        },
+        options: {
+            user: {
+                desc: "The user to unban",
+                translations: {
+                    de: "Der zu entsperrende Benutzer",
+                    fr: "L'utilisateur à débannir",
+                    ru: "Пользователь для разбана",
+                    ja: "禁止を解除するユーザー",
+                    "es-ES": "El usuario a desbloquear",
+                },
+            },
+        },
+    },
 };

@@ -68,6 +68,9 @@
             "thank_you": "Merci d'envisager de voter !",
             "rewards": "Nous ne pouvons offrir aucune récompense, mais vous recevrez un fait mathématique aléatoire !"
         },
+        "ban_user": "L'utilisateur %s a été banni du comptage!",
+        "unban_user": "L'utilisateur %s a été débanni du comptage!",
+        "user_banned": "Désolé, mais vous avez été banni du comptage sur %s!",
         "best": "Le meilleur compte sur ce serveur jusqu'à présent était %s.",
         "global_top_current": "Le serveur \"%s\" est à la place #%s dans le classement mondial (%s serveurs) avec son compte actuel (%s)!",
         "global_top_best": "Le serveur \"%s\" est à la place #%s dans le classement mondial (%s serveurs) avec son meilleur compte (%s)!",

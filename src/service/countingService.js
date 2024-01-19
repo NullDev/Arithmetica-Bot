@@ -155,6 +155,18 @@ const countingService = async function(message){
     const channelID = await guildDb.get(`guild-${guild}.channel`);
     if (!channelID || channelID !== channel) return null;
 
+    const isUserBanned = await userDb.get(`guild-${guild}.user-${message.author.id}.banned`);
+    if (isUserBanned){
+        message.delete();
+        return message.author.send(await __("replies.user_banned", message.guild?.name)(message.guildId)).catch(async() => {
+            Log.warn("Failed to send DM to user: " + message.author.id);
+            return await replyWaitAndDelete(
+                message,
+                await __("replies.user_banned", message.guild?.name)(message.guildId),
+            );
+        });
+    }
+
     const newMemberCooldown = await guildDb.get(`guild-${guild}.new-member-cooldown`) || defaults.new_member_cooldown;
     if (newMemberCooldown > 0){
         const memberSince = message.member?.joinedTimestamp;

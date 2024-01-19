@@ -68,6 +68,9 @@
             "thank_you": "¡Gracias por considerar votar!",
             "rewards": "No podemos ofrecer recompensas, pero recibirás un hecho matemático al azar!"
         },
+        "ban_user": "¡El usuario %s ha sido prohibido de contar!",
+        "unban_user": "¡El usuario %s ha sido desprohibido de contar!",
+        "user_banned": "¡Lo siento, pero has sido prohibido de contar en %s!",
         "best": "El mejor conteo en este servidor hasta ahora fue %s.",
         "global_top_current": "El servidor \"%s\" está en el lugar #%s en la clasificación global (%s servidores) con su conteo actual (%s)!",
         "global_top_best": "El servidor \"%s\" está en el lugar #%s en la clasificación global (%s servidores) con su mejor conteo (%s)!",

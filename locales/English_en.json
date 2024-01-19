@@ -68,6 +68,9 @@
             "thank_you": "Thank you for considering to vote!",
             "rewards": "We can't offer any rewards, but you will get a random math fact!"
         },
+        "ban_user": "User %s has been banned from counting!",
+        "unban_user": "User %s has been unbanned from counting!",
+        "user_banned": "Sorry, but you have been banned from counting in %s!",
         "best": "The best count on this server so far was %s.",
         "global_top_current": "Server \"%s\" is on place #%s in the global leaderboard (%s servers) with its current count (%s)!",
         "global_top_best": "Server \"%s\" is on place #%s in the global leaderboard (%s servers) with its best count (%s)!",
