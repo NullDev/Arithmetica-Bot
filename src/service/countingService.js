@@ -90,8 +90,9 @@ const failed = async function(message, lastNumber, result){
 
     const best = await guildDb.get(`guild-${message.guildId}.best`) || 0;
     if (best > 0){
+        const res = await __("replies.new_best")(message.guildId);
         response += "\n" + await __("replies.failed_stats", lastNumber, best)(message.guildId)
-        + " " + (lastNumber === best ? "New Best! 😄" : "🙁");
+        + " " + (lastNumber === best ? res + " 😄" : "🙁");
     }
 
     await message.reply(`<@${message.author.id}> ${response}`);

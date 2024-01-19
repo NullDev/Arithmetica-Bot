@@ -73,6 +73,7 @@
         "best": "このサーバーでの最高のカウントは %s でした。",
         "global_top_current": "サーバー \"%s\" はグローバルリーダーボードで #%s 位です（%s サーバー）、現在のカウントで (%s)！",
         "global_top_best": "サーバー \"%s\" はグローバルリーダーボードで #%s 位です（%s サーバー）、最高のカウントで (%s)！",
+        "new_best": "新しいハイスコア！",
         "help_preamble": "<https://mathjs.org/docs/index.html> を訪れて、どのような表現や構文が可能かを確認できます。表現が有効なカウントであるかどうかを確認するには、`/calc`を使用して結果が正しいかどうかを確認できます。",
         "admin_help_preamble": "設定：`/set-channel`でカウントチャネルを設定し、次に `/set-language`、`/toggle-arithmetic`、`/set-timeout`、`/cooldown`、`/timeout-increment` でオプションを構成できます"
     }
