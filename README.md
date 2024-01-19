@@ -31,7 +31,6 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Timeout for losers
 - [x] Timeout increment factor for every fail
 - [x] Cheat-Mode (no losing)
-- [x] Silent mode (no confirmation is a count was correct or not)
 - [x] `/help` command to get a list of all commands and useful information
 - [x] `/stats` command for personal stats or the stats of another user
 - [x] `/global-stats` command to see how other servers are doing (filter by current and all time best)
@@ -56,7 +55,6 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Optionally, set a cooldown for new server members (`/cooldown`) (Default: 60 minutes)
     - Optionally, set a timeout increment factor (`/timeout-increment`) (Default: Disabled)
     - Optionally, enable cheat mode (`/cheat-mode`) (Default: Disabled)
-    - Optionally, enable silent mode (`/silent-mode`) (Default: Disabled)
 - [x] Easy to self-host
     - No external database needed
     - Easy configuration system

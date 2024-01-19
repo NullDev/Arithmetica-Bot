@@ -28,7 +28,6 @@
         "failed_stats": "Erreichte Zahl war %s. Beste Zählung bisher war %s.",
         "channel_set": "Channel wurde auf %s gesetzt!",
         "arithmetic_set": "Arithmetische Ausdrücke wurden %s!",
-        "silent_mode_set": "Silent mode wurde %s!",
         "top_users": {
             "title": "Top User auf %s",
             "description": "Die Top 10 User sortiert nach %s.",
@@ -75,6 +74,6 @@
         "global_top_current": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server) mit seinen aktuellen Zählungen (%s)!",
         "global_top_best": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server) mit seiner besten Zählung (%s)!",
         "help_preamble": "Besuche <https://mathjs.org/docs/index.html>, um zu sehen, welche Ausdrücke und Syntax möglich sind. Um zu überprüfen, ob ein Ausdruck eine gültige Zählung ist, kann `/calc` verwendet werden, um zu sehen, ob das Ergebnis korrekt ist.",
-        "admin_help_preamble": "Einrichtung: Zählchannel mit `/set-channel` einstellen. Danach, optionale Einstellungen mit `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/timeout-increment` und `/silent-mode` konfigurieren."
+        "admin_help_preamble": "Einrichtung: Zählchannel mit `/set-channel` einstellen. Danach, optionale Einstellungen mit `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` und `/timeout-increment` konfigurieren."
     }
 }

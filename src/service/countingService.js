@@ -75,9 +75,8 @@ const handleTimeout = async function(message){
  */
 const failed = async function(message, lastNumber, result){
     const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`) || defaults.cheatmode;
-    const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`) || defaults.silentmode;
 
-    if (!silentModeOn || cheatModeOn) await message.react("❌");
+    await message.react("❌");
 
     if (cheatModeOn){
         setTimeout(() => message.delete(), 5000);
@@ -95,7 +94,7 @@ const failed = async function(message, lastNumber, result){
         + " " + (lastNumber === best ? "New Best! 😄" : "🙁");
     }
 
-    if (!silentModeOn) await message.reply(`<@${message.author.id}> ${response}`);
+    await message.reply(`<@${message.author.id}> ${response}`);
 
     await guildDb.delete(`guild-${message.guildId}.lastUser`);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-fails`, 1);
@@ -112,10 +111,9 @@ const failed = async function(message, lastNumber, result){
  * @return {Promise<any>}
  */
 const correct = async function(message, guild, result, lastCountString){
-    const silentModeOn = await guildDb.get(`guild-${message.guildId}.silent-mode`) || defaults.silentmode;
     const previousBest = await guildDb.get(`guild-${guild}.best`) || 0;
 
-    if (!silentModeOn) await message.react("✅");
+    await message.react("✅");
     await guildDb.set(`guild-${guild}.count`, result);
     await guildDb.set(`guild-${guild}.lastCountString`, lastCountString);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-wins`, 1);
