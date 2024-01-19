@@ -32,9 +32,15 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Timeout increment factor for every fail
 - [x] Cheat-Mode (no losing)
 - [x] Silent mode (no confirmation is a count was correct or not)
+- [x] `/help` command to get a list of all commands and useful information
 - [x] `/stats` command for personal stats or the stats of another user
-- [x] `/global-stats` command to see how other servers are doing
+- [x] `/global-stats` command to see how other servers are doing (filter by current and all time best)
+- [x] `/best` command to see the best cound of the server so far
 - [x] `/top` command for a leaderboard, sortable by counts or fails
+- [x] `/calc` command to calculate arithmetic expressions (and see if they are a valid count)
+- [x] `/info` command to get information about the bot and an invite link
+- [x] `/math-facts` command to get a random math fact
+- [x] `/oeis` command to look up a sequence on the [OEIS](https://oeis.org/)
 - [x] Multi-language support (Can be set on every Discord server individually)
     - English (Peer reviewed ✅)
     - German (Peer reviewed ✅)
@@ -42,20 +48,22 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Spanish (Peer reviewed ✅)
     - Russian (Peer reviewed ✅)
     - Japanese (Peer reviewed ✅)
-- [x] Easy to set up
+- [x] Easy to set up (view `/admin-help`)
     - Set the channel and you're good to go (`/set-channel`)
-    - Optionally, set server language (`/set-language`)
-    - Optionally, disable arithmetic (`/toggle-arithmetic`)
-    - Optionally. set a timeout for losers (`/set-timeout`)
-    - Optionally, set a cooldown for new server members (`/cooldown`)
-    - Optionally, set a timeout increment factor (`/timeout-increment`)
-    - Optionally, enable silent mode (`/silent-mode`)
+    - Optionally, set server language (`/set-language`) (Default: English)
+    - Optionally, disable arithmetic (`/toggle-arithmetic`) (Default: Enabled)
+    - Optionally. set a timeout for losers (`/set-timeout`) (Default: Disabled)
+    - Optionally, set a cooldown for new server members (`/cooldown`) (Default: 60 minutes)
+    - Optionally, set a timeout increment factor (`/timeout-increment`) (Default: Disabled)
+    - Optionally, enable cheat mode (`/cheat-mode`) (Default: Disabled)
+    - Optionally, enable silent mode (`/silent-mode`) (Default: Disabled)
 - [x] Easy to self-host
     - No external database needed
     - Easy configuration system
     - Install instructions provided [below](#wrench-setup)
 - [x] Admin only commands
 - [x] Prevent persons from counting multiple times in a row 
+- [x] Ban and unban users from counting
 - [x] Handle counts deleted by the user
 - [x] Cheat-Mode (no losing)
 - [x] Sharding
@@ -106,6 +114,9 @@ Once the config has been copied like described in [Step 4](#wrench-setup), it ca
 | ---------- | --------- | ------------------ | ------------ |
 | discord: <br> `bot_token` | Auth Token of the Discord bot. Can be created [here](https://discordapp.com/developers/). | String | N/A |
 | discord: <br> `dbl_token` | OPTIONAL: [DiscordBotList](https://discordbotlist.com/) token to push commands and stats. | String | N/A |
+| discord: <br> `top_token` | OPTIONAL: [Top.gg](https://top.gg/) token to push stats. | String | N/A |
+| discord: <br> `discords_list_token` | OPTIONAL: [Discords List](https://discords.com/) token to push stats. | String | N/A |
+| discord: <br> `vote_webhook_secret` | OPTIONAL: Secret for the vote webhook. | String | N/A |
 
 <hr>
 
