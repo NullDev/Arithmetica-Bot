@@ -22,12 +22,14 @@ export default {
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
+        await interaction.deferReply();
+
         const expr = interaction.options.get("expression")?.value;
-        if (!expr) return await interaction.reply({ content: await __("errors.invalid_argument")(interaction.guildId) });
+        if (!expr) return await interaction.editReply({ content: await __("errors.invalid_argument")(interaction.guildId) });
 
         const result = mathEval(String(expr));
 
-        return await interaction.reply({
+        return await interaction.editReply({
             content: result !== null
                 ? "`" + expr + "`:\n" + String(result)
                 : await __("errors.invalid_argument")(interaction.guildId),

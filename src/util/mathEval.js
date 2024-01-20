@@ -4,8 +4,15 @@ import { create, all } from "mathjs";
 // = Copyright (c) NullDev = //
 // ========================= //
 
+/* eslint-disable no-use-before-define */
+
 const mathjs = create(all);
 mathjs.config({ number: "BigNumber" });
+
+const neutralElements = {
+    "+": 0,
+    "*": 1,
+};
 
 /**
  * Parse powers
@@ -76,6 +83,14 @@ const parsePhi = function(expr){
 const gcd = (a, b) => (a === 0) ? b : gcd(b % a, a);
 
 /**
+ * Parse variable declaration in form of "var = value"
+ *
+ * @param {String} v
+ * @return {[String, Number]}
+ */
+const parseVar = v => [String(v).split("=")[0].trim(), Number(String(v).split("=")[1].trim())];
+
+/**
  * Eulers totient/phi function
  *
  * @param {Number} n
@@ -89,8 +104,76 @@ const totient = function(n){
     return result;
 };
 
+/**
+ * Iterative calculation function
+ *
+ * @param {String} n - start
+ * @param {String} k - end
+ * @param {String} expr - expression
+ * @param {string} [op="+"]
+ * @return {Number}
+ */
+const iterCalc = function(n, k, expr, op = "+"){
+    const [nS, nN] = parseVar(n);
+    const [kS, kN] = parseVar(k);
+
+    let result = neutralElements[op];
+    let completed = false;
+
+    const timeoutId = setTimeout(() => {
+        if (!completed){
+            throw new Error("Function execution exceeded 10 seconds");
+        }
+    }, 10000);
+
+    try {
+        for (let i = nN; i <= kN; i++){ // @ts-ignore
+            if (op === "+") result += Number(mathEval(expr.replaceAll(nS, i).replaceAll(kS, kN))); // @ts-ignore
+            if (op === "*") result *= Number(mathEval(expr.replaceAll(nS, i).replaceAll(kS, kN)));
+        }
+        if (Math.abs(result) === Infinity){
+            throw new Error("Result is Infinity");
+        }
+    }
+    catch (error){
+        clearTimeout(timeoutId);
+        throw error;
+    }
+
+    completed = true;
+    clearTimeout(timeoutId);
+
+    return result;
+};
+
+/**
+ * Summation function
+ *
+ * @param {String} n - start
+ * @param {String} k - end
+ * @param {String} expr - expression
+ * @return {Number}
+ */
+const sigmaSum = function(n, k, expr){
+    return iterCalc(n, k, expr, "+");
+};
+
+/**
+ * Product function
+ *
+ * @param {String} n - start
+ * @param {String} k - end
+ * @param {String} expr - expression
+ * @return {Number}
+ */
+const piProd = function(n, k, expr){
+    return iterCalc(n, k, expr, "*");
+};
+
 mathjs.import({
     totient,
+    sigmaSum,
+    piProd,
 }, { override: true });
 
 /**
@@ -99,7 +182,7 @@ mathjs.import({
  * @param {String} expr
  * @return {Number | null}
  */
-const mathEval = function(expr){
+function mathEval(expr){
     let cleaned = expr // @ts-ignore
         .replaceAll("\\", "")
         .replaceAll("×", "*")
@@ -107,6 +190,8 @@ const mathEval = function(expr){
         .replaceAll("÷", "/")
         .replaceAll("π", "pi")
         .replaceAll("τ", "tau")
+        .replaceAll("Σ", "sigmaSum")
+        .replaceAll("Π", "piProd")
         .replaceAll("φ", "phi")
         .replaceAll("ϕ", "phi")
         .replaceAll("**", "^")
@@ -125,7 +210,10 @@ const mathEval = function(expr){
         return null;
     }
 
+    if (typeof result === "function") return null;
+
     if (typeof result === "object"){
+        if (!result) return null;
         if (result.entries) result = result.entries[0];
         else if (result.re) result = result.re;
     }
@@ -136,6 +224,6 @@ const mathEval = function(expr){
     }
 
     return result;
-};
+}
 
 export default mathEval;
