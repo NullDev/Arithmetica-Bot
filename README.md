@@ -34,7 +34,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] `/help` command to get a list of all commands and useful information
 - [x] `/stats` command for personal stats or the stats of another user
 - [x] `/global-stats` command to see how other servers are doing (filter by current and all time best)
-- [x] `/best` command to see the best cound of the server so far
+- [x] `/best` command to see the best count of the server so far
 - [x] `/top` command for a leaderboard, sortable by counts or fails
 - [x] `/calc` command to calculate arithmetic expressions (and see if they are a valid count)
 - [x] `/info` command to get information about the bot and an invite link
