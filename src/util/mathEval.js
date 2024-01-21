@@ -14,6 +14,8 @@ const neutralElements = {
     "*": 1,
 };
 
+const computationLimitSecs = 5;
+
 /**
  * Parse powers
  *
@@ -122,9 +124,9 @@ const iterCalc = function(n, k, expr, op = "+"){
 
     const timeoutId = setTimeout(() => {
         if (!completed){
-            throw new Error("Function execution exceeded 10 seconds");
+            throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
         }
-    }, 10000);
+    }, computationLimitSecs * 1000);
 
     try {
         for (let i = nN; i <= kN; i++){ // @ts-ignore
