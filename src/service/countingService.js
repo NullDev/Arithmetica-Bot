@@ -209,12 +209,13 @@ const countingService = async function(message){
         return await correct(message, guild, Number(message.content), message.content);
     }
 
-    const result = Math.round(mathEval(message.content ?? 0) || 0); // we deal with integers only anyway
+    const { result: oResult, error } = mathEval(message.content ?? 0);
+    const result = Math.round(oResult || 0); // we deal with integers only anyway
 
     if (!result || isNaN(result)){
         return await replyWaitAndDelete(
             message,
-            await __("errors.invalid_arithmetic")(message.guildId),
+            (await __("errors.invalid_arithmetic")(message.guildId)) + "\n" + (!!error ? error : ""),
         );
     }
 

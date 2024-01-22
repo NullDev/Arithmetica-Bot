@@ -120,30 +120,24 @@ const iterCalc = function(n, k, expr, op = "+"){
     const [kS, kN] = parseVar(k);
 
     let result = neutralElements[op];
-    let completed = false;
+    const startTime = Date.now();
 
-    const timeoutId = setTimeout(() => {
-        if (!completed){
+    for (let i = nN; i <= kN; i++){
+        if (Date.now() - startTime > computationLimitSecs * 1000){
             throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
         }
-    }, computationLimitSecs * 1000);
 
-    try {
-        for (let i = nN; i <= kN; i++){ // @ts-ignore
-            if (op === "+") result += Number(mathEval(expr.replaceAll(nS, i).replaceAll(kS, kN))); // @ts-ignore
-            if (op === "*") result *= Number(mathEval(expr.replaceAll(nS, i).replaceAll(kS, kN)));
-        }
-        if (Math.abs(result) === Infinity){
-            throw new Error("Result is Infinity");
-        }
-    }
-    catch (error){
-        clearTimeout(timeoutId);
-        throw error;
-    }
+        // @ts-ignore
+        const { result: res, error } = mathEval(expr.replaceAll(nS, i).replaceAll(kS, kN));
+        if (error) throw new Error(error);
+        if (res === null) throw new Error("Couldn't evaluate");
 
-    completed = true;
-    clearTimeout(timeoutId);
+        if (op === "+") result += Number(res);
+        if (op === "*") result *= Number(res);
+    }
+    if (Math.abs(result) === Infinity){
+        throw new Error("Result may be Infinity");
+    }
 
     return result;
 };
@@ -182,7 +176,7 @@ mathjs.import({
  * Evaluate a math expression
  *
  * @param {String} expr
- * @return {Number | null}
+ * @return {{ result: Number|null, error: String|null }}
  */
 function mathEval(expr){
     let cleaned = expr // @ts-ignore
@@ -209,13 +203,18 @@ function mathEval(expr){
         result = mathjs.evaluate(cleaned);
     }
     catch (e){
-        return null;
+        return {
+            result: null,
+            error: String(e).includes("TypeError") || String(e).includes("SyntaxError")
+                ? null
+                : String(e).replace("Error: ", ""),
+        };
     }
 
-    if (typeof result === "function") return null;
+    if (typeof result === "function" || isNaN(result)) return { result: null, error: "Couldn't evaluate" };
 
     if (typeof result === "object"){
-        if (!result) return null;
+        if (!result) return { result: null, error: "Couldn't evaluate" };
         if (result.entries) result = result.entries[0];
         else if (result.re) result = result.re;
     }
@@ -225,7 +224,7 @@ function mathEval(expr){
         result = Math.round(result);
     }
 
-    return result;
+    return { result, error: null };
 }
 
 export default mathEval;

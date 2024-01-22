@@ -27,12 +27,13 @@ export default {
         const expr = interaction.options.get("expression")?.value;
         if (!expr) return await interaction.editReply({ content: await __("errors.invalid_argument")(interaction.guildId) });
 
-        const result = mathEval(String(expr));
+        const { result, error } = mathEval(String(expr));
 
         return await interaction.editReply({
+            // eslint-disable-next-line no-nested-ternary
             content: result !== null
                 ? "`" + expr + "`:\n" + String(result)
-                : await __("errors.invalid_argument")(interaction.guildId),
+                : (await __("errors.invalid_argument")(interaction.guildId)) + "\n" + (!!error ? error : ""),
         });
     },
 };
