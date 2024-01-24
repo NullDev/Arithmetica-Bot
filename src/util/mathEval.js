@@ -211,13 +211,15 @@ function mathEval(expr){
         };
     }
 
-    if (typeof result === "function" || isNaN(result)) return { result: null, error: "Couldn't evaluate" };
+    if (typeof result === "function") return { result: null, error: "Couldn't evaluate (Function)" };
 
     if (typeof result === "object"){
-        if (!result) return { result: null, error: "Couldn't evaluate" };
+        if (!result) return { result: null, error: "Couldn't evaluate (No Result)" };
         if (result.entries) result = result.entries[0];
         else if (result.re) result = result.re;
     }
+
+    if (isNaN(result)) return { result: null, error: "Couldn't evaluate (NaN)" };
 
     const epsilon = Math.pow(10, Math.floor(Math.log10(Math.abs(Number(result)))) - 14);
     if (Math.abs(result - Math.round(result)) < epsilon){
