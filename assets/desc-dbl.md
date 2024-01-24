@@ -15,7 +15,7 @@ This counting bot allows arithmetic expressions instead of just numbers. It supp
 
 - Set the channel and you're good to go (`/set-channel`)
 - Optionally, set server language (`/set-language`) (Default: English)
-- Optionally, disable arithmetic (`/toggle-arithmetic`) (Default: Enabled)
+- Optionally, disable/enable/force the use of arithmetic (`/toggle-arithmetic`) (Default: Enabled)
 - Optionally. set a timeout for losers (`/set-timeout`) (Default: Disabled)
 - Optionally, set a cooldown for new server members (`/cooldown`) (Default: 60 minutes)
 - Optionally, set a timeout increment factor (`/timeout-increment`) (Default: Disabled)
@@ -30,6 +30,7 @@ This counting bot allows arithmetic expressions instead of just numbers. It supp
 - Count with arithmetic expressions (`5^0, sqrt(4), i^2+4, log(10000, 10)`)
 - Slash commands
 - Arithmetic is toggleable
+- Toggleable Math-Only mode (counting only using arithmetic expressions)
 - Cooldown for new server members
 - Timeout for losers
 - Timeout increment factor for every fail
