@@ -20,7 +20,8 @@
         "same_user": "You can't count twice in a row. Wait for someone else to count.",
         "no_top_stats": "There are no stats yet. Count to get on the leaderboard!",
         "stats_on_bot": "Bots don't get count stats :)",
-        "cheat_mode_enabled": "Stats are deactivated in cheat mode because no one can lose."
+        "cheat_mode_enabled": "Stats are deactivated in cheat mode because no one can lose.",
+        "math_only": "Only math expressions are allowed in this channel! Counting normally has been disabled."
     },
     "replies": {
         "bot_info_tagline": "Discord Bot for counting. Allows arithmetic expressions.",
@@ -28,6 +29,7 @@
         "failed_stats": "Reached number %s. Best count so far was %s.",
         "channel_set": "Channel was set to %s!",
         "arithmetic_set": "Arithmetic expressions were %s!",
+        "arithmetic_set_mathonly": "Enabled math-only mode!",
         "top_users": {
             "title": "Top User on %s",
             "description": "The Top 10 User sorted by %s.",

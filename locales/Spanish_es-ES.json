@@ -20,7 +20,8 @@
         "same_user": "No puede's contar dos veces seguidas. Espera a que alguien más cuente.",
         "no_top_stats": "Aún no hay estadísticas. ¡Cuenta para aparecer en la tabla de líderes!",
         "stats_on_bot": "Los bots no obtienen estadísticas de conteo :)",
-        "cheat_mode_enabled": "Las estadísticas están desactivadas en modo trampa porque nadie puede perder."
+        "cheat_mode_enabled": "Las estadísticas están desactivadas en modo trampa porque nadie puede perder.",
+        "math_only": "¡Solo se permiten expresiones matemáticas en este canal! El conteo normal ha sido desactivado."
     },
     "replies": {
         "bot_info_tagline": "Bot para Discord, Permite expresiones matemáticas.",
@@ -28,6 +29,7 @@
         "failed_stats": "Se alcanzó el número %s. El mejor conteo hasta ahora fue %s.",
         "channel_set": "El canal ha sido configurado a %s!",
         "arithmetic_set": "Las expresiones aritméticas han sido configuradas a %s!",
+        "arithmetic_set_mathonly": "¡Modo solo matemático habilitado!",
         "top_users": {
             "title": "Mejor usuario en %s",
             "description": "Los 10 mejores usuarios ordenados por %s.",

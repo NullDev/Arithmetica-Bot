@@ -20,7 +20,8 @@
         "same_user": "Du kannst nicht zweimal hintereinander zählen. Warte bis jemand anderes gezählt hat.",
         "no_top_stats": "Es gibt noch keine Statistiken. Zähle, um auf die Bestenliste zu kommen!",
         "stats_on_bot": "Bots bekommen keine Zähl-Stats :)",
-        "cheat_mode_enabled": "Stats sind deaktiviert im cheat mode, weil niemand verlieren kann."
+        "cheat_mode_enabled": "Stats sind deaktiviert im cheat mode, weil niemand verlieren kann.",
+        "math_only": "Nur Mathe-Ausdrücke sind in diesem Channel erlaubt! Normales Zählen wurde deaktiviert."
     },
     "replies": {
         "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke.",
@@ -28,6 +29,7 @@
         "failed_stats": "Erreichte Zahl war %s. Beste Zählung bisher war %s.",
         "channel_set": "Channel wurde auf %s gesetzt!",
         "arithmetic_set": "Arithmetische Ausdrücke wurden %s!",
+        "arithmetic_set_mathonly": "Nur-Mathe-Modus aktiviert!",
         "top_users": {
             "title": "Top User auf %s",
             "description": "Die Top 10 User sortiert nach %s.",

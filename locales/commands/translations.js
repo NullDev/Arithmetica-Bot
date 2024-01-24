@@ -182,23 +182,55 @@ export default {
         },
     },
     toggle_arithmetic: {
-        desc: "Enable/Disable support for arithmetic expressions.",
+        desc: "Enable/Disable/Force the use of arithmetic expressions (Default: Enabled).",
         translations: {
-            de: "Aktiviere/Deaktiviere die Verwendung für arithmetische Ausdrücke.",
-            fr: "Activer/Désactiver la prise en charge des expressions arithmétiques.",
-            ru: "Включить/Отключить поддержку арифметических выражений.",
-            ja: "算術式のサポートの有効化/無効化。",
-            "es-ES": "Activar/Desactivar el soporte para expresiones aritméticas.",
+            de: "Aktiviere/Deaktiviere/Erzwinge die Verwendung von arithmetischen Ausdrücken (Standard: Aktiviert).",
+            fr: "Activer/Désactiver/Forcer l'utilisation d'expressions arithmétiques (Par défaut: Activé).",
+            ru: "Включить/Отключить/Принудительное использование арифметических выражений (по умолчанию: включено).",
+            ja: "算術式の使用を有効化/無効化/強制（デフォルト：有効）。",
+            "es-ES": "Activar/Desactivar/Forzar el uso de expresiones aritméticas (predeterminado: activado).",
         },
         options: {
-            enabled: {
-                desc: "Enable or disable arithmetic expressions",
+            select: {
+                desc: "Choose whether to enable, disable or force arithmetic expressions",
                 translations: {
-                    de: "Aktiviere oder deaktiviere arithmetische Ausdrücke",
-                    fr: "Activer ou désactiver les expressions arithmétiques",
-                    ru: "Включить или отключить арифметические выражения",
-                    ja: "算術式の有効化/無効化",
-                    "es-ES": "Activar o desactivar expresiones aritméticas",
+                    de: "Wähle, ob arithmetische Ausdrücke aktiviert, deaktiviert oder erzwungen werden sollen",
+                    fr: "Choisissez d'activer, de désactiver ou de forcer les expressions arithmétiques",
+                    ru: "Выберите, включить, отключить или принудительное использование арифметических выражений",
+                    ja: "算術式を有効、無効、または強制するかどうかを選択します",
+                    "es-ES": "Elija si habilitar, deshabilitar o forzar expresiones aritméticas",
+                },
+                choices: {
+                    enabled: {
+                        desc: "Enable arithmetic expressions",
+                        translations: {
+                            de: "Aktiviere arithmetische Ausdrücke",
+                            fr: "Activer les expressions arithmétiques",
+                            ru: "Включить арифметические выражения",
+                            ja: "算術式を有効にする",
+                            "es-ES": "Habilitar expresiones aritméticas",
+                        },
+                    },
+                    disabled: {
+                        desc: "Disable arithmetic expressions",
+                        translations: {
+                            de: "Deaktiviere arithmetische Ausdrücke",
+                            fr: "Désactiver les expressions arithmétiques",
+                            ru: "Отключить арифметические выражения",
+                            ja: "算術式を無効にする",
+                            "es-ES": "Deshabilitar expresiones aritméticas",
+                        },
+                    },
+                    mathonly: {
+                        desc: "Force arithmetic expressions (normal number counts will be rejected)",
+                        translations: {
+                            de: "Erzwinge arithmetische Ausdrücke (normale Zählungen werden abgelehnt)",
+                            fr: "Forcer les expressions arithmétiques (les comptes de nombres normaux seront rejetés)",
+                            ru: "Принудительное использование арифметических выражений (обычные счетчики чисел будут отклонены)",
+                            ja: "算術式を強制（通常の数値カウントは拒否されます）",
+                            "es-ES": "Forzar expresiones aritméticas (los recuentos normales de números serán rechazados)",
+                        },
+                    },
                 },
             },
         },

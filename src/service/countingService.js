@@ -74,7 +74,7 @@ const handleTimeout = async function(message){
  * @return {Promise<any>}
  */
 const failed = async function(message, lastNumber, result){
-    const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`) || defaults.cheatmode;
+    const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`) ?? defaults.cheatmode;
 
     await message.react("❌");
 
@@ -191,7 +191,7 @@ const countingService = async function(message){
         );
     }
 
-    const arithmetic = await guildDb.get(`guild-${guild}.arithmetic`) || defaults.arithmetic;
+    const arithmetic = await guildDb.get(`guild-${guild}.arithmetic`) ?? defaults.arithmetic;
     const lastNumber = await guildDb.get(`guild-${guild}.count`) || 0;
 
     if (!arithmetic){
@@ -207,6 +207,14 @@ const countingService = async function(message){
         }
 
         return await correct(message, guild, Number(message.content), message.content);
+    }
+
+    const mathOnlyMode = await guildDb.get(`guild-${guild}.mathonly`) ?? defaults.mathonly;
+    if (mathOnlyMode && message.content === String(lastNumber + 1)){
+        return await replyWaitAndDelete(
+            message,
+            await __("errors.math_only")(message.guildId),
+        );
     }
 
     const { result: oResult, error } = mathEval(message.content ?? 0);

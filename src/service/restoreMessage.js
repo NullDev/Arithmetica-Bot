@@ -29,7 +29,7 @@ const restoreMessage = async function(message, newMessage = null){
         newMessage.delete();
     }
 
-    const arithmetic = await db.get(`guild-${message.guildId}.arithmetic`) || defaults.arithmetic;
+    const arithmetic = await db.get(`guild-${message.guildId}.arithmetic`) ?? defaults.arithmetic;
 
     const guildMember = await message.guild?.members.fetch(message.author?.id || "");
     const name = guildMember?.nickname || message.author?.displayName || message.author?.username || "Arithmetica";

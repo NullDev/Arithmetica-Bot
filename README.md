@@ -27,6 +27,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Count with arithmetic expressions (`5^0, sqrt(4), i^2+4, log(10000, 10)`)
 - [x] Slash commands
 - [x] Arithmetic is toggleable
+- [x] Math-Only mode (countuing only using arithmetic expressions)
 - [x] Cooldown for new server members
 - [x] Timeout for losers
 - [x] Timeout increment factor for every fail
@@ -50,7 +51,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Easy to set up (view `/admin-help`)
     - Set the channel and you're good to go (`/set-channel`)
     - Optionally, set server language (`/set-language`) (Default: English)
-    - Optionally, disable arithmetic (`/toggle-arithmetic`) (Default: Enabled)
+    - Optionally, disable/enable/force the use of arithmetic (`/toggle-arithmetic`) (Default: Enabled)
     - Optionally. set a timeout for losers (`/set-timeout`) (Default: Disabled)
     - Optionally, set a cooldown for new server members (`/cooldown`) (Default: 60 minutes)
     - Optionally, set a timeout increment factor (`/timeout-increment`) (Default: Disabled)

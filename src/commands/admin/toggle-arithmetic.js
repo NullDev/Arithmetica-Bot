@@ -19,33 +19,67 @@ export default {
         .setDescriptionLocalizations(translations.toggle_arithmetic.translations)
         .setDMPermission(false)
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
-        .addBooleanOption((option) =>
-            option.setName("enabled")
-                .setDescription(translations.toggle_arithmetic.options.enabled.desc)
-                .setDescriptionLocalizations(translations.toggle_arithmetic.options.enabled.translations)
-                .setRequired(true)),
+        .addStringOption((option) =>
+            option.setName("mode")
+                .setDescription(translations.toggle_arithmetic.options.select.desc)
+                .setDescriptionLocalizations(translations.toggle_arithmetic.options.select.translations)
+                .setRequired(false)
+                .addChoices({
+                    name: translations.toggle_arithmetic.options.select.choices.enabled.desc,
+                    name_localizations: translations.toggle_arithmetic.options.select.choices.enabled.translations,
+                    value: "enabled",
+                }, {
+                    name: translations.toggle_arithmetic.options.select.choices.disabled.desc,
+                    name_localizations: translations.toggle_arithmetic.options.select.choices.disabled.translations,
+                    value: "disabled",
+                }, {
+                    name: translations.toggle_arithmetic.options.select.choices.mathonly.desc,
+                    name_localizations: translations.toggle_arithmetic.options.select.choices.mathonly.translations,
+                    value: "mathonly",
+                })),
 
     /**
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
-        const enabled = interaction.options.get("enabled");
-        if (!enabled){
+        const type = interaction.options.get("mode")?.value;
+
+        if (type === "mathonly"){
+            await db.set(`guild-${interaction.guildId}.arithmetic`, true);
+            await db.set(`guild-${interaction.guildId}.mathonly`, true);
+
             return await interaction.reply({
-                content: await __("errors.invalid_argument")(interaction.guildId),
+                content: await __("replies.arithmetic_set_mathonly")(interaction.guildId),
+                ephemeral: true,
+            });
+        }
+        else if (type === "disabled"){
+            await db.set(`guild-${interaction.guildId}.arithmetic`, false);
+            await db.set(`guild-${interaction.guildId}.mathonly`, false);
+
+            return await interaction.reply({
+                content: await __(
+                    "replies.arithmetic_set",
+                    await __("generic.deactivated")(interaction.guildId),
+                )(interaction.guildId),
+                ephemeral: true,
+            });
+        }
+        else if (type === "enabled"){
+            await db.set(`guild-${interaction.guildId}.arithmetic`, true);
+            await db.set(`guild-${interaction.guildId}.mathonly`, false);
+
+            return await interaction.reply({
+                content: await __(
+                    "replies.arithmetic_set",
+                    await __("generic.activated")(interaction.guildId),
+                )(interaction.guildId),
                 ephemeral: true,
             });
         }
 
-        const isEnabled = Boolean(enabled.value);
-
-        await db.set(`guild-${interaction.guildId}.arithmetic`, isEnabled);
-
         return await interaction.reply({
-            content: await __(
-                "replies.arithmetic_set",
-                await __("generic." + (isEnabled ? "activated" : "deactivated"))(interaction.guildId),
-            )(interaction.guildId),
+            content: await __("errors.invalid_argument")(interaction.guildId),
             ephemeral: true,
         });
     },
