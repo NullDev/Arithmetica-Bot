@@ -5,15 +5,15 @@
 Your average counting bot.
 Except you can count with Math™!
 
-
+<br><br>
 ---
-
+<br><br>
 
 This counting bot allows arithmetic expressions instead of just numbers. It supports multiple languages, a configurable timeout for losers, toggleable arithmetic and a cheat mode where you can't lose. It also takes care of deleted counts and prevents the same user from counting twice in a row.
 
-
+<br><br>
 ---
-
+<br><br>
 
 ### Easy to set up (view /admin-help)
 
@@ -25,9 +25,9 @@ This counting bot allows arithmetic expressions instead of just numbers. It supp
 - Optionally, set a timeout increment factor (`/timeout-increment`) (Default: Disabled)
 - Optionally, enable cheat mode (`/cheat-mode`) (Default: Disabled)
 
-
+<br><br>
 ---
-
+<br><br>
 
 ### Features
 
@@ -62,8 +62,8 @@ This counting bot allows arithmetic expressions instead of just numbers. It supp
     - Russian (Peer reviewed ✅)
     - Japanese (Peer reviewed ✅)
 
-
+<br><br>
 ---
-
+<br><br>
 
 Source Code: [https://github.com/NullDev/Arithmetica-Bot](https://github.com/NullDev/Arithmetica-Bot)
