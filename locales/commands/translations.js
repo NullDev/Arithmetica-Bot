@@ -441,4 +441,14 @@ export default {
             },
         },
     },
+    last_count: {
+        desc: "Show the last count of the server as number.",
+        translations: {
+            de: "Zeige die letzte Zählung des Servers als Zahl.",
+            fr: "Afficher le dernier compte du serveur en tant que nombre.",
+            ru: "Показать последний счет сервера как число.",
+            ja: "サーバーの最後のカウントを数値として表示します。",
+            "es-ES": "Muestra el último recuento del servidor como número.",
+        },
+    },
 };
