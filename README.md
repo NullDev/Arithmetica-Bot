@@ -9,6 +9,8 @@
 
 Your average counting bot. Except you can count with arithmetic expressions!
 
+Wiki: https://arithmetica.xyz/wiki
+
 <hr>
 
 ## :satellite: Invite the bot
