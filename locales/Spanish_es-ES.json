@@ -76,7 +76,7 @@
         "global_top_current": "El servidor \"%s\" está en el lugar #%s en la clasificación global (%s servidores) con su conteo actual (%s)!",
         "global_top_best": "El servidor \"%s\" está en el lugar #%s en la clasificación global (%s servidores) con su mejor conteo (%s)!",
         "new_best": "¡Nuevo récord!",
-        "help_preamble": "Puede visitar <https://mathjs.org/docs/index.html> para ver qué expresiones y sintaxis son posibles. Para verificar si una expresión es un recuento válido, puede usar `/calc` para ver si el resultado es correcto.",
+        "help_preamble": "Puede visitar <https://mathjs.org/docs/index.html> para ver qué expresiones y sintaxis son posibles. Para verificar si una expresión es un recuento válido, puede usar `/calc` para ver si el resultado es correcto.\nSupport Server: <https://discord.gg/hgFyq43dug>",
         "admin_help_preamble": "Configuración: Establezca el canal de conteo con `/set-channel`, luego configure opcionalmente opciones con `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` y `/timeout-increment`"
     }
 }
