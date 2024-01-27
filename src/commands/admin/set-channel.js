@@ -38,7 +38,7 @@ export default {
         }
 
         let val = String(channel.value)?.match(/^<#(\d+)>$/)?.[1];
-        if (!val) val = interaction.guild?.channels.cache.find(ch => ch.name === channel.value && ch.type === ChannelType.GuildText)?.id;
+        if (!val) val = (await interaction.guild?.channels.fetch().catch(() => null))?.find(ch => ch?.name === channel.value && ch?.type === ChannelType.GuildText)?.id;
         if (!val){
             return await interaction.reply({
                 content: await __("errors.channel_not_found")(interaction.guildId),
