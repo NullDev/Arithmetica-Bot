@@ -14,7 +14,7 @@ const db = new QuickDB({
 
 export default {
     data: new SlashCommandBuilder()
-        .setName("stats")
+        .setName("best")
         .setDescription(translations.best.desc)
         .setDescriptionLocalizations(translations.best.translations)
         .setDMPermission(false),
