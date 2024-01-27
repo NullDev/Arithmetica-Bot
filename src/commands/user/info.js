@@ -7,9 +7,11 @@ import __ from "../../service/i18n.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("info")
+        .setName(commandName)
         .setDescription(translations.info.desc)
         .setDescriptionLocalizations(translations.info.translations)
         .setDMPermission(false),

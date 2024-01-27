@@ -13,9 +13,11 @@ const guildDb = new QuickDB({
     filePath: path.resolve("./data/guild_data.sqlite"),
 });
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("cheat-mode")
+        .setName(commandName)
         .setDescription(translations.cheat_mode.desc)
         .setDescriptionLocalizations(translations.cheat_mode.translations)
         .setDMPermission(false)

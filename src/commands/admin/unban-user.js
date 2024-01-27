@@ -12,9 +12,11 @@ const db = new QuickDB({
     filePath: path.resolve("./data/user_data.sqlite"),
 });
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("unban-user")
+        .setName(commandName)
         .setDescription(translations.unban_user.desc)
         .setDescriptionLocalizations(translations.unban_user.translations)
         .setDMPermission(false)

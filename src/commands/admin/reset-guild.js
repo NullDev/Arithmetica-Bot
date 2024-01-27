@@ -17,9 +17,11 @@ const userDb = new QuickDB({
     filePath: path.resolve("./data/user_data.sqlite"),
 });
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("reset-guild")
+        .setName(commandName)
         .setDescription(translations.reset_guild.desc)
         .setDescriptionLocalizations(translations.reset_guild.translations)
         .setDMPermission(false)

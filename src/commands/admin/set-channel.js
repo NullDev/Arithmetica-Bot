@@ -12,9 +12,11 @@ const db = new QuickDB({
     filePath: path.resolve("./data/guild_data.sqlite"),
 });
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("set-channel")
+        .setName(commandName)
         .setDescription(translations.set_channel.desc)
         .setDescriptionLocalizations(translations.set_channel.translations)
         .setDMPermission(false)

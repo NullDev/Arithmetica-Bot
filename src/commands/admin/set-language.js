@@ -26,9 +26,11 @@ const getLanguages = function(){
     }));
 };
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("set-language")
+        .setName(commandName)
         .setDescription(translations.set_language.desc)
         .setDescriptionLocalizations(translations.set_language.translations)
         .setDMPermission(false)

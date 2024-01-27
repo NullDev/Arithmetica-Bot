@@ -6,9 +6,11 @@ import translations from "../../../locales/commands/translations.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("math-fact")
+        .setName(commandName)
         .setDescription(translations.math_fact.desc)
         .setDescriptionLocalizations(translations.math_fact.translations)
         .setDMPermission(false),

@@ -13,9 +13,11 @@ const db = new QuickDB({
     filePath: path.resolve("./data/guild_data.sqlite"),
 });
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("set-timeout")
+        .setName(commandName)
         .setDescription(translations.set_timeout.desc)
         .setDescriptionLocalizations(translations.set_timeout.translations)
         .setDMPermission(false)

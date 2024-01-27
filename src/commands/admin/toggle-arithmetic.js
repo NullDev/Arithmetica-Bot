@@ -12,9 +12,11 @@ const db = new QuickDB({
     filePath: path.resolve("./data/guild_data.sqlite"),
 });
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("toggle-arithmetic")
+        .setName(commandName)
         .setDescription(translations.toggle_arithmetic.desc)
         .setDescriptionLocalizations(translations.toggle_arithmetic.translations)
         .setDMPermission(false)

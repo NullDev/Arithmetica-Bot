@@ -13,9 +13,11 @@ const db = new QuickDB({
     filePath: path.resolve("./data/guild_data.sqlite"),
 });
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("cooldown")
+        .setName(commandName)
         .setDescription(translations.cooldown.desc)
         .setDescriptionLocalizations(translations.cooldown.translations)
         .setDMPermission(false)

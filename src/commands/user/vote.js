@@ -6,9 +6,11 @@ import translations from "../../../locales/commands/translations.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
+const commandName = import.meta.url.split("/").pop()?.split(".").shift() ?? "";
+
 export default {
     data: new SlashCommandBuilder()
-        .setName("vote")
+        .setName(commandName)
         .setDescription(translations.vote.desc)
         .setDescriptionLocalizations(translations.vote.translations)
         .setDMPermission(false),
