@@ -76,7 +76,7 @@
         "global_top_current": "Server \"%s\" is on place #%s in the global leaderboard (%s servers) with its current count (%s)!",
         "global_top_best": "Server \"%s\" is on place #%s in the global leaderboard (%s servers) with its best count (%s)!",
         "new_best": "New highscore!",
-        "help_preamble": "You can visit <https://mathjs.org/docs/index.html> to see, what expressions and syntax is possible. To check, if an expression is a valid count, you can use `/calc` to see if the result is correct.\nSupport Server: <https://discord.gg/hgFyq43dug>",
-        "admin_help_preamble": "Setup: Set the counting channel with `/set-channel`, then alternatively configure options with `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` and `/timeout-increment`."
+        "help_preamble": "You can visit <https://arithmetica.xyz/wiki> to see, what expressions and syntax is possible. To check, if an expression is a valid count, you can use `/calc` to see if the result is correct.\nSupport Server: <https://discord.gg/hgFyq43dug>",
+        "admin_help_preamble": "Setup: Set the counting channel with `/set-channel`, then alternatively configure options with `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` and `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>"
     }
 }
