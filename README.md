@@ -86,6 +86,13 @@ Feature request or discovered a bug? Please [open an Issue](https://github.com/N
 
 <hr>
 
+## 🌐 Website & Repo
+
+Website: https://arithmetica.xyz <br>
+Repository: https://github.com/NullDev/arithmetica.xyz
+
+<hr>
+
 ## :wrench: Setup
 
 0. Open up your favourite terminal (and navigate somewhere you want to download the repository to). <br><br>
