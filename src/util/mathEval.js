@@ -166,10 +166,30 @@ const piProd = function(n, k, expr){
     return iterCalc(n, k, expr, "*");
 };
 
+/**
+ * Tetration function
+ *
+ * @param {Number} a
+ * @param {Number} b
+ * @return {Number}
+ */
+const tetration = function(a, b){
+    let c = a;
+    const now = Date.now();
+    for (let i = 1; i < b; i++){
+        if (Date.now() - now > computationLimitSecs * 1000){
+            throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
+        }
+        c = Math.pow(a, c);
+    }
+    return c;
+};
+
 mathjs.import({
     totient,
     sigmaSum,
     piProd,
+    tetration,
 }, { override: true });
 
 /**
@@ -187,7 +207,10 @@ function mathEval(expr){
         .replaceAll("π", "pi")
         .replaceAll("τ", "tau")
         .replaceAll("Σ", "sigmaSum")
+        .replaceAll("∑", "sigmaSum")
         .replaceAll("Π", "piProd")
+        .replaceAll("∏", "piProd")
+        .replaceAll("↑↑", "tetration")
         .replaceAll("φ", "phi")
         .replaceAll("ϕ", "phi")
         .replaceAll("**", "^")
