@@ -34,7 +34,7 @@ Log.wait("Starting bot...");
 const dblHandler = new DblHandler(client);
 
 client.on(Events.ClientReady, async() => {
-    Log.done("Bot is ready!");
+    Log.done("Client is ready!");
 
     const guildCount = await client.guilds.fetch().then(guilds => guilds.size);
     Log.info("Logged in as '" + client.user?.tag + "'! Serving in " + guildCount + " servers.");
@@ -51,12 +51,15 @@ client.on(Events.ClientReady, async() => {
     let lastGuildCount = guildCount;
     setInterval(async() => {
         const newGuildCount = await client.guilds.fetch().then(guilds => guilds.size);
-        if (newGuildCount !== lastGuildCount){
+        const statusHasReset = client.user?.presence.activities[0].name === "Starting...";
+
+        if (newGuildCount !== lastGuildCount || statusHasReset){
             lastGuildCount = newGuildCount;
             client.user?.setActivity({ name: `Counting on ${newGuildCount} servers!`, type: ActivityType.Playing });
             Log.info("Guild count changed to " + newGuildCount + ". Updated activity.");
 
-            dblHandler.postBotStats(newGuildCount);
+            if (!statusHasReset) dblHandler.postBotStats(newGuildCount);
+            else Log.warn("Shard probably died. Re-Setting status without posting stats.");
         }
     }, 5 * 60 * 1000);
 

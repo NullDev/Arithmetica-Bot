@@ -79,7 +79,7 @@ class DblHandler {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                server_count: guildCount,
+                server_count: Number(guildCount),
             }),
         }).then(res => res.json())
             .then(() => Log.info("Updated guild count to " + guildCount + " on top.gg"))
