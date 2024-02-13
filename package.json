@@ -41,6 +41,7 @@
     "fastify": "^4.25.2",
     "i18n-light": "^0.5.4",
     "mathjs": "^12.3.0",
+    "nerdamer": "^1.1.13",
     "node-cron": "^3.0.3",
     "quick.db": "^9.1.7"
   }

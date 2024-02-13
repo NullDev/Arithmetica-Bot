@@ -1,5 +1,10 @@
 import { create, all } from "mathjs";
 
+import nerdamer from "nerdamer/nerdamer.core.js";
+import "nerdamer/Algebra.js";
+import "nerdamer/Calculus.js";
+import "nerdamer/Solve.js";
+
 // ========================= //
 // = Copyright (c) NullDev = //
 // ========================= //
@@ -185,11 +190,34 @@ const tetration = function(a, b){
     return c;
 };
 
+/**
+ * Variadic equation solver
+ *
+ * @param {String} variable
+ * @param {String[]} exprs
+ * @return {Number|null}
+ */
+const solve = function(variable, ...exprs){
+    if (exprs.length === 1){
+        const res = nerdamer.solve(exprs[0], variable).toString();
+        try {
+            return Number(JSON.parse(res)[0]);
+        }
+        catch (e){
+            return null;
+        }
+    }
+
+    const res = nerdamer.solveEquations(exprs);
+    return Number(res.find(r => r[0] === variable)[1]);
+};
+
 mathjs.import({
     totient,
     sigmaSum,
     piProd,
     tetration,
+    solve,
 }, { override: true });
 
 /**
