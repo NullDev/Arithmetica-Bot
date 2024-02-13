@@ -95,7 +95,7 @@ const gcd = (a, b) => (a === 0) ? b : gcd(b % a, a);
  * @param {String} v
  * @return {[String, Number]}
  */
-const parseVar = v => [String(v).split("=")[0].trim(), Number(String(v).split("=")[1].trim())];
+const parseVar = v => [String(v).split("=")[0].trim(), Number(mathEval(String(v).split("=")[1].trim()).result)];
 
 /**
  * Eulers totient/phi function
@@ -122,7 +122,7 @@ const totient = function(n){
  */
 const iterCalc = function(n, k, expr, op = "+"){
     const [nS, nN] = parseVar(n);
-    const [kS, kN] = parseVar(k);
+    const [kS, kN] = parseVar(k.replace("n", String(nN)));
 
     let result = neutralElements[op];
     const startTime = Date.now();
