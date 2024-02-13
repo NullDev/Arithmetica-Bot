@@ -1,8 +1,6 @@
 import { create, all } from "mathjs";
 
 import nerdamer from "nerdamer/nerdamer.core.js";
-import "nerdamer/Algebra.js";
-import "nerdamer/Calculus.js";
 import "nerdamer/Solve.js";
 
 // ========================= //
