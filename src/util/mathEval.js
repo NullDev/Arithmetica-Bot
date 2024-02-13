@@ -95,7 +95,16 @@ const gcd = (a, b) => (a === 0) ? b : gcd(b % a, a);
  * @param {String} v
  * @return {[String, Number]}
  */
-const parseVar = v => [String(v).split("=")[0].trim(), Number(mathEval(String(v).split("=")[1].trim()).result)];
+const parseVar = function(v){
+    const variable = String(v).split("=")[0].trim();
+    const rawVal = String(v).split("=")[1].trim();
+
+    const value = isNaN(Number(rawVal))
+        ? Number(mathEval(rawVal).result)
+        : Number(rawVal);
+
+    return [variable, value];
+};
 
 /**
  * Eulers totient/phi function
@@ -122,7 +131,7 @@ const totient = function(n){
  */
 const iterCalc = function(n, k, expr, op = "+"){
     const [nS, nN] = parseVar(n);
-    const [kS, kN] = parseVar(k.replace("n", String(nN)));
+    const [kS, kN] = parseVar(k);
 
     let result = neutralElements[op];
     const startTime = Date.now();
