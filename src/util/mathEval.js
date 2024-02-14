@@ -33,7 +33,7 @@ const parsePowers = function(expr){
         "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9",
     };
 
-    return expr.replace(/(\d+)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_, p1, p2) => {
+    return expr.replace(/(\d+|\w)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_, p1, p2) => {
         const normalNumbers = Array.from(p2).map(s => superscriptMap[s]).join("");
         return `${p1}^(${normalNumbers})`;
     });
@@ -88,23 +88,6 @@ const parsePhi = function(expr){
 const gcd = (a, b) => (a === 0) ? b : gcd(b % a, a);
 
 /**
- * Parse variable declaration in form of "var = value"
- *
- * @param {String} v
- * @return {[String, Number]}
- */
-const parseVar = function(v){
-    const variable = String(v).split("=")[0].trim();
-    const rawVal = String(v).split("=")[1].trim();
-
-    const value = isNaN(Number(rawVal))
-        ? Number(mathEval(rawVal).result)
-        : Number(rawVal);
-
-    return [variable, value];
-};
-
-/**
  * Eulers totient/phi function
  *
  * @param {Number} n
@@ -121,31 +104,39 @@ const totient = function(n){
 /**
  * Iterative calculation function
  *
- * @param {String} n - start
- * @param {String} k - end
- * @param {String} expr - expression
+ * @param {Array} args
+ * @param {Object} _math
+ * @param {Object} scope
  * @param {string} [op="+"]
  * @return {Number}
  */
-const iterCalc = function(n, k, expr, op = "+"){
-    const [nS, nN] = parseVar(n);
-    const [kS, kN] = parseVar(k);
+const iterCalc = function(args, _math, scope, op = "+"){
+    const [nNode, kNode, exprNode] = args;
+
+    if (!nNode.isAssignmentNode || !nNode.object.isSymbolNode){
+        throw Error('First argument must define a variable, like "i=1"');
+    }
+    const nName = nNode.object.name;
+
+    if (!kNode.isAssignmentNode || !kNode.object.isSymbolNode){
+        throw Error('Second argument must define a variable, like "k=5"');
+    }
+    const kName = kNode.object.name;
+
+    const n = nNode.compile().evaluate(scope);
+    const k = kNode.compile().evaluate(scope);
+    const expr = exprNode.compile();
 
     let result = neutralElements[op];
     const startTime = Date.now();
 
-    for (let i = nN; i <= kN; i++){
+    for (let i = n; i <= k; i++){
         if (Date.now() - startTime > computationLimitSecs * 1000){
             throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
         }
 
-        // @ts-ignore
-        const { result: res, error } = mathEval(expr.replaceAll(nS, i).replaceAll(kS, kN));
-        if (error) throw new Error(error);
-        if (res === null) throw new Error("Couldn't evaluate");
-
-        if (op === "+") result += Number(res);
-        if (op === "*") result *= Number(res);
+        if (op === "+") result += Number(expr.evaluate({ [nName]: i, [kName]: k }));
+        if (op === "*") result *= Number(expr.evaluate({ [nName]: i, [kName]: k }));
     }
     if (Math.abs(result) === Infinity){
         throw new Error("Result may be Infinity");
@@ -157,26 +148,28 @@ const iterCalc = function(n, k, expr, op = "+"){
 /**
  * Summation function
  *
- * @param {String} n - start
- * @param {String} k - end
- * @param {String} expr - expression
+ * @param {Array} args
+ * @param {Object} math
+ * @param {Object} scope
  * @return {Number}
  */
-const sigmaSum = function(n, k, expr){
-    return iterCalc(n, k, expr, "+");
+const sigmaSum = function(args, math, scope){
+    return iterCalc(args, math, scope, "+");
 };
+sigmaSum.rawArgs = true;
 
 /**
  * Product function
  *
- * @param {String} n - start
- * @param {String} k - end
- * @param {String} expr - expression
+ * @param {Array} args
+ * @param {Object} math
+ * @param {Object} scope
  * @return {Number}
  */
-const piProd = function(n, k, expr){
-    return iterCalc(n, k, expr, "*");
+const piProd = function(args, math, scope){
+    return iterCalc(args, math, scope, "*");
 };
+piProd.rawArgs = true;
 
 /**
  * Tetration function
@@ -257,8 +250,9 @@ function mathEval(expr){
     cleaned = parsePhi(cleaned);
 
     let result;
+    const scope = new Map();
     try {
-        result = mathjs.evaluate(cleaned);
+        result = mathjs.evaluate(cleaned, scope);
     }
     catch (e){
         return {
