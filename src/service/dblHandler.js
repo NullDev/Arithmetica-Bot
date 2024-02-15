@@ -64,8 +64,8 @@ class DblHandler {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                guilds: guildCount,
-                users: userCount,
+                guilds: Number(guildCount),
+                users: Number(userCount),
             }),
         }).then(res => res.json())
             .then(() => Log.info("Updated guild count to " + guildCount + " and user count to " + userCount + " on discordbotlist.com"))
@@ -93,7 +93,7 @@ class DblHandler {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                server_count: guildCount,
+                server_count: Number(guildCount),
             }),
         }).then(res => res.json())
             .then(() => Log.info("Updated guild count to " + guildCount + " on discords.com"))
