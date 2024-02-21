@@ -135,8 +135,13 @@ const iterCalc = function(args, _math, scope, op = "+"){
             throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
         }
 
-        if (op === "+") result += Number(expr.evaluate({ [nName]: i, [kName]: k }));
-        if (op === "*") result *= Number(expr.evaluate({ [nName]: i, [kName]: k }));
+        const newScope = new Map();
+        scope.forEach((value, key) => newScope.set(key, value));
+        newScope.set(nName, i);
+        newScope.set(kName, k);
+
+        if (op === "+") result += Number(expr.evaluate(newScope));
+        if (op === "*") result *= Number(expr.evaluate(newScope));
     }
     if (Math.abs(result) === Infinity){
         throw new Error("Result may be Infinity");
