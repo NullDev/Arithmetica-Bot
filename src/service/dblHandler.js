@@ -17,6 +17,7 @@ class DblHandler {
         this.dblToken = config.discord.dbl_token;
         this.topToken = config.discord.top_token;
         this.discordsToken = config.discord.discords_list_token;
+        this.botlistToken = config.discord.botlist_token;
         this.client = client;
         this.isProd = process.env.NODE_ENV === "production";
         this.id = client.user?.id;
@@ -98,6 +99,20 @@ class DblHandler {
         }).then(res => res.json())
             .then(() => Log.info("Updated guild count to " + guildCount + " on discords.com"))
             .catch(err => Log.error("Failed to update guild count on discords.com: " + err));
+
+        if (this.botlistToken === "") return;
+        fetch(`https://api.botlist.me/api/v1/bots/${this.id}/stats`, {
+            method: "post",
+            headers: {
+                Authorization: this.botlistToken,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                server_count: Number(guildCount),
+            }),
+        }).then(res => res.json())
+            .then(() => Log.info("Updated guild count to " + guildCount + " on botlist.me"))
+            .catch(err => Log.error("Failed to update guild count on botlist.me: " + err));
     }
 }
 
