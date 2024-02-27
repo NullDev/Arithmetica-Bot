@@ -5,6 +5,7 @@ export default {
         top_token: "",
         discords_list_token: "",
         botlist_token: "",
+        dlist_token: "",
         vote_webhook_secret: "",
     },
     http: {
