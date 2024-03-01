@@ -254,6 +254,8 @@ function mathEval(expr){
     cleaned = parseAbs(cleaned);
     cleaned = parsePhi(cleaned);
 
+    if (cleaned.replaceAll(" ", "").includes("0^0")) return { result: null, error: "0^0 is undefined" };
+
     let result;
     const scope = new Map();
     try {
