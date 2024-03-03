@@ -36,8 +36,8 @@ export default {
         let res = "Sequence: " + seq + "\n\n";
         first5.forEach((r, i) => {
             const sequenceId = "A" + String(r.number).padStart(6, "0");
-            res += `**${i + 1}.** ${r.name} `;
-            if (!!r.formula && !!r.formula.length && !!r.formula[0]) res += `- \`${r.formula[0]}\` - `;
+            res += `**${i + 1}.** ${r.name.replaceAll("*", "\\*").replaceAll("_", "\\_").replaceAll("`", "\\`")} `;
+            if (!!r.formula && !!r.formula.length && !!r.formula[0]) res += `- ${r.formula[0].replaceAll("*", "\\*").replaceAll("_", "\\_").replaceAll("`", "\\`")} - `;
             res += `([${sequenceId}](<https://oeis.org/${sequenceId}>))\n`;
         });
 
