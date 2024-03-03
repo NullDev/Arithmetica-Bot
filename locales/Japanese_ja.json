@@ -77,6 +77,7 @@
         "global_top_best": "サーバー \"%s\" はグローバルリーダーボードで #%s 位です（%s サーバー）、最高のカウントで (%s)！",
         "new_best": "新しいハイスコア！",
         "help_preamble": "<https://arithmetica.xyz/wiki> を訪れて、どのような表現や構文が可能かを確認できます。表現が有効なカウントであるかどうかを確認するには、`/calc`を使用して結果が正しいかどうかを確認できます。\nSupport Server: <https://discord.gg/hgFyq43dug>",
-        "admin_help_preamble": "設定：`/set-channel`でカウントチャネルを設定し、次に `/set-language`、`/toggle-arithmetic`、`/set-timeout`、`/cooldown`、`/timeout-increment` でオプションを構成できます。\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>"
+        "admin_help_preamble": "設定：`/set-channel`でカウントチャネルを設定し、次に `/set-language`、`/toggle-arithmetic`、`/set-timeout`、`/cooldown`、`/timeout-increment` でオプションを構成できます。\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
+        "pin_highscore": "ハイスコアのピン留めが%sされました！" 
     }
 }

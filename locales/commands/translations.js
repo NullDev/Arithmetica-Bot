@@ -483,4 +483,26 @@ export default {
             "es-ES": "Muestra el último recuento del servidor como número.",
         },
     },
+    pin_highscore: {
+        desc: "Pin the highscore to the channel.",
+        translations: {
+            de: "Pinne den Highscore in den Kanal.",
+            fr: "Épingler le meilleur score dans le canal.",
+            ru: "Закрепить рекорд в канале.",
+            ja: "ハイスコアをチャンネルにピン留めします。",
+            "es-ES": "Fijar la puntuación más alta en el canal.",
+        },
+        options: {
+            enabled: {
+                desc: "Enable or disable pinning",
+                translations: {
+                    de: "Aktiviere oder deaktiviere das Pinnen",
+                    fr: "Activer ou désactiver l'épinglage",
+                    ru: "Включить или отключить закрепление",
+                    ja: "ピン留めを有効または無効にする",
+                    "es-ES": "Habilitar o deshabilitar el fijado",
+                },
+            },
+        },
+    },
 };

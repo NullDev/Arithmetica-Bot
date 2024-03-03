@@ -93,6 +93,16 @@ const failed = async function(message, lastNumber, result){
         const res = await __("replies.new_best")(message.guildId);
         response += "\n" + await __("replies.failed_stats", lastNumber, best)(message.guildId)
         + " " + (lastNumber === best ? res + " 😄" : "🙁");
+        if (lastNumber === best) await message.react("👑");
+    }
+
+    const pinEnabled = await guildDb.get(`guild-${message.guildId}.pin-highscore`) ?? defaults.pin_highscore;
+    if (pinEnabled){
+        const oldMsgId = await guildDb.get(`guild-${message.guildId}.highscore-msg-id`);
+        if (oldMsgId) await message.channel.messages.fetch(oldMsgId).then((msg) => msg.unpin().catch((e) => Log.error("Failed to unpin message: ", e)));
+
+        message.pin().catch((e) => Log.error("Failed to pin message: ", e));
+        await guildDb.set(`guild-${message.guildId}.highscore-msg-id`, message.id);
     }
 
     await message.reply(`<@${message.author.id}> ${response}`);
