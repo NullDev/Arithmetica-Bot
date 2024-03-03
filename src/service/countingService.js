@@ -97,7 +97,7 @@ const failed = async function(message, lastNumber, result){
     }
 
     const pinEnabled = await guildDb.get(`guild-${message.guildId}.pin-highscore`) ?? defaults.pin_highscore;
-    if (pinEnabled){
+    if (pinEnabled && lastNumber === best){
         const oldMsgId = await guildDb.get(`guild-${message.guildId}.highscore-msg-id`);
         if (oldMsgId) await message.channel.messages.fetch(oldMsgId).then((msg) => msg.unpin().catch((e) => Log.error("Failed to unpin message: ", e)));
 
