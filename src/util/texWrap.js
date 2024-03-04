@@ -129,7 +129,7 @@ export function create(doc, options = {}){
     const texCommand = options.command || (format === "pdf" ? "pdflatex" : "latex");
 
     const result = new Transform({
-        transform(chunk, encoding, callback){
+        transform(chunk, _, callback){
             this.push(chunk);
             callback();
         },
@@ -177,6 +177,9 @@ export function create(doc, options = {}){
                     .catch(() => {
                         handleErrors(dirpath, result);
                     });
+
+                const parentDir = path.resolve(dirpath, "..");
+                fsPromises.rm(parentDir, { recursive: true, force: true });
             });
         });
 
