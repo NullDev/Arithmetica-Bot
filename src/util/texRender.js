@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import { create } from "./texWrap";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -70,7 +71,7 @@ const texRender = function(expr){
     const format = "png";
     const size = 300;
 
-    const texStream = latex([
+    const texStream = create([
         preamble,
         sanitize(expr),
         postamble,
