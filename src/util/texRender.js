@@ -48,12 +48,15 @@ const preamble = `\\nonstopmode
 \\pagecolor{bg}
 \\begin{document}
 \\begin{preview}
-\\color{white}`;
+\\color{white}
+`;
 
 // content to render
 
-const postamble = `\\end{preview}
-\\end{document}`;
+const postamble = `
+\\end{preview}
+\\end{document}
+`;
 
 /**
  * Render the input expression
