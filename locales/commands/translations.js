@@ -505,4 +505,26 @@ export default {
             },
         },
     },
+    tex: {
+        desc: "Render a LaTeX expression",
+        translations: {
+            de: "Rendere einen LaTeX-Ausdruck",
+            fr: "Rendre une expression LaTeX",
+            ru: "Отобразить выражение LaTeX",
+            ja: "LaTeX式をレンダリングする",
+            "es-ES": "Renderizar una expresión LaTeX",
+        },
+        options: {
+            expression: {
+                desc: "The LaTeX expression to render",
+                translations: {
+                    de: "Der zu rendernde LaTeX-Ausdruck",
+                    fr: "L'expression LaTeX à rendre",
+                    ru: "Выражение LaTeX для отображения",
+                    ja: "レンダリングするLaTeX式",
+                    "es-ES": "La expresión LaTeX a renderizar",
+                },
+            },
+        },
+    },
 };
