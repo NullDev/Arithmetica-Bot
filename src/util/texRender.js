@@ -81,6 +81,7 @@ const texRender = function(expr){
     const convert = spawn(convertPath, [
         "-density", "" + size,
         "-quality", "100",
+        "-background '#2C2F33' -extent 0x0",
         "pdf:-",
         format + ":-",
     ]);
