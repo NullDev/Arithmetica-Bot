@@ -7,6 +7,7 @@ export default {
         botlist_token: "",
         dlist_token: "",
         vote_webhook_secret: "",
+        wolfram_appid: "",
     },
     http: {
         port: 1335,
