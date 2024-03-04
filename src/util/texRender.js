@@ -89,8 +89,7 @@ const texRender = function(expr){
     texStream.on("error", function(err){
         result.emit("error", err);
         convert.kill();
-    });
-    texStream.pipe(convert.stdin);
+    }).pipe(convert.stdin);
 
     return result;
 };
