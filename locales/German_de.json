@@ -21,7 +21,8 @@
         "no_top_stats": "Es gibt noch keine Statistiken. Zähle, um auf die Bestenliste zu kommen!",
         "stats_on_bot": "Bots bekommen keine Zähl-Stats :)",
         "cheat_mode_enabled": "Stats sind deaktiviert im cheat mode, weil niemand verlieren kann.",
-        "math_only": "Nur Mathe-Ausdrücke sind in diesem Channel erlaubt! Normales Zählen wurde deaktiviert."
+        "math_only": "Nur Mathe-Ausdrücke sind in diesem Channel erlaubt! Normales Zählen wurde deaktiviert.",
+        "tex_on_windows": "Der Bot läuft derzeit auf Windows und kann daher diesen Befehl nicht ausführen."
     },
     "replies": {
         "bot_info_tagline": "Discord Bot zum Zählen. Erlaubt arithmetische Ausdrücke.",

@@ -21,7 +21,8 @@
         "no_top_stats": "Aún no hay estadísticas. ¡Cuenta para aparecer en la tabla de líderes!",
         "stats_on_bot": "Los bots no obtienen estadísticas de conteo :)",
         "cheat_mode_enabled": "Las estadísticas están desactivadas en modo trampa porque nadie puede perder.",
-        "math_only": "¡Solo se permiten expresiones matemáticas en este canal! El conteo normal ha sido desactivado."
+        "math_only": "¡Solo se permiten expresiones matemáticas en este canal! El conteo normal ha sido desactivado.",
+        "tex_on_windows": "El bot actualmente se está ejecutando en Windows y, por lo tanto, no puede ejecutar este comando."
     },
     "replies": {
         "bot_info_tagline": "Bot para Discord, Permite expresiones matemáticas.",

@@ -21,7 +21,8 @@
         "no_top_stats": "Il n'y a pas encore de statistiques. Comptez pour entrer dans le classement!",
         "stats_on_bot": "Les bots n'ont pas de statistiques de comptage :)",
         "cheat_mode_enabled": "Les stats sont désactivées en mode triche car personne ne peut perdre.",
-        "math_only": "Seules les expressions mathématiques sont autorisées dans ce canal ! Le comptage normal a été désactivé."
+        "math_only": "Seules les expressions mathématiques sont autorisées dans ce canal ! Le comptage normal a été désactivé.",
+        "tex_on_windows": "Le bot est actuellement en cours d'exécution sur Windows et ne peut donc pas exécuter cette commande."
     },
     "replies": {
         "bot_info_tagline": "Bot Discord pour compter. Autorise les expressions arithmétiques.",

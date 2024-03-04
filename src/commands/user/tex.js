@@ -26,6 +26,12 @@ export default {
     async execute(interaction){
         await interaction.deferReply();
 
+        if (process.platform === "win32"){
+            return await interaction.editReply(
+                await __("errors.tex_on_windows")(interaction.guildId),
+            );
+        }
+
         const expr = interaction.options.get("expression")?.value;
         if (!expr) return await interaction.editReply({ content: await __("errors.invalid_argument")(interaction.guildId) });
 
