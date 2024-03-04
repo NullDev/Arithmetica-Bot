@@ -48,13 +48,11 @@ const preamble = `\\nonstopmode
 \\pagecolor{bg}
 \\begin{document}
 \\begin{preview}
-\\color{white}
-\\vspace*{0.3cm}`;
+\\color{white}`;
 
 // content to render
 
-const postamble = `\\vspace*{0.3cm}
-\\end{preview}
+const postamble = `\\end{preview}
 \\end{document}`;
 
 /**
