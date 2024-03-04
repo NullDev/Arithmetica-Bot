@@ -44,7 +44,7 @@ const preamble = `\\nonstopmode
 \\usepackage[n, advantage, operators, sets, adversary, landau, probability, notions, logic, ff, mm, primitives, events, complexity, oracles, asymptotics, keys]{cryptocode}
 \\usepackage{chemfig}
 \\usepackage{mathdots}
-\\definecolor{bg}{HTML}{2C2F33}
+\\definecolor{bg}{HTML}{36393E}
 \\pagecolor{bg}
 \\begin{document}
 \\begin{preview}
@@ -81,7 +81,8 @@ const texRender = function(expr){
     const convert = spawn(convertPath, [
         "-density", "" + size,
         "-quality", "100",
-        "-background", "#2C2F33",
+        "-background", "#36393E",
+        "-extent", "0x0",
         "pdf:-",
         format + ":-",
     ]);
