@@ -1,8 +1,8 @@
 import { spawn } from "child_process";
 import path from "path";
 import { createReadStream, createWriteStream, promises as fsPromises } from "fs";
+import { Transform } from "stream";
 import { tmpdir } from "os";
-import through from "through";
 
 const tempAffixes = {
     dir: tmpdir(),
@@ -112,7 +112,6 @@ function handleErrors(dirpath, result){
             });
         })
         .catch(() => {
-            fsPromises.rm(dirpath, { recursive: true, force: true });
             result.emit("error", new Error("Error running LaTeX"));
         });
 }
@@ -129,7 +128,13 @@ export function create(doc, options = {}){
 
     const texCommand = options.command || (format === "pdf" ? "pdflatex" : "latex");
 
-    const result = through();
+    const result = new Transform({
+        transform(chunk, encoding, callback){
+            this.push(chunk);
+            callback();
+        },
+    });
+
     awaitDir((err, dirpath) => {
         if (err){
             result.emit("error", err);
@@ -153,13 +158,8 @@ export function create(doc, options = {}){
                 env,
             });
 
-            tex.on("error", (errI) => { // @ts-ignore
-                if (errI.code === "ENOENT"){
-                    console.error(`\nThere was an error spawning ${texCommand}. \nPlease make sure your LaTeX distribution is properly installed.\n`);
-                }
-                else {
-                    handleErrors(dirpath, result);
-                }
+            tex.on("error", (errI) => {
+                result.emit("error", errI);
             });
 
             tex.on("exit", () => {
@@ -167,8 +167,10 @@ export function create(doc, options = {}){
                 fsPromises.access(outputFile)
                     .then(() => {
                         const stream = createReadStream(outputFile);
-                        stream.on("close", () => {
-                            fsPromises.rm(dirpath, { recursive: true, force: true });
+                        stream.on("end", () => {
+                            result.end();
+                        }).on("error", (errI) => {
+                            result.emit("error", errI);
                         });
                         stream.pipe(result);
                     })

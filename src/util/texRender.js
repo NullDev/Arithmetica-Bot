@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { create } from "./texWrap";
+import { create } from "./texWrap.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -51,17 +51,6 @@ const postamble = `\\end{preview}
 \\end{document}`;
 
 /**
- * Sanitize the input expression
- *
- * @param {String} expr
- * @return {String}
- */
-const sanitize = function(expr){
-    const sanitized = expr.replace(/([^\\](\\\\)*)(\$)/g, "$1");
-    return sanitized.charAt(0) === "$" ? sanitized.substr(1) : sanitized;
-};
-
-/**
  * Render the input expression
  *
  * @param {String} expr
@@ -73,7 +62,7 @@ const texRender = function(expr){
 
     const texStream = create([
         preamble,
-        sanitize(expr),
+        expr,
         postamble,
     ], {
         command: "pdflatex",
