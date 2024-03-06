@@ -42,6 +42,8 @@ This counting bot allows arithmetic expressions instead of just numbers. It supp
 - `/info` command to get information about the bot and an invite link
 - `/math-facts` command to get a random math fact
 - `/oeis` command to look up a sequence on the [OEIS](https://oeis.org/)
+- LaTeX Rendering engine `/tex`
+- Wolfram Alpha integration `/ask`
 - Multi-language support (Can be set on every Discord server individually)
     - English (Peer reviewed ✅)
     - German (Peer reviewed ✅)

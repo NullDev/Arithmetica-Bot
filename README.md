@@ -43,6 +43,8 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] `/info` command to get information about the bot and an invite link
 - [x] `/math-facts` command to get a random math fact
 - [x] `/oeis` command to look up a sequence on the [OEIS](https://oeis.org/)
+- [x] LaTeX Rendering engine `/tex`
+- [x] Wolfram Alpha integration `/ask`
 - [x] Multi-language support (Can be set on every Discord server individually)
     - English (Peer reviewed ✅)
     - German (Peer reviewed ✅)
