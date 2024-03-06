@@ -527,4 +527,26 @@ export default {
             },
         },
     },
+    ask: {
+        desc: "Ask a question to Wolfram Alpha",
+        translations: {
+            de: "Stelle eine Frage an Wolfram Alpha",
+            fr: "Poser une question à Wolfram Alpha",
+            ru: "Задать вопрос Wolfram Alpha",
+            ja: "Wolfram Alphaに質問する",
+            "es-ES": "Hacer una pregunta a Wolfram Alpha",
+        },
+        options: {
+            question: {
+                desc: "The question to ask",
+                translations: {
+                    de: "Die zu stellende Frage",
+                    fr: "La question à poser",
+                    ru: "Вопрос, который нужно задать",
+                    ja: "質問する内容",
+                    "es-ES": "La pregunta a hacer",
+                },
+            },
+        },
+    },
 };
