@@ -58,12 +58,12 @@ class WolframAlpha {
                 return [];
             }
 
-            if (!!res.queryresult.pods[0].primary){
-                return res.queryresult.pods;
-            }
+            if (!!res.queryresult.pods[0].primary) return res.queryresult.pods;
 
             const pods = res.queryresult.pods.filter(pod => !!pod.primary);
-            return [res.queryresult.pods[0], ...pods];
+            if(pods.length > 0) return [res.queryresult.pods[0], ...pods];
+
+            return res.queryresult.pods;
         });
     }
 
@@ -75,8 +75,9 @@ class WolframAlpha {
      * @memberof WolframAlpha
      */
     async #generateImage(pods){
-        const width = Math.max(pods.reduce((max, pod) => Math.max(pod.subpods[0].img.width, max), 0), 250) + 20;
-        const height = pods.reduce((totalHeight, pod) => totalHeight + pod.subpods[0].img.height, 80);
+        const lineHeight = 20;
+        const width = Math.max(pods.reduce((max, pod) => Math.max(pod.subpods[0].img.width, max), 0), 400) + 40;
+        const height = pods.reduce((totalHeight, pod) => totalHeight + pod.subpods[0].img.height, pods.length * lineHeight + lineHeight);
         const canvas = createCanvas(width, height);
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "white";
@@ -84,12 +85,10 @@ class WolframAlpha {
 
         ctx.font = "bold 15px sans-serif";
         ctx.fillStyle = "black";
-        const lineHeight = 20;
 
         let currentHeight = 0;
         for (let i = 0; i < pods.length; i++){
             const pod = pods[i];
-            console.log(pod.title);
             const inputImagePod = pod.subpods[0].img;
             const image = await loadImage(inputImagePod.src);
             const inputText = pod.title;
