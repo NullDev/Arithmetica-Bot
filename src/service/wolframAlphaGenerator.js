@@ -5,6 +5,8 @@ import { createCanvas, loadImage } from "canvas";
 // = Copyright (c) NullDev = //
 // ========================= //
 
+// Thanks to @arellak for this feature
+
 /**
  * Get and display results from WolframAlpha
  *
@@ -49,22 +51,21 @@ class WolframAlpha {
             .map(([key, value]) => `${key}=${value}`)
             .join("&");
 
-        return await fetch(this.#endpoint + formattedPayload, {
-            method: "GET",
-        }).then(async(res) => await res.json()).then(async(res) => {
-            if (res.queryresult === undefined
-                || res.queryresult.pods.length < 2
-                || res.queryresult.pods[1].subpods.length < 1){
-                return [];
-            }
+        return await fetch(this.#endpoint + formattedPayload, { method: "GET" })
+            .then(async(res) => await res.json()).then(async(res) => {
+                if (res.queryresult === undefined
+                    || res.queryresult.pods.length < 2
+                    || res.queryresult.pods[1].subpods.length < 1){
+                    return [];
+                }
 
-            if (!!res.queryresult.pods[0].primary) return res.queryresult.pods;
+                if (!!res.queryresult.pods[0].primary) return res.queryresult.pods;
 
-            const pods = res.queryresult.pods.filter(pod => !!pod.primary);
-            if(pods.length > 0) return [res.queryresult.pods[0], ...pods];
+                const pods = res.queryresult.pods.filter(pod => !!pod.primary);
+                if (pods.length > 0) return [res.queryresult.pods[0], ...pods];
 
-            return res.queryresult.pods;
-        });
+                return res.queryresult.pods;
+            });
     }
 
     /**
@@ -80,9 +81,9 @@ class WolframAlpha {
         const height = pods.reduce((totalHeight, pod) => totalHeight + pod.subpods[0].img.height, pods.length * lineHeight + lineHeight);
         const canvas = createCanvas(width, height);
         const ctx = canvas.getContext("2d");
+
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
         ctx.font = "bold 15px sans-serif";
         ctx.fillStyle = "black";
 
@@ -92,6 +93,7 @@ class WolframAlpha {
             const inputImagePod = pod.subpods[0].img;
             const image = await loadImage(inputImagePod.src);
             const inputText = pod.title;
+
             if (i === 0){
                 ctx.fillText(inputText, 10, currentHeight + lineHeight);
                 ctx.drawImage(image, 30, currentHeight + lineHeight + 5);
