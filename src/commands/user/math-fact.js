@@ -18,7 +18,16 @@ export default {
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
-        const fact = getRandomMathFact();
-        return await interaction.reply({ content: fact });
+        const embed = {
+            color: 0xff8282,
+            title: ":abacus:  Random Math Fact",
+            description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + getRandomMathFact() + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
+            footer: {
+                text: `Requested by ${interaction.user.displayName || interaction.user.tag}`,
+                icon_url: interaction.user.displayAvatarURL(),
+            },
+        };
+
+        return await interaction.reply({ embeds: [embed] });
     },
 };
