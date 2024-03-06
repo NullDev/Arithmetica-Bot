@@ -23,7 +23,7 @@ export default {
             title: ":abacus:  Random Math Fact",
             description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + getRandomMathFact() + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
             footer: {
-                text: `Requested by ${interaction.user.displayName || interaction.user.tag}`,
+                text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
                 icon_url: interaction.user.displayAvatarURL(),
             },
         };

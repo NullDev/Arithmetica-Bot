@@ -25,9 +25,21 @@ export default {
      */
     async execute(interaction){
         await interaction.deferReply();
+
         const guildsBest = await db.get(`guild-${interaction.guildId}.best`);
+        const text = await __("replies.best", guildsBest)(interaction.guildId);
+        const embed = {
+            color: 0xff8282,
+            title: ":crown:  Highscore",
+            description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + text + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
+            footer: {
+                text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
+                icon_url: interaction.user.displayAvatarURL(),
+            },
+        };
+
         return await interaction.editReply(
-            await __("replies.best", guildsBest)(interaction.guildId),
+            { embeds: [embed] },
         );
     },
 };

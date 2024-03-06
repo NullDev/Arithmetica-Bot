@@ -58,10 +58,22 @@ export default {
         let reply = await __(`replies.global_top_${type}`, currentGuildName, rank, allGuilds, type === "best" ? bestCountOfGuild : currentCountOfGuild)(interaction.guildId);
         if (rank === 1) reply += " 👑";
 
+        const txt = (rank === 0 || !currentGuildName)
+            ? await __("errors.no_top_stats")(interaction.guildId)
+            : reply;
+
+        const embed = {
+            color: 0xff8282,
+            title: ":bar_chart:  Global Stats",
+            description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + txt + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
+            footer: {
+                text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
+                icon_url: interaction.user.displayAvatarURL(),
+            },
+        };
+
         return await interaction.editReply({
-            content: (rank === 0 || !currentGuildName)
-                ? await __("errors.no_top_stats")(interaction.guildId)
-                : reply,
+            embeds: [embed],
         });
     },
 };

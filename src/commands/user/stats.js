@@ -50,7 +50,7 @@ export default {
         const fails = (await db.get(`guild-${interaction.guildId}.user-${userid}.counting-fails`)) || 0;
         const mathcounts = (await db.get(`guild-${interaction.guildId}.user-${userid}.counting-math`)) || 0;
 
-        const stats = `:\n\n✅ ${
+        const stats = `✅ ${
             await __("replies.stats.wins")(interaction.guildId)
         }: \`${wins}\`\n❌ ${
             await __("replies.stats.fails")(interaction.guildId)
@@ -58,13 +58,22 @@ export default {
             await __("replies.stats.math")(interaction.guildId)
         }: \`${mathcounts}\``;
 
-        if (!user?.user?.id){
-            return await interaction.editReply(
-                await __("replies.stats.your_stats")(interaction.guildId) + stats,
-            );
-        }
+        const title = !user?.user?.id
+            ? await __("replies.stats.your_stats")(interaction.guildId)
+            : await __("replies.stats.stats_for", user.user.displayName ?? user.user.username)(interaction.guildId);
+
+        const embed = {
+            color: 0xff8282,
+            title: ":bar_chart:  " + title,
+            description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + stats + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
+            footer: {
+                text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
+                icon_url: interaction.user.displayAvatarURL(),
+            },
+        };
+
         return await interaction.editReply(
-            await __("replies.stats.stats_for", user.user.username)(interaction.guildId) + stats,
+            { embeds: [embed] },
         );
     },
 };
