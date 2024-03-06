@@ -2,6 +2,7 @@ import path from "node:path";
 import { SlashCommandBuilder } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
+import defaults from "../../util/defaults.js";
 import __ from "../../service/i18n.js";
 
 // ========================= //
@@ -63,7 +64,7 @@ export default {
             : await __("replies.stats.stats_for", user.user.displayName ?? user.user.username)(interaction.guildId);
 
         const embed = {
-            color: 0xff8282,
+            color: defaults.embed_color,
             title: ":bar_chart:  " + title,
             description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + stats + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
             footer: {

@@ -10,6 +10,7 @@ const defaults = {
     timeout_minutes: 0,
     timeout_factor: 1,
     new_member_cooldown: 60,
+    embed_color: 0xff8282,
 };
 
 export default defaults;

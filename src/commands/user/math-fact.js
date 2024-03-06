@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from "discord.js";
 import getRandomMathFact from "../../util/mathFact.js";
+import defaults from "../../util/defaults.js";
 import translations from "../../../locales/commands/translations.js";
 
 // ========================= //
@@ -19,7 +20,7 @@ export default {
      */
     async execute(interaction){
         const embed = {
-            color: 0xff8282,
+            color: defaults.embed_color,
             title: ":abacus:  Random Math Fact",
             description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + getRandomMathFact() + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
             footer: {

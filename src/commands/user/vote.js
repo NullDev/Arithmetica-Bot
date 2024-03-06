@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from "discord.js";
-import __ from "../../service/i18n.js";
+import defaults from "../../util/defaults.js";
 import translations from "../../../locales/commands/translations.js";
+import __ from "../../service/i18n.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -19,7 +20,7 @@ export default {
      */
     async execute(interaction){
         const embed = {
-            color: 0xff8282,
+            color: defaults.embed_color,
             title: ":heart: Voting",
             description: (await __("replies.vote.thank_you")(interaction.guildId)) + " :) \n\n<https://discordbotlist.com/bots/arithmetica>\n<https://top.gg/bot/1108279646165942363>",
             footer: {
