@@ -34,7 +34,8 @@ export default {
         const embed = {
             color: defaults.embed_color,
             title: ":mag: Wolfram Alpha",
-            description: `\`${String(userInput?.value)}\` - [Online](https://www.wolframalpha.com/input/?i=${encodeURIComponent(String(userInput?.value))})`,
+            description: `\`${String(userInput?.value)}\``,
+            url: `https://www.wolframalpha.com/input/?i=${encodeURIComponent(String(userInput?.value))}`,
             image: {
                 url: "attachment://result.png",
             },
