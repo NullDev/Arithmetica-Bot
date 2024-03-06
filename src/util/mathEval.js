@@ -217,12 +217,28 @@ const solve = function(variable, ...exprs){
     return Number(res.find(r => r[0] === variable)[1]);
 };
 
+const oPow = mathjs.pow;
+/**
+ * Custom power function that throws an error on 0^0
+ *
+ * @param {import("mathjs").MathType} x
+ * @param {Number | import("mathjs").BigNumber | import("mathjs").Complex} y
+ * @return {import("mathjs").MathType}
+ */
+const cPow = function(x, y){
+    if (mathjs.isZero(x) && mathjs.isZero(y)){
+        throw new Error("0^0 is undefined");
+    }
+    return oPow(x, y);
+};
+
 mathjs.import({
     totient,
     sigmaSum,
     piProd,
     tetration,
     solve,
+    pow: cPow,
 }, { override: true });
 
 /**
@@ -253,8 +269,6 @@ function mathEval(expr){
     cleaned = parseSqrt(cleaned);
     cleaned = parseAbs(cleaned);
     cleaned = parsePhi(cleaned);
-
-    if (cleaned.replaceAll(" ", "").includes("0^0") || cleaned.replaceAll(" ", "").includes("0^(0)")) return { result: null, error: "0^0 is undefined" };
 
     let result;
     const scope = new Map();
