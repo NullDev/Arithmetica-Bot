@@ -1,6 +1,7 @@
 import Log from "../util/log.js";
 import { config } from "../../config/config.js";
 import getRandomMathFact from "../util/mathFact.js";
+import defaults from "../util/defaults.js";
 
 /**
  * @typedef {import("fastify").FastifyRequest} Request
@@ -14,7 +15,7 @@ const registerVote = async function(client, user){
     const dmChannel = await client.users.fetch(user).catch(() => Log.warn("Could not fetch user " + user + "!"));
     if (dmChannel){
         const embed = {
-            color: 0xff8282,
+            color: defaults.embed_color,
             title: ":heart: Voting",
             description: "Thank you for your vote! :)\n\nHave a random math fact:\n" + getRandomMathFact(),
         };

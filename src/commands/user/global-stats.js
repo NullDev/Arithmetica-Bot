@@ -2,6 +2,7 @@ import path from "node:path";
 import { SlashCommandBuilder } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
+import defaults from "../../util/defaults.js";
 import __ from "../../service/i18n.js";
 
 // ========================= //
@@ -58,10 +59,22 @@ export default {
         let reply = await __(`replies.global_top_${type}`, currentGuildName, rank, allGuilds, type === "best" ? bestCountOfGuild : currentCountOfGuild)(interaction.guildId);
         if (rank === 1) reply += " 👑";
 
+        const txt = (rank === 0 || !currentGuildName)
+            ? await __("errors.no_top_stats")(interaction.guildId)
+            : reply;
+
+        const embed = {
+            color: defaults.embed_color,
+            title: ":bar_chart:  Global Stats",
+            description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + txt + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
+            footer: {
+                text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
+                icon_url: interaction.user.displayAvatarURL(),
+            },
+        };
+
         return await interaction.editReply({
-            content: (rank === 0 || !currentGuildName)
-                ? await __("errors.no_top_stats")(interaction.guildId)
-                : reply,
+            embeds: [embed],
         });
     },
 };
