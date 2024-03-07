@@ -54,6 +54,7 @@ class WolframAlpha {
         return await fetch(this.#endpoint + formattedPayload, { method: "GET" })
             .then(async(res) => await res.json()).then(async(res) => {
                 if (res.queryresult === undefined
+                    || res.queryresult.pods === undefined
                     || res.queryresult.pods.length < 2
                     || res.queryresult.pods[1].subpods.length < 1){
                     return [];
@@ -65,7 +66,7 @@ class WolframAlpha {
                 if (pods.length > 0) return [res.queryresult.pods[0], ...pods];
 
                 return res.queryresult.pods;
-            });
+            }).catch(() => []);
     }
 
     /**
@@ -113,11 +114,13 @@ class WolframAlpha {
      * Build the image from the input
      *
      * @param {String} input
-     * @return {Promise<Buffer>}
+     * @return {Promise<Buffer|null>}
      * @memberof WolframAlpha
      */
     async build(input){
         const result = await this.#getQuery(input);
+        if (result.length === 0) return null;
+
         const buffer = await this.#generateImage(result);
         return buffer;
     }
