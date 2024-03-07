@@ -119,12 +119,15 @@ const failed = async function(message, lastNumber, result){
  * @param {String} guild
  * @param {Number} result
  * @param {String} lastCountString
+ * @param {Boolean} [hasRounded=false]
  * @return {Promise<any>}
  */
-const correct = async function(message, guild, result, lastCountString){
+const correct = async function(message, guild, result, lastCountString, hasRounded = false){
     const previousBest = await guildDb.get(`guild-${guild}.best`) || 0;
 
     await message.react("✅");
+    if (hasRounded) await message.react("<:rounded:1215229988597534730>");
+
     await guildDb.set(`guild-${guild}.count`, result);
     await guildDb.set(`guild-${guild}.lastCountString`, lastCountString);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-wins`, 1);
@@ -229,6 +232,7 @@ const countingService = async function(message){
 
     const { result: oResult, error } = mathEval(message.content ?? 0);
     const result = Math.round(oResult || 0); // we deal with integers only anyway
+    const hasRounded = result !== oResult;
 
     if (!result || isNaN(result)){
         return await replyWaitAndDelete(
@@ -245,7 +249,7 @@ const countingService = async function(message){
         await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-math`, 1);
     }
 
-    return await correct(message, guild, result, message.content);
+    return await correct(message, guild, result, message.content, hasRounded);
 };
 
 export default countingService;
