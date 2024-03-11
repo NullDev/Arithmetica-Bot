@@ -93,16 +93,27 @@ const failed = async function(message, lastNumber, result){
         const res = await __("replies.new_best")(message.guildId);
         response += "\n" + await __("replies.failed_stats", lastNumber, best)(message.guildId)
         + " " + (lastNumber === best ? res + " 😄" : "🙁");
-        if (lastNumber === best) await message.react("👑");
-    }
+        if (lastNumber === best){
+            const lastCorrectMessage = await guildDb.get(`guild-${message.guildId}.last-correct-message`);
+            if (lastCorrectMessage){
+                await message.channel.messages.fetch(lastCorrectMessage).then(msg => msg.react("👑").catch(e => Log.error("Failed to react to message: ", e)));
 
-    const pinEnabled = await guildDb.get(`guild-${message.guildId}.pin-highscore`) ?? defaults.pin_highscore;
-    if (pinEnabled && lastNumber === best){
-        const oldMsgId = await guildDb.get(`guild-${message.guildId}.highscore-msg-id`);
-        if (oldMsgId) await message.channel.messages.fetch(oldMsgId).then((msg) => msg.unpin().catch((e) => Log.error("Failed to unpin message: ", e)));
+                const oldMsgId = await guildDb.get(`guild-${message.guildId}.highscore-msg-id`);
+                if (oldMsgId){
+                    await message.channel.messages.fetch(oldMsgId)
+                        .then(msg => msg.unpin().catch(e => Log.error("Failed to unpin message: ", e)))
+                        .catch(e => Log.error("No old pinned message", e));
+                }
 
-        message.pin().catch((e) => Log.error("Failed to pin message: ", e));
-        await guildDb.set(`guild-${message.guildId}.highscore-msg-id`, message.id);
+                const pinEnabled = await guildDb.get(`guild-${message.guildId}.pin-highscore`) ?? defaults.pin_highscore;
+                if (pinEnabled){
+                    const tMsg = await message.channel.messages.fetch(lastCorrectMessage);
+                    tMsg.pin().catch(e => Log.error("Failed to pin message: ", e));
+
+                    await guildDb.set(`guild-${message.guildId}.highscore-msg-id`, tMsg.id);
+                }
+            }
+        }
     }
 
     await message.reply(`<@${message.author.id}> ${response}`);
@@ -128,6 +139,7 @@ const correct = async function(message, guild, result, lastCountString, hasRound
     await message.react("✅");
     if (hasRounded) await message.react("<:rounded:1215229988597534730>");
 
+    await guildDb.set(`guild-${guild}.last-correct-message`, message.id);
     await guildDb.set(`guild-${guild}.count`, result);
     await guildDb.set(`guild-${guild}.lastCountString`, lastCountString);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-wins`, 1);

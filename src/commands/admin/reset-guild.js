@@ -42,6 +42,7 @@ export default {
             if (answer === "yes"){
                 await guildDb.delete(`guild-${interaction.guildId}.lastUser`);
                 await guildDb.set(`guild-${interaction.guildId}.count`, 0);
+                await guildDb.set(`guild-${interaction.guildId}.best`, 0);
                 await guildDb.set(`guild-${interaction.guildId}.lastCountString`, "");
                 await userDb.delete(`guild-${interaction.guildId}`);
 
