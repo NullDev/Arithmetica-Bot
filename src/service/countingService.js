@@ -76,10 +76,10 @@ const handleTimeout = async function(message){
 const failed = async function(message, lastNumber, result){
     const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`) ?? defaults.cheatmode;
 
-    await message.react("❌");
+    await message.react("❌").catch(() => null);
 
     if (cheatModeOn){
-        setTimeout(() => message.delete(), 5000);
+        setTimeout(() => message.delete().catch(() => null), 5000);
         return null;
     }
 
@@ -116,7 +116,10 @@ const failed = async function(message, lastNumber, result){
         }
     }
 
-    await message.reply(`<@${message.author.id}> ${response}`);
+    await message.reply(`<@${message.author.id}> ${response}`).catch(() => {
+        Log.warn("Failed to reply to message: " + message.id);
+        message.channel.send(`<@${message.author.id}> ${response}`);
+    });
 
     await guildDb.delete(`guild-${message.guildId}.lastUser`);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-fails`, 1);
@@ -136,8 +139,8 @@ const failed = async function(message, lastNumber, result){
 const correct = async function(message, guild, result, lastCountString, hasRounded = false){
     const previousBest = await guildDb.get(`guild-${guild}.best`) || 0;
 
-    await message.react("✅");
-    if (hasRounded) await message.react("<:rounded:1215229988597534730>");
+    await message.react("✅").catch(() => null);
+    if (hasRounded) await message.react("<:rounded:1215229988597534730>").catch(() => null);
 
     await guildDb.set(`guild-${guild}.last-correct-message`, message.id);
     await guildDb.set(`guild-${guild}.count`, result);
@@ -160,10 +163,10 @@ const correct = async function(message, guild, result, lastCountString, hasRound
 const replyWaitAndDelete = async function(message, content, timeout = 8000){
     return await message.reply(content).then((msg) => {
         setTimeout(() => {
-            msg.delete();
-            message.delete();
+            msg.delete().catch(() => null);
+            message.delete().catch(() => null);
         }, timeout);
-    });
+    }).catch(() => null);
 };
 
 /**
