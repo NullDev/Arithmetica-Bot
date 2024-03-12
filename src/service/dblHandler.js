@@ -1,6 +1,10 @@
 import { config } from "../../config/config.js";
 import Log from "../util/log.js";
 
+// ========================= //
+// = Copyright (c) NullDev = //
+// ========================= //
+
 /**
  * DiscordBotList Handler
  *

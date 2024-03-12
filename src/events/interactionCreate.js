@@ -1,3 +1,4 @@
+import executeCode from "../service/codeExecution.js";
 import Log from "../util/log.js";
 import __ from "../service/i18n.js";
 
@@ -36,6 +37,17 @@ const handleCommandInteraction = async function(interaction){
 };
 
 /**
+ * Handle modal submit events
+ *
+ * @param {import("discord.js").ModalSubmitInteraction} interaction
+ */
+const handleModalSubmit = async function(interaction){
+    if (interaction.customId === "run_code"){
+        await executeCode(interaction);
+    }
+};
+
+/**
  * Handle interactionCreate event
  *
  * @param {import("discord.js").Interaction} interaction
@@ -43,6 +55,7 @@ const handleCommandInteraction = async function(interaction){
  */
 const interactionCreateHandler = async function(interaction){
     if (interaction.isChatInputCommand()) await handleCommandInteraction(interaction);
+    if (interaction.isModalSubmit()) await handleModalSubmit(interaction);
 };
 
 export default interactionCreateHandler;

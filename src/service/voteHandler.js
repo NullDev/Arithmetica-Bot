@@ -3,6 +3,10 @@ import { config } from "../../config/config.js";
 import getRandomMathFact from "../util/mathFact.js";
 import defaults from "../util/defaults.js";
 
+// ========================= //
+// = Copyright (c) NullDev = //
+// ========================= //
+
 /**
  * @typedef {import("fastify").FastifyRequest} Request
  *

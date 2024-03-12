@@ -549,4 +549,14 @@ export default {
             },
         },
     },
+    run: {
+        desc: "Run code",
+        translations: {
+            de: "Code ausführen",
+            fr: "Exécuter le code",
+            ru: "Запустить код",
+            ja: "コードを実行する",
+            "es-ES": "Ejecutar código",
+        },
+    },
 };

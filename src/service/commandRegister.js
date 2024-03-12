@@ -5,7 +5,6 @@ import { Collection, REST, Routes } from "discord.js";
 import Log from "../util/log.js";
 import DblHandler from "./dblHandler.js";
 
-
 // ========================= //
 // = Copyright (c) NullDev = //
 // ========================= //
