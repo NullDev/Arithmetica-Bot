@@ -50,6 +50,7 @@ This counting bot allows arithmetic expressions instead of just numbers. It supp
 - `/oeis` command to look up a sequence on the [OEIS](https://oeis.org/)
 - LaTeX Rendering engine `/tex`
 - Wolfram Alpha integration `/ask`
+- Code execution engine using `/run`
 - Multi-language support (Can be set on every Discord server individually)
     - English (Peer reviewed ✅)
     - German (Peer reviewed ✅)
