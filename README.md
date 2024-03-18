@@ -94,6 +94,9 @@ Feature request or discovered a bug? Please [open an Issue](https://github.com/N
 Website: https://arithmetica.xyz <br>
 Repository: https://github.com/NullDev/arithmetica.xyz
 
+TOS: https://arithmetica.xyz/tos/ <br>
+Privacy: https://arithmetica.xyz/privacy/
+
 <hr>
 
 ## :wrench: Setup
