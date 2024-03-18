@@ -79,6 +79,7 @@
         "new_best": "Nouveau record !",
         "help_preamble": "Vous pouvez visiter <https://arithmetica.xyz/wiki> pour voir quelles expressions et syntaxes sont possibles. Pour vérifier si une expression est un compte valide, vous pouvez utiliser `/calc` pour voir si le résultat est correct.\nSupport Server: <https://discord.gg/hgFyq43dug>",
         "admin_help_preamble": "Configuration: Définissez le canal de comptage avec `/set-channel`, puis configurez éventuellement les options avec `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` et `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
-        "pin_highscore": "épingler le highscore a été %s!"
+        "pin_highscore": "épingler le highscore a été %s!",
+        "rounding": "L'arrondi a été %s!"
     }
 }

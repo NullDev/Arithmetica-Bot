@@ -245,9 +245,13 @@ const countingService = async function(message){
         );
     }
 
+    const rounding = await guildDb.get(`guild-${guild}.rounding`) ?? defaults.rounding;
     const { result: oResult, error } = mathEval(message.content ?? 0);
-    const result = Math.round(oResult || 0); // we deal with integers only anyway
-    const hasRounded = result !== oResult;
+    const result = rounding
+        ? Math.round(oResult || 0)
+        : oResult || 0;
+
+    const hasRounded = (rounding && (result !== oResult));
 
     if (!result || isNaN(result)){
         return await replyWaitAndDelete(

@@ -559,4 +559,26 @@ export default {
             "es-ES": "Ejecutar código",
         },
     },
+    rounding: {
+        desc: "Enable/Disable rounding of numbers.",
+        translations: {
+            de: "Aktiviere/Deaktiviere das Runden von Zahlen.",
+            fr: "Activer/Désactiver l'arrondi des nombres.",
+            ru: "Включить/Отключить округление чисел.",
+            ja: "数値の丸めを有効/無効にする。",
+            "es-ES": "Habilitar/Deshabilitar el redondeo de números.",
+        },
+        options: {
+            enabled: {
+                desc: "Enable or disable rounding",
+                translations: {
+                    de: "Aktiviere oder deaktiviere das Runden",
+                    fr: "Activer ou désactiver l'arrondi",
+                    ru: "Включить или отключить округление",
+                    ja: "丸めを有効または無効にする",
+                    "es-ES": "Habilitar o deshabilitar el redondeo",
+                },
+            },
+        },
+    },
 };

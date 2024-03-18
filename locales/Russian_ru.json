@@ -79,6 +79,7 @@
         "new_best": "Новый рекорд!",
         "help_preamble": "Вы можете посетить <https://arithmetica.xyz/wiki>, чтобы узнать, какие выражения и синтаксис возможны. Чтобы проверить, является ли выражение допустимым подсчетом, вы можете использовать `/calc`, чтобы увидеть, правильный ли результат.\nSupport Server: <https://discord.gg/hgFyq43dug>",
         "admin_help_preamble": "Настройка: Установите канал подсчета с помощью `/set-channel`, затем при необходимости настройте опции с помощью `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` и `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
-        "pin_highscore": "Закрепление рекордов было %s!"
+        "pin_highscore": "Закрепление рекордов было %s!",
+        "rounding": "Округление было %s!"
     }
 }
