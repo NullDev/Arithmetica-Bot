@@ -1,4 +1,4 @@
-import { GatewayIntentBits, Events, ActivityType } from "discord.js";
+import { GatewayIntentBits, Events, ActivityType, Partials } from "discord.js";
 import fastify from "fastify";
 import Log from "./util/log.js";
 import { config } from "../config/config.js";
@@ -22,6 +22,10 @@ const client = new DiscordClient({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.DirectMessages,
+    ],
+    partials: [
+        Partials.Channel,
+        Partials.Message,
     ],
     presence: {
         status: "dnd",
