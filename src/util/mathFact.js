@@ -2,6 +2,8 @@
 // = Copyright (c) NullDev = //
 // ========================= //
 
+// Also thanks to Wikipedia and John D. Cook (twitter)
+
 const facts = [
     "All abelian groups are solvable.",
     "The only factorial that's also a square is 1.",
