@@ -69,7 +69,6 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Prevent persons from counting multiple times in a row 
 - [x] Ban and unban users from counting
 - [x] Handle counts deleted by the user
-- [x] Cheat-Mode (no losing)
 - [x] Sharding
 
 <hr>
