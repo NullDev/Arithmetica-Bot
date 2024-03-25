@@ -1,4 +1,4 @@
-<p align="center"><a href="https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1099511655488"><img height="100" width="auto" src="https://i.imgur.com/OxK5rHZ.png" /></a></p>
+<p align="center"><a href="https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1100048526544"><img height="100" width="auto" src="https://i.imgur.com/OxK5rHZ.png" /></a></p>
 <center style="color:#FF3366;font-size:20px"><b color="#ff3366">Your average counting bot. <br>Except you can count with Math™!</b></center>
 <br><br>
 <hr>

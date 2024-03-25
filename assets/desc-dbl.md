@@ -1,6 +1,6 @@
 # Arithmetica
 
-[![Arithmetica](https://i.imgur.com/OxK5rHZ.png)](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1099511655488)
+[![Arithmetica](https://i.imgur.com/OxK5rHZ.png)](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1100048526544)
 
 Your average counting bot.
 Except you can count with Math™!

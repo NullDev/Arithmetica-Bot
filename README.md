@@ -15,7 +15,7 @@ Wiki: https://arithmetica.xyz/wiki
 
 ## :satellite: Invite the bot
 
-[![Invite](https://img.shields.io/badge/Invite-37a779?style=for-the-badge)](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1100048526528)
+[![Invite](https://img.shields.io/badge/Invite-37a779?style=for-the-badge)](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1100048526544)
 
 <sub>The link above will invite a bot hosted by me that uses the latest version of this repo. <br>
 Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-setup) </sub>
@@ -91,6 +91,7 @@ The bot requires the following permissions:
 - Moderate Members: To timeout users when a timeout is set for losers
 - Manage Webhooks: To create webhooks for users when a message is deleted in the counting channel
 - View Audit Log: To see who invited the bot in order to send them a setup guide
+- Manage Channels: To create a counting channel if it doesn't exist yet
 
 <hr>
 
