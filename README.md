@@ -15,7 +15,7 @@ Wiki: https://arithmetica.xyz/wiki
 
 ## :satellite: Invite the bot
 
-[![Invite](https://img.shields.io/badge/Invite-37a779?style=for-the-badge)](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1099511655488)
+[![Invite](https://img.shields.io/badge/Invite-37a779?style=for-the-badge)](https://discordapp.com/oauth2/authorize?client_id=1108279646165942363&scope=bot&permissions=1100048526528)
 
 <sub>The link above will invite a bot hosted by me that uses the latest version of this repo. <br>
 Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-setup) </sub>
@@ -76,6 +76,21 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 ## :diamond_shape_with_a_dot_inside: Feature requests & Issues
 
 Feature request or discovered a bug? Please [open an Issue](https://github.com/NullDev/Arithmetica-Bot/issues/new/choose) here on GitHub.
+
+<hr>
+
+## :lock: Permissions
+
+The bot requires the following permissions:
+
+- Send Messages: To send messages in the counting channel
+- Manage Messages: To delete messages in the counting channel
+- Read Messages/View Channels: To read messages in the counting channel
+- Add Reactions: To add reactions to messages in the counting channel
+- Embed Links: To send embeds
+- Moderate Members: To timeout users when a timeout is set for losers
+- Manage Webhooks: To create webhooks for users when a message is deleted in the counting channel
+- View Audit Log: To see who invited the bot in order to send them a setup guide
 
 <hr>
 
