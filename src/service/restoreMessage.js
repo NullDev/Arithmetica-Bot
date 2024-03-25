@@ -35,17 +35,25 @@ const restoreMessage = async function(message, newMessage = null){
     const name = guildMember?.nickname || message.author?.displayName || message.author?.username || "Arithmetica";
     const avatar = message.author?.displayAvatarURL() || message.client.user?.displayAvatarURL();
 
-    const webhook = await ch.createWebhook({ name, avatar });
-    const webhookMessage = await webhook.send({
-        content: !!arithmetic
-            ? message.content
-            : lastCountString,
-        username: name,
-        avatarURL: avatar,
-    });
+    try {
+        const webhook = await ch.createWebhook({ name, avatar });
+        const webhookMessage = await webhook.send({
+            content: !!arithmetic
+                ? message.content
+                : lastCountString,
+            username: name,
+            avatarURL: avatar,
+        });
 
-    await webhookMessage.react("✅");
-    await webhook.delete();
+        await webhookMessage.react("✅");
+        await webhook.delete();
+    }
+    catch (err){
+        const msg = await ch.send({
+            content: (!!arithmetic ? message.content : lastCountString) + " _(Restored deleted message by " + name + ")_",
+        });
+        await msg.react("✅");
+    }
 };
 
 export default restoreMessage;
