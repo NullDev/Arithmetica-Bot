@@ -20,7 +20,7 @@ const registerVote = async function(client, user){
     if (dmChannel){
         const embed = {
             color: defaults.embed_color,
-            title: ":heart: Voting",
+            title: ":heart:┃Voting",
             description: "Thank you for your vote! :)\n\nHave a random math fact:\n" + getRandomMathFact(),
         };
 

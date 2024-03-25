@@ -21,7 +21,7 @@ export default {
     async execute(interaction){
         const embed = {
             color: defaults.embed_color,
-            title: ":heart: Voting",
+            title: ":heart:┃Voting",
             description: (await __("replies.vote.thank_you")(interaction.guildId)) + " :) \n\n<https://discordbotlist.com/bots/arithmetica>\n<https://top.gg/bot/1108279646165942363>",
             footer: {
                 text: await __("replies.vote.rewards")(interaction.guildId),

@@ -70,7 +70,7 @@ const executeCode = async function(interaction){
 
     const embed = {
         color: defaults.embed_color,
-        title: ":computer:  Code Output (" + r.language + " v" + r.version + ")",
+        title: ":computer:┃Code Output (" + r.language + " v" + r.version + ")",
         description: "Input:\n```" + language.language + "\n" + code + "\n```\nOutput:\n```\n" + (r.run.output || "No Output") + "\n```",
         footer: {
             text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,

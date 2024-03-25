@@ -31,7 +31,7 @@ export default {
 
         const embedStruct = {
             color: defaults.embed_color,
-            title: ":mag: Wolfram Alpha",
+            title: ":mag:┃Wolfram Alpha",
             url: `https://www.wolframalpha.com/input/?i=${encodeURIComponent(String(userInput?.value))}`,
             footer: {
                 text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,

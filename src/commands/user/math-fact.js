@@ -21,7 +21,7 @@ export default {
     async execute(interaction){
         const embed = {
             color: defaults.embed_color,
-            title: ":abacus:  Random Math Fact",
+            title: ":abacus:┃Random Math Fact",
             description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + getRandomMathFact() + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
             footer: {
                 text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,

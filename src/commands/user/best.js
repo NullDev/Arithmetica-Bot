@@ -31,7 +31,7 @@ export default {
         const text = await __("replies.best", guildsBest)(interaction.guildId);
         const embed = {
             color: defaults.embed_color,
-            title: ":crown:  Highscore",
+            title: ":crown:┃Highscore",
             description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + text + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
             footer: {
                 text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,

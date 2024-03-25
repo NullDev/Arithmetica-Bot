@@ -65,7 +65,7 @@ export default {
 
         const embed = {
             color: defaults.embed_color,
-            title: ":bar_chart:  Global Stats",
+            title: ":bar_chart:┃Global Stats",
             description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + txt + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
             footer: {
                 text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
