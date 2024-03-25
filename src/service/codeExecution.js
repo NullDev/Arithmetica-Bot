@@ -28,6 +28,16 @@ const compareVersions = function(a, b){
 };
 
 /**
+ * Clean language string
+ *
+ * @param {String} l
+ * @return {String}
+ */
+const clean = function(l){
+    return l.replace(/(nasm64|nasm|nasm32)/g, "x86asm");
+};
+
+/**
  * Execute code
  *
  * @param {import("discord.js").ModalSubmitInteraction} interaction
@@ -71,7 +81,7 @@ const executeCode = async function(interaction){
     const embed = {
         color: defaults.embed_color,
         title: ":computer:┃Code Output (" + r.language + " v" + r.version + ")",
-        description: "Input:\n```" + language.language + "\n" + code + "\n```\nOutput:\n```\n" + (r.run.output || "No Output") + "\n```",
+        description: "Input:\n```" + clean(language.language) + "\n" + code + "\n```\nOutput:\n```\n" + (r.run.output || "No Output") + "\n```",
         footer: {
             text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
             icon_url: interaction.user.displayAvatarURL(),
