@@ -93,7 +93,7 @@ client.on(Events.GuildCreate, async guild => {
     const embed = {
         color: defaults.embed_color,
         title: "<:arithmetica:1200390110169022475>┃Quick Bot Setup",
-        description: "Hey there!\nThanks for adding me to your server! :smile_cat:\nAll you have to do is create a counting channel and set it with `/set-channel`.\nThen you are all set!\nPlease view `/admin-help` on your server, so see all the other options you can configure, such as language, timeouts, etc.\n\nHappy counting! <:blushu:968831290981904414>",
+        description: "Hey there!\nThanks for adding me to your server! :smile_cat:\nAll you have to do is create a counting channel and set it with `/set-channel`.\nThen you are all set!\nPlease view `/admin-help` on your server, to see all the other options you can configure, such as language, timeouts, etc.\n\nHappy counting! <:blushu:968831290981904414>",
         footer: {
             text: `For ${user.displayName ?? user.tag}`,
             icon_url: user.displayAvatarURL(),
