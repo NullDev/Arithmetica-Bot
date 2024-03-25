@@ -1,6 +1,7 @@
 import path from "node:path";
 import { SlashCommandBuilder, PermissionFlagsBits, ChannelType } from "discord.js";
 import { QuickDB } from "quick.db";
+import createYesNoInteraction from "../../events/yesNoInteraction.js";
 import translations from "../../../locales/commands/translations.js";
 import __ from "../../service/i18n.js";
 
@@ -42,19 +43,41 @@ export default {
         let val = String(channel.value)?.match(/^<#(\d+)>$/)?.[1];
         if (!val) val = (await interaction.guild?.channels.fetch().catch(() => null))?.find(ch => ch?.name === channel.value && ch?.type === ChannelType.GuildText)?.id;
         if (!val){
-            return await interaction.reply({
-                content: await __("errors.channel_not_found")(interaction.guildId),
-                ephemeral: true,
+            const answer = await createYesNoInteraction(interaction, {
+                promptText: await __("replies.channel_create", String(channel.value))(interaction.guildId),
             });
+
+            if (answer === "yes"){
+                val = (await interaction.guild?.channels.create({ // @ts-ignore
+                    name: String(channel.value).replaceAll("#", "") || "counting",
+                    type: ChannelType.GuildText,
+                }).catch(async() => {
+                    interaction.followUp({ content:
+                        await __("errors.no_channel_perm")(interaction.guildId),
+                    });
+                    return null;
+                }))?.id;
+            }
+            else if (answer === "no"){
+                await interaction.followUp({
+                    content: await __("generic.aborted")(interaction.guildId),
+                });
+            }
         }
+        if (!val) return null;
 
         await db.set(`guild-${interaction.guildId}.channel`, val);
         await db.delete(`guild-${interaction.guildId}.lastUser`);
         await db.set(`guild-${interaction.guildId}.count`, 0);
 
-        return await interaction.reply({
-            content: await __("replies.channel_set", channel.value ?? val)(interaction.guildId),
-            ephemeral: true,
-        });
+        return interaction.deferred
+            ? await interaction.followUp({
+                content: await __("replies.channel_set", channel.value ?? val)(interaction.guildId),
+                ephemeral: true,
+            })
+            : await interaction.reply({
+                content: await __("replies.channel_set", channel.value ?? val)(interaction.guildId),
+                ephemeral: true,
+            });
     },
 };

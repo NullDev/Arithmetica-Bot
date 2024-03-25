@@ -22,7 +22,8 @@
         "stats_on_bot": "Les bots n'ont pas de statistiques de comptage :)",
         "cheat_mode_enabled": "Les stats sont désactivées en mode triche car personne ne peut perdre.",
         "math_only": "Seules les expressions mathématiques sont autorisées dans ce canal ! Le comptage normal a été désactivé.",
-        "tex_on_windows": "Le bot est actuellement en cours d'exécution sur Windows et ne peut donc pas exécuter cette commande."
+        "tex_on_windows": "Le bot est actuellement en cours d'exécution sur Windows et ne peut donc pas exécuter cette commande.",
+        "no_channel_perm": "Il semble que je n'ai pas la permission de créer des salons."
     },
     "replies": {
         "bot_info_tagline": "Bot Discord pour compter. Autorise les expressions arithmétiques.",
@@ -80,6 +81,7 @@
         "help_preamble": "Vous pouvez visiter <https://arithmetica.xyz/wiki> pour voir quelles expressions et syntaxes sont possibles. Pour vérifier si une expression est un compte valide, vous pouvez utiliser `/calc` pour voir si le résultat est correct.\nSupport Server: <https://discord.gg/hgFyq43dug>",
         "admin_help_preamble": "Configuration: Définissez le canal de comptage avec `/set-channel`, puis configurez éventuellement les options avec `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` et `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
         "pin_highscore": "épingler le highscore a été %s!",
-        "rounding": "L'arrondi a été %s!"
+        "rounding": "L'arrondi a été %s!",
+        "channel_create": "Je ne trouve pas le salon `%s`. Voulez-vous que je le crée ?"
     }
 }
