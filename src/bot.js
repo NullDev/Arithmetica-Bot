@@ -1,7 +1,8 @@
-import { GatewayIntentBits, Events, ActivityType, Partials } from "discord.js";
+import { GatewayIntentBits, Events, ActivityType, Partials, AuditLogEvent } from "discord.js";
 import fastify from "fastify";
 import Log from "./util/log.js";
 import { config } from "../config/config.js";
+import defaults from "./util/defaults.js";
 import DiscordClient from "./service/client.js";
 import DblHandler from "./service/dblHandler.js";
 import registerCommands from "./service/commandRegister.js";
@@ -76,7 +77,31 @@ client.on(Events.MessageDelete, message => messageDelete(message));
 
 client.on(Events.MessageUpdate, (oldMessage, newMessage) => messageUpdate(oldMessage, newMessage));
 
-client.on(Events.GuildCreate, guild => Log.info("Joined guild: " + guild.name));
+client.on(Events.GuildCreate, async guild => {
+    Log.info("Joined guild: " + guild.name);
+
+    const logs = await guild.fetchAuditLogs().catch(() => null);
+    if (!logs) return;
+
+    const data = logs.entries.filter(e => e.action === AuditLogEvent.BotAdd);
+    if (!data) return;
+
+    // @ts-ignore
+    const user = data.find(l => l.target?.id === client.user?.id)?.executor;
+    if (!user) return;
+
+    const embed = {
+        color: defaults.embed_color,
+        title: "<:arithmetica:1200390110169022475>┃Quick Bot Setup",
+        description: "Hey there!\nThanks for adding me to your server! :smile_cat:\nAll you have to do is create a counting channel and set it with `/set-channel`.\nThen you are all set!\nPlease view `/admin-help` on your server, so see all the other options you can configure, such as language, timeouts, etc.\n\nHappy counting! <:blushu:968831290981904414>",
+        footer: {
+            text: `For ${user.displayName ?? user.tag}`,
+            icon_url: user.displayAvatarURL(),
+        },
+    };
+
+    user.send({ embeds: [embed] }).catch(() => Log.warn("Failed to send welcome message to user: " + user.tag));
+});
 
 client.on(Events.GuildDelete, guild => Log.info("Left guild: " + guild.name));
 
