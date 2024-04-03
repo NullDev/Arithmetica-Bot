@@ -232,6 +232,16 @@ const cPow = function(x, y){
     return oPow(x, y);
 };
 
+/**
+ * Parse commas as decimal points ONLY if they are between two numbers
+ *
+ * @param {String} expr
+ * @return {String}
+ */
+const parseComma = function(expr){
+    return expr.replace(/(\d+),(\d+)/g, (_, p1, p2) => `${p1}.${p2}`);
+};
+
 mathjs.import({
     totient,
     sigmaSum,
@@ -253,6 +263,7 @@ function mathEval(expr){
         .replaceAll("×", "*")
         .replaceAll("⋅", "*")
         .replaceAll("÷", "/")
+        .replaceAll("−", "-")
         .replaceAll("π", "pi")
         .replaceAll("τ", "tau")
         .replaceAll("Σ", "sigmaSum")
@@ -269,6 +280,7 @@ function mathEval(expr){
     cleaned = parseSqrt(cleaned);
     cleaned = parseAbs(cleaned);
     cleaned = parsePhi(cleaned);
+    cleaned = parseComma(cleaned);
 
     let result;
     const scope = new Map();
