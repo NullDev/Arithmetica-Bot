@@ -264,6 +264,8 @@ function mathEval(expr){
         .replaceAll("⋅", "*")
         .replaceAll("÷", "/")
         .replaceAll("−", "-")
+        .replaceAll("–", "-")
+        .replaceAll("＋", "+")
         .replaceAll("π", "pi")
         .replaceAll("τ", "tau")
         .replaceAll("Σ", "sigmaSum")
