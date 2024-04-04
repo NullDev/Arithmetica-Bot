@@ -23,7 +23,7 @@ const devCmd = async function(message){ // @ts-ignore
     const cont = message.content;
     if (cont.toLowerCase().startsWith(".cmdstats")){
         try {
-            const s = await db.all();
+            const s = (await db.all()).sort((a, b) => b.value - a.value);
             const m = s.map(({ id, value }) => `${id}: ${value}`).join("\n");
             await message.channel.send(m);
         }
