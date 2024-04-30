@@ -45,7 +45,10 @@ const restoreMessage = async function(message, newMessage = null){
             avatarURL: avatar,
         });
 
+
         await webhookMessage.react("✅");
+        if (message.reactions.cache.has("1215229988597534730")) await webhookMessage.react("<:rounded:1215229988597534730>").catch(() => null);
+
         await webhook.delete();
     }
     catch (err){
@@ -53,6 +56,7 @@ const restoreMessage = async function(message, newMessage = null){
             content: (!!arithmetic ? message.content : lastCountString) + " _(Restored deleted message by " + name + ")_",
         });
         await msg.react("✅");
+        if (message.reactions.cache.has("1215229988597534730")) await msg.react("<:rounded:1215229988597534730>").catch(() => null);
     }
 };
 
