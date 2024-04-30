@@ -140,6 +140,7 @@ const facts = [
     "The j-invariant of _i_ is 1728.",
     "A limit is the terminal object in the category of cones of some functor.",
     "Jacques Tits is a Belgian mathematician, known for Tits buildings, the Tits alternative, the Tits group and the Tits metric.",
+    "All tessellation types for convex polygons are known, except for pentagons.",
 ];
 
 /**
