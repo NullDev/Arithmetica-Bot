@@ -32,6 +32,7 @@ const client = new DiscordClient({
         status: "dnd",
         activities: [{ name: "Starting...", type: ActivityType.Playing }],
     },
+    shardCount: config.discord.shard_count,
 });
 
 Log.wait("Starting bot...");
