@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { ShardingManager } from "discord.js";
+import { ClusterManager } from "discord-hybrid-sharding";
 import Log from "./util/log.js";
 import { config, meta } from "../config/config.js";
 import translationCheck from "./util/translationCheck.js";
@@ -9,7 +9,9 @@ import translationCheck from "./util/translationCheck.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
-const manager = new ShardingManager("./src/bot.js", {
+const manager = new ClusterManager("./src/bot.js", {
+    totalShards: "auto",
+    shardsPerClusters: 2,
     token: config.discord.bot_token,
 });
 
@@ -48,6 +50,6 @@ else {
     process.exit(1);
 }
 
-manager.on("shardCreate", shard => Log.info(`Launched shard ${shard.id}`));
+manager.on("clusterCreate", shard => Log.info(`Launched shard ${shard.id}`));
 
-manager.spawn();
+manager.spawn({ timeout: -1 });

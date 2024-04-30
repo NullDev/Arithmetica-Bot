@@ -1,3 +1,4 @@
+import { ClusterClient, getInfo } from "discord-hybrid-sharding";
 import { GatewayIntentBits, Events, ActivityType, Partials, AuditLogEvent } from "discord.js";
 import fastify from "fastify";
 import Log from "./util/log.js";
@@ -32,12 +33,15 @@ const client = new DiscordClient({
         status: "dnd",
         activities: [{ name: "Starting...", type: ActivityType.Playing }],
     },
-    shardCount: config.discord.shard_count,
+    shards: getInfo().SHARD_LIST,
+    shardCount: getInfo().TOTAL_SHARDS,
 });
 
 Log.wait("Starting bot...");
 
 const dblHandler = new DblHandler(client);
+
+client.cluster = new ClusterClient(client);
 
 client.on(Events.ClientReady, async() => {
     Log.done("Client is ready!");

@@ -9,7 +9,6 @@ export default {
         vote_webhook_secret: "",
         wolfram_appid: "",
         bot_owner_ids: [],
-        shard_count: 1,
     },
     http: {
         port: 1335,
