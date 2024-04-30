@@ -76,8 +76,6 @@ const handleTimeout = async function(message){
 const failed = async function(message, lastNumber, result){
     const cheatModeOn = await guildDb.get(`guild-${message.guildId}.cheatmode`) ?? defaults.cheatmode;
 
-    await message.react("❌").catch(() => null);
-
     if (cheatModeOn){
         setTimeout(() => message.delete().catch(() => null), 5000);
         return null;
@@ -102,7 +100,7 @@ const failed = async function(message, lastNumber, result){
                 if (oldMsgId){
                     await message.channel.messages.fetch(oldMsgId)
                         .then(msg => msg.unpin().catch(e => Log.error("Failed to unpin message: ", e)))
-                        .catch(e => Log.error("No old pinned message", e));
+                        .catch(() => Log.warn("No old pinned message"));
                 }
 
                 const pinEnabled = await guildDb.get(`guild-${message.guildId}.pin-highscore`) ?? defaults.pin_highscore;
@@ -123,7 +121,9 @@ const failed = async function(message, lastNumber, result){
 
     await guildDb.delete(`guild-${message.guildId}.lastUser`);
     await userDb.add(`guild-${message.guildId}.user-${message.author.id}.counting-fails`, 1);
-    return await guildDb.set(`guild-${message.guildId}.count`, 0);
+    await guildDb.set(`guild-${message.guildId}.count`, 0);
+
+    return await message.react("❌").catch(() => null);
 };
 
 /**
@@ -139,9 +139,6 @@ const failed = async function(message, lastNumber, result){
 const correct = async function(message, guild, result, lastCountString, hasRounded = false){
     const previousBest = await guildDb.get(`guild-${guild}.best`) || 0;
 
-    await message.react("✅").catch(() => null);
-    if (hasRounded) await message.react("<:rounded:1215229988597534730>").catch(() => null);
-
     await guildDb.set(`guild-${guild}.last-correct-message`, message.id);
     await guildDb.set(`guild-${guild}.count`, result);
     await guildDb.set(`guild-${guild}.lastCountString`, lastCountString);
@@ -149,7 +146,9 @@ const correct = async function(message, guild, result, lastCountString, hasRound
 
     if (result > previousBest) await guildDb.set(`guild-${guild}.best`, result);
 
-    return await guildDb.set(`guild-${guild}.lastUser`, message.author.id);
+    await guildDb.set(`guild-${guild}.lastUser`, message.author.id);
+    await message.react("✅").catch(() => null);
+    if (hasRounded) await message.react("<:rounded:1215229988597534730>").catch(() => null);
 };
 
 /**
