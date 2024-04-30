@@ -60,7 +60,8 @@ class DblHandler {
     async postBotStats(guildCount){
         if (!this.isProd || this.dblToken === "") return;
 
-        const members = await this.client.shard?.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0));
+        // @ts-ignore
+        const members = await this.client.cluster?.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0));
         const userCount = members?.reduce((acc, memberCount) => Number(acc) + Number(memberCount), 0);
 
         fetch(`https://discordbotlist.com/api/v1/bots/${this.id}/stats`, {

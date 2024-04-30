@@ -34,11 +34,13 @@ export default {
         let owner = "N/A";
         if (guildOwner) owner = (await interaction.client.users.fetch(guildOwner)).tag;
 
-        const promises = [
-            interaction.client.shard?.fetchClientValues("guilds.cache.size"),
-            interaction.client.shard?.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
+        const promises = [ // @ts-ignore
+            interaction.client.cluster?.fetchClientValues("guilds.cache.size"), // @ts-ignore
+            interaction.client.cluster?.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
         ];
-        const shardCount = interaction.client.shard?.count || 0;
+
+        // @ts-ignore
+        const shardCount = interaction.client.cluster.info.TOTAL_SHARDS || 1;
         const isBotVerified = interaction.client.user?.flags?.has("VerifiedBot") || false;
 
         const [guilds, members] = await Promise.all(promises);
