@@ -14,7 +14,7 @@ class DiscordClient extends Client {
     /**
      *  Creates an instance of DiscordClient.
      *
-     * @param {*} options
+     * @param {import("discord.js").ClientOptions} options
      * @memberof DiscordClient
      */
     constructor(options){
