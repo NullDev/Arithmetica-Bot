@@ -25,7 +25,7 @@ export default {
             option.setName("user")
                 .setDescription(translations.ban_user.options.user.desc)
                 .setDescriptionLocalizations(translations.ban_user.options.user.translations)
-                .setRequired(false)),
+                .setRequired(true)),
 
     /**
      * @param {import("discord.js").CommandInteraction} interaction
@@ -33,11 +33,25 @@ export default {
     async execute(interaction){
         const user = interaction.options.get("user");
         const userid = user?.user?.id;
+        if (userid === interaction.client.user?.id){
+            return await interaction.reply({
+                content: await __("errors.bot_ban")(interaction.guildId),
+                ephemeral: true,
+            });
+        }
+
         const username = user?.user?.username;
+
+        if (!userid || !username){
+            return await interaction.reply({
+                content: await __("errors.invalid_argument")(interaction.guildId),
+                ephemeral: true,
+            });
+        }
 
         await db.set(`guild-${interaction.guildId}.user-${userid}.banned`, true);
 
-        await interaction.reply({
+        return await interaction.reply({
             content: await __("replies.ban_user", username)(interaction.guildId),
             ephemeral: true,
         });

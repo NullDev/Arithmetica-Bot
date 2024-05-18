@@ -25,7 +25,7 @@ export default {
             option.setName("user")
                 .setDescription(translations.unban_user.options.user.desc)
                 .setDescriptionLocalizations(translations.unban_user.options.user.translations)
-                .setRequired(false)),
+                .setRequired(true)),
 
     /**
      * @param {import("discord.js").CommandInteraction} interaction
@@ -35,9 +35,16 @@ export default {
         const userid = user?.user?.id;
         const username = user?.user?.username;
 
+        if (!userid || !username){
+            return await interaction.reply({
+                content: await __("errors.invalid_argument")(interaction.guildId),
+                ephemeral: true,
+            });
+        }
+
         await db.set(`guild-${interaction.guildId}.user-${userid}.banned`, false);
 
-        await interaction.reply({
+        return await interaction.reply({
             content: await __("replies.unban_user", username)(interaction.guildId),
             ephemeral: true,
         });
