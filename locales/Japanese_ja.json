@@ -23,7 +23,8 @@
         "cheat_mode_enabled": "チートモードでは、誰も負けることができないため、統計は無効になっています。",
         "math_only": "このチャンネルでは数学のみの表現が許可されています！通常のカウントは無効になっています。",
         "tex_on_windows": "このボットは現在Windowsで実行されているため、このコマンドを実行できません。",
-        "no_channel_perm": "チャンネルを作成する権限がありません。"
+        "no_channel_perm": "チャンネルを作成する権限がありません。",
+        "bot_ban": "いい試みですが、自分自身を禁止することはできません :)"
     },
     "replies": {
         "bot_info_tagline": "数をカウントするDiscord Botです。算術表現を許可します。",
@@ -82,6 +83,7 @@
         "admin_help_preamble": "設定：`/set-channel`でカウントチャネルを設定し、次に `/set-language`、`/toggle-arithmetic`、`/set-timeout`、`/cooldown`、`/timeout-increment` でオプションを構成できます。\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
         "pin_highscore": "ハイスコアのピン留めが%sされました！",
         "rounding": "丸めは%sされました！",
-        "channel_create": "私はチャンネル`%s`を見つけることができません。作成しますか？"
+        "channel_create": "私はチャンネル`%s`を見つけることができません。作成しますか？",
+        "no_banns": "現在、禁止されているユーザーはいません。"
     }
 }

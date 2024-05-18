@@ -23,7 +23,8 @@
         "cheat_mode_enabled": "Las estadísticas están desactivadas en modo trampa porque nadie puede perder.",
         "math_only": "¡Solo se permiten expresiones matemáticas en este canal! El conteo normal ha sido desactivado.",
         "tex_on_windows": "El bot actualmente se está ejecutando en Windows y, por lo tanto, no puede ejecutar este comando.",
-        "no_channel_perm": "Parece que no tengo permiso para crear canales."
+        "no_channel_perm": "Parece que no tengo permiso para crear canales.",
+        "bot_ban": "Buen intento, pero no puedo prohibirme a mí mismo :)"
     },
     "replies": {
         "bot_info_tagline": "Bot para Discord, Permite expresiones matemáticas.",
@@ -82,6 +83,7 @@
         "admin_help_preamble": "Configuración: Establezca el canal de conteo con `/set-channel`, luego configure opcionalmente opciones con `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` y `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
         "pin_highscore": "¡El pin de la puntuación más alta ha sido %s!",
         "rounding": "¡El redondeo ha sido %s!",
-        "channel_create": "No puedo encontrar el canal `%s`. ¿Quieres que lo cree?"
+        "channel_create": "No puedo encontrar el canal `%s`. ¿Quieres que lo cree?",
+        "no_banns": "No hay usuarios prohibidos en este momento."
     }
 }

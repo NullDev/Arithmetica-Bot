@@ -581,4 +581,14 @@ export default {
             },
         },
     },
+    list_bans: {
+        desc: "List all banned users.",
+        translations: {
+            de: "Liste alle gebannten Benutzer auf.",
+            fr: "Lister tous les utilisateurs bannis.",
+            ru: "Список всех забаненных пользователей.",
+            ja: "禁止されたすべてのユーザーをリストします。",
+            "es-ES": "Enumerar todos los usuarios bloqueados.",
+        },
+    },
 };
