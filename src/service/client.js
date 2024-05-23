@@ -20,7 +20,7 @@ class DiscordClient extends Client {
     constructor(options){
         super(options);
         this.commands = new Collection();
-        this.cluster = null;
+        this.cluster = /** @type {import("discord-hybrid-sharding").ClusterClient<DiscordClient> | undefined} */ (undefined);
     }
 }
 
