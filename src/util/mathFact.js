@@ -40,6 +40,7 @@ const facts = [
     "The fundamental group of a projective plane P² has order 2.",
     "The product of regular spaces is regular.",
     "The product of Hausdorff spaces is Hausdorff.",
+    "The product of compact spaces is compact.",
     "A metric space X is complete if every Cauchy sequence in X converges to a point in X.",
     "The product of path connected spaces is path connected.",
     "A space is connected if it is not the union of disjoint open sets.",
@@ -141,6 +142,8 @@ const facts = [
     "A limit is the terminal object in the category of cones of some functor.",
     "Jacques Tits is a Belgian mathematician, known for Tits buildings, the Tits alternative, the Tits group and the Tits metric.",
     "All tessellation types for convex polygons are known, except for pentagons.",
+    "A linear operator is continuous if and only if it maps the unit ball to a bounded set.",
+    "Every subgroup of a free group is free.",
 ];
 
 /**
