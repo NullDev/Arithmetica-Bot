@@ -25,6 +25,10 @@ const devCmd = async function(message){ // @ts-ignore
         try {
             const s = (await db.all()).sort((a, b) => b.value - a.value);
             const m = s.map(({ id, value }) => `${id}: ${value}`).join("\n");
+            if (!m){
+                await message.channel.send("No stats available.");
+                return;
+            }
             await message.channel.send(m);
         }
         catch (e){
