@@ -7,7 +7,6 @@ import "nerdamer/Solve.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
-/* eslint-disable no-use-before-define */
 
 const mathjs = create(all);
 mathjs.config({ number: "BigNumber" });
@@ -208,6 +207,7 @@ const solve = function(variable, ...exprs){
         try {
             return Number(JSON.parse(res)[0]);
         }
+        // eslint-disable-next-line no-unused-vars
         catch (e){
             return null;
         }

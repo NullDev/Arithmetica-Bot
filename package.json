@@ -27,12 +27,6 @@
   "homepage": "https://github.com/NullDev/Arithmetica-Bot#readme",
   "author": "NullDev",
   "license": "Apache-2.0",
-  "devDependencies": {
-    "@babel/core": "^7.23.7",
-    "@babel/eslint-parser": "^7.23.3",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.56.0"
-  },
   "dependencies": {
     "better-sqlite3": "^9.2.2",
     "canvas": "^2.11.2",
@@ -45,5 +39,11 @@
     "nerdamer": "^1.1.13",
     "node-cron": "^3.0.3",
     "quick.db": "^9.1.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.6",
+    "@babel/eslint-parser": "^7.24.6",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.3.0"
   }
 }

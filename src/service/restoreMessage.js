@@ -51,6 +51,7 @@ const restoreMessage = async function(message, newMessage = null){
 
         await webhook.delete();
     }
+    // eslint-disable-next-line no-unused-vars
     catch (err){
         const msg = await ch.send({
             content: (!!arithmetic ? message.content : lastCountString) + " _(Restored deleted message by " + name + ")_",

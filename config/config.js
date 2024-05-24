@@ -36,6 +36,7 @@ const deepMerge = function(target, source){
 try {
     await fs.access("./config/config.custom.js");
 }
+// eslint-disable-next-line no-unused-vars
 catch (error){
     Log.error("Config file not found. To create one, either copy 'config.template.js' and rename it to 'config.custom.js' or run 'npm run generate-config'.");
     process.exit(1);
@@ -44,6 +45,7 @@ catch (error){
 try {
     await fs.access("./config/config.template.js");
 }
+// eslint-disable-next-line no-unused-vars
 catch (error){
     Log.error("Config template file not found. This is needed to read default values. Please re-clone the repository.");
     process.exit(1);

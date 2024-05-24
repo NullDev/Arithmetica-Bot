@@ -57,6 +57,7 @@ const createYesNoInteraction = async function(interaction, {
         await response.edit({ components: [] });
         return confirmation.customId;
     }
+    // eslint-disable-next-line no-unused-vars
     catch (e){
         await response.edit({ components: [] });
         await interaction.followUp({
