@@ -27,23 +27,23 @@
   "homepage": "https://github.com/NullDev/Arithmetica-Bot#readme",
   "author": "NullDev",
   "license": "Apache-2.0",
-  "dependencies": {
-    "better-sqlite3": "^9.2.2",
-    "canvas": "^2.11.2",
-    "check-dependencies": "^2.0.0",
-    "discord-hybrid-sharding": "^2.2.0",
-    "discord.js": "^14.14.1",
-    "fastify": "^4.25.2",
-    "i18n-light": "^0.5.4",
-    "mathjs": "^12.3.0",
-    "nerdamer": "^1.1.13",
-    "node-cron": "^3.0.3",
-    "quick.db": "^9.1.7"
-  },
   "devDependencies": {
     "@babel/core": "^7.24.6",
     "@babel/eslint-parser": "^7.24.6",
     "cross-env": "^7.0.3",
     "eslint": "^9.3.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^10.0.0",
+    "canvas": "^2.11.2",
+    "check-dependencies": "^2.0.0",
+    "discord-hybrid-sharding": "^2.2.0",
+    "discord.js": "^14.15.2",
+    "fastify": "^4.27.0",
+    "i18n-light": "^0.5.4",
+    "mathjs": "^12.4.2",
+    "nerdamer": "^1.1.13",
+    "node-cron": "^3.0.3",
+    "quick.db": "^9.1.7"
   }
 }
