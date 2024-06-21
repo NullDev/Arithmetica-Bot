@@ -144,6 +144,8 @@ const facts = [
     "All tessellation types for convex polygons are known, except for pentagons.",
     "A linear operator is continuous if and only if it maps the unit ball to a bounded set.",
     "Every subgroup of a free group is free.",
+    "Every integer greater than 77 is the sum of integers whose reciprocals sum to 1.",
+    "There are infinitely many primes p such that p+2 is either prime or the product of two primes.",
 ];
 
 /**
