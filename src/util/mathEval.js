@@ -175,6 +175,29 @@ const piProd = function(args, math, scope){
 };
 piProd.rawArgs = true;
 
+
+/**
+ * Fibonacci function
+ *
+ * @param {Number} n
+ * @return {Number}
+ */
+const fib = function(n){
+    const now = Date.now();
+    let a = 0;
+    let b = 1;
+    let c = 0;
+    for (let i = 2; i <= n; i++){
+        if (Date.now() - now > computationLimitSecs * 1000){
+            throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
+        }
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return c;
+};
+
 /**
  * Tetration function
  *
@@ -203,6 +226,7 @@ const tetration = function(a, b){
  */
 const solve = function(variable, ...exprs){
     if (exprs.length === 1){
+        // @ts-ignore
         const res = nerdamer.solve(exprs[0], variable).toString();
         try {
             return Number(JSON.parse(res)[0]);
@@ -213,6 +237,7 @@ const solve = function(variable, ...exprs){
         }
     }
 
+    // @ts-ignore
     const res = nerdamer.solveEquations(exprs);
     return Number(res.find(r => r[0] === variable)[1]);
 };
@@ -248,6 +273,7 @@ mathjs.import({
     piProd,
     tetration,
     solve,
+    fib,
     pow: cPow,
 }, { override: true });
 
