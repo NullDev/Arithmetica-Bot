@@ -146,6 +146,8 @@ const facts = [
     "Every subgroup of a free group is free.",
     "Every integer greater than 77 is the sum of integers whose reciprocals sum to 1.",
     "There are infinitely many primes p such that p+2 is either prime or the product of two primes.",
+    "The Mandelbrot set is connected.",
+    "All separable Banach spaces are isometrically isomorphic to closed subspaces of C[0, 1].",
 ];
 
 /**
