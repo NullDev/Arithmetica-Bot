@@ -148,6 +148,7 @@ const facts = [
     "There are infinitely many primes p such that p+2 is either prime or the product of two primes.",
     "The Mandelbrot set is connected.",
     "All separable Banach spaces are isometrically isomorphic to closed subspaces of C[0, 1].",
+    "Laplace transforms turn differential equations into algebraic equations.",
 ];
 
 /**
