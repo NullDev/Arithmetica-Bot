@@ -12,6 +12,13 @@ name: ESLint
 on:
   push:
     branches: [ "master" ]
+    paths-ignore:
+      - './.github/**'
+      - README.md
+      - LICENSE
+      - '.gitignore'
+      - '.gitattributes'
+      - '.editorconfig'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "master" ]
@@ -32,13 +39,12 @@ jobs:
 
       - name: Install ESLint
         run: |
-          npm install @babel/eslint-parser @babel/core eslint
-          npm install @microsoft/eslint-formatter-sarif@2.1.7
+          npm install @babel/eslint-parser @babel/core eslint --force
+          npm install @microsoft/eslint-formatter-sarif@2.1.7 --force
 
       - name: Run ESLint
         run: npx eslint .
-          --config .eslintrc
-          --ext .js,.jsx,.ts,.tsx
+          --config eslint.config.js
           --format @microsoft/eslint-formatter-sarif
           --output-file eslint-results.sarif
         continue-on-error: true
