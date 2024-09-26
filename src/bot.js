@@ -57,7 +57,7 @@ client.on(Events.ClientReady, async() => {
     client.user?.setActivity({ name: `Counting on ${guildCount} servers!`, type: ActivityType.Playing });
     dblHandler.postBotStats(guildCount);
 
-    // Reload guild count every 5 minutes if it changed
+    // Reload guild count every 45 minutes if it changed
     let lastGuildCount = guildCount;
     setInterval(async() => {
         const newGuildCount = await client.guilds.fetch().then(guilds => guilds.size);
@@ -71,7 +71,7 @@ client.on(Events.ClientReady, async() => {
             if (!statusHasReset) dblHandler.postBotStats(newGuildCount);
             else Log.warn("Shard probably died. Re-Setting status without posting stats.");
         }
-    }, 5 * 60 * 1000);
+    }, 45 * 60 * 1000);
 
     client.user?.setStatus("online");
 });
