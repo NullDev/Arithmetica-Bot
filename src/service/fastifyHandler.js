@@ -11,6 +11,7 @@ import Log from "../util/log.js";
  * Register Fastify Server for production
  *
  * @param {import("discord.js").Client} client
+ * @return {void}
  */
 const fastifyHandler = function(client){
     if (process.env.NODE_ENV === "production"){
