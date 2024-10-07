@@ -3,15 +3,13 @@ import { GatewayIntentBits, Events, ActivityType, Partials } from "discord.js";
 import Log from "./util/log.js";
 import { config } from "../config/config.js";
 import DiscordClient from "./service/client.js";
-import DblHandler from "./service/dblHandler.js";
-import registerCommands from "./service/commandRegister.js";
-import interactionCreateHandler from "./events/interactionCreate.js";
 import messageCreate from "./events/messageCreate.js";
 import messageDelete from "./events/messageDelete.js";
 import messageUpdate from "./events/messageUpdate.js";
+import clientReady from "./events/clientReady.js";
 import guildCreate from "./events/guildCreate.js";
-import scheduleCrons from "./service/cronScheduler.js";
 import fastifyHandler from "./service/fastifyHandler.js";
+import setStatus from "./util/setStatus.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -38,39 +36,14 @@ const client = new DiscordClient({
 
 Log.wait("Starting bot...");
 
-const dblHandler = new DblHandler(client);
-
-/**
- * Set bot status
- *
- * @param {number} count
- */
-const setStatus = async function(count){
-    client.user?.setActivity({ name: `Counting on ${count} servers!`, type: ActivityType.Playing });
-    client.user?.setStatus("online");
-};
-
 client.cluster = new ClusterClient(client);
 
-client.on(Events.ClientReady, async() => {
-    Log.done("Client is ready!");
-
-    const guildCount = await client.guilds.fetch().then(guilds => guilds.size);
-    Log.info("Logged in as '" + client.user?.tag + "'! Serving in " + guildCount + " servers.");
-
-    await registerCommands(client)
-        .then(() => client.on(Events.InteractionCreate, async interaction => interactionCreateHandler(interaction)));
-
-    await scheduleCrons(client);
-    await setStatus(guildCount);
-
-    dblHandler.postBotStats(guildCount);
-});
+client.on(Events.ClientReady, async() => clientReady(client));
 
 client.on(Events.ShardReady, async shard => {
     Log.info(`Shard ${shard} is ready!`);
     const guildCount = await client.guilds.fetch().then(guilds => guilds.size);
-    await setStatus(guildCount);
+    await setStatus(client, guildCount);
 
     // Reload guild count every 10 minutes if it changed
     let lastGuildCount = guildCount;
@@ -79,7 +52,7 @@ client.on(Events.ShardReady, async shard => {
 
         if (newGuildCount !== lastGuildCount){
             lastGuildCount = newGuildCount;
-            await setStatus(newGuildCount);
+            await setStatus(client, newGuildCount);
             Log.info("Guild count changed to " + newGuildCount + ". Updated activity.");
         }
     }, 10 * 60 * 1000);
