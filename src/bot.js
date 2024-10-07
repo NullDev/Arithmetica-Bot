@@ -1,6 +1,5 @@
 import { ClusterClient, getInfo } from "discord-hybrid-sharding";
 import { GatewayIntentBits, Events, ActivityType, Partials } from "discord.js";
-import fastify from "fastify";
 import Log from "./util/log.js";
 import { config } from "../config/config.js";
 import DiscordClient from "./service/client.js";
@@ -12,7 +11,7 @@ import messageDelete from "./events/messageDelete.js";
 import messageUpdate from "./events/messageUpdate.js";
 import guildCreate from "./events/guildCreate.js";
 import scheduleCrons from "./service/cronScheduler.js";
-import voteHandler from "./service/voteHandler.js";
+import fastifyHandler from "./service/fastifyHandler.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -106,20 +105,7 @@ client.login(config.discord.bot_token)
     .then(() => Log.done("Logged in!"))
     .catch(err => Log.error("Failed to login: ", err));
 
-if (process.env.NODE_ENV === "production"){
-    Log.wait("Starting Fastify Server...");
-
-    const server = fastify({ logger: false });
-    server.post("/vote", (req, res) => voteHandler(req, res, client));
-    server.get("/vote", (_, res) => res.code(405).send({ error: "Method not allowed" }));
-    server.listen({
-        port: config.http.port,
-    }, (err, address) => {
-        if (err) Log.error("Failed to start Fastify Server: ", err);
-        Log.done(`Fastify Server listening on ${address}`);
-    });
-}
-else Log.info("Not starting Fastify Server since we are not in production mode.");
+fastifyHandler(client);
 
 process.on("unhandledRejection", (
     /** @type {Error} */ err,
