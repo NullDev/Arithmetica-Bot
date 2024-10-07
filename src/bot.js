@@ -8,8 +8,8 @@ import messageDelete from "./events/messageDelete.js";
 import messageUpdate from "./events/messageUpdate.js";
 import clientReady from "./events/clientReady.js";
 import guildCreate from "./events/guildCreate.js";
+import shardReady from "./events/shardReady.js";
 import fastifyHandler from "./service/fastifyHandler.js";
-import setStatus from "./util/setStatus.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -40,23 +40,7 @@ client.cluster = new ClusterClient(client);
 
 client.on(Events.ClientReady, async() => clientReady(client));
 
-client.on(Events.ShardReady, async shard => {
-    Log.info(`Shard ${shard} is ready!`);
-    const guildCount = await client.guilds.fetch().then(guilds => guilds.size);
-    await setStatus(client, guildCount);
-
-    // Reload guild count every 10 minutes if it changed
-    let lastGuildCount = guildCount;
-    setInterval(async() => {
-        const newGuildCount = await client.guilds.fetch().then(guilds => guilds.size);
-
-        if (newGuildCount !== lastGuildCount){
-            lastGuildCount = newGuildCount;
-            await setStatus(client, newGuildCount);
-            Log.info("Guild count changed to " + newGuildCount + ". Updated activity.");
-        }
-    }, 10 * 60 * 1000);
-});
+client.on(Events.ShardReady, async shard => shardReady(client, shard));
 
 client.on(Events.MessageCreate, message => messageCreate(message));
 
