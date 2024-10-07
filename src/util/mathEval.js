@@ -7,7 +7,6 @@ import "nerdamer/Solve.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
-
 const mathjs = create(all);
 mathjs.config({ number: "BigNumber" });
 
