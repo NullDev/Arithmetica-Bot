@@ -41,6 +41,16 @@ Log.wait("Starting bot...");
 
 const dblHandler = new DblHandler(client);
 
+/**
+ * Set bot status
+ *
+ * @param {number} count
+ */
+const setStatus = async function(count){
+    client.user?.setActivity({ name: `Counting on ${count} servers!`, type: ActivityType.Playing });
+    client.user?.setStatus("online");
+};
+
 client.cluster = new ClusterClient(client);
 
 client.on(Events.ClientReady, async() => {
@@ -53,27 +63,27 @@ client.on(Events.ClientReady, async() => {
         .then(() => client.on(Events.InteractionCreate, async interaction => interactionCreateHandler(interaction)));
 
     await scheduleCrons(client);
+    await setStatus(guildCount);
 
-    client.user?.setActivity({ name: `Counting on ${guildCount} servers!`, type: ActivityType.Playing });
     dblHandler.postBotStats(guildCount);
+});
 
-    // Reload guild count every 45 minutes if it changed
+client.on(Events.ShardReady, async shard => {
+    Log.info(`Shard ${shard} is ready!`);
+    const guildCount = await client.guilds.fetch().then(guilds => guilds.size);
+    await setStatus(guildCount);
+
+    // Reload guild count every 10 minutes if it changed
     let lastGuildCount = guildCount;
     setInterval(async() => {
         const newGuildCount = await client.guilds.fetch().then(guilds => guilds.size);
-        const statusHasReset = client.user?.presence.activities[0].name === "Starting...";
 
-        if (newGuildCount !== lastGuildCount || statusHasReset){
+        if (newGuildCount !== lastGuildCount){
             lastGuildCount = newGuildCount;
-            client.user?.setActivity({ name: `Counting on ${newGuildCount} servers!`, type: ActivityType.Playing });
+            await setStatus(newGuildCount);
             Log.info("Guild count changed to " + newGuildCount + ". Updated activity.");
-
-            if (!statusHasReset) dblHandler.postBotStats(newGuildCount);
-            else Log.warn("Shard probably died. Re-Setting status without posting stats.");
         }
-    }, 45 * 60 * 1000);
-
-    client.user?.setStatus("online");
+    }, 10 * 60 * 1000);
 });
 
 client.on(Events.MessageCreate, message => messageCreate(message));
