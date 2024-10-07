@@ -6,6 +6,10 @@ import interactionCreateHandler from "./interactionCreate.js";
 import setStatus from "../util/setStatus.js";
 import Log from "../util/log.js";
 
+// ========================= //
+// = Copyright (c) NullDev = //
+// ========================= //
+
 /**
  * Handle client ready event
  *
