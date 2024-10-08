@@ -65,6 +65,30 @@ const parseAbs = function(expr){
 };
 
 /**
+ * Parse ceil
+ *
+ * @param {String} expr
+ * @return {String}
+ *
+ */
+const parseCeil = function(expr){
+    if (!expr.includes("⌈") || !expr.includes("⌉")) return expr;
+    return expr.replace(/⌈(.+?)⌉/g, (_, p1) => `ceil(${p1})`);
+};
+
+/**
+ * Parse floor
+ *
+ * @param {String} expr
+ * @return {String}
+ *
+ */
+const parseFloor = function(expr){
+    if (!expr.includes("⌊") || !expr.includes("⌋")) return expr;
+    return expr.replace(/⌊(.+?)⌋/g, (_, p1) => `floor(${p1})`);
+};
+
+/**
  * Parse phi
  *
  * @param {String} expr
@@ -306,6 +330,8 @@ function mathEval(expr){
     cleaned = parsePowers(cleaned);
     cleaned = parseSqrt(cleaned);
     cleaned = parseAbs(cleaned);
+    cleaned = parseCeil(cleaned);
+    cleaned = parseFloor(cleaned);
     cleaned = parsePhi(cleaned);
     cleaned = parseComma(cleaned);
 
