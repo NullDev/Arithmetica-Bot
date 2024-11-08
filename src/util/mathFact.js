@@ -150,6 +150,7 @@ const facts = [
     "All separable Banach spaces are isometrically isomorphic to closed subspaces of C[0, 1].",
     "Laplace transforms turn differential equations into algebraic equations.",
     "The derivative of an odd function is an even function.",
+    "A matrix and its transpose have the same rank.",
 ];
 
 /**
