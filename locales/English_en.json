@@ -80,10 +80,13 @@
         "global_top_best": "Server \"%s\" is on place #%s in the global leaderboard (%s servers) with its best count (%s)!",
         "new_best": "New highscore!",
         "help_preamble": "You can visit <https://arithmetica.xyz/wiki> to see, what expressions and syntax is possible. To check, if an expression is a valid count, you can use `/calc` to see if the result is correct.\nSupport Server: <https://discord.gg/hgFyq43dug>",
-        "admin_help_preamble": "Setup: Set the counting channel with `/set-channel`, then alternatively configure options with `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` and `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
+        "admin_help_preamble": "Setup: Set the counting channel with `/set-channel`, then alternatively configure options with `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/set-loser-role` and `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
         "pin_highscore": "Highscore pinning has been %s!",
         "rounding": "Rounding has been %s!",
         "channel_create": "I can't find the channel `%s`. Do you want me to create it?",
-        "no_banns": "There are no banned users at the moment."
+        "no_banns": "There are no banned users at the moment.",
+        "set_loser_role": "Loser role has been set to %s with a duration of %sh!",
+        "unset_loser_role": "Loser role has been unset!",
+        "add_loser_role": "You have been given the %s role for %sh!"
     }
 }
