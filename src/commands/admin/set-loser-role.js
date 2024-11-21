@@ -2,6 +2,7 @@ import path from "node:path";
 import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
+import defaults from "../../util/defaults.js";
 import __ from "../../service/i18n.js";
 
 // ========================= //
@@ -37,7 +38,7 @@ export default {
      */
     async execute(interaction){
         const role = interaction.options.get("role")?.value;
-        const duration = interaction.options.get("duration")?.value;
+        const duration = interaction.options.get("duration")?.value || defaults.loser_role_duration;
 
         if (!role || !duration){
             return await interaction.reply({
