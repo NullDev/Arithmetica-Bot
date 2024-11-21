@@ -66,6 +66,36 @@ const handleTimeout = async function(message){
 };
 
 /**
+ * Handle the loser role
+ *
+ * @param {import("discord.js").Message} message
+ * @return {Promise<{ role: string, duration: number} | null>}
+ */
+const handleloserRole = async function(message){
+    const loserRole = await guildDb.get(`guild-${message.guildId}.loserRole`);
+    const duration = await guildDb.get(`guild-${message.guildId}.loserRoleDuration`);
+
+    if (!loserRole || !duration) return null;
+
+    const guildUser = await message.guild?.members.fetch(message.author.id);
+    if (!guildUser) return null;
+
+    const role = await message.guild?.roles.fetch(loserRole);
+    if (!role) return null;
+
+    try {
+        await guildUser.roles.add(role);
+        await userDb.set(`guild-${message.guildId}.user-${message.author.id}.loser-role-time`, Date.now() + duration * 60 * 1000);
+    }
+    catch (e){
+        Log.error("Failed to add loser role: ", e);
+        return null;
+    }
+
+    return { role: role.name, duration };
+};
+
+/**
  * Let the user know they failed
  *
  * @param {import("discord.js").Message} message
@@ -86,6 +116,9 @@ const failed = async function(message, lastNumber, result){
 
     const timeout = await handleTimeout(message);
     if (!!timeout) response += "\n" + (await __("replies.timeout", timeout)(message.guildId));
+
+    const loserRole = await handleloserRole(message);
+    if (!!loserRole) response += "\n" + (await __("replies.add_loser_role", loserRole.role, loserRole.duration)(message.guildId));
 
     const best = await guildDb.get(`guild-${message.guildId}.best`) || 0;
     if (best > 0){
