@@ -26,8 +26,8 @@ export default {
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
-        await db.set(`guild-${interaction.guildId}.loserRole`, null);
-        await db.set(`guild-${interaction.guildId}.loserRoleDuration`, null);
+        await db.delete(`guild-${interaction.guildId}.loserRole`);
+        await db.delete(`guild-${interaction.guildId}.loserRoleDuration`);
 
         return await interaction.reply({
             content: await __("replies.unset_loser_role")(interaction.guildId),
