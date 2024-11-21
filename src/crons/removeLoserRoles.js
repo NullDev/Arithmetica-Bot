@@ -22,27 +22,38 @@ const guildDb = new QuickDB({
 const removeLoserRoles = async(client) => {
     Log.wait("[CRON] Removing loser roles...");
 
-    const expiredUsers = (await userDb.all())
-        .filter(data => data.id.startsWith("guild-"))
-        .map(data => data.value)
-        .flatMap(guildData => Object.keys(guildData).filter(user => guildData[user]["loser-role-time"] <= Date.now()));
+    const users = (await userDb.all());
+    const result = [];
+    let removedRoles = 0;
 
-    for (const user of expiredUsers){
-        const guildId = user.split("-")[1];
-        const userId = user.split("-")[3];
-
-        const guild = await client.guilds.fetch(guildId); // @TODO: Fix
-        const member = await guild.members.fetch(userId);
-
-        const loserRoleID = await guildDb.get(`guild-${guildId}.loserRole`);
-        const loserRole = guild.roles.cache.get(loserRoleID);
-        if (loserRole) await member.roles.remove(loserRole);
-
-        await userDb.delete(`guild-${guildId}.user-${userId}.loser-role`);
-        await userDb.delete(`guild-${guildId}.user-${userId}.loser-role-time`);
+    for (const guild of users){
+        const guildId = guild.id;
+        const userValues = guild.value;
+        for (const [userId, userData] of Object.entries(userValues)){
+            if (userData["loser-role-time"]){
+                result.push({
+                    guildId: guildId.replace("guild-", ""),
+                    userId: userId.replace("user-", ""),
+                    loserRoleTime: userData["loser-role-time"],
+                });
+            }
+        }
     }
 
-    Log.done("[CRON] Removed loser roles.");
+    for (const { guildId, userId, loserRoleTime } of result){
+        if (loserRoleTime <= Date.now()){
+            const guild = await client.guilds.fetch(guildId);
+            const member = await guild.members.fetch(userId);
+            const loserRole = await guildDb.get(`guild-${guildId}.loserRole`);
+            if (loserRole){
+                await member.roles.remove(loserRole);
+                await userDb.delete(`guild-${guildId}.user-${userId}.loser-role-time`);
+                ++removedRoles;
+            }
+        }
+    }
+
+    Log.done(`[CRON] Removed ${removedRoles} loser roles.`);
 };
 
 export default removeLoserRoles;
