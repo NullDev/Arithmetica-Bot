@@ -80,10 +80,13 @@
         "global_top_best": "Server \"%s\" ist auf Platz #%s in der globalen Bestenliste (%s Server) mit seiner besten Zählung (%s)!",
         "new_best": "Neuer Rekord!",
         "help_preamble": "Besuche <https://arithmetica.xyz/wiki>, um zu sehen, welche Ausdrücke und Syntax möglich sind. Um zu überprüfen, ob ein Ausdruck eine gültige Zählung ist, kann `/calc` verwendet werden, um zu sehen, ob das Ergebnis korrekt ist.\nSupport Server: <https://discord.gg/hgFyq43dug>",
-        "admin_help_preamble": "Einrichtung: Zählchannel mit `/set-channel` einstellen. Danach, optionale Einstellungen mit `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown` und `/timeout-increment` konfigurieren.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
+        "admin_help_preamble": "Einrichtung: Zählchannel mit `/set-channel` einstellen. Danach, optionale Einstellungen mit `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/set-loser-role` und `/timeout-increment` konfigurieren.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
         "pin_highscore": "Highscore pinning wurde %s!",
         "rounding": "Runden wurde %s!",
         "channel_create": "Ich kann den Channel `%s` nicht finden. Möchtest du, dass ich ihn erstelle?",
-        "no_banns": "Es gibt derzeit keine gebannten Benutzer."
+        "no_banns": "Es gibt derzeit keine gebannten Benutzer.",
+        "set_loser_role": "Die Verliererrolle wurde auf %s mit einer Dauer von %sh gesetzt!",
+        "unset_loser_role": "Die Verliererrolle wurde entfernt!",
+        "add_loser_role": "Du hast die %s Rolle für %sh erhalten!"
     }
 }
