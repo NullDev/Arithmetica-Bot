@@ -31,7 +31,7 @@ const removeLoserRoles = async(client) => {
         const guildId = user.split("-")[1];
         const userId = user.split("-")[3];
 
-        const guild = await client.guilds.fetch(guildId);
+        const guild = await client.guilds.fetch(guildId); // @TODO: Fix
         const member = await guild.members.fetch(userId);
 
         const loserRoleID = await guildDb.get(`guild-${guildId}.loserRole`);
