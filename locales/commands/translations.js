@@ -591,4 +591,46 @@ export default {
             "es-ES": "Enumerar todos los usuarios bloqueados.",
         },
     },
+    set_loser_role: {
+        desc: "Set the loser role.",
+        translations: {
+            de: "Setze die Verlierer-Rolle.",
+            fr: "Définir le rôle de perdant.",
+            ru: "Установить роль проигравшего.",
+            ja: "敗者の役割を設定します。",
+            "es-ES": "Establecer el rol de perdedor.",
+        },
+        options: {
+            role: {
+                desc: "The role to set",
+                translations: {
+                    de: "Die zu setzende Rolle",
+                    fr: "Le rôle à définir",
+                    ru: "Роль для установки",
+                    ja: "設定する役割",
+                    "es-ES": "El rol a establecer",
+                },
+            },
+            duration: {
+                desc: "Duration of the role in hours",
+                translations: {
+                    de: "Dauer der Rolle in Stunden",
+                    fr: "Durée du rôle en heures",
+                    ru: "Продолжительность роли в часах",
+                    ja: "役割の期間",
+                    "es-ES": "Duración del rol en horas",
+                },
+            },
+        },
+    },
+    unset_loser_role: {
+        desc: "Unset the loser role.",
+        translations: {
+            de: "Entferne die Verlierer-Rolle.",
+            fr: "Désactiver le rôle de perdant.",
+            ru: "Отменить роль проигравшего.",
+            ja: "敗者の役割を解除します。",
+            "es-ES": "Deshabilitar el rol de perdedor.",
+        },
+    },
 };
