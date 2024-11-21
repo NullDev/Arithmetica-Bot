@@ -20,8 +20,8 @@ const scheduleCrons = async function(client){
         await LogHandler.removeOldLogs();
     });
 
-    // hourly cron
-    cron.schedule("0 * * * *", async() => {
+    // 15 minutes cron
+    cron.schedule("*/15 * * * *", async() => {
         await removeLoserRoles(client);
     });
 
