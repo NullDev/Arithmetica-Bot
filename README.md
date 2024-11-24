@@ -33,6 +33,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
 - [x] Cooldown for new server members
 - [x] Timeout for losers
 - [x] Timeout increment factor for every fail
+- [x] Timed role for losers 
 - [x] Cheat-Mode (no losing)
 - [x] `/help` command to get a list of all commands and useful information
 - [x] `/stats` command for personal stats or the stats of another user
