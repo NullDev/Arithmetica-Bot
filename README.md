@@ -130,10 +130,14 @@ Then navigate to the folder.<br><br>
 $ `npm install`<br><br>
 4. Copy [config/config.template.js](https://github.com/NullDev/Arithmetica-Bot/blob/master/config/config.template.js) and paste it as `config/config.custom.js` OR use `npm run generate-config`. <br><br>
 5. Configure it in your favourite editor by editing `config/config.custom.js`. <br><br>
-6. Start it in development mode by running <br>
+6. [LINUX ONLY]: Install LaTeX dependencies: <br>
+$ `sudo ./setup_latex.sh` <br><br>
+7. Start it in development mode by running <br>
 $ `npm start` <br>
 or start in production mode <br>
-$ `npm run start:prod` <br><br>
+$ `npm run start:prod` <br>
+or (recommended), use PM2 <br>
+$ `pm2 start pm2.ecosystem.json` <br><br>
 
 <hr>
 
