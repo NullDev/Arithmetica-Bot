@@ -151,7 +151,11 @@ Once the config has been copied like described in [Step 4](#wrench-setup), it ca
 | discord: <br> `dbl_token` | OPTIONAL: [DiscordBotList](https://discordbotlist.com/) token to push commands and stats. | String | N/A |
 | discord: <br> `top_token` | OPTIONAL: [Top.gg](https://top.gg/) token to push stats. | String | N/A |
 | discord: <br> `discords_list_token` | OPTIONAL: [Discords List](https://discords.com/) token to push stats. | String | N/A |
+| discord: <br> `botlist_token` | OPTIONAL: Botlist token to push stats. | String | N/A |
+| discord: <br> `dlist_token` | OPTIONAL: Dlist token to push stats. | String | N/A |
 | discord: <br> `vote_webhook_secret` | OPTIONAL: Secret for the vote webhook. | String | N/A |
+| discord: <br> `wolfram_appid` | OPTIONAL: Secret for the Wolfram-Aplha API. | String | N/A |
+| discord: <br> `bot_owner_ids` | OPTIONAL: Discord IDs of Bot owners | String-Array | [] |
 
 <hr>
 
