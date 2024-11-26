@@ -80,13 +80,14 @@
         "global_top_best": "El servidor \"%s\" está en el lugar #%s en la clasificación global (%s servidores) con su mejor conteo (%s)!",
         "new_best": "¡Nuevo récord!",
         "help_preamble": "Puede visitar <https://arithmetica.xyz/wiki> para ver qué expresiones y sintaxis son posibles. Para verificar si una expresión es un recuento válido, puede usar `/calc` para ver si el resultado es correcto.\nSupport Server: <https://discord.gg/hgFyq43dug>",
-        "admin_help_preamble": "Configuración: Establezca el canal de conteo con `/set-channel`, luego configure opcionalmente opciones con `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/set-loser-role` y `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
+        "admin_help_preamble": "Configuración: Establezca el canal de conteo con `/set-channel`, luego configure opcionalmente opciones con `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/set-loser-role`, `/set-last-count` y `/timeout-increment`.\nSupport Server: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
         "pin_highscore": "¡El pin de la puntuación más alta ha sido %s!",
         "rounding": "¡El redondeo ha sido %s!",
         "channel_create": "No puedo encontrar el canal `%s`. ¿Quieres que lo cree?",
         "no_banns": "No hay usuarios prohibidos en este momento.",
         "set_loser_role": "¡El rol de perdedor se ha establecido en %s con una duración de %s horas!",
         "unset_loser_role": "¡El rol de perdedor se ha eliminado!",
-        "add_loser_role": "¡Se le ha dado el rol %s por %s horas!"
+        "add_loser_role": "¡Se le ha dado el rol %s por %s horas!",
+        "set_last_count": "El último conteo ha sido establecido en %s!"
     }
 }

@@ -63,6 +63,7 @@ Alternatively you can host the bot yourself. Instructions [below ⏬](#wrench-se
     - Optionally, set a timeout increment factor (`/timeout-increment`) (Default: Disabled)
     - Optionally, enable cheat mode (`/cheat-mode`) (Default: Disabled)
     - Optionally, set a loser role (`/set-loser-role`) (Default: None)
+    - Optionally, set the last count e.g. if you migrate from another bot (`/set-last-count`) (Default: 0)
 - [x] Easy to self-host
     - No external database needed
     - Easy configuration system

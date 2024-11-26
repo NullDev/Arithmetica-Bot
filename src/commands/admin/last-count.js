@@ -28,7 +28,7 @@ export default {
 
         return await interaction.reply({
             content: String(lastCount),
-            ephemeral: true,
+            ephemeral: false,
         });
     },
 };

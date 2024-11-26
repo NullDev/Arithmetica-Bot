@@ -633,4 +633,26 @@ export default {
             "es-ES": "Deshabilitar el rol de perdedor.",
         },
     },
+    set_last_count: {
+        desc: "Set the last count of the server.",
+        translations: {
+            de: "Setze die letzte Zählung des Servers.",
+            fr: "Définir le dernier compte du serveur.",
+            ru: "Установить последний счет сервера.",
+            ja: "サーバーの最後のカウントを設定します。",
+            "es-ES": "Establecer el último recuento del servidor.",
+        },
+        options: {
+            count: {
+                desc: "The count to set",
+                translations: {
+                    de: "Die zu setzende Zählung",
+                    fr: "Le compte à définir",
+                    ru: "Счет для установки",
+                    ja: "設定するカウント",
+                    "es-ES": "El recuento a establecer",
+                },
+            },
+        },
+    },
 };
