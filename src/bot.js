@@ -1,3 +1,4 @@
+import EventEmitter from "node:events";
 import { ClusterClient, getInfo } from "discord-hybrid-sharding";
 import { GatewayIntentBits, Events, ActivityType, Partials } from "discord.js";
 import Log from "./util/log.js";
@@ -14,6 +15,8 @@ import fastifyHandler from "./service/fastifyHandler.js";
 // ========================= //
 // = Copyright (c) NullDev = //
 // ========================= //
+
+EventEmitter.defaultMaxListeners = 20;
 
 const client = new DiscordClient({
     intents: [
