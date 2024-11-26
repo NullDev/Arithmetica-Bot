@@ -1,5 +1,6 @@
 import { SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } from "discord.js";
 import translations from "../../../locales/commands/translations.js";
+import Log from "../../util/log.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -12,11 +13,25 @@ export default {
         .setName(commandName)
         .setDescription(translations.run.desc)
         .setDescriptionLocalizations(translations.run.translations)
-        .setDMPermission(false),
+        .setDMPermission(false)
+        .addBooleanOption((option) =>
+            option.setName("list-languages")
+                .setDescription(translations.run.options.list_languages.desc)
+                .setDescriptionLocalizations(translations.run.options.list_languages.translations)
+                .setRequired(false)),
     /**
      * @param {import("discord.js").CommandInteraction} interaction
      */
     async execute(interaction){
+        if (interaction.options.get("list-languages")?.value){
+            const languages = (await fetch("https://emkc.org/api/v2/piston/runtimes").then((res) => res.json())
+                .catch((err) => Log.error("Error during fetching of languages: " + err)))
+                .map(e => e.language)
+                .join(", ");
+
+            return interaction.reply({ content: languages, ephemeral: true });
+        }
+
         const modal = new ModalBuilder()
             .setCustomId("run_code")
             .setTitle("Run Code");

@@ -558,6 +558,18 @@ export default {
             ja: "コードを実行する",
             "es-ES": "Ejecutar código",
         },
+        options: {
+            list_languages: {
+                desc: "List all available languages",
+                translations: {
+                    de: "Liste alle verfügbaren Sprachen auf",
+                    fr: "Lister toutes les langues disponibles",
+                    ru: "Список всех доступных языков",
+                    ja: "利用可能なすべての言語をリストする",
+                    "es-ES": "Enumerar todos los idiomas disponibles",
+                },
+            },
+        },
     },
     rounding: {
         desc: "Enable/Disable rounding of numbers.",
