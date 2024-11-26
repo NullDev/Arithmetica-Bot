@@ -157,6 +157,8 @@ Once the config has been copied like described in [Step 4](#wrench-setup), it ca
 | discord: <br> `vote_webhook_secret` | OPTIONAL: Secret for the vote webhook. | String | N/A |
 | discord: <br> `wolfram_appid` | OPTIONAL: Secret for the Wolfram-Aplha API. | String | N/A |
 | discord: <br> `bot_owner_ids` | OPTIONAL: Discord IDs of Bot owners | String-Array | [] |
+| discord: <br> `total_shards` | Total shard count | number , "auto" , undefined | "auto" |
+| http: <br> `port` | Port for fastify vote route | number | 1335 |
 
 <hr>
 
