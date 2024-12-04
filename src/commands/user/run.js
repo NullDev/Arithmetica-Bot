@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } from "discord.js";
 import translations from "../../../locales/commands/translations.js";
 import Log from "../../util/log.js";
+import __ from "../../service/i18n.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
@@ -29,7 +30,10 @@ export default {
                 .map(e => e.language)
                 .join(", ");
 
-            return interaction.reply({ content: languages, ephemeral: true });
+            return interaction.reply({
+                content: languages || (await __("errors.generic_command_execution_failed")(interaction.guildId)),
+                ephemeral: true,
+            });
         }
 
         const modal = new ModalBuilder()
