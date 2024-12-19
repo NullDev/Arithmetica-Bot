@@ -56,7 +56,7 @@
         "timeout_factor_disabled": "Timeout factor has been disabled!",
         "timeout_factor_set": "Timeout factor has been set to %s!",
         "reset_guild": {
-            "are_you_sure": "Are you sure you want to reset the current cound and all user stats?",
+            "are_you_sure": "Are you sure you want to reset the current count and all user stats?",
             "success": "Guild data has been reset!",
             "confirm": "YES, RESET ALL",
             "abort": "No, abort"
