@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/NullDev/Arithmetica-Bot#readme",
   "author": "NullDev",
-  "license": "Apache-2.0",
+  "license": "AGPL-3.0-only",
   "devDependencies": {
     "@babel/core": "^7.24.6",
     "@babel/eslint-parser": "^7.24.6",
