@@ -38,7 +38,7 @@
     "canvas": "^2.11.2",
     "check-dependencies": "^2.0.0",
     "discord-hybrid-sharding": "^2.2.0",
-    "discord.js": "^14.15.2",
+    "discord.js": "^14.18.0",
     "fastify": "^4.27.0",
     "i18n-light": "^0.5.4",
     "mathjs": "^12.4.2",
