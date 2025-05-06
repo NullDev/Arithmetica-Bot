@@ -315,6 +315,8 @@ function mathEval(expr){
         .replaceAll("−", "-")
         .replaceAll("–", "-")
         .replaceAll("＋", "+")
+        .replaceAll("“", "\"") // U+201C
+        .replaceAll("”", "\"") // U+201D
         .replaceAll("π", "pi")
         .replaceAll("τ", "tau")
         .replaceAll("Σ", "sigmaSum")
