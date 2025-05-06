@@ -9,13 +9,13 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start:dev": "npm run lint && cross-env NODE_ENV=development bun src/app.js",
-    "start:prod": "cross-env NODE_ENV=production bun src/app.js",
+    "start:dev": "npm run lint && cross-env NODE_ENV=development node src/app.js",
+    "start:prod": "cross-env NODE_ENV=production node src/app.js",
     "start": "npm run start:dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "generate-config": "bun scripts/generate-config.js",
-    "pull-and-restart": "bun scripts/pull-and-restart.js"
+    "generate-config": "node scripts/generate-config.js",
+    "pull-and-restart": "node scripts/pull-and-restart.js"
   },
   "repository": {
     "type": "git",
