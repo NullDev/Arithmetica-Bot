@@ -28,20 +28,20 @@
   "author": "NullDev",
   "license": "AGPL-3.0-only",
   "devDependencies": {
-    "@babel/core": "^7.24.6",
-    "@babel/eslint-parser": "^7.24.6",
+    "@babel/core": "^7.27.1",
+    "@babel/eslint-parser": "^7.27.1",
     "cross-env": "^7.0.3",
-    "eslint": "^9.3.0"
+    "eslint": "^9.26.0"
   },
   "dependencies": {
-    "better-sqlite3": "^10.0.0",
+    "better-sqlite3": "^11.9.1",
     "canvas": "^3.1.0",
     "check-dependencies": "^2.0.0",
-    "discord-hybrid-sharding": "^2.2.0",
-    "discord.js": "^14.18.0",
-    "fastify": "^4.27.0",
+    "discord-hybrid-sharding": "^2.2.6",
+    "discord.js": "^14.19.3",
+    "fastify": "^5.3.2",
     "i18n-light": "^0.5.4",
-    "mathjs": "^12.4.2",
+    "mathjs": "^14.4.0",
     "nerdamer": "^1.1.13",
     "node-cron": "^3.0.3",
     "quick.db": "^9.1.7"
