@@ -1,5 +1,5 @@
 import path from "node:path";
-import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
+import { SlashCommandBuilder, PermissionFlagsBits, InteractionContextType } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
 import defaults from "../../util/defaults.js";
@@ -20,7 +20,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.set_loser_role.desc)
         .setDescriptionLocalizations(translations.set_loser_role.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addRoleOption((option) =>
             option.setName("role")

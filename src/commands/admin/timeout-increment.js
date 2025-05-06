@@ -1,5 +1,5 @@
 import path from "node:path";
-import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
+import { SlashCommandBuilder, PermissionFlagsBits, InteractionContextType } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
 import defaults from "../../util/defaults.js";
@@ -20,7 +20,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.timeout_increment.desc)
         .setDescriptionLocalizations(translations.timeout_increment.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addNumberOption((option) =>
             option.setName("factor")

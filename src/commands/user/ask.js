@@ -1,4 +1,4 @@
-import { AttachmentBuilder, SlashCommandBuilder } from "discord.js";
+import { AttachmentBuilder, SlashCommandBuilder, InteractionContextType } from "discord.js";
 import WolframAlpha from "../../service/wolframAlphaGenerator.js";
 import translations from "../../../locales/commands/translations.js";
 import defaults from "../../util/defaults.js";
@@ -16,7 +16,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.ask.desc)
         .setDescriptionLocalizations(translations.ask.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .addStringOption((option) =>
             option.setName("input")
                 .setDescription(translations.ask.options.question.desc)

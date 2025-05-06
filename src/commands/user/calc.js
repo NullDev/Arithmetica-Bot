@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, InteractionContextType } from "discord.js";
 import translations from "../../../locales/commands/translations.js";
 import mathEval from "../../util/mathEval.js";
 import __ from "../../service/i18n.js";
@@ -14,7 +14,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.calc.desc)
         .setDescriptionLocalizations(translations.calc.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .addStringOption((option) =>
             option.setName("expression")
                 .setDescription(translations.calc.options.expression.desc)

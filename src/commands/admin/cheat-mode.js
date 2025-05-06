@@ -1,5 +1,5 @@
 import path from "node:path";
-import { SlashCommandBuilder, PermissionFlagsBits, ButtonStyle } from "discord.js";
+import { SlashCommandBuilder, PermissionFlagsBits, ButtonStyle, InteractionContextType } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
 import createYesNoInteraction from "../../events/yesNoInteraction.js";
@@ -20,7 +20,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.cheat_mode.desc)
         .setDescriptionLocalizations(translations.cheat_mode.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addBooleanOption((option) =>
             option.setName("enabled")

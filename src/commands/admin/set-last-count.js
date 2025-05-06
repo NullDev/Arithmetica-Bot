@@ -1,5 +1,5 @@
 import path from "node:path";
-import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
+import { SlashCommandBuilder, PermissionFlagsBits, InteractionContextType } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
 import __ from "../../service/i18n.js";
@@ -19,7 +19,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.set_last_count.desc)
         .setDescriptionLocalizations(translations.set_last_count.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addIntegerOption((option) =>
             option.setName("count")

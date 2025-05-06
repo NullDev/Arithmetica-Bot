@@ -1,5 +1,5 @@
 import path from "node:path";
-import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
+import { SlashCommandBuilder, PermissionFlagsBits, InteractionContextType } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
 
@@ -18,7 +18,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.last_count.desc)
         .setDescriptionLocalizations(translations.last_count.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     /**
      * @param {import("discord.js").CommandInteraction} interaction

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, InteractionContextType } from "discord.js";
 import translations from "../../../locales/commands/translations.js";
 import __ from "../../service/i18n.js";
 
@@ -13,7 +13,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.oeis.desc)
         .setDescriptionLocalizations(translations.oeis.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .addStringOption((option) =>
             option.setName("sequence")
                 .setDescription(translations.oeis.options.sequence.desc)

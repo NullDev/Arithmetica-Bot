@@ -1,5 +1,5 @@
 import path from "node:path";
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, InteractionContextType } from "discord.js";
 import { QuickDB } from "quick.db";
 import translations from "../../../locales/commands/translations.js";
 import defaults from "../../util/defaults.js";
@@ -20,7 +20,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.best.desc)
         .setDescriptionLocalizations(translations.best.translations)
-        .setDMPermission(false),
+        .setContexts([InteractionContextType.Guild]),
     /**
      * @param {import("discord.js").CommandInteraction} interaction
      */

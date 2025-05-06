@@ -1,5 +1,5 @@
 import path from "node:path";
-import { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } from "discord.js";
+import { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder, InteractionContextType } from "discord.js";
 import { QuickDB } from "quick.db";
 import generateImage from "../../service/topImageGenerator.js";
 import translations from "../../../locales/commands/translations.js";
@@ -24,7 +24,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.top.desc)
         .setDescriptionLocalizations(translations.top.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .addStringOption((option) =>
             option.setName("sort")
                 .setDescription(translations.top.options.sort.desc)

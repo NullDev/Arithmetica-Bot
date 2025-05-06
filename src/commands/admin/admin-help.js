@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
+import { SlashCommandBuilder, PermissionFlagsBits, InteractionContextType } from "discord.js";
 import translations from "../../../locales/commands/translations.js";
 import __ from "../../service/i18n.js";
 
@@ -13,7 +13,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.admin_help.desc)
         .setDescriptionLocalizations(translations.admin_help.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     /**
      * @param {import("discord.js").CommandInteraction} interaction

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, InteractionContextType } from "discord.js";
 import getRandomMathFact from "../../util/mathFact.js";
 import defaults from "../../util/defaults.js";
 import translations from "../../../locales/commands/translations.js";
@@ -14,7 +14,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.math_fact.desc)
         .setDescriptionLocalizations(translations.math_fact.translations)
-        .setDMPermission(false),
+        .setContexts([InteractionContextType.Guild]),
     /**
      * @param {import("discord.js").CommandInteraction} interaction
      */

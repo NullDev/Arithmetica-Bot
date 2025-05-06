@@ -1,5 +1,5 @@
 import os from "node:os";
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, InteractionContextType } from "discord.js";
 import translations from "../../../locales/commands/translations.js";
 import __ from "../../service/i18n.js";
 
@@ -14,7 +14,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.info.desc)
         .setDescriptionLocalizations(translations.info.translations)
-        .setDMPermission(false),
+        .setContexts([InteractionContextType.Guild]),
     /**
      * @param {import("discord.js").CommandInteraction} interaction
      */

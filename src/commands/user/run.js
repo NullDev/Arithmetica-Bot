@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } from "discord.js";
+import { SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, InteractionContextType } from "discord.js";
 import translations from "../../../locales/commands/translations.js";
 import Log from "../../util/log.js";
 import __ from "../../service/i18n.js";
@@ -14,7 +14,7 @@ export default {
         .setName(commandName)
         .setDescription(translations.run.desc)
         .setDescriptionLocalizations(translations.run.translations)
-        .setDMPermission(false)
+        .setContexts([InteractionContextType.Guild])
         .addBooleanOption((option) =>
             option.setName("list-languages")
                 .setDescription(translations.run.options.list_languages.desc)
