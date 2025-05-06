@@ -15,7 +15,7 @@ EventEmitter.defaultMaxListeners = 20;
 
 const manager = new ClusterManager("./src/bot.js", {
     totalShards: config.discord.total_shards,
-    shardsPerClusters: 2,
+    shardsPerClusters: 1,
     token: config.discord.bot_token,
 });
 
