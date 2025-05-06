@@ -20,7 +20,9 @@ const clientReady = async function(client){
     const dblHandler = new DblHandler(client);
     Log.done("Client is ready!");
 
-    const guildCount = await client.guilds.fetch().then(guilds => guilds.size);
+    const guilds = await client.cluster?.fetchClientValues("guilds.cache.size");
+    const guildCount = guilds?.reduce((acc, gc) => Number(acc) + Number(gc), 0);
+
     Log.info("Logged in as '" + client.user?.tag + "'! Serving in " + guildCount + " servers.");
 
     await registerCommands(client)
