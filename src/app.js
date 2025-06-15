@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import EventEmitter from "node:events";
+// import EventEmitter from "node:events";
 import { ClusterManager } from "discord-hybrid-sharding";
 import Log from "./util/log.js";
 import { config, meta } from "../config/config.js";
@@ -11,7 +11,7 @@ import translationCheck from "./util/translationCheck.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
-EventEmitter.defaultMaxListeners = 20;
+// EventEmitter.defaultMaxListeners = 20;
 
 const manager = new ClusterManager("./src/bot.js", {
     totalShards: config.discord.total_shards,

@@ -1,4 +1,4 @@
-import EventEmitter from "node:events";
+// import EventEmitter from "node:events";
 import { ClusterClient, getInfo } from "discord-hybrid-sharding";
 import { GatewayIntentBits, Events, ActivityType, Partials } from "discord.js";
 import Log from "./util/log.js";
@@ -16,7 +16,7 @@ import fastifyHandler from "./service/fastifyHandler.js";
 // = Copyright (c) NullDev = //
 // ========================= //
 
-EventEmitter.defaultMaxListeners = 20;
+// EventEmitter.defaultMaxListeners = 20;
 
 const client = new DiscordClient({
     intents: [
@@ -60,6 +60,14 @@ client.on(Events.GuildUnavailable, guild => Log.warn("Guild is unavailable: " + 
 client.on(Events.Warn, info => Log.warn(info));
 
 client.on(Events.Error, err => Log.error("Client error.", err));
+
+client.on(Events.Debug, info => Log.debug(info, true));
+
+client.on(Events.CacheSweep, info => Log.debug("Cache sweep: " + info));
+
+client.on(Events.ShardError, (error, shardId) => Log.error(`Shard ${shardId} encountered an error:`, error));
+
+client.on(Events.ShardDisconnect, (event, shardId) => Log.warn(`Shard ${shardId} disconnected with code ${event.code} and reason: ${event.reason}`));
 
 client.login(config.discord.bot_token)
     .then(() => Log.done("Logged in!"))
