@@ -54,7 +54,9 @@ export default {
         const currentCountOfGuild = counts.find(e => e.guildId === interaction.guildId)?.count || 0;
         const bestCountOfGuild = counts.find(e => e.guildId === interaction.guildId)?.best || 0;
         const currentGuildName = (await interaction.client.guilds.fetch()).find(e => e.id === interaction.guildId)?.name;
-        const allGuilds = await interaction.client.guilds.fetch().then(guilds => guilds.size);
+
+        const guilds = await interaction.client.cluster?.fetchClientValues("guilds.cache.size");
+        const allGuilds = guilds?.reduce((acc, gc) => Number(acc) + Number(gc), 0);
 
         let reply = await __(`replies.global_top_${type}`, currentGuildName, rank, allGuilds, type === "best" ? bestCountOfGuild : currentCountOfGuild)(interaction.guildId);
         if (rank === 1) reply += " 👑";
