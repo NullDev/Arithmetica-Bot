@@ -1,372 +1,79 @@
-import { create, all } from "mathjs";
-
-import nerdamer from "nerdamer/nerdamer.core.js";
-import "nerdamer/Solve.js";
+import { spawn } from "child_process";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import Log from "../util/log.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
 // ========================= //
 
-const mathjs = create(all);
-mathjs.config({ number: "BigNumber" });
-
-const neutralElements = {
-    "+": 0,
-    "*": 1,
-};
-
 const computationLimitSecs = 5;
 
 /**
- * Parse powers
+ * Evaluate a math expression using a worker process for timeout protection
  *
  * @param {String} expr
- * @return {String}
+ * @return {Promise<{ result: Number|null, error: String|null }>}
  */
-const parsePowers = function(expr){
-    if (/^[⁰¹²³⁴⁵⁶⁷⁸⁹]+/.test(expr)) return expr;
+async function mathEval(expr){
+    return new Promise((resolve) => {
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
+        const workerPath = join(__dirname, "mathWorker.js");
 
-    const superscriptMap = {
-        "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4",
-        "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9",
-    };
+        // Spawn worker process
+        const worker = spawn("node", [workerPath], {
+            stdio: ["pipe", "pipe", "pipe"],
+        });
 
-    return expr.replace(/(\d+|\w)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_, p1, p2) => {
-        const normalNumbers = Array.from(p2).map(s => superscriptMap[s]).join("");
-        return `${p1}^(${normalNumbers})`;
+        // Set up timeout
+        const timeoutId = setTimeout(() => {
+            worker.kill("SIGKILL");
+            resolve({
+                result: null,
+                error: "Function execution exceeded " + computationLimitSecs + " seconds",
+            });
+        }, computationLimitSecs * 1000);
+
+        let output = "";
+        let errorOutput = "";
+
+        worker.stdout.on("data", (data) => {
+            output += data.toString();
+        });
+
+        worker.stderr.on("data", (data) => {
+            errorOutput += data.toString();
+        });
+
+        worker.on("close", (code) => {
+            clearTimeout(timeoutId);
+
+            if (code !== 0){
+                resolve({
+                    result: null,
+                    error: errorOutput || "Worker process failed",
+                });
+                return;
+            }
+
+            try {
+                const result = JSON.parse(output);
+                resolve(result);
+            }
+            catch (e){
+                Log.error("Error in MathEval: ", e);
+                resolve({
+                    result: null,
+                    error: "Failed to parse worker output",
+                });
+            }
+        });
+
+        // Send expression to worker
+        worker.stdin.write(JSON.stringify({ expression: expr }) + "\n");
+        worker.stdin.end();
     });
-};
-
-/**
- * Parse square roots
- *
- * @param {String} expr
- * @return {String}
- */
-const parseSqrt = function(expr){
-    if (!expr.includes("√")) return expr;
-    // √1, √123, etc
-    let c = expr.replace(/√(\d+)/g, (_, p1) => `sqrt(${p1})`);
-    // √(1), √(123), √(1+2), etc
-    c = c.replace(/√\((.+?)\)/g, (_, p1) => `sqrt(${p1})`);
-    return c;
-};
-
-/**
- * Parse absolute values
- *
- * @param {String} expr
- * @return {String}
- *
- */
-const parseAbs = function(expr){
-    if (!expr.includes("|")) return expr;
-    return expr.replace(/\|(.+?)\|/g, (_, p1) => `abs(${p1})`);
-};
-
-/**
- * Parse ceil
- *
- * @param {String} expr
- * @return {String}
- *
- */
-const parseCeil = function(expr){
-    if (!expr.includes("⌈") || !expr.includes("⌉")) return expr;
-    return expr.replace(/⌈(.+?)⌉/g, (_, p1) => `ceil(${p1})`);
-};
-
-/**
- * Parse floor
- *
- * @param {String} expr
- * @return {String}
- *
- */
-const parseFloor = function(expr){
-    if (!expr.includes("⌊") || !expr.includes("⌋")) return expr;
-    return expr.replace(/⌊(.+?)⌋/g, (_, p1) => `floor(${p1})`);
-};
-
-/**
- * Parse phi
- *
- * @param {String} expr
- * @return {String}
- */
-const parsePhi = function(expr){
-    if (!expr.includes("phi")) return expr;
-    // keep phi as phi but replace phi(x) with totient(x)
-    return expr.replace(/phi\((.+?)\)/g, (_, p1) => `totient(${p1})`);
-};
-
-/**
- * Greatest common divisor
- *
- * @param {Number} a
- * @param {Number} b
- * @return {Number}
- */
-const gcd = (a, b) => (a === 0) ? b : gcd(b % a, a);
-
-/**
- * Eulers totient/phi function
- *
- * @param {Number} n
- * @return {Number}
- */
-const totient = function(n){
-    let result = 1;
-    for (let i = 2; i < n; i++){
-        if (gcd(i, n) === 1) result++;
-    }
-    return result;
-};
-
-/**
- * Iterative calculation function
- *
- * @param {Array} args
- * @param {Object} _math
- * @param {Object} scope
- * @param {string} [op="+"]
- * @return {Number}
- */
-const iterCalc = function(args, _math, scope, op = "+"){
-    const [nNode, kNode, exprNode] = args;
-
-    if (!nNode.isAssignmentNode || !nNode.object.isSymbolNode){
-        throw Error('First argument must define a variable, like "i=1"');
-    }
-    const nName = nNode.object.name;
-
-    if (!kNode.isAssignmentNode || !kNode.object.isSymbolNode){
-        throw Error('Second argument must define a variable, like "k=5"');
-    }
-    const kName = kNode.object.name;
-
-    const n = nNode.compile().evaluate(scope);
-    const k = kNode.compile().evaluate(scope);
-    const expr = exprNode.compile();
-
-    let result = neutralElements[op];
-    const startTime = Date.now();
-
-    for (let i = n; i <= k; i++){
-        if (Date.now() - startTime > computationLimitSecs * 1000){
-            throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
-        }
-
-        const newScope = new Map();
-        scope.forEach((value, key) => newScope.set(key, value));
-        newScope.set(nName, i);
-        newScope.set(kName, k);
-
-        if (op === "+") result += Number(expr.evaluate(newScope));
-        if (op === "*") result *= Number(expr.evaluate(newScope));
-    }
-    if (Math.abs(result) === Infinity){
-        throw new Error("Result may be Infinity");
-    }
-
-    return result;
-};
-
-/**
- * Summation function
- *
- * @param {Array} args
- * @param {Object} math
- * @param {Object} scope
- * @return {Number}
- */
-const sigmaSum = function(args, math, scope){
-    return iterCalc(args, math, scope, "+");
-};
-sigmaSum.rawArgs = true;
-
-/**
- * Product function
- *
- * @param {Array} args
- * @param {Object} math
- * @param {Object} scope
- * @return {Number}
- */
-const piProd = function(args, math, scope){
-    return iterCalc(args, math, scope, "*");
-};
-piProd.rawArgs = true;
-
-
-/**
- * Fibonacci function
- *
- * @param {Number} n
- * @return {Number}
- */
-const fib = function(n){
-    const now = Date.now();
-    let a = 0;
-    let b = 1;
-    let c = 0;
-    for (let i = 2; i <= n; i++){
-        if (Date.now() - now > computationLimitSecs * 1000){
-            throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
-        }
-        c = a + b;
-        a = b;
-        b = c;
-    }
-    return c;
-};
-
-/**
- * Tetration function
- *
- * @param {Number} a
- * @param {Number} b
- * @return {Number}
- */
-const tetration = function(a, b){
-    let c = a;
-    const now = Date.now();
-    for (let i = 1; i < b; i++){
-        if (Date.now() - now > computationLimitSecs * 1000){
-            throw new Error("Function execution exceeded " + computationLimitSecs + " seconds");
-        }
-        c = Math.pow(a, c);
-    }
-    return c;
-};
-
-/**
- * Variadic equation solver
- *
- * @param {String} variable
- * @param {String[]} exprs
- * @return {Number|null}
- */
-const solve = function(variable, ...exprs){
-    if (exprs.length === 1){
-        // @ts-ignore
-        const res = nerdamer.solve(exprs[0], variable).toString();
-        try {
-            return Number(JSON.parse(res)[0]);
-        }
-        // eslint-disable-next-line no-unused-vars
-        catch (e){
-            return null;
-        }
-    }
-
-    // @ts-ignore
-    const res = nerdamer.solveEquations(exprs);
-    return Number(res.find(r => r[0] === variable)[1]);
-};
-
-const oPow = mathjs.pow;
-/**
- * Custom power function that throws an error on 0^0
- *
- * @param {import("mathjs").MathType} x
- * @param {Number | import("mathjs").BigNumber | import("mathjs").Complex} y
- * @return {import("mathjs").MathType}
- */
-const cPow = function(x, y){
-    if (mathjs.isZero(x) && mathjs.isZero(y)){
-        throw new Error("0^0 is undefined");
-    }
-    return oPow(x, y);
-};
-
-/**
- * Parse commas as decimal points ONLY if they are between two numbers
- *
- * @param {String} expr
- * @return {String}
- */
-const parseComma = function(expr){
-    return expr.replace(/(\d+),(\d+)/g, (_, p1, p2) => `${p1}.${p2}`);
-};
-
-mathjs.import({
-    totient,
-    sigmaSum,
-    piProd,
-    tetration,
-    solve,
-    fib,
-    pow: cPow,
-}, { override: true });
-
-/**
- * Evaluate a math expression
- *
- * @param {String} expr
- * @return {{ result: Number|null, error: String|null }}
- */
-function mathEval(expr){
-    let cleaned = expr // @ts-ignore
-        .replaceAll("\\", "")
-        .replaceAll("×", "*")
-        .replaceAll("⋅", "*")
-        .replaceAll("÷", "/")
-        .replaceAll("−", "-")
-        .replaceAll("–", "-")
-        .replaceAll("＋", "+")
-        .replaceAll("“", "\"") // U+201C
-        .replaceAll("”", "\"") // U+201D
-        .replaceAll("π", "pi")
-        .replaceAll("τ", "tau")
-        .replaceAll("Σ", "sigmaSum")
-        .replaceAll("∑", "sigmaSum")
-        .replaceAll("Π", "piProd")
-        .replaceAll("∏", "piProd")
-        .replaceAll("↑↑", "tetration")
-        .replaceAll("φ", "phi")
-        .replaceAll("ϕ", "phi")
-        .replaceAll("**", "^")
-        .replaceAll("∞", "Infinity");
-
-    cleaned = parsePowers(cleaned);
-    cleaned = parseSqrt(cleaned);
-    cleaned = parseAbs(cleaned);
-    cleaned = parseCeil(cleaned);
-    cleaned = parseFloor(cleaned);
-    cleaned = parsePhi(cleaned);
-    cleaned = parseComma(cleaned);
-
-    let result;
-    const scope = new Map();
-    try {
-        result = mathjs.evaluate(cleaned, scope);
-    }
-    catch (e){
-        return {
-            result: null,
-            error: String(e).includes("TypeError") || String(e).includes("SyntaxError")
-                ? null
-                : String(e).replace("Error: ", ""),
-        };
-    }
-
-    if (typeof result === "function") return { result: null, error: "Couldn't evaluate (Function)" };
-
-    if (typeof result === "object"){
-        if (!result) return { result: null, error: "Couldn't evaluate (No Result)" };
-        if (result.entries) result = result.entries[0];
-        else if (result.re) result = result.re;
-    }
-
-    if (isNaN(result)) return { result: null, error: "Couldn't evaluate (NaN)" };
-
-    const epsilon = Math.pow(10, Math.floor(Math.log10(Math.abs(Number(result)))) - 14);
-    if (Math.abs(result - Math.round(result)) < epsilon){
-        result = Math.round(result);
-    }
-
-    return { result, error: null };
 }
 
 export default mathEval;
