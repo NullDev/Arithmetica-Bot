@@ -23,9 +23,9 @@ const restoreMessage = async function(message, newMessage = null){
     if (!ch) return;
 
     const lastCountString = await db.get(`guild-${message.guildId}.lastCountString`) ?? "0";
-    if (!lastCountString || (message.content !== lastCountString && mathEval(message.content || "").result !== lastCountString)) return;
+    if (!lastCountString || (message.content !== lastCountString && (await mathEval(message.content || "")).result !== lastCountString)) return;
     if (!!newMessage){
-        if (newMessage.content === lastCountString || mathEval(newMessage.content || "").result === lastCountString) return;
+        if (newMessage.content === lastCountString || (await mathEval(newMessage.content || "")).result === lastCountString) return;
         newMessage.delete();
     }
 

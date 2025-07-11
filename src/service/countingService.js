@@ -278,7 +278,7 @@ const countingService = async function(message){
     }
 
     const rounding = await guildDb.get(`guild-${guild}.rounding`) ?? defaults.rounding; // @ts-ignore
-    const { result: oResult, error } = mathEval(message.content.replaceAll("\n", " ") ?? 0);
+    const { result: oResult, error } = await mathEval(message.content.replaceAll("\n", " ") ?? 0);
     const result = rounding
         ? Math.round(oResult || 0)
         : oResult || 0;

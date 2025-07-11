@@ -29,7 +29,7 @@ export default {
         const expr = interaction.options.get("expression")?.value;
         if (!expr) return await interaction.editReply({ content: await __("errors.invalid_argument")(interaction.guildId) });
 
-        const { result, error } = mathEval(String(expr));
+        const { result, error } = await mathEval(String(expr));
 
         return await interaction.editReply({
 
