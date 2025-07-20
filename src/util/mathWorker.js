@@ -349,6 +349,9 @@ function evaluateMath(expr){
         if (!result) return { result: null, error: "Couldn't evaluate (No Result)" };
         if (result.entries) result = result.entries[0];
         else if (result.re) result = result.re;
+
+        result = Number(result);
+        if (isNaN(result)) return { result: null, error: "Couldn't evaluate (NaN)" };
     }
 
     if (isNaN(result)) return { result: null, error: "Couldn't evaluate (NaN)" };
