@@ -153,6 +153,8 @@ const facts = [
     "A matrix and its transpose have the same rank.",
     "A midpoint convex function is not necessarily convex, but a strictly midpoint convex function is strictly convex.",
     "A set is convex iff its indicator function is a convex function. (Indicator function is infinite off the set.)",
+    "Every C^1 differential structure on a manifold can be uniquely smoothed to a C^∞ differential structure.",
+    "The Hilbert transform is an anti-involution, i.e. H(H(u)) = -u.",
 ];
 
 /**
