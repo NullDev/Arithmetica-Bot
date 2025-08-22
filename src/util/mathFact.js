@@ -155,6 +155,7 @@ const facts = [
     "A set is convex iff its indicator function is a convex function. (Indicator function is infinite off the set.)",
     "Every C^1 differential structure on a manifold can be uniquely smoothed to a C^∞ differential structure.",
     "The Hilbert transform is an anti-involution, i.e. H(H(u)) = -u.",
+    "Jacobi elliptic functions have two singularities of order 1 inside the fundamental parallelogram.",
 ];
 
 /**
