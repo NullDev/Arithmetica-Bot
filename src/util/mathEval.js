@@ -62,7 +62,8 @@ async function mathEval(expr){
                 resolve(result);
             }
             catch (e){
-                Log.error("Error in MathEval: ", e);
+                const err = e instanceof Error ? e : new Error(String(e));
+                Log.error("Error in MathEval: ", err);
                 resolve({
                     result: null,
                     error: "Failed to parse worker output",
