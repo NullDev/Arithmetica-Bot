@@ -28,7 +28,12 @@ export default {
         const seq = interaction.options.get("sequence")?.value;
         if (!seq) return await interaction.editReply({ content: await __("errors.invalid_argument")(interaction.guildId) });
 
-        const { results } = await fetch(`https://oeis.org/search?q=${seq}&fmt=json`).then((r) => r.json());
+        const f = await fetch(`https://oeis.org/search?q=${seq}&fmt=json`);
+
+        console.log(f);
+
+        const results = await f.json();
+
         if (!results || !results.length) return await interaction.editReply({ content: "¯\\_(ツ)_/¯" });
 
         const first5 = results.slice(0, 5);
