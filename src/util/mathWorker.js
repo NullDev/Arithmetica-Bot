@@ -110,6 +110,17 @@ const parseComma = function(expr){
 };
 
 /**
+ * Parse natural logarithm (ln) to log
+ *
+ * @param {String} expr
+ * @return {String}
+ */
+const parseLn = function(expr){
+    if (!expr.includes("ln")) return expr;
+    return expr.replace(/\bln\(/g, "log(");
+};
+
+/**
  * Greatest common divisor
  *
  * @param {Number} a
@@ -327,6 +338,7 @@ function evaluateMath(expr){
     cleaned = parseCeil(cleaned);
     cleaned = parseFloor(cleaned);
     cleaned = parsePhi(cleaned);
+    cleaned = parseLn(cleaned);
     cleaned = parseComma(cleaned);
 
     let result;
