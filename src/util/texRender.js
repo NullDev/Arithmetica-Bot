@@ -83,6 +83,8 @@ const texRender = function(expr){
         "-quality", "100",
         "-background", "#36393E",
         "-extent", "0x0",
+        "-bordercolor", "#36393E",
+        "-border", "20",
         "pdf:-",
         format + ":-",
     ]);
