@@ -30,7 +30,7 @@ const executeSage = async function(interaction){
 
     return client.askSage(code)
         .then(res => {
-            embed.description = "Output:\n```\n" + (res?.result?.["text/plain"]?.trim() || res?.stdout?.trim() || "No Output") + "\n```";
+            embed.description = "Input:\n```py\n" + code + "\n```\nOutput:\n```\n" + (res?.result?.["text/plain"]?.trim() || res?.stdout?.trim() || "No Output") + "\n```";
             return interaction.editReply({ embeds: [embed]});
         })
         .catch(() => {
