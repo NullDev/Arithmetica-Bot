@@ -48,6 +48,8 @@ const executeCode = async function(interaction){
     const cli = interaction.fields.getTextInputValue("cli_args");
     const stdin = interaction.fields.getTextInputValue("stdin");
 
+    await interaction.deferReply();
+
     const languages = await fetch("https://emkc.org/api/v2/piston/runtimes").then((res) => res.json())
         .catch((err) => Log.error("Error during fetching of languages: " + err));
 
@@ -56,7 +58,7 @@ const executeCode = async function(interaction){
         .sort((a, b) => compareVersions(a.version, b.version))[0];
 
     if (!language){
-        return interaction.reply({ content: "Invalid language. Allowed: `" + languages.map(e => e.language).join(", ") + "`", ephemeral: true });
+        return interaction.editReply({ content: "Invalid language. Allowed: `" + languages.map(e => e.language).join(", ") + "`", ephemeral: true });
     }
 
     const data = {
@@ -88,7 +90,7 @@ const executeCode = async function(interaction){
         },
     };
 
-    return interaction.reply({ embeds: [embed]});
+    return interaction.editReply({ embeds: [embed]});
 };
 
 export default executeCode;

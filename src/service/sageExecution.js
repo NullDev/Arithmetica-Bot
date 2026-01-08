@@ -13,7 +13,7 @@ const client = new SageCell({ timeoutMs: 20000 });
  *
  * @param {import("discord.js").ModalSubmitInteraction} interaction
  */
-const executeCode = async function(interaction){
+const executeSage = async function(interaction){
     const code = interaction.fields.getTextInputValue("sage_code");
 
     const embed = {
@@ -26,16 +26,18 @@ const executeCode = async function(interaction){
         },
     };
 
+    await interaction.deferReply();
+
     return client.askSage(code)
         .then(res => {
             embed.description = "Output:\n```\n" + (res?.result?.["text/plain"]?.trim() || res?.stdout?.trim() || "No Output") + "\n```";
-            return interaction.reply({ embeds: [embed]});
+            return interaction.editReply({ embeds: [embed]});
         })
         .catch(() => {
             embed.description = "An error occurred while executing the code.";
             Log.error("Error during SageMath code execution.");
-            return interaction.reply({ embeds: [embed]});
+            return interaction.editReply({ embeds: [embed]});
         });
 };
 
-export default executeCode;
+export default executeSage;

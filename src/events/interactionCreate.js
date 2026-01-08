@@ -1,6 +1,7 @@
 import path from "node:path";
 import { QuickDB } from "quick.db";
 import executeCode from "../service/codeExecution.js";
+import executeSage from "../service/sageExecution.js";
 import Log from "../util/log.js";
 import __ from "../service/i18n.js";
 
@@ -51,6 +52,10 @@ const handleCommandInteraction = async function(interaction){
 const handleModalSubmit = async function(interaction){
     if (interaction.customId === "run_code"){
         await executeCode(interaction);
+    }
+
+    if (interaction.customId === "sage_math"){
+        await executeSage(interaction);
     }
 };
 
