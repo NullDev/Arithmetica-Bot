@@ -571,6 +571,16 @@ export default {
             },
         },
     },
+    sage: {
+        desc: "Ask SageMath / SageCell",
+        translations: {
+            de: "Frage SageMath / SageCell",
+            fr: "Demander à SageMath / SageCell",
+            ru: "Спросить SageMath / SageCell",
+            ja: "SageMath / SageCellに質問する",
+            "es-ES": "Preguntar a SageMath / SageCell",
+        },
+    },
     rounding: {
         desc: "Enable/Disable rounding of numbers.",
         translations: {
