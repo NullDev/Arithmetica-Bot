@@ -39,7 +39,7 @@
     "check-dependencies": "^2.0.0",
     "discord-hybrid-sharding": "^2.2.6",
     "discord.js": "^14.22.1",
-    "fastify": "^5.3.2",
+    "fastify": "^5.7.3",
     "i18n-light": "^0.5.4",
     "mathjs": "^14.4.0",
     "nerdamer": "^1.1.13",
