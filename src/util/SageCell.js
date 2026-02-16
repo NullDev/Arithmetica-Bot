@@ -187,6 +187,11 @@ export default class SageCell {
                     result = msg.content?.data ?? null;
                 }
 
+                if (msgType === "display_data"){
+                    const filename = msg.content?.data?.["text/image-filename"];
+                    result = filename ? { image: `${this.baseUrl}/kernel/${kernelId}/files/${filename}` } : msg.content?.data ?? null;
+                }
+
                 if (msgType === "status" &&
                     msg.content?.execution_state === "idle"){
                     finish({ stdout, stderr, result });
