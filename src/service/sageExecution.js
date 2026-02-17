@@ -29,13 +29,23 @@ const executeSage = async function(interaction){
     await interaction.deferReply();
 
     return client.askSage(code)
-        .then(res => {
+        .then(async res => {
             embed.description = "Input:\n```py\n" + code + "\n```\nOutput:\n```\n" + (
                 res?.result?.["text/plain"]?.trim() || res?.stdout?.trim() || (res.result?.image ? "Image Below" : "No Output")
             ) + "\n```";
 
-            if (res?.result?.image){ // @ts-ignore
-                embed.image = { url: res.result.image };
+            if (res?.result?.image){
+                const imageRes = await fetch(res.result.image);
+                if (imageRes.ok){
+                    const buffer = await imageRes.arrayBuffer();
+                    const attachment = {
+                        attachment: Buffer.from(buffer),
+                        name: `sage_output_${interaction.id}.png`,
+                    };
+                    // @ts-ignore
+                    embed.image = { url: `attachment://${attachment.name}` };
+                    return await interaction.editReply({ embeds: [embed], files: [attachment] });
+                }
             }
 
             return interaction.editReply({ embeds: [embed]});
