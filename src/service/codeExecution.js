@@ -53,7 +53,14 @@ const executeCode = async function(interaction){
 
     await interaction.deferReply();
 
-    const languages = await fetch("https://emkc.org/api/v2/piston/runtimes").then((res) => res.json())
+    const languages = await fetch("https://emkc.org/api/v2/piston/runtimes", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            authorization: config.emkc,
+            "User-Agent": UA,
+        },
+    }).then((res) => res.json())
         .catch((err) => Log.error("Error during fetching of languages: " + err));
 
     const language = languages
