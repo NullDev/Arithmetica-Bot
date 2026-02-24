@@ -14,4 +14,5 @@ export default {
     http: {
         port: 1335,
     },
+    emkc: "",
 };

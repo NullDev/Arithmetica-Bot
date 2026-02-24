@@ -1,9 +1,12 @@
 import Log from "../util/log.js";
 import defaults from "../util/defaults.js";
+import { config, meta } from "../../config/config.js";
 
 // ========================= //
 // = Copyright (c) NullDev = //
 // ========================= //
+
+const UA = `arithmetica-bot/${meta.getVersion()} (${process.platform}; Node.js ${process.version}) (+https://arithmetica.xyz)`;
 
 /**
  * Compare semantic versions
@@ -54,11 +57,17 @@ const executeCode = async function(interaction){
         .catch((err) => Log.error("Error during fetching of languages: " + err));
 
     const language = languages
-        .filter(l => l.language.toLowerCase() === lang || l.aliases.map(a => a.toLowerCase()).includes(lang))
-        .sort((a, b) => compareVersions(a.version, b.version))[0];
+        .filter((
+            /** @type {{ language: string; aliases: any[]; }} */ l,
+        ) => l.language.toLowerCase() === lang || l.aliases.map(a => a.toLowerCase()).includes(lang))
+        .sort((
+            /** @type {{ version: string; }} */ a, /** @type {{ version: string; }} */ b,
+        ) => compareVersions(a.version, b.version))[0];
 
     if (!language){
-        return interaction.editReply({ content: "Invalid language. Allowed: `" + languages.map(e => e.language).join(", ") + "`", ephemeral: true });
+        return interaction.editReply({ content: "Invalid language. Allowed: `" + languages.map((
+            /** @type {{ language: any; }} */ e,
+        ) => e.language).join(", ") + "`" });
     }
 
     const data = {
@@ -69,6 +78,7 @@ const executeCode = async function(interaction){
         log: 0,
     };
 
+    // @ts-ignore
     if (cli) data.args = cli.split("\n");
 
     const r = await fetch("https://emkc.org/api/v2/piston/execute", {
@@ -76,6 +86,8 @@ const executeCode = async function(interaction){
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json",
+            authorization: config.emkc,
+            "User-Agent": UA,
         },
     }).then((res) => res.json())
         .catch((err) => Log.error("Error during code execution: " + err));
