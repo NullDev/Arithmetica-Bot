@@ -16,12 +16,13 @@ import defaults from "../util/defaults.js";
 const registerVote = async function(client, user){
     Log.done("Received vote from user " + user + "!");
 
+    const fact = await getRandomMathFact();
     const dmChannel = await client.users.fetch(user).catch(() => Log.warn("Could not fetch user " + user + "!"));
     if (dmChannel){
         const embed = {
             color: defaults.embed_color,
             title: ":heart:┃Voting",
-            description: "Thank you for your vote! :)\n\nHave a random math fact:\n" + getRandomMathFact(),
+            description: "Thank you for your vote! :)\n\nHave a random math fact:\n" + fact,
         };
 
         await dmChannel.send({
@@ -43,7 +44,7 @@ const voteHandler = async function(req, res, client){
     if (req.headers.authorization !== config.discord.vote_webhook_secret) return res.code(401).send({ error: "Unauthorized" });
     if (!req.body) return res.code(400).send({ error: "Missing body" });
 
-    const { user, bot, id } = /** @type {Object} */ (req.body);
+    const { user, bot, id } = /** @type {{ user?: string, bot?: string, id?: string }} */ (req.body);
     if (!user && !id) return res.code(400).send({ error: "Missing user" });
 
     if (!!bot && bot !== client.user?.id){
@@ -51,7 +52,7 @@ const voteHandler = async function(req, res, client){
         return res.code(400).send({ error: "Unknown bot" });
     }
 
-    await registerVote(client, user || id);
+    await registerVote(client, user || id || "unknown");
 
     return res.code(200).send({ message: "OK" });
 };
