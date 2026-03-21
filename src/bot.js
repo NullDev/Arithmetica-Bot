@@ -25,10 +25,12 @@ const client = new DiscordClient({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.GuildMessageReactions,
     ],
     partials: [
         Partials.Channel,
         Partials.Message,
+        Partials.Reaction,
     ],
     presence: {
         status: "dnd",
