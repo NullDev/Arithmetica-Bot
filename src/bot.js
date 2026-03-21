@@ -7,6 +7,7 @@ import DiscordClient from "./service/client.js";
 import messageCreate from "./events/messageCreate.js";
 import messageDelete from "./events/messageDelete.js";
 import messageUpdate from "./events/messageUpdate.js";
+import messageReactionAdd from "./events/messageReactionAdd.js";
 import clientReady from "./events/clientReady.js";
 import guildCreate from "./events/guildCreate.js";
 import shardReady from "./events/shardReady.js";
@@ -50,6 +51,8 @@ client.on(Events.MessageCreate, message => messageCreate(message));
 client.on(Events.MessageDelete, message => messageDelete(message));
 
 client.on(Events.MessageUpdate, (oldMessage, newMessage) => messageUpdate(oldMessage, newMessage));
+
+client.on(Events.MessageReactionAdd, async(reaction, user) => messageReactionAdd(reaction, user));
 
 client.on(Events.GuildCreate, async guild => guildCreate(guild, client));
 

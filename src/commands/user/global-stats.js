@@ -36,7 +36,7 @@ export default {
                     value: "best",
                 })),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         await interaction.deferReply();
@@ -55,6 +55,7 @@ export default {
         const bestCountOfGuild = counts.find(e => e.guildId === interaction.guildId)?.best || 0;
         const currentGuildName = (await interaction.client.guilds.fetch()).find(e => e.id === interaction.guildId)?.name;
 
+        // @ts-ignore
         const guilds = await interaction.client.cluster?.fetchClientValues("guilds.cache.size");
         const allGuilds = guilds?.reduce((acc, gc) => Number(acc) + Number(gc), 0);
 

@@ -525,6 +525,16 @@ export default {
                     "es-ES": "La expresión LaTeX a renderizar",
                 },
             },
+            spoiler: {
+                desc: "Send the image as a spoiler",
+                translations: {
+                    de: "Sende das Bild als Spoiler",
+                    fr: "Envoyer l'image en tant que spoiler",
+                    ru: "Отправить изображение как спойлер",
+                    ja: "画像をスポイラーとして送信する",
+                    "es-ES": "Enviar la imagen como spoiler",
+                },
+            },
         },
     },
     ask: {
