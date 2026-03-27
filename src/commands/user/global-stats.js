@@ -57,7 +57,7 @@ export default {
 
         // @ts-ignore
         const guilds = await interaction.client.cluster?.fetchClientValues("guilds.cache.size");
-        const allGuilds = guilds?.reduce((acc, gc) => Number(acc) + Number(gc), 0);
+        const allGuilds = guilds?.reduce((/** @type {any} */ acc, /** @type {any} */ gc) => Number(acc) + Number(gc), 0);
 
         let reply = await __(`replies.global_top_${type}`, currentGuildName, rank, allGuilds, type === "best" ? bestCountOfGuild : currentCountOfGuild)(interaction.guildId);
         if (rank === 1) reply += " 👑";

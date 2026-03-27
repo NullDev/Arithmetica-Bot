@@ -34,7 +34,7 @@ export default {
                 .setRequired(true)),
 
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const role = interaction.options.get("role")?.value;

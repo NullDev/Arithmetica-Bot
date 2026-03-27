@@ -20,7 +20,7 @@ export default {
                 .setDescriptionLocalizations(translations.oeis.options.sequence.translations)
                 .setRequired(true)),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         await interaction.deferReply();
@@ -58,7 +58,7 @@ export default {
         const first5 = results.slice(0, 5);
 
         let res = "Sequence: " + seq + "\n\n";
-        first5.forEach((r, i) => {
+        first5.forEach((/** @type {{ number: any; name: string; formula: string | any[]; }} */ r, /** @type {number} */ i) => {
             const sequenceId = "A" + String(r.number).padStart(6, "0");
             res += `**${i + 1}.** ${r.name.replaceAll("*", "\\*").replaceAll("_", "\\_").replaceAll("`", "\\`")} `;
             if (!!r.formula && !!r.formula.length && !!r.formula[0]) res += `- ${r.formula[0].replaceAll("*", "\\*").replaceAll("_", "\\_").replaceAll("`", "\\`")} - `;

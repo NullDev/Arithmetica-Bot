@@ -15,7 +15,7 @@ export default {
         .setDescriptionLocalizations(translations.help.translations)
         .setContexts([InteractionContextType.Guild]),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const userCommands = /** @type {import("../../service/client.js").default} */ (interaction.client)

@@ -28,7 +28,7 @@ export default {
                 .setRequired(true)),
 
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const cnt = interaction.options.get("count")?.value || 0;

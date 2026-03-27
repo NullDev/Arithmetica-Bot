@@ -16,7 +16,7 @@ export default {
         .setDescriptionLocalizations(translations.vote.translations)
         .setContexts([InteractionContextType.Guild]),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const embed = {

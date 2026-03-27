@@ -43,7 +43,7 @@ export default {
                 .addChoices(...getLanguages())),
 
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const lang = interaction.options.get("language");

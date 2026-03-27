@@ -27,7 +27,7 @@ export default {
                 .setDescriptionLocalizations(translations.rounding.options.enabled.translations)
                 .setRequired(true)),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const enabled = interaction.options.get("enabled")?.value;

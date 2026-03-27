@@ -21,13 +21,13 @@ export default {
                 .setDescriptionLocalizations(translations.run.options.list_languages.translations)
                 .setRequired(false)),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         if (interaction.options.get("list-languages")?.value){
             const languages = (await fetch("https://emkc.org/api/v2/piston/runtimes").then((res) => res.json())
                 .catch((err) => Log.error("Error during fetching of languages: " + err)))
-                .map(e => e.language)
+                .map((/** @type {{ language: any; }} */ e) => e.language)
                 .join(", ");
 
             return interaction.reply({

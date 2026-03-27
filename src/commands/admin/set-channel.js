@@ -29,7 +29,7 @@ export default {
                 .setRequired(true)),
 
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const channel = interaction.options.get("channel");

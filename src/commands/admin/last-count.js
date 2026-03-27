@@ -21,7 +21,7 @@ export default {
         .setContexts([InteractionContextType.Guild])
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const lastCount = await db.get(`guild-${interaction.guildId}.count`) || "0";

@@ -16,7 +16,7 @@ export default {
         .setDescriptionLocalizations(translations.info.translations)
         .setContexts([InteractionContextType.Guild]),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const count = interaction.guild?.memberCount || "N/A";
@@ -44,8 +44,8 @@ export default {
         const isBotVerified = interaction.client.user?.flags?.has("VerifiedBot") || false;
 
         const [guilds, members] = await Promise.all(promises);
-        const totalGuilds = guilds?.reduce((acc, guildCount) => Number(acc) + Number(guildCount), 0);
-        const totalMembers = members?.reduce((acc, memberCount) => Number(acc) + Number(memberCount), 0);
+        const totalGuilds = guilds?.reduce((/** @type {any} */ acc, /** @type {any} */ guildCount) => Number(acc) + Number(guildCount), 0);
+        const totalMembers = members?.reduce((/** @type {any} */ acc, /** @type {any} */ memberCount) => Number(acc) + Number(memberCount), 0);
 
         const botAvatar = interaction.client.user?.displayAvatarURL({ extension: "png" })
             || "https://raw.githubusercontent.com/NullDev/Arithmetica-Bot/master/assets/logo.png";

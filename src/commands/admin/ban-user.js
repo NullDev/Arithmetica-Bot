@@ -28,7 +28,7 @@ export default {
                 .setRequired(true)),
 
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const user = interaction.options.get("user");

@@ -31,7 +31,7 @@ export default {
                 .setDescriptionLocalizations(translations.stats.options.user.translations)
                 .setRequired(false)),
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         await interaction.deferReply();

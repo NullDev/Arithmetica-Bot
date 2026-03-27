@@ -30,7 +30,7 @@ export default {
                 .setRequired(true)),
 
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         let factor = Number(interaction.options.get("factor")?.value);

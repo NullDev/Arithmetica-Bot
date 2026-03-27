@@ -23,7 +23,7 @@ export default {
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
     /**
-     * @param {import("discord.js").CommandInteraction} interaction
+     * @param {import("discord.js").ChatInputCommandInteraction} interaction
      */
     async execute(interaction){
         const guildUsers = (await db.all()).filter(data => data.id.startsWith(`guild-${interaction.guildId}`))[0].value; // @ts-ignore
