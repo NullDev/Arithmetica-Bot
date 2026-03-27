@@ -1,0 +1,93 @@
+{
+    "__LANG__": "it",
+    "generic": {
+        "activated": "attivato",
+        "deactivated": "disattivato",
+        "yes": "Sì",
+        "no": "No",
+        "are_you_sure": "Sei sicuro?",
+        "aborted": "Annullato."
+    },
+    "errors": {
+        "eval_fail": "Valutazione dell'espressione fallita!",
+        "yn_timeout": "Tempo scaduto. Annullato.",
+        "generic_command_execution_failed": "Si è verificato un errore durante l'esecuzione di questo comando! =(",
+        "command_not_found": "Sembra che io non conosca alcun comando '%s' :/",
+        "invalid_argument": "Argomento non valido!",
+        "channel_not_found": "Questo canale non esiste su questo server. sei sicur* scritto correttamente il nome?",
+        "not_a_number": "Quello non è un numero! Non hai perso, ma non l'ho conteggiato.",
+        "invalid_arithmetic": "Quella non era un'espressione aritmetica valida! Non hai perso, ma non l'ho conteggiata.",
+        "same_user": "Non puoi contare due volte di seguito. Aspetta che conti qualcun altro.",
+        "no_top_stats": "Non ci sono ancora statistiche. Conta per entrare in classifica!",
+        "stats_on_bot": "I bot non hanno statistiche di conteggio :)",
+        "cheat_mode_enabled": "Le statistiche sono disattivate in modalità cheat perché nessuno può perdere.",
+        "math_only": "In questo canale sono consentite solo espressioni matematiche! Il conteggio normale è stato disabilitato.",
+        "tex_on_windows": "Il bot è attualmente in esecuzione su Windows e quindi non può eseguire questo comando.",
+        "no_channel_perm": "Sembra che non abbia i permessi per creare canali.",
+        "bot_ban": "Bel tentativo, ma non posso bannare me stesso :)"
+    },
+    "replies": {
+        "bot_info_tagline": "Bot Discord per il conteggio. Supporta espressioni aritmetiche.",
+        "incorrect_number": "Questo non era il numero successivo! Hai perso! L'ultimo numero era %s e il successivo sarebbe stato %s. Il tuo numero era %s",
+        "failed_stats": "Hai raggiunto il numero %s. Il miglior conteggio finora è stato %s.",
+        "channel_set": "Il canale è stato impostato su %s!",
+        "arithmetic_set": "Le espressioni aritmetiche sono state %s!",
+        "arithmetic_set_mathonly": "Modalità solo matematica attivata!",
+        "top_users": {
+            "title": "Miglior utente su %s",
+            "description": "I primi 10 utenti ordinati per %s.",
+            "wins": "conteggi corretti",
+            "fails": "conteggi falliti",
+            "math": "conteggi matematici"
+        },
+        "stats": {
+            "your_stats": "Le tue statistiche",
+            "stats_for": "Statistiche per %s",
+            "wins": "Conteggi corretti",
+            "fails": "Conteggi falliti",
+            "math": "Conteggi matematici"
+        },
+        "timeout_disabled": "Timeout disattivato!",
+        "timeout_set": "Timeout impostato a %s minuti!",
+        "timeout": "Hai ricevuto un timeout di %s minuti!",
+        "cooldown_disabled": "Cooldown per nuovi membri disattivato!",
+        "cooldown_set": "Cooldown per nuovi membri impostato a %s minuti!",
+        "cooldown": "Dato che sei un nuovo membro, devi aspettare %s minuti prima di poter contare!",
+        "timeout_factor_disabled": "Fattore timeout disattivato!",
+        "timeout_factor_set": "Fattore timeout impostato a %s!",
+        "reset_guild": {
+            "are_you_sure": "Sei sicuro di voler azzerare il conteggio attuale e tutte le statistiche degli utenti?",
+            "success": "I dati del server sono stati azzerati!",
+            "confirm": "SÌ, AZZERA TUTTO",
+            "abort": "No, annulla"
+        },
+        "cheat_mode": {
+            "disabled": "Modalità cheat disattivata!",
+            "are_you_sure": "Accetto che questo annulli completamente lo scopo del bot.\nNota: le statistiche sono disattivate in modalità cheat. Continuare?",
+            "confirm": "SÌ. STO BARANDO.",
+            "abort": "No, voglio che tu mi corregga 😇",
+            "success": "Modalità cheat attivata! Spero tu sia soddisfatto..."
+        },
+        "vote": {
+            "thank_you": "Grazie per aver considerato di votare!",
+            "rewards": "Non possiamo offrire ricompense, ma riceverai un fatto matematico casuale!"
+        },
+        "ban_user": "L'utente %s è stato bannato dal conteggio!",
+        "unban_user": "L'utente %s è stato sbannato dal conteggio!",
+        "user_banned": "Spiacente, ma sei bannato dal conteggio in %s!",
+        "best": "Il miglior conteggio su questo server finora è stato %s.",
+        "global_top_current": "Il server \"%s\" è alla posizione #%s nella classifica globale (%s server) con il conteggio attuale (%s)!",
+        "global_top_best": "Il server \"%s\" è alla posizione #%s nella classifica globale (%s server) con il miglior conteggio (%s)!",
+        "new_best": "Nuovo record!",
+        "help_preamble": "Puoi visitare <https://arithmetica.xyz/wiki> per vedere quali espressioni e sintassi sono possibili. Per verificare se un'espressione è valida, puoi usare `/calc` per controllare il risultato.\nServer di supporto: <https://discord.gg/hgFyq43dug>",
+        "admin_help_preamble": "Configurazione: imposta il canale di conteggio con `/set-channel`, poi opzionalmente configura le opzioni con `/set-language`, `/toggle-arithmetic`, `/set-timeout`, `/cooldown`, `/set-loser-role`, `/set-last-count` e `/timeout-increment`.\nServer di supporto: <https://discord.gg/hgFyq43dug>\nWiki: <https://arithmetica.xyz/wiki>",
+        "pin_highscore": "Il fissaggio del record è stato %s!",
+        "rounding": "L'arrotondamento è stato %s!",
+        "channel_create": "Non riesco a trovare il canale `%s`. Vuoi che lo crei?",
+        "no_banns": "Non ci sono utenti bannati al momento.",
+        "set_loser_role": "Il ruolo perdente è stato impostato su %s con una durata di %s ore!",
+        "unset_loser_role": "Il ruolo perdente è stato rimosso!",
+        "add_loser_role": "Ti è stato assegnato il ruolo %s per %s ore!",
+        "set_last_count": "L'ultimo numero è stato impostato a %s!"
+    }
+}
