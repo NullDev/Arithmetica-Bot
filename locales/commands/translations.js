@@ -7,6 +7,7 @@ export default {
             ru: "Показать обзор команд.",
             ja: "コマンドの概要を表示します。",
             "es-ES": "Muestra una descripción general de los comandos.",
+            it: "Mostra una panoramica dei comandi.",
         },
     },
     info: {
@@ -17,6 +18,7 @@ export default {
             ru: "Показать информацию об этом боте.",
             ja: "このボットに関する情報を表示します。",
             "es-ES": "Muestra información sobre este bot.",
+            it: "Mostra informazioni su questo bot.",
         },
     },
     stats: {
@@ -27,6 +29,7 @@ export default {
             ru: "Просмотреть свою статистику или статистику другого пользователя.",
             ja: "あなたの統計情報を表示するか、他のユーザーの統計情報を表示します。",
             "es-ES": "Ver tus estadísticas o las estadísticas de otro usuario.",
+            it: "Visualizza le tue statistiche o quelle di un altro utente.",
         },
         options: {
             user: {
@@ -37,6 +40,7 @@ export default {
                     ru: "Пользователь, для которого нужно показать статистику",
                     ja: "統計情報を表示するユーザー",
                     "es-ES": "El usuario para mostrar estadísticas",
+                    it: "L'utente di cui mostrare le statistiche",
                 },
             },
         },
@@ -49,6 +53,7 @@ export default {
             ru: "Показать топ-10 пользователей.",
             ja: "トップ10のユーザーを表示します。",
             "es-ES": "Muestra los 10 mejores usuarios.",
+            it: "Mostra i 10 migliori utenti.",
         },
         options: {
             sort: {
@@ -59,6 +64,7 @@ export default {
                     ru: "Сортировать по",
                     ja: "並べ替え",
                     "es-ES": "Ordenar por",
+                    it: "Ordina per",
                 },
                 choices: {
                     wins: {
@@ -69,6 +75,7 @@ export default {
                             ru: "Правильные счета",
                             ja: "正しいカウント",
                             "es-ES": "Cuentas correctas",
+                            it: "Conteggi corretti",
                         },
                     },
                     fails: {
@@ -79,6 +86,7 @@ export default {
                             ru: "Неудачные счета",
                             ja: "失敗したカウント",
                             "es-ES": "Cuentas fallidas",
+                            it: "Conteggi falliti",
                         },
                     },
                     mathcounts: {
@@ -89,6 +97,7 @@ export default {
                             ru: "Счета математики",
                             ja: "数学カウント",
                             "es-ES": "Cuentas de matemáticas",
+                            it: "Conteggi matematici",
                         },
                     },
                 },
@@ -103,6 +112,7 @@ export default {
             ru: "Показать обзор всех административных команд.",
             ja: "すべての管理者コマンドの概要を表示します。",
             "es-ES": "Muestra una descripción general de todos los comandos de administración.",
+            it: "Mostra una panoramica di tutti i comandi di amministrazione.",
         },
     },
     reset_guild: {
@@ -113,6 +123,7 @@ export default {
             ru: "Сбросить счетчик гильдии",
             ja: "ギルドのカウントをリセットする",
             "es-ES": "Restablecer el recuento del gremio",
+            it: "Reimposta il conteggio del server",
         },
     },
     set_channel: {
@@ -123,6 +134,7 @@ export default {
             ru: "Установить канал подсчета.",
             ja: "カウントチャンネルを設定します。",
             "es-ES": "Establecer el canal de recuento.",
+            it: "Imposta il canale di conteggio.",
         },
         options: {
             channel: {
@@ -133,6 +145,7 @@ export default {
                     ru: "Имя канала для установки",
                     ja: "設定するチャンネルの名前",
                     "es-ES": "El nombre del canal para establecer",
+                    it: "Il nome del canale da impostare",
                 },
             },
         },
@@ -145,6 +158,7 @@ export default {
             ru: "Установить язык сервера для бота.",
             ja: "ボットのサーバー言語を設定します。",
             "es-ES": "Establecer el idioma del servidor para el bot.",
+            it: "Imposta la lingua del server per il bot.",
         },
         options: {
             language: {
@@ -155,6 +169,7 @@ export default {
                     ru: "Язык для установки",
                     ja: "設定する言語",
                     "es-ES": "El idioma para establecer",
+                    it: "La lingua da impostare",
                 },
             },
         },
@@ -167,6 +182,7 @@ export default {
             ru: "Настройте тайм-аут для проигравших.",
             ja: "敗者のタイムアウトを設定します。",
             "es-ES": "Configure un tiempo de espera para los perdedores.",
+            it: "Configura un timeout per chi sbaglia.",
         },
         options: {
             timeout: {
@@ -177,6 +193,7 @@ export default {
                     ru: "Тайм-аут в минутах или 0 для отключения",
                     ja: "タイムアウト（分単位）または0を無効にする",
                     "es-ES": "Tiempo de espera en minutos o 0 para desactivar",
+                    it: "Timeout in minuti oppure 0 per disattivarlo",
                 },
             },
         },
@@ -189,6 +206,7 @@ export default {
             ru: "Включить/Отключить/Принудительное использование арифметических выражений (по умолчанию: включено).",
             ja: "算術式の使用を有効化/無効化/強制（デフォルト：有効）。",
             "es-ES": "Activar/Desactivar/Forzar el uso de expresiones aritméticas (predeterminado: activado).",
+            it: "Abilita/Disabilita/Forza l'uso delle espressioni aritmetiche (predefinito: abilitato).",
         },
         options: {
             select: {
@@ -199,6 +217,7 @@ export default {
                     ru: "Выберите, включить, отключить или принудительное использование арифметических выражений",
                     ja: "算術式を有効、無効、または強制するかどうかを選択します",
                     "es-ES": "Elija si habilitar, deshabilitar o forzar expresiones aritméticas",
+                    it: "Scegli se abilitare, disabilitare o forzare le espressioni aritmetiche",
                 },
                 choices: {
                     enabled: {
@@ -209,6 +228,7 @@ export default {
                             ru: "Включить арифметические выражения",
                             ja: "算術式を有効にする",
                             "es-ES": "Habilitar expresiones aritméticas",
+                            it: "Abilita le espressioni aritmetiche",
                         },
                     },
                     disabled: {
@@ -219,6 +239,7 @@ export default {
                             ru: "Отключить арифметические выражения",
                             ja: "算術式を無効にする",
                             "es-ES": "Deshabilitar expresiones aritméticas",
+                            it: "Disabilita le espressioni aritmetiche",
                         },
                     },
                     mathonly: {
@@ -229,6 +250,7 @@ export default {
                             ru: "Принудительное использование арифметических выражений (обычные счетчики чисел будут отклонены)",
                             ja: "算術式を強制（通常の数値カウントは拒否されます）",
                             "es-ES": "Forzar expresiones aritméticas (los recuentos normales de números serán rechazados)",
+                            it: "Forza le espressioni aritmetiche (i normali conteggi numerici verranno rifiutati)",
                         },
                     },
                 },
@@ -243,6 +265,7 @@ export default {
             ru: "Включить/Отключить режим читов (без неудач).",
             ja: "チートモード（失敗なし）の有効化/無効化。",
             "es-ES": "Activar/Desactivar el modo trampa (sin fallas).",
+            it: "Abilita/Disabilita la modalità cheat (senza errori).",
         },
         options: {
             enabled: {
@@ -253,6 +276,7 @@ export default {
                     ru: "Включить или отключить режим читов",
                     ja: "チートモードの有効化/無効化",
                     "es-ES": "Activar o desactivar el modo trampa",
+                    it: "Abilita o disabilita la modalità cheat",
                 },
             },
             startcount: {
@@ -263,6 +287,7 @@ export default {
                     ru: "Число, с которого начинать считать (по умолчанию: 0)",
                     ja: "カウントを開始する数（デフォルト：0）",
                     "es-ES": "El número desde el que comenzar a contar (predeterminado: 0)",
+                    it: "Il numero da cui iniziare a contare (predefinito: 0)",
                 },
             },
         },
@@ -275,6 +300,7 @@ export default {
             ru: "Вычислить математическое выражение",
             ja: "数式を評価する",
             "es-ES": "Evaluar una expresión matemática",
+            it: "Valuta un'espressione matematica",
         },
         options: {
             expression: {
@@ -285,6 +311,7 @@ export default {
                     ru: "Выражение для вычисления",
                     ja: "評価する式",
                     "es-ES": "La expresión a evaluar",
+                    it: "L'espressione da valutare",
                 },
             },
         },
@@ -297,6 +324,7 @@ export default {
             ru: "Поиск последовательности OEIS",
             ja: "OEISでシーケンスを検索する",
             "es-ES": "Buscar la secuencia OEIS",
+            it: "Cerca una sequenza nell'OEIS",
         },
         options: {
             sequence: {
@@ -307,6 +335,7 @@ export default {
                     ru: "Последовательность для поиска",
                     ja: "検索するシーケンス",
                     "es-ES": "La secuencia a buscar",
+                    it: "La sequenza da cercare",
                 },
             },
         },
@@ -319,6 +348,7 @@ export default {
             ru: "Время отката для новых участников, прежде чем они смогут посчитать",
             ja: "カウントできるようになる前の新しいメンバーのクールダウン",
             "es-ES": "Tiempo de espera para nuevos miembros antes de que puedan contar",
+            it: "Tempo di attesa per i nuovi membri prima che possano contare",
         },
         options: {
             timeout: {
@@ -329,6 +359,7 @@ export default {
                     ru: "Время отката в минутах или 0 для отключения (по умолчанию: 60)",
                     ja: "クールダウン（分単位）または0を無効にする（デフォルト：60）",
                     "es-ES": "Tiempo de espera en minutos o 0 para desactivar (predeterminado: 60)",
+                    it: "Tempo di attesa in minuti oppure 0 per disattivarlo (predefinito: 60)",
                 },
             },
         },
@@ -341,6 +372,7 @@ export default {
             ru: "Фактор для увеличения тайм-аута для проигравших.",
             ja: "敗者のタイムアウトを増やすための要因。",
             "es-ES": "Factor para incrementar el tiempo de espera para los perdedores.",
+            it: "Fattore per incrementare il timeout di chi sbaglia.",
         },
         options: {
             factor: {
@@ -351,6 +383,7 @@ export default {
                     ru: "1 = без увеличения, 2 = удвоить время ожидания при каждом сбое и т. д.",
                     ja: "1 =インクリメントなし、2 =失敗ごとにタイムアウトを2倍にするなど。",
                     "es-ES": "1 = sin incremento, 2 = duplicar el tiempo de espera en cada error, etc.",
+                    it: "1 = nessun incremento, 2 = raddoppia il timeout a ogni errore, ecc.",
                 },
             },
         },
@@ -363,6 +396,7 @@ export default {
             ru: "Просмотреть ранг вашего сервера в глобальном рейтинге.",
             ja: "グローバルリーダーボードでサーバーのランクを表示します。",
             "es-ES": "Ver la clasificación de tu servidor en la clasificación global.",
+            it: "Visualizza la posizione del tuo server nella classifica globale.",
         },
         options: {
             type: {
@@ -373,6 +407,7 @@ export default {
                     ru: "Тип статистики для отображения",
                     ja: "表示する統計のタイプ",
                     "es-ES": "El tipo de estadísticas para mostrar",
+                    it: "Il tipo di statistiche da mostrare",
                 },
                 choices: {
                     current: {
@@ -383,6 +418,7 @@ export default {
                             ru: "Текущий счет",
                             ja: "現在のカウント",
                             "es-ES": "Recuento actual",
+                            it: "Conteggio attuale",
                         },
                     },
                     best: {
@@ -393,6 +429,7 @@ export default {
                             ru: "Лучший счет",
                             ja: "最高カウント",
                             "es-ES": "Mejor recuento",
+                            it: "Miglior conteggio",
                         },
                     },
                 },
@@ -407,6 +444,7 @@ export default {
             ru: "Если вам нравится бот, пожалуйста, проголосуйте за него!",
             ja: "ボットが気に入ったら、投票してください！",
             "es-ES": "Si te gusta el bot, ¡considera votar por él!",
+            it: "Se ti piace questo bot, considera di votarlo!",
         },
     },
     math_fact: {
@@ -417,6 +455,7 @@ export default {
             ru: "Получить случайный математический факт (на английском языке)",
             ja: "ランダムな数学の事実を取得します（英語）",
             "es-ES": "Obtenga un hecho matemático aleatorio (en inglés)",
+            it: "Ottieni un fatto matematico casuale.",
         },
     },
     best: {
@@ -427,6 +466,7 @@ export default {
             ru: "Показать лучший счет сервера до сих пор.",
             ja: "これまでのサーバーの最高カウントを表示します。",
             "es-ES": "Muestra el mejor recuento del servidor hasta ahora.",
+            it: "Mostra il conteggio piu alto raggiunto nel server finora.",
         },
     },
     ban_user: {
@@ -437,6 +477,7 @@ export default {
             ru: "Запретить пользователю считать.",
             ja: "ユーザーのカウントを禁止します。",
             "es-ES": "Prohibir a un usuario contar.",
+            it: "Impedisci a un utente di contare.",
         },
         options: {
             user: {
@@ -447,6 +488,7 @@ export default {
                     ru: "Пользователь для бана",
                     ja: "禁止するユーザー",
                     "es-ES": "El usuario a bloquear",
+                    it: "L'utente da bannare",
                 },
             },
         },
@@ -459,6 +501,7 @@ export default {
             ru: "Разбанить пользователя для подсчета.",
             ja: "ユーザーのカウントを解除します。",
             "es-ES": "Desbloquear a un usuario para contar.",
+            it: "Rimuovi il ban di conteggio da un utente.",
         },
         options: {
             user: {
@@ -469,6 +512,7 @@ export default {
                     ru: "Пользователь для разбана",
                     ja: "禁止を解除するユーザー",
                     "es-ES": "El usuario a desbloquear",
+                    it: "L'utente da sbannare",
                 },
             },
         },
@@ -481,6 +525,7 @@ export default {
             ru: "Показать последний счет сервера как число.",
             ja: "サーバーの最後のカウントを数値として表示します。",
             "es-ES": "Muestra el último recuento del servidor como número.",
+            it: "Mostra l'ultimo conteggio del server come numero.",
         },
     },
     pin_highscore: {
@@ -491,6 +536,7 @@ export default {
             ru: "Закрепить рекорд в канале.",
             ja: "ハイスコアをチャンネルにピン留めします。",
             "es-ES": "Fijar la puntuación más alta en el canal.",
+            it: "Fissa il record nel canale.",
         },
         options: {
             enabled: {
@@ -501,6 +547,7 @@ export default {
                     ru: "Включить или отключить закрепление",
                     ja: "ピン留めを有効または無効にする",
                     "es-ES": "Habilitar o deshabilitar el fijado",
+                    it: "Abilita o disabilita il fissaggio",
                 },
             },
         },
@@ -513,6 +560,7 @@ export default {
             ru: "Отобразить выражение LaTeX",
             ja: "LaTeX式をレンダリングする",
             "es-ES": "Renderizar una expresión LaTeX",
+            it: "Renderizza un'espressione LaTeX",
         },
         options: {
             expression: {
@@ -523,6 +571,7 @@ export default {
                     ru: "Выражение LaTeX для отображения",
                     ja: "レンダリングするLaTeX式",
                     "es-ES": "La expresión LaTeX a renderizar",
+                    it: "L'espressione LaTeX da renderizzare",
                 },
             },
             spoiler: {
@@ -533,6 +582,7 @@ export default {
                     ru: "Отправить изображение как спойлер",
                     ja: "画像をスポイラーとして送信する",
                     "es-ES": "Enviar la imagen como spoiler",
+                    it: "Invia l'immagine come spoiler",
                 },
             },
         },
@@ -545,6 +595,7 @@ export default {
             ru: "Задать вопрос Wolfram Alpha",
             ja: "Wolfram Alphaに質問する",
             "es-ES": "Hacer una pregunta a Wolfram Alpha",
+            it: "Fai una domanda a Wolfram Alpha",
         },
         options: {
             question: {
@@ -555,6 +606,7 @@ export default {
                     ru: "Вопрос, который нужно задать",
                     ja: "質問する内容",
                     "es-ES": "La pregunta a hacer",
+                    it: "La domanda da porre",
                 },
             },
         },
@@ -567,6 +619,7 @@ export default {
             ru: "Запустить код",
             ja: "コードを実行する",
             "es-ES": "Ejecutar código",
+            it: "Esegui codice",
         },
         options: {
             list_languages: {
@@ -577,6 +630,7 @@ export default {
                     ru: "Список всех доступных языков",
                     ja: "利用可能なすべての言語をリストする",
                     "es-ES": "Enumerar todos los idiomas disponibles",
+                    it: "Elenca tutti i linguaggi disponibili",
                 },
             },
         },
@@ -589,6 +643,7 @@ export default {
             ru: "Спросить SageMath / SageCell",
             ja: "SageMath / SageCellに質問する",
             "es-ES": "Preguntar a SageMath / SageCell",
+            it: "Chiedi a SageMath / SageCell",
         },
     },
     rounding: {
@@ -599,6 +654,7 @@ export default {
             ru: "Включить/Отключить округление чисел.",
             ja: "数値の丸めを有効/無効にする。",
             "es-ES": "Habilitar/Deshabilitar el redondeo de números.",
+            it: "Abilita/Disabilita l'arrotondamento dei numeri.",
         },
         options: {
             enabled: {
@@ -609,6 +665,7 @@ export default {
                     ru: "Включить или отключить округление",
                     ja: "丸めを有効または無効にする",
                     "es-ES": "Habilitar o deshabilitar el redondeo",
+                    it: "Abilita o disabilita l'arrotondamento",
                 },
             },
         },
@@ -621,6 +678,7 @@ export default {
             ru: "Список всех забаненных пользователей.",
             ja: "禁止されたすべてのユーザーをリストします。",
             "es-ES": "Enumerar todos los usuarios bloqueados.",
+            it: "Elenca tutti gli utenti bannati.",
         },
     },
     set_loser_role: {
@@ -631,6 +689,7 @@ export default {
             ru: "Установить роль проигравшего.",
             ja: "敗者の役割を設定します。",
             "es-ES": "Establecer el rol de perdedor.",
+            it: "Imposta il ruolo del perdente.",
         },
         options: {
             role: {
@@ -641,6 +700,7 @@ export default {
                     ru: "Роль для установки",
                     ja: "設定する役割",
                     "es-ES": "El rol a establecer",
+                    it: "Il ruolo da impostare",
                 },
             },
             duration: {
@@ -651,6 +711,7 @@ export default {
                     ru: "Продолжительность роли в часах",
                     ja: "役割の期間",
                     "es-ES": "Duración del rol en horas",
+                    it: "Durata del ruolo in ore",
                 },
             },
         },
@@ -663,6 +724,7 @@ export default {
             ru: "Отменить роль проигравшего.",
             ja: "敗者の役割を解除します。",
             "es-ES": "Deshabilitar el rol de perdedor.",
+            it: "Rimuovi il ruolo del perdente.",
         },
     },
     set_last_count: {
@@ -673,6 +735,7 @@ export default {
             ru: "Установить последний счет сервера.",
             ja: "サーバーの最後のカウントを設定します。",
             "es-ES": "Establecer el último recuento del servidor.",
+            it: "Imposta l'ultimo conteggio del server.",
         },
         options: {
             count: {
@@ -683,6 +746,7 @@ export default {
                     ru: "Счет для установки",
                     ja: "設定するカウント",
                     "es-ES": "El recuento a establecer",
+                    it: "Il conteggio da impostare",
                 },
             },
         },
