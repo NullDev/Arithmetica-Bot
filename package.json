@@ -43,7 +43,7 @@
     "i18n-light": "^0.5.4",
     "mathjs": "^15.2.0",
     "nerdamer": "^1.1.13",
-    "node-cron": "^3.0.3",
+    "node-cron": "^4.2.1",
     "quick.db": "^9.1.7"
   }
 }
