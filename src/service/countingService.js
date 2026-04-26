@@ -96,6 +96,23 @@ const handleloserRole = async function(message){
 };
 
 /**
+ * Reply to a message and delete it after a timeout
+ *
+ * @param {import("discord.js").Message} message
+ * @param {String} content
+ * @param {Number} [timeout=20000] (8sec)
+ * @return {Promise<any>}
+ */
+const replyWaitAndDelete = async function(message, content, timeout = 8000){
+    return await message.reply(content).then((msg) => {
+        setTimeout(() => {
+            msg.delete().catch(() => null);
+            message.delete().catch(() => null);
+        }, timeout);
+    }).catch(() => null);
+};
+
+/**
  * Let the user know they failed
  *
  * @param {import("discord.js").Message} message
@@ -108,7 +125,16 @@ const failed = async function(message, lastNumber, result){
 
     if (cheatModeOn){
         setTimeout(() => message.delete().catch(() => null), 5000);
-        return null;
+
+        const timeout = await handleTimeout(message);
+        const loserRole = await handleloserRole(message);
+        if (!timeout && !loserRole) return null;
+
+        let response = "";
+        if (!!timeout) response += (await __("replies.timeout", timeout)(message.guildId));
+        if (!!loserRole) response += (response ? "\n" : "") + (await __("replies.add_loser_role", loserRole.role, loserRole.duration)(message.guildId));
+
+        return await replyWaitAndDelete(message, `<@${message.author.id}> ${response}`);
     }
 
     message.react("❌").catch(() => null);
@@ -182,23 +208,6 @@ const correct = async function(message, guild, result, lastCountString, hasRound
     if (result > previousBest) await guildDb.set(`guild-${guild}.best`, result);
 
     return await guildDb.set(`guild-${guild}.lastUser`, message.author.id);
-};
-
-/**
- * Reply to a message and delete it after a timeout
- *
- * @param {import("discord.js").Message} message
- * @param {String} content
- * @param {Number} [timeout=20000] (8sec)
- * @return {Promise<any>}
- */
-const replyWaitAndDelete = async function(message, content, timeout = 8000){
-    return await message.reply(content).then((msg) => {
-        setTimeout(() => {
-            msg.delete().catch(() => null);
-            message.delete().catch(() => null);
-        }, timeout);
-    }).catch(() => null);
 };
 
 /**
