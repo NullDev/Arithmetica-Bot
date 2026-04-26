@@ -34,7 +34,8 @@ const handleCommandInteraction = async function(interaction){
         await command.execute(interaction);
     }
     catch (error){
-        Log.error("Error during command execution: ", error);
+        const err = error instanceof Error ? error : new Error(String(error));
+        Log.error("Error during command execution: ", err);
         if (interaction.replied || interaction.deferred){
             await interaction.followUp({ content: await __("errors.generic_command_execution_failed")(interaction.guildId), ephemeral: true });
         }

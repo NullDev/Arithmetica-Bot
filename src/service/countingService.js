@@ -58,7 +58,8 @@ const handleTimeout = async function(message){
         );
     }
     catch (e){
-        Log.error("Failed to timeout user: ", e);
+        const err = e instanceof Error ? e : new Error(String(e));
+        Log.error("Failed to timeout user: ", err);
         return 0;
     }
 
@@ -88,7 +89,8 @@ const handleloserRole = async function(message){
         await userDb.set(`guild-${message.guildId}.user-${message.author.id}.loser-role-time`, Date.now() + duration * 60 * 1000);
     }
     catch (e){
-        Log.error("Failed to add loser role: ", e);
+        const err = e instanceof Error ? e : new Error(String(e));
+        Log.error("Failed to add loser role: ", err);
         return null;
     }
 
@@ -174,9 +176,11 @@ const failed = async function(message, lastNumber, result){
         }
     }
 
-    await message.reply(`<@${message.author.id}> ${response}`).catch(() => {
+    await message.reply(`<@${message.author.id}> ${response}`).catch(async() => {
         Log.warn("Failed to reply to message: " + message.id);
-        message.channel.send(`<@${message.author.id}> ${response}`);
+        if ("send" in message.channel){
+            await message.channel.send(`<@${message.author.id}> ${response}`);
+        }
     });
 
     await guildDb.delete(`guild-${message.guildId}.lastUser`);
