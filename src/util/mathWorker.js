@@ -100,12 +100,42 @@ const parsePhi = function(expr){
 };
 
 /**
- * Parse commas as decimal points ONLY if they are between two numbers
+ * Parse commas between digits as decimal points, but only at the top level
+ * (outside any parentheses) so that commas inside function calls remain as
+ * argument separators (e.g. log(65,2) stays as log base 2 of 65).
  *
  * @param {String} expr
  * @return {String}
  */
-const parseComma = function(expr){
+const parseCommaTopLevel = function(expr){
+    if (!expr.includes(",")) return expr;
+    let result = "";
+    let depth = 0;
+    for (let i = 0; i < expr.length; i++){
+        const ch = expr[i];
+        if (ch === "(") depth++;
+        else if (ch === ")") depth = Math.max(0, depth - 1);
+        if (ch === "," && depth === 0
+            && i > 0 && i < expr.length - 1
+            && /\d/.test(expr[i - 1]) && /\d/.test(expr[i + 1])){
+            result += ".";
+        }
+        else {
+            result += ch;
+        }
+    }
+    return result;
+};
+
+/**
+ * Parse every comma between digits as a decimal point. Used as a fallback for
+ * single-arg calls written with comma-decimals (e.g. sqrt(1,5) -> sqrt(1.5))
+ * when the top-level pass alone leaves an expression mathjs can't evaluate.
+ *
+ * @param {String} expr
+ * @return {String}
+ */
+const parseCommaAll = function(expr){
     return expr.replace(/(\d+),(\d+)/g, (_, p1, p2) => `${p1}.${p2}`);
 };
 
@@ -339,19 +369,37 @@ function evaluateMath(expr){
     cleaned = parseFloor(cleaned);
     cleaned = parsePhi(cleaned);
     cleaned = parseLn(cleaned);
-    cleaned = parseComma(cleaned);
 
+    const cleanedSmart = parseCommaTopLevel(cleaned);
     let result;
-    const scope = new Map();
+    let evalError = null;
     try {
-        result = mathjs.evaluate(cleaned, scope);
+        result = mathjs.evaluate(cleanedSmart, new Map());
     }
     catch (e){
+        evalError = e;
+    }
+
+    // Fallback: if smart parsing failed, retry with all digit-commas treated
+    // as decimals — covers single-arg calls like sqrt(1,5).
+    if (evalError){
+        const cleanedAll = parseCommaAll(cleaned);
+        if (cleanedAll !== cleanedSmart){
+            try {
+                result = mathjs.evaluate(cleanedAll, new Map());
+                evalError = null;
+            }
+            // eslint-disable-next-line no-unused-vars
+            catch (_e2){ /* keep original error */ }
+        }
+    }
+
+    if (evalError){
         return {
             result: null,
-            error: String(e).includes("TypeError") || String(e).includes("SyntaxError")
+            error: String(evalError).includes("TypeError") || String(evalError).includes("SyntaxError")
                 ? null
-                : String(e).replace("Error: ", ""),
+                : String(evalError).replace("Error: ", ""),
         };
     }
 
