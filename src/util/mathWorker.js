@@ -174,6 +174,23 @@ const totient = function(n){
 };
 
 /**
+ * Strip a negligible imaginary residue from a complex value. Floating-point
+ * computations like e^(2πi) leave a tiny im part that survives further math
+ * (e.g. (1+εi)^101 grows ε ~100x), and a Complex bound silently makes JS
+ * comparisons in the iteration loop false — turning Σ/Π into a no-op.
+ *
+ * @param {*} v
+ * @return {*}
+ */
+const snapNearReal = function(v){
+    if (v && typeof v === "object" && "re" in v && "im" in v
+        && Math.abs(Number(v.im)) < 1e-10){
+        return v.re;
+    }
+    return v;
+};
+
+/**
  * Iterative calculation function
  *
  * @param {Array} args
@@ -195,8 +212,8 @@ const iterCalc = function(args, _math, scope, op = "+"){
     }
     const kName = kNode.object.name;
 
-    const n = nNode.compile().evaluate(scope);
-    const k = kNode.compile().evaluate(scope);
+    const n = snapNearReal(nNode.compile().evaluate(scope));
+    const k = snapNearReal(kNode.compile().evaluate(scope));
     const expr = exprNode.compile();
 
     let result = neutralElements[op];
@@ -408,7 +425,10 @@ function evaluateMath(expr){
     if (typeof result === "object"){
         if (!result) return { result: null, error: "Couldn't evaluate (No Result)" };
         if (result.entries) result = result.entries[0];
-        else if (result.re) result = result.re;
+
+        result = snapNearReal(result);
+
+        if (result && typeof result === "object" && result.re) result = result.re;
 
         result = Number(result);
         if (isNaN(result)) return { result: null, error: "Couldn't evaluate (NaN)" };
