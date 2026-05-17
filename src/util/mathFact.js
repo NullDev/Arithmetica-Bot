@@ -7,7 +7,7 @@ const API = "https://nulldev.org/mathfacts/api/facts/random";
 /**
  * Get a random math fact
  *
- * @return {Promise<string>} The math fact, or "¯\\_(ツ)_/¯" if an error occurred
+ * @return {Promise<{ fact: string, proof: string|null }>} The math fact, or "¯\\_(ツ)_/¯" if an error occurred
  */
 const getRandomMathFact = async function(){
     const response = await fetch(API);
@@ -18,7 +18,7 @@ const getRandomMathFact = async function(){
         return "¯\\_(ツ)_/¯";
     }
 
-    return data.content;
+    return { fact: data.content, proof: data.proof };
 };
 
 export default getRandomMathFact;

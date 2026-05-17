@@ -16,13 +16,13 @@ import defaults from "../util/defaults.js";
 const registerVote = async function(client, user){
     Log.done("Received vote from user " + user + "!");
 
-    const fact = await getRandomMathFact();
+    const { fact, proof } = await getRandomMathFact();
     const dmChannel = await client.users.fetch(user).catch(() => Log.warn("Could not fetch user " + user + "!"));
     if (dmChannel){
         const embed = {
             color: defaults.embed_color,
             title: ":heart:┃Voting",
-            description: "Thank you for your vote! :)\n\nHave a random math fact:\n" + fact,
+            description: "Thank you for your vote! :)\n\nHave a random math fact:\n" + fact + (proof ? ` ([proof](<${proof}>))` : ""),
         };
 
         await dmChannel.send({

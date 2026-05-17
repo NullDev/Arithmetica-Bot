@@ -32,12 +32,14 @@ export default {
             if (searchResponse.ok){
                 const searchData = await searchResponse.json();
                 if (searchData && searchData.bestMatch && typeof searchData.bestMatch.content === "string"){
-                    const fact = searchData.bestMatch.content;
+                    const { content, proof } = searchData.bestMatch;
 
                     const embed = {
                         color: defaults.embed_color,
                         title: `:abacus:┃Math Fact Search Result for "${searchQuery}"`,
-                        description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + fact + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
+                        description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + content + (
+                            proof ? ` ([proof](<${proof}>))` : ""
+                        ) + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
                         footer: {
                             text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
                             icon_url: interaction.user.displayAvatarURL(),
@@ -53,11 +55,11 @@ export default {
             }
 
             // nothing found
-            const fact = await getRandomMathFact();
+            const { fact, proof } = await getRandomMathFact();
             const embed = {
                 color: defaults.embed_color,
                 title: `:abacus:┃No Math Fact Found for "${searchQuery}"`,
-                description: `Couldn't find a math fact matching your search query.\nHere's a random one instead:\n\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n${fact}\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:`,
+                description: `Couldn't find a math fact matching your search query.\nHere's a random one instead:\n\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n${fact + (proof ? ` ([proof](<${proof}>))` : "")}\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:`,
                 footer: {
                     text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
                     icon_url: interaction.user.displayAvatarURL(),
@@ -71,12 +73,12 @@ export default {
             return await interaction.reply({ embeds: [embed] });
         }
 
-        const fact = await getRandomMathFact();
+        const { fact, proof } = await getRandomMathFact();
 
         const embed = {
             color: defaults.embed_color,
             title: ":abacus:┃Random Math Fact",
-            description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + fact + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
+            description: ":heavy_minus_sign::heavy_minus_sign::heavy_minus_sign: \n" + fact + (proof ? ` ([proof](<${proof}>))` : "") + "\n:heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:",
             footer: {
                 text: `Requested by ${interaction.user.displayName ?? interaction.user.tag}`,
                 icon_url: interaction.user.displayAvatarURL(),
