@@ -28,8 +28,8 @@
   "author": "NullDev",
   "license": "AGPL-3.0-only",
   "devDependencies": {
-    "@babel/core": "^7.27.1",
-    "@babel/eslint-parser": "^7.27.1",
+    "@babel/core": "^8.0.1",
+    "@babel/eslint-parser": "^8.0.1",
     "cross-env": "^7.0.3",
     "eslint": "^9.26.0"
   },
